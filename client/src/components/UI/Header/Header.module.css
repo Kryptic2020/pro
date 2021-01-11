@@ -1,0 +1,14 @@
+
+#cccc{
+ color:#373ae9;
+  color:#032641;
+  color:#01579b;
+  color:#ad1457 pink darken-3;
+   color:#0c472c;/*//016d3b*/
+}
+
+@media only screen and (min-width: 500px) {
+  #MenuIcon {
+    display:none;
+  }
+}
