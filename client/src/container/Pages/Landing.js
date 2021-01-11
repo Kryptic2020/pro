@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import classes from "./Landing.module.css";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import WeekendIcon from "@material-ui/icons/Weekend";
-import WorkIcon from "@material-ui/icons/Work";
-import ContactsIcon from "@material-ui/icons/Contacts";
-import TodayIcon from "@material-ui/icons/Today";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import classes from './Landing.module.css';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import WeekendIcon from '@material-ui/icons/Weekend';
+import WorkIcon from '@material-ui/icons/Work';
+import ContactsIcon from '@material-ui/icons/Contacts';
+import TodayIcon from '@material-ui/icons/Today';
 //import MailIcon from '@material-ui/icons/Mail';
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import DateRangeIcon from "@material-ui/icons/DateRange";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { connect } from "react-redux";
-import PermIdentityIcon from "@material-ui/icons/PermIdentity";
-import HowToRegIcon from "@material-ui/icons/HowToReg";
-import Background from "../../assets/LogoB.png";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { connect } from 'react-redux';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
+import Background from '../../assets/LogoB.png';
 //import LogoDark from '../../assets/MagentaDarkLogo.jpg';
-require("typeface-roboto");
+require('typeface-roboto');
 
 class Landing extends Component {
 	scrollToTop() {
 		window.scrollTo({
 			top: 0,
-			behavior: "smooth",
+			behavior: 'smooth',
 		});
 	}
 
@@ -33,16 +33,16 @@ class Landing extends Component {
 	}
 
 	userOptionsRender() {
-		let show = "";
+		let show = '';
 		if (this.props.auth.authenticated) {
 			show = (
 				<div>
 					<div
 						style={{
-							textAlign: "center",
-							width: "100%",
-							fontSize: "18px",
-							color: "yellow",
+							textAlign: 'center',
+							width: '100%',
+							fontSize: '18px',
+							color: 'yellow',
 						}}
 					>
 						USER PANELA
@@ -50,13 +50,13 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={{
-							pathname: "/profile",
+							pathname: '/profile',
 							state: {
 								_id: this.props.auth._id,
 							},
@@ -64,24 +64,24 @@ class Landing extends Component {
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 							}}
 						>
 							<PermIdentityIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Profile
 							</span>
 						</div>
@@ -89,38 +89,38 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/booking"
-								: "/"
+								? '/booking'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 							}}
 						>
 							<TodayIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Book Now
 							</span>
 						</div>
@@ -129,39 +129,39 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/booking/mybooking"
-								: "/"
+								? '/booking/mybooking'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
-								color: "white",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
+								color: 'white',
 							}}
 						>
 							<DateRangeIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Booking History
 							</span>
 						</div>
@@ -170,38 +170,38 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/waitinglist"
-								: "/"
+								? '/waitinglist'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 							}}
 						>
 							<WeekendIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Waiting List
 							</span>
 						</div>
@@ -216,31 +216,31 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<a
-						href="https://instagram.com/prinail_aussie?igshid=e7iknqzerklx"
-						style={{ color: "white" }}
+						href='https://instagram.com/prinail_aussie?igshid=e7iknqzerklx'
+						style={{ color: 'white' }}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 							}}
 						>
 							<InstagramIcon
 								style={{
-									fontSize: "30px",
-									marginLeft: "45px",
+									fontSize: '30px',
+									marginLeft: '45px',
 								}}
-							/>{" "}
+							/>{' '}
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
 								Manicurist Instagram
@@ -251,31 +251,31 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<a
-						href="https://www.instagram.com/thibarberbr_au"
-						style={{ color: "white" }}
+						href='https://www.instagram.com/thibarberbr_au'
+						style={{ color: 'white' }}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 							}}
 						>
 							<InstagramIcon
 								style={{
-									fontSize: "30px",
-									marginLeft: "45px",
+									fontSize: '30px',
+									marginLeft: '45px',
 								}}
-							/>{" "}
+							/>{' '}
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
 								Hairdresser Instagram
@@ -286,32 +286,32 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<a
-						href="https://www.facebook.com/pri.helena.96"
-						style={{ color: "white" }}
+						href='https://www.facebook.com/pri.helena.96'
+						style={{ color: 'white' }}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
-								color: "white",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
+								color: 'white',
 							}}
 						>
 							<FacebookIcon
 								style={{
-									fontSize: "30px",
-									marginLeft: "45px",
+									fontSize: '30px',
+									marginLeft: '45px',
 								}}
-							/>{" "}
+							/>{' '}
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
 								Manicurist Facebook
@@ -322,68 +322,68 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<a
-						href="https://www.facebook.com/ThiBarberBRAU"
-						style={{ color: "white" }}
+						href='https://www.facebook.com/ThiBarberBRAU'
+						style={{ color: 'white' }}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
-								color: "white",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
+								color: 'white',
 							}}
 						>
 							<FacebookIcon
 								style={{
-									fontSize: "30px",
-									marginLeft: "45px",
+									fontSize: '30px',
+									marginLeft: '45px',
 								}}
-							/>{" "}
+							/>{' '}
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
 								Hairdresser Facebook
-							</span>{" "}
+							</span>{' '}
 						</div>
 					</a>
 
 					<div
 						className={classes.lines}
 						style={{
-							borderTop: "1px solid yellow",
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 
 					<Link
-						style={{ color: "white" }}
-						to={"/location"}
+						style={{ color: 'white' }}
+						to={'/location'}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
-								color: "white",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
+								color: 'white',
 							}}
 						>
 							<LocationOnIcon
 								style={{
-									fontSize: "30px",
-									marginLeft: "45px",
+									fontSize: '30px',
+									marginLeft: '45px',
 								}}
-							/>{" "}
+							/>{' '}
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
 								Our Location
@@ -394,14 +394,14 @@ class Landing extends Component {
 					<div
 						className={classes.lines}
 						style={{
-							width: "100%",
-							borderTop: "1px solid yellow",
+							width: '100%',
+							borderTop: '1px solid yellow',
 						}}
 					></div>
 					<div
 						style={{
-							width: "100%",
-							height: "60px",
+							width: '100%',
+							height: '60px',
 						}}
 					></div>
 				</div>
@@ -415,10 +415,10 @@ class Landing extends Component {
 				<div>
 					<div
 						style={{
-							textAlign: "center",
-							width: "100%",
-							fontSize: "18px",
-							color: "yellow",
+							textAlign: 'center',
+							width: '100%',
+							fontSize: '18px',
+							color: 'yellow',
 						}}
 					>
 						ADMIN PANEL
@@ -428,209 +428,209 @@ class Landing extends Component {
 					</div>*/}
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/specialtyandservices"
-								: "/"
+								? '/specialtyandservices'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 								borderTop:
-									"1px solid yellow",
+									'1px solid yellow',
 							}}
 						>
 							<WorkIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Specialties
 							</span>
 						</div>
 					</Link>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/staffassignment"
-								: "/"
+								? '/staffassignment'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 								borderTop:
-									"1px solid yellow",
+									'1px solid yellow',
 							}}
 						>
 							<HowToRegIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Staff Assignment
 							</span>
 						</div>
 					</Link>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/timetables"
-								: "/"
+								? '/timetables'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 								borderTop:
-									"1px solid yellow",
+									'1px solid yellow',
 							}}
 						>
 							<AccessTimeIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Time Tables
 							</span>
 						</div>
 					</Link>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/calendar/builder"
-								: "/"
+								? '/calendar/builder'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 								borderTop:
-									"1px solid yellow",
+									'1px solid yellow',
 							}}
 						>
 							<CalendarTodayIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Calendar Builder
-							</span>{" "}
+							</span>{' '}
 						</div>
 					</Link>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/calendar"
-								: "/"
+								? '/calendar'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 								borderTop:
-									"1px solid yellow",
-								color: "white",
+									'1px solid yellow',
+								color: 'white',
 							}}
 						>
 							<DateRangeIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
 							/>
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
-								{" "}
+								{' '}
 								Calendar
 							</span>
 						</div>
 					</Link>
 
 					<Link
-						style={{ color: "white" }}
+						style={{ color: 'white' }}
 						to={
 							this.props.auth.authenticated
-								? "/contacts"
-								: "/"
+								? '/contacts'
+								: '/'
 						}
 					>
 						<div
 							style={{
-								padding: "10px",
-								fontSize: "18px",
-								width: "100%",
-								height: "50px",
+								padding: '10px',
+								fontSize: '18px',
+								width: '100%',
+								height: '50px',
 								borderTop:
-									"1px solid yellow",
-								color: "white",
+									'1px solid yellow',
+								color: 'white',
 							}}
 						>
 							<ContactsIcon
 								style={{
-									marginLeft: "45px",
-									fontSize: "30px",
+									marginLeft: '45px',
+									fontSize: '30px',
 								}}
-							/>{" "}
+							/>{' '}
 							<span
 								style={{
-									paddingLeft: "15px",
+									paddingLeft: '15px',
 								}}
 							>
 								Contacts
@@ -640,19 +640,19 @@ class Landing extends Component {
 
 					<div
 						style={{
-							padding: "10px",
-							fontSize: "18px",
-							width: "100%",
-							height: "50px",
-							borderTop: "1px solid yellow",
-							color: "white",
+							padding: '10px',
+							fontSize: '18px',
+							width: '100%',
+							height: '50px',
+							borderTop: '1px solid yellow',
+							color: 'white',
 						}}
 					></div>
 				</div>
 				<div
 					style={{
-						width: "100%",
-						height: "10px",
+						width: '100%',
+						height: '10px',
 					}}
 				></div>
 			</div>
@@ -661,20 +661,20 @@ class Landing extends Component {
 
 	render() {
 		const BookNowLogin = (
-			<Link to={"/auth"}>
+			<Link to={'/auth'}>
 				<div>
 					<Button
-						variant="warning"
+						variant='warning'
 						style={{
-							height: "50px",
-							width: "100%",
+							height: '50px',
+							width: '100%',
 						}}
 					>
 						<span
 							style={{
-								fontSize: "18px",
-								fontWeight: "bold",
-								color: "white",
+								fontSize: '18px',
+								fontWeight: 'bold',
+								color: 'white',
 							}}
 						>
 							Book Now
@@ -684,19 +684,19 @@ class Landing extends Component {
 			</Link>
 		);
 		const BookNowBooking = (
-			<Link to={"/booking"}>
+			<Link to={'/booking'}>
 				<div>
 					<Button
 						style={{
-							border: "1px solid #FFFF1C",
-							backgroundColor: "#FFFF1C",
-							height: "50px",
-							width: "100%",
+							border: '1px solid #FFFF1C',
+							backgroundColor: '#FFFF1C',
+							height: '50px',
+							width: '100%',
 						}}
 					>
 						<span
 							style={{
-								fontSize: "18px",
+								fontSize: '18px',
 								color: this.props.color,
 							}}
 						>
@@ -711,17 +711,17 @@ class Landing extends Component {
 			//minWidth: '100vw',
 			//minHeight: '100vh',
 			//backgroundColor: '#23272B', //"#01579b",
-			margin: "auto",
-			backgroundRepeat: "no-repeat",
-			width: "255px",
-			height: "105px",
+			margin: 'auto',
+			backgroundRepeat: 'no-repeat',
+			width: '255px',
+			height: '105px',
 			//backgroundPosition:'center',
-			marginTop: "-20px",
+			marginTop: '-20px',
 			//opacity: "0.7",
-			resizeMode: "stretch",
+			resizeMode: 'stretch',
 			//overflow: 'hidden',
-			border: "grey 3px solid",
-			borderRadius: "5px",
+			border: 'grey 3px solid',
+			borderRadius: '5px',
 			//border:'2px solid white',
 			//backgroundImage: `url(${LogoDark})`
 			backgroundImage: `url(${Background})`,
@@ -730,23 +730,23 @@ class Landing extends Component {
 		return (
 			<div style={{}}>
 				<div
-					className="container"
+					className='container'
 					style={{
-						marginTop: "77px",
-						color: "white",
-						minWidth: "320px",
-						maxWidth: "350px",
+						marginTop: '77px',
+						color: 'white',
+						minWidth: '320px',
+						maxWidth: '350px',
 					}}
 				>
 					<div>
 						<div
 							style={{
-								width: "100%",
-								height: "20px",
+								width: '100%',
+								height: '20px',
 							}}
 						></div>
 						{/*<div className={classes.logoAnimation} style={sectionStyle} />*/}
-						<div className="center">
+						<div className='center'>
 							{
 								<img
 									className={
@@ -754,17 +754,17 @@ class Landing extends Component {
 									}
 									src={Background}
 									style={{
-										width: "150px",
-										height: "150px",
+										width: '150px',
+										height: '150px',
 									}}
-									alt="fireSpot"
+									alt='fireSpot'
 								/>
 							}
 						</div>
 						<div
 							style={{
-								width: "100%",
-								height: "30px",
+								width: '100%',
+								height: '30px',
 							}}
 						></div>
 						{!this.props.auth.authenticated
@@ -773,8 +773,8 @@ class Landing extends Component {
 					</div>
 					<div
 						style={{
-							width: "100%",
-							height: "40px",
+							width: '100%',
+							height: '40px',
 						}}
 					></div>
 					<div>
@@ -785,8 +785,8 @@ class Landing extends Component {
 					<div>{this.userOptionsRender()}</div>
 					<div
 						style={{
-							width: "100%",
-							height: "100px",
+							width: '100%',
+							height: '100px',
 						}}
 					></div>
 				</div>
