@@ -1,10 +1,9 @@
 import React from 'react';
-import useStyles from './styles';
+import classes from './styles.module.css';
 import CompanyIcone from '../UI/Iconsx/CompanyIcone';
 import KeyboardLeftIcone from '../UI/Iconsx/KeyboardLeft';
 
 const Headerx = (props) => {
-	const classes = useStyles();
 	return (
 		<div className={classes.appHeader}>
 			<div className={classes.container}>

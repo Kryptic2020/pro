@@ -9,60 +9,103 @@ import TriangleIcone from '../../../components/UI/Iconsx/Triangle';
 import LoginWith from '../../../components/LoginWith/LoginWith';
 import PersonalInfo from '../../../components/PersonalInfo/Personalinfo';
 
-const Loginx = () => {
-	const handleSubmit = (event) => {
+class Loginx extends Component {
+	state = {
+		isLogin: true,
+	};
+	/*const handleSubmit = (event) => {
 		event.preventDefault();
-		/*const { email, password } = values;
+		const { email, password } = values;
 
 		if (email !== '' && password !== '') {
 			console.log('Submited');
 		} else {
 			//handleErrors();
-		}*/
+		}
+	};*/
+
+	selectHandler = () => {
+		this.setState((prevState) => {
+			return { isLogin: !prevState.isLogin };
+		});
 	};
 
-	return (
-		<>
-			<div className={classes.container}>
-				<div className={classes.headers}>
-					<div className={classes.unselected}>
-						SIGN UP
-					</div>
-					<div className={classes.selected}>
-						LOGIN
-					</div>
-				</div>
-				<div className={classes.triangleLogin}>
-					<TriangleIcone width='30px' />
-				</div>
-
-				<div className={classes.loginForm}>
-					<LoginForm />
-				</div>
-
+	renderForgotText = () => {
+		return (
+			<>
 				<div className={classes.forgotLink}>
 					<Link to='/forgot-password'>
 						Forgot Password?
 					</Link>
 					<div className={classes.or}>- OR -</div>
 				</div>
+			</>
+		);
+	};
 
-				<div className={classes.loginWith}>
-					<LoginWith />
+	render() {
+		return (
+			<>
+				<div className={classes.container}>
+					<div className={classes.headers}>
+						<div
+							onClick={this.selectHandler}
+							className={
+								this.state.isLogin
+									? classes.unselected
+									: classes.selected
+							}
+						>
+							SIGN UP
+						</div>
+						<div
+							onClick={this.selectHandler}
+							className={
+								this.state.isLogin
+									? classes.selected
+									: classes.unselected
+							}
+						>
+							LOGIN
+						</div>
+					</div>
+					<div
+						className={
+							this.state.isLogin
+								? classes.triangleLogin
+								: classes.triangleSignup
+						}
+					>
+						<TriangleIcone width='30px' />
+					</div>
+
+					<div className={classes.loginForm}>
+						<LoginForm />
+					</div>
+					{this.state.isLogin
+						? this.renderForgotText()
+						: null}
+
+					<div className={classes.loginWith}>
+						{this.state.isLogin ? (
+							<LoginWith />
+						) : null}
+					</div>
+					<div className={classes.personalInfo}>
+						{this.state.isLogin ? null : (
+							<PersonalInfo />
+						)}
+					</div>
+					<div className={classes.continueButton}>
+						<ContinueButton
+							text='Continue'
+							//onClick={handleSubmit}
+						/>
+					</div>
 				</div>
-			</div>
-			<div className={classes.personalInfo}>
-				<PersonalInfo />
-			</div>
-
-			<div className={classes.continueButton}>
-				<ContinueButton
-					text='Continue'
-					onClick={handleSubmit}
-				/>
-			</div>
-		</>
-	);
-};
+			</>
+		);
+	}
+}
 
 export default Loginx;

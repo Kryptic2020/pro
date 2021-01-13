@@ -11,16 +11,22 @@ const LoginWith = (props) => {
 			</div>
 			<div className={classes.icones}>
 				<div className={classes.facebookIcone}>
-					<FacebookIcone width='47px' />
-					<div className={classes.textFacebook}>
-						Facebook
-					</div>
+					<a href='/auth/facebook'>
+						<FacebookIcone width='47px' />
+						<div
+							className={classes.textFacebook}
+						>
+							Facebook
+						</div>
+					</a>
 				</div>
 				<div className={classes.googleIcone}>
-					<GoogleIcone width='40px' />
-					<div className={classes.textGoogle}>
-						Google
-					</div>
+					<a href='/auth/google'>
+						<GoogleIcone width='40px' />
+						<div className={classes.textGoogle}>
+							Google
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>

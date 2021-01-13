@@ -16,7 +16,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { connect } from 'react-redux';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
-import Background from '../../assets/LogoB.png';
+//import Background from '../../assets/LogoB.png';
 //import LogoDark from '../../assets/MagentaDarkLogo.jpg';
 require('typeface-roboto');
 
@@ -661,7 +661,7 @@ class Landing extends Component {
 
 	render() {
 		const BookNowLogin = (
-			<Link to={'/auth'}>
+			<Link to={'/loginx'}>
 				<div>
 					<Button
 						variant='warning'
@@ -684,7 +684,7 @@ class Landing extends Component {
 			</Link>
 		);
 		const BookNowBooking = (
-			<Link to={'/booking'}>
+			<Link to={'/loginx'}>
 				<div>
 					<Button
 						style={{
@@ -707,7 +707,7 @@ class Landing extends Component {
 			</Link>
 		);
 
-		const sectionStyle = {
+		/*const sectionStyle = {
 			//minWidth: '100vw',
 			//minHeight: '100vh',
 			//backgroundColor: '#23272B', //"#01579b",
@@ -725,7 +725,7 @@ class Landing extends Component {
 			//border:'2px solid white',
 			//backgroundImage: `url(${LogoDark})`
 			backgroundImage: `url(${Background})`,
-		};
+		};*/
 		//};
 		return (
 			<div style={{}}>
@@ -747,7 +747,7 @@ class Landing extends Component {
 						></div>
 						{/*<div className={classes.logoAnimation} style={sectionStyle} />*/}
 						<div className='center'>
-							{
+							{/*
 								<img
 									className={
 										classes.logoAnimation
@@ -759,7 +759,7 @@ class Landing extends Component {
 									}}
 									alt='fireSpot'
 								/>
-							}
+							*/}
 						</div>
 						<div
 							style={{
@@ -778,11 +778,13 @@ class Landing extends Component {
 						}}
 					></div>
 					<div>
-						{this.props.auth.isAdmin
+						{/*this.props.auth.isAdmin
 							? this.adminOptionsRender()
-							: null}
+							: null*/}
 					</div>
-					<div>{this.userOptionsRender()}</div>
+					<div>
+						{/*this.userOptionsRender()*/}
+					</div>
 					<div
 						style={{
 							width: '100%',

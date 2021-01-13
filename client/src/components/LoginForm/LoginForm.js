@@ -56,8 +56,9 @@ const LoginForm = (props) => {
 					<InputLabel htmlFor='email'>
 						Email address
 					</InputLabel>
+
 					<Input
-						className={classes.input1}
+						className={classes.input}
 						id='email'
 						type='email'
 						value={values.email}
@@ -75,7 +76,7 @@ const LoginForm = (props) => {
 						Password
 					</InputLabel>
 					<Input
-						className={classes.input1}
+						className={classes.input}
 						id='password'
 						type={
 							values.showPassword
