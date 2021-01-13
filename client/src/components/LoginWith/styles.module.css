@@ -1,0 +1,45 @@
+.container {
+	background-color: #ffffff;
+	width: 310px;
+	height: 140px;
+	border-radius: 5px;
+}
+
+.loginWith {
+	font-size: 16px;
+	color: #000000;
+	font-family: 'Playfair Display', serif;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	width: 100%;
+	text-align: center;
+}
+.icones {
+	width: 300px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.facebookIcone {
+	flex-direction: column;
+	font-size: 16px;
+}
+.googleIcone {
+	flex-direction: column;
+	font-size: 16px;
+}
+.textGoogle {
+	padding-top: 5px;
+	margin-left: -3px;
+}
+.textFacebook {
+	padding-top: 5px;
+	margin-left: -8px;
+}
+
+@media screen and (min-width: 480px) {
+	.container {
+		width: 500px;
+	}
+}

@@ -1,0 +1,52 @@
+.container {
+	width: 100%;
+	background-color: #24cd98;
+	text-align: center;
+}
+.subcontainer {
+	width: 310px;
+	height: 313px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+
+	row-gap: 2%;
+}
+.header {
+	font-family: 'Playfair Display', serif;
+	color: #ffffff;
+	font-size: 24px;
+	margin-top: 10%;
+}
+input {
+	text-align: center;
+	color: black;
+	background-color: white;
+	border-radius: 5px;
+}
+.input {
+	line-height: 57px;
+	color: black;
+	background-color: white;
+	border-radius: 5px;
+	height: 50px;
+}
+
+@media screen and (min-width: 480px) {
+	.container {
+		width: 500px;
+		margin: 0 auto;
+	}
+	.subcontainer {
+		width: 450px;
+		height: 422px;
+	}
+	.header {
+		font-size: 32px;
+	}
+	.input {
+		line-height: 76px;
+
+		height: 60px;
+	}
+}

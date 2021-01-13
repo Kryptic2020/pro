@@ -1,0 +1,86 @@
+:root {
+	--main-radius: 5px;
+	--main-padding: 5px;
+}
+
+.container {
+	display: grid;
+	height: calc(-50px + 100vh);
+	grid-template-columns: [grid-start]1fr[content-start]310px[content-end]1fr[grid-end];
+	grid-template-rows: [nav-start] 0px [nav-end] 1fr [loginOptions-start]63px[loginOption-end triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end]1fr [loginWith-start]max-content[loginWith-end]0px[personalInfo-start]max-content[personalInfo-end] 1fr [continue-start]max-content [continue-end];
+}
+
+.headers {
+	font-family: 'Playfair Display', serif;
+	height: 63px;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	grid-column: content;
+	grid-row: loginOptions;
+}
+.unselected {
+	font-size: 16px;
+	color: #000000;
+
+	width: 50%;
+	text-align: center;
+}
+.selected {
+	font-size: 16px;
+	color: #ffffff;
+
+	width: 50%;
+	text-align: center;
+	padding: auto auto;
+
+	background-color: #11b9f0;
+	height: 63px;
+	line-height: 63px;
+}
+.triangleLogin {
+	margin-left: 60%;
+	margin-top: -1px;
+	grid-column: content;
+	grid-row: triangle;
+} /*
+.triangleSignup {
+	grid-column: content;
+	grid-row: triangle;
+}*/
+.loginForm {
+	grid-column: content;
+	grid-row: loginForm;
+}
+.forgotLink {
+	display: flex;
+	justify-content: space-between;
+	grid-column: content;
+	grid-row: forgotPass;
+	font-size: 14px;
+}
+.or {
+	font-family: 'Playfair Display', serif;
+	margin-right: 25%;
+	font-size: 16px;
+}
+.loginWith {
+	grid-column: content;
+	grid-row: loginWith;
+}
+.personalInfo {
+	grid-column: content;
+	grid-row: personalInfo;
+}
+.continueButton {
+	grid-column: content;
+	grid-row: continue;
+}
+
+@media screen and (min-width: 480px) {
+	.continueButton {
+		width: 500px;
+		margin: 0 auto;
+	}
+}

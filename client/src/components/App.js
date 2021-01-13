@@ -5,7 +5,7 @@ import {
 	Route,
 	Redirect,
 } from 'react-router-dom';
-import Header from '../container/Pages/Header';
+//import Header from '../container/Pages/Header';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
 import Landing from '../container/Pages/Landing';
@@ -27,11 +27,13 @@ import TimeTables from '../container/Pages/TimeTables';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import StaffAssignment from '../container/Pages/StaffAssignment';
 import Profile from '../container/Pages/Profile';
-import Location from '../container/Pages/Location';
+import Headerx from '../components/Headerx/Headerx';
+
 //import classes from './App.module.css';
 //import Background from '../assets/LogoP.jpg';
 import FacebookEmailAdd from '../container/Auth/FacebookEmailAdd';
-import Loginx from '../container/Pages/Loginx';
+import Loginx from '../container/Pages/Login/Loginx';
+import PersonalInfo from '../container/Pages/PersonalInfo/PersonalInfo';
 
 class App extends Component {
 	componentDidMount() {
@@ -43,8 +45,9 @@ class App extends Component {
 		const sectionStyle = {
 			minWidth: '100vw',
 			minHeight: '100vh',
+			fontFamily: 'Roboto, sans-serif',
 			backgroundColor: this.props.authenticated
-				? this.props.theme
+				? '#EAE8E8'
 				: '#EAE8E8', //'#23272B',//'#032641', //'#23272B', //"#01579b",
 			margin: 'auto',
 			backgroundRepeat: 'no-repeat',
@@ -59,6 +62,7 @@ class App extends Component {
 		return (
 			<div>
 				<BrowserRouter>
+					<Headerx />
 					<div style={sectionStyle}>
 						{this.props.email &&
 						!this.props.emailVerified ? (
@@ -74,8 +78,14 @@ class App extends Component {
 							component={Landing}
 						/>
 						<Route
+							exact
 							path='/loginx'
 							component={Loginx}
+						/>
+						<Route
+							exact
+							path='/personalInfo'
+							component={PersonalInfo}
 						/>
 
 						<Route
