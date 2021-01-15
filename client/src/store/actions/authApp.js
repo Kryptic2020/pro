@@ -5,7 +5,7 @@ import { fetchUser } from './surveys';
 
 export const authStart = () => {
 	return {
-		type: actionTypes.AUTH_START
+		type: actionTypes.AUTH_START,
 	};
 };
 
@@ -15,7 +15,6 @@ export const authSuccess = (authData) => {
 		authData: authData,
 	};
 };
-
 
 export const setAuthRedirectPath = (path) => {
 	return {
@@ -32,61 +31,71 @@ export const authFail = (data) => {
 	};
 };
 
-export const auth = (fullName, phone, email, password, isSignup, history) =>
-	dispatch => {
-		const authData = {
-			googleId: null,
-			fullName: fullName,
-			email: email,
-			photo: null,
-			phone: phone,
-			provider: 'App',
-			password: password,
-			isSignup: isSignup
-		};
-		let url = '/api/register';
-		if (!isSignup) {
-			url = '/api/login';
-		};
+export const auth = (
+	email,
+	password,
+	fullName,
 
-		axios.post(url, authData)
-			.then(res => {
-				dispatch(fetchUser());
-				if (isSignup && res.data === 'registered') {
-					history.push('/verifyEmail');
-				} else { dispatch(authFail(res.data)); }
-				if (!isSignup && res.data === '') {
-					history.push('/');
-				};
-
-			})
-			.catch(err => {
-				if (err.response) {
-					console.log(err.response, 'neg res');
-
-				} else if (err.request) {
-					console.log(err.request, 'neg req');
-				} else {
-					dispatch(authFail(err));
-					console.log('neither req or res error');
-				}
-			});
-		//console.log(res.data);
+	phone,
+	isSignup,
+	history
+) => (dispatch) => {
+	const authData = {
+		googleId: null,
+		fullName,
+		email: email,
+		//photo: null,
+		phone,
+		provider: 'App',
+		password,
+		isSignup,
 	};
+	console.log(authData);
+	let url = '/api/register';
+	if (!isSignup) {
+		url = '/api/login';
+	} /*str.replace(/\s/g, '');.replace(/ /g,'')*/
+
+	axios
+		.post(url, authData)
+		.then((res) => {
+			dispatch(fetchUser());
+			if (isSignup && res.data === 'registered') {
+				history.push('/verifyEmail');
+			} else {
+				dispatch(authFail(res.data));
+			}
+			if (!isSignup && res.data === '') {
+				history.push('/');
+			}
+		})
+		.catch((err) => {
+			if (err.response) {
+				console.log(err.response, 'neg res');
+			} else if (err.request) {
+				console.log(err.request, 'neg req');
+			} else {
+				dispatch(authFail(err));
+				console.log('neither req or res error');
+			}
+		});
+	//console.log(res.data);
+};
 
 export const users = (users) => {
 	return {
 		type: actionTypes.USERS,
 		users: users,
 	};
-};  
-
-export const fetchAllUsers = () => dispatch => {
-	axios.get('/api/contacts')
-		.then(res => {dispatch(users(res.data)); })
-		.catch(err => { console.log(err); });
-  
 };
 
-
-
+export const fetchAllUsers = () => (dispatch) => {
+	axios
+		.get('/api/contacts')
+		.then((res) => {
+			dispatch(users(res.data));
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};

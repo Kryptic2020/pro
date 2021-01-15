@@ -1,5 +1,7 @@
 import React from 'react';
 import classes from './styles.module.css';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/bootstrap.css';
 
 const PersonalInfo = (props) => {
 	return (
@@ -8,32 +10,48 @@ const PersonalInfo = (props) => {
 				<div className={classes.header}>
 					Personal Information
 				</div>
-				<label
-					style={{ color: 'yellow' }}
-					className='left'
-				>
-					{props.label}
+				<label className={classes.msg}>
+					{props.msg_firstName}
 				</label>
 				<div className={classes.input}>
-					<input placeholder='First Name' />
+					<input
+						id='firstName'
+						placeholder='First Name'
+						onClick={props.onClick_firstName}
+						onChange={props.onChange_firstName}
+					/>
 				</div>
-				<label
-					style={{ color: 'yellow' }}
-					className='left'
-				>
-					{props.label}
+				<label className={classes.msg}>
+					{props.msg_lastName}
 				</label>
 				<div className={classes.input}>
-					<input placeholder='Last Name' />
+					<input
+						id='lastName'
+						placeholder='Last Name'
+						onClick={props.onClick_lastName}
+						onChange={props.onChange_lastName}
+					/>
 				</div>
-				<label
-					style={{ color: 'yellow' }}
-					className='left'
-				>
-					{props.label}
+				<label className={classes.msg}>
+					{props.msg}
 				</label>
 				<div className={classes.input}>
-					<input placeholder='Phone Number' />
+					<PhoneInput
+						id='phone'
+						inputStyle={{
+							height: '50px',
+						}}
+						country={'au'}
+						disableCountryCode={true}
+						//autoFormat={true}
+						enableAreaCodes={true}
+						value={props.value}
+						onlyCountries={['au']}
+						masks={{ au: '.... ... ...' }}
+						placeholder='Phone Number'
+						onClick={props.onClick_phone}
+						onChange={props.onChange_phone}
+					/>
 				</div>
 			</div>
 		</div>

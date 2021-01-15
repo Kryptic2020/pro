@@ -1,18 +1,16 @@
 import React from 'react';
 
-import './Input.css';
-
 const input = (props) => {
 	return (
-		<div style={{ width: '100%' }}>
+		<div style={{ marginTop: '10px', width: '100%' }}>
 			<label
-				style={{ color: props.label_color }}
+				style={{ color: 'grey' }}
 				className='left'
 			>
 				{props.label}
 			</label>
 			<label
-				style={{ color: props.msg_color }}
+				style={{ color: 'green' }}
 				className='right'
 			>
 				{props.msg}
@@ -20,32 +18,19 @@ const input = (props) => {
 			<input
 				style={{
 					fontSize: '18px',
-					height: '45px',
+					height: '50px',
 					textAlign: 'center',
 					color: 'black',
 					backgroundColor: 'white',
-					borderRadius: '5px',
+					border: '2px solid grey',
+					borderRadius: '3px',
 				}}
 				type={props.type}
-				placeholder={props.placeholder}
 				onClick={props.onClick}
 				onChange={props.onChange}
 			/>
 		</div>
 	);
 };
-/*
-const input = props => {
-	let inputElement = <input {...props.config} onChange={props.onChange} />;
-	if (props.elType === 'textarea') {
-		inputElement = <textarea {...props.config} onChange={props.onChange} />;
-	}
-	return (
-		<div className="input">
-			<label>{props.label}</label>
-			{inputElement}
-		</div>
-	);
-};*/
 
 export default input;

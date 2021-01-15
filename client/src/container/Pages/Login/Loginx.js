@@ -1,32 +1,157 @@
 import React, { Component } from 'react';
+import {
+	Redirect,
+	Link,
+	withRouter,
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 import classes from './styles.module.css';
 //import useStyles from './styles';
-import { Link } from 'react-router-dom';
-import LoginForm from '../../../components/LoginForm/LoginForm';
+import Alert from 'react-bootstrap/Alert';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
-
+import Input from '../../../components/UI/Input/Input';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import TriangleIcone from '../../../components/UI/Iconsx/Triangle';
 import LoginWith from '../../../components/LoginWith/LoginWith';
 import PersonalInfo from '../../../components/PersonalInfo/Personalinfo';
 
 class Loginx extends Component {
 	state = {
-		isLogin: true,
+		isSignup: false,
+		email: '',
+		password: '',
+		firstName: '',
+		lastName: '',
+		phone: '',
+		isEmailValid: false,
+		isLoading: false,
+		msn: '',
 	};
-	/*const handleSubmit = (event) => {
-		event.preventDefault();
-		const { email, password } = values;
 
-		if (email !== '' && password !== '') {
-			console.log('Submited');
+	inputChangeHandler = (event, input) => {
+		this.setState({ [input]: event.target.value });
+		console.log(event.target.value);
+	};
+
+	//Email
+	emailChangeHandler = (event) => {
+		this.setState({
+			...this.state,
+			email: event.target.value,
+		});
+
+		const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+		const isValid = pattern.test(event.target.value);
+		if (isValid) {
+			this.setState({ isEmailValid: true });
 		} else {
-			//handleErrors();
+			this.setState({ isEmailValid: false });
 		}
-	};*/
+	};
+	emailRender() {
+		return (
+			<div>
+				<Input
+					label='Email Address'
+					msg={
+						this.state.isEmailValid
+							? null
+							: 'A valid email is required'
+					}
+					onChange={this.emailChangeHandler}
+					type='email'
+				></Input>
+			</div>
+		);
+	}
+
+	//Password
+	togglePassHandler = () => {
+		this.setState((prevState) => {
+			return {
+				passwordVisible: !prevState.passwordVisible,
+			};
+		});
+	};
+
+	passwordRender() {
+		return (
+			<div>
+				<Input
+					id='password'
+					label='Password'
+					msg={
+						this.state.password.length < 6
+							? 'Min length is 6'
+							: null
+					}
+					onChange={(event) =>
+						this.inputChangeHandler(
+							event,
+							'password'
+						)
+					}
+					type={
+						this.state.passwordVisible
+							? 'text'
+							: 'password'
+					}
+				></Input>
+				<span
+					onClick={this.togglePassHandler}
+					style={{
+						position: 'relative',
+						marginTop: '-50px',
+						marginRight: '10px',
+					}}
+					className='right'
+				>
+					{this.state.passwordVisible ? (
+						<VisibilityIcon
+							fontSize='large'
+							color='action'
+						/>
+					) : (
+						<VisibilityOffIcon
+							fontSize='large'
+							color='action'
+						/>
+					)}
+				</span>
+			</div>
+		);
+	}
+
+	submitHandler = () => {
+		const fullName =
+			this.state.firstName.trim() +
+			' ' +
+			this.state.lastName.trim;
+
+		this.props.onAuth(
+			this.state.email,
+			this.state.password,
+			fullName,
+			this.state.phone,
+			this.state.isSignup,
+			this.props.history
+		);
+		this.setState({
+			isLoading: true,
+			email: '',
+			password: '',
+			firstName: '',
+			lastName: '',
+			phone: '',
+		});
+	};
 
 	selectHandler = () => {
 		this.setState((prevState) => {
-			return { isLogin: !prevState.isLogin };
+			return { isSignup: !prevState.isSignup };
 		});
 	};
 
@@ -37,8 +162,8 @@ class Loginx extends Component {
 					<Link to='/forgot-password'>
 						Forgot Password?
 					</Link>
-					<div className={classes.or}>- OR -</div>
 				</div>
+				<div className={classes.or}>- OR -</div>
 			</>
 		);
 	};
@@ -47,13 +172,37 @@ class Loginx extends Component {
 		return (
 			<>
 				<div className={classes.container}>
+					<div className='center'>
+						{this.props.msnErr &&
+						this.props.msnErr.length > 3 ? (
+							<Alert
+								variant='warning '
+								id='msn'
+								onClick={this.hideMsn}
+								style={{
+									marginBottom: '20px',
+								}}
+							>
+								<Alert.Heading>
+									{this.props.msnErr}
+									<p>
+										Click here and try
+										again!
+									</p>
+								</Alert.Heading>
+							</Alert>
+						) : null}
+					</div>
+					{this.state.isLoading ? (
+						<Spinner />
+					) : null}
 					<div className={classes.headers}>
 						<div
 							onClick={this.selectHandler}
 							className={
-								this.state.isLogin
-									? classes.unselected
-									: classes.selected
+								this.state.isSignup
+									? classes.selected
+									: classes.unselected
 							}
 						>
 							SIGN UP
@@ -61,9 +210,9 @@ class Loginx extends Component {
 						<div
 							onClick={this.selectHandler}
 							className={
-								this.state.isLogin
-									? classes.selected
-									: classes.unselected
+								this.state.isSignup
+									? classes.unselected
+									: classes.selected
 							}
 						>
 							LOGIN
@@ -71,35 +220,63 @@ class Loginx extends Component {
 					</div>
 					<div
 						className={
-							this.state.isLogin
-								? classes.triangleLogin
-								: classes.triangleSignup
+							this.state.isSignup
+								? classes.triangleSignup
+								: classes.triangleLogin
 						}
 					>
 						<TriangleIcone width='30px' />
 					</div>
 
 					<div className={classes.loginForm}>
-						<LoginForm />
+						<div>{this.emailRender()}</div>
+						<div>{this.passwordRender()}</div>
 					</div>
-					{this.state.isLogin
-						? this.renderForgotText()
-						: null}
+					{this.state.isSignup
+						? null
+						: this.renderForgotText()}
 
 					<div className={classes.loginWith}>
-						{this.state.isLogin ? (
+						{this.state.isSignup ? null : (
 							<LoginWith />
-						) : null}
+						)}
 					</div>
 					<div className={classes.personalInfo}>
-						{this.state.isLogin ? null : (
-							<PersonalInfo />
-						)}
+						{this.state.isSignup ? (
+							<PersonalInfo
+								msg={
+									this.state.phone
+										.length < 10
+										? 'Min length 10.'
+										: null
+								}
+								onChange_firstName={(
+									event
+								) =>
+									this.inputChangeHandler(
+										event,
+										'firstName'
+									)
+								}
+								onChange_lastName={(
+									event
+								) =>
+									this.inputChangeHandler(
+										event,
+										'lastName'
+									)
+								}
+								onChange_phone={(phone) =>
+									this.setState({ phone })
+								}
+								value={this.state.phone}
+							/>
+						) : null}
 					</div>
 					<div className={classes.continueButton}>
 						<ContinueButton
 							text='Continue'
-							//onClick={handleSubmit}
+							onClick={this.submitHandler}
 						/>
 					</div>
 				</div>
@@ -107,5 +284,38 @@ class Loginx extends Component {
 		);
 	}
 }
+const mapStateToProps = (state) => {
+	return {
+		loading: state.auth.loading,
+		authenticated: state.auth.authenticated,
+		msnErr: state.auth.msnErr,
+		authRedirectPath: state.auth.authRedirectPath,
+	};
+};
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onAuth: (
+			email,
+			password,
+			fullName,
+			isSignup,
+			history
+		) =>
+			dispatch(
+				actions.auth(
+					email,
+					password,
+					fullName,
+					isSignup,
+					history
+				)
+			),
+		onSetAuthRedirectPath: () =>
+			dispatch(actions.setAuthRedirectPath('/')),
+	};
+};
 
-export default Loginx;
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withRouter(Loginx));

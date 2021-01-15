@@ -43,20 +43,12 @@ class App extends Component {
 
 	render() {
 		const sectionStyle = {
-			minWidth: '100vw',
 			minHeight: '100vh',
+
 			fontFamily: 'Roboto, sans-serif',
 			backgroundColor: this.props.authenticated
 				? '#EAE8E8'
 				: '#EAE8E8', //'#23272B',//'#032641', //'#23272B', //"#01579b",
-			margin: 'auto',
-			backgroundRepeat: 'no-repeat',
-			//backgroundPosition:"center",
-			//marginTop: '-20px',
-			//opacity: "0.7",
-			resizeMode: 'stretch',
-			//overflow: 'hidden',
-			//backgroundImage: `url(${Background})`
 		};
 
 		return (
