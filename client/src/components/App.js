@@ -27,7 +27,7 @@ import TimeTables from '../container/Pages/TimeTables';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import StaffAssignment from '../container/Pages/StaffAssignment';
 import Profile from '../container/Pages/Profile';
-import Headerx from '../components/Headerx/Headerx';
+//import Headerx from '../components/Headerx/Headerx';
 
 //import classes from './App.module.css';
 //import Background from '../assets/LogoP.jpg';
@@ -54,7 +54,6 @@ class App extends Component {
 		return (
 			<div>
 				<BrowserRouter>
-					<Headerx />
 					<div style={sectionStyle}>
 						{this.props.email &&
 						!this.props.emailVerified ? (

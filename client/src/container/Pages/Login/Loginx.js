@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import classes from './styles.module.css';
+import Headerx from '../../../components/Headerx/Headerx';
 //import useStyles from './styles';
 import Alert from 'react-bootstrap/Alert';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
@@ -171,6 +172,7 @@ class Loginx extends Component {
 	render() {
 		return (
 			<>
+				<Headerx className={classes.nav} />
 				<div className={classes.container}>
 					<div className='center'>
 						{this.props.msnErr &&
