@@ -1,19 +1,23 @@
 import React from 'react';
-import useStyles from './styles';
+import classes from './styles.module.css';
 import ArrowRight from './../UI/Iconsx/ArrowRight';
 
 const ContinueButton = (props) => {
-	const classes = useStyles();
 	return (
-		<div
+		<button
+			className={classes.button}
 			onClick={props.onClick}
+			disabled={props.disabled}
 			className={classes.button}
 		>
 			<div className={classes.text}>{props.text}</div>
-			<div className={classes.arrow}>
-				<ArrowRight width='15px' />
+			<div className={classes.arrow_small}>
+				<ArrowRight width='18px' />
 			</div>
-		</div>
+			<div className={classes.arrow_large}>
+				<ArrowRight width='20px' />
+			</div>
+		</button>
 	);
 };
 

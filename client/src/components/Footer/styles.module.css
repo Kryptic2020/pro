@@ -1,0 +1,131 @@
+.container {
+	text-align: center;
+	font-size: 12px;
+	width: 100%;
+	height: 80px;
+	background-color: #24cd98;
+	color: #ffffff;
+	display: grid;
+	grid-template-columns: [left-start]1fr[left-end]0[center-start]1fr[center-end]0[right-start]1fr[right-end];
+	grid-template-rows: [first-start]1.2fr[first-end]0[second-start]0.8fr[second-end]0[third-start]1fr[third-end];
+}
+
+.company {
+	margin: auto;
+	display: flex;
+	grid-column: left;
+	grid-row: first;
+}
+.company_name {
+	padding-top: 5px;
+	font-size: 14px;
+}
+.company_icon_small {
+	padding-top: 5px;
+	padding-right: 5px;
+}
+.company_icon_large {
+	display: none;
+}
+
+.contact {
+	padding-top: 5px;
+	margin: auto;
+	grid-column: center;
+	grid-row: first;
+}
+.phone {
+	margin: auto;
+	grid-column: center;
+	grid-row: second;
+}
+.email {
+	font-size: 14px;
+	margin: auto;
+	grid-column: center;
+	grid-row: third;
+}
+.icons_large {
+	display: none;
+}
+.icons_small {
+	display: flex;
+	width: 100%;
+	margin: auto;
+	flex-flow: row;
+	align-content: center;
+	justify-content: space-around;
+	align-items: center;
+	grid-column: right;
+	grid-row: 1/6;
+}
+.powered {
+	margin-top: 15px;
+	font-size: 10px;
+	grid-column: left;
+	grid-row: second;
+}
+.aquenzitech {
+	grid-column: left;
+	grid-row: third;
+	font-size: 14px;
+}
+
+@media screen and (min-width: 750px) {
+	.container {
+		height: 150px;
+	}
+
+	.company_name {
+		padding-top: 10px;
+		font-size: 24px;
+	}
+	.company_icon_small {
+		display: none;
+	}
+	.company_icon_large {
+		padding-top: 10px;
+		display: block;
+		padding-right: 10px;
+	}
+
+	.contact {
+		padding-top: 10px;
+		font-size: 24px;
+	}
+	.phone {
+		padding-top: 10px;
+		font-size: 24px;
+	}
+	.email {
+		font-size: 24px;
+	}
+
+	.icons_small {
+		display: none;
+	}
+	.icons_large {
+		display: flex;
+		width: 80%;
+		margin: auto;
+		flex-flow: row;
+		align-content: center;
+		justify-content: space-around;
+		align-items: center;
+
+		grid-column: right;
+		grid-row: 1/6;
+	}
+	.powered {
+		font-size: 18px;
+	}
+	.aquenzitech {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.icons_small {
+		flex-flow: column;
+	}
+}

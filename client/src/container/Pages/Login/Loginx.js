@@ -7,7 +7,6 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import classes from './styles.module.css';
-import Headerx from '../../../components/Headerx/Headerx';
 //import useStyles from './styles';
 import Alert from 'react-bootstrap/Alert';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
@@ -31,10 +30,33 @@ class Loginx extends Component {
 		isLoading: false,
 		msn: '',
 	};
+	scrollToTop() {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}
 
+	hideMsn = () => {
+		this.setState({
+			...this.state,
+			msn: '',
+			isLoading: false,
+		});
+		window.location.reload(false);
+	};
+
+	componentDidMount() {
+		if (this.props.authRedirectPath !== '/') {
+			this.props.onSetAuthRedirectPath();
+		}
+		this.scrollToTop();
+	}
+	componentDidUpdate() {
+		console.log(this.props.authenticated);
+	}
 	inputChangeHandler = (event, input) => {
 		this.setState({ [input]: event.target.value });
-		console.log(event.target.value);
 	};
 
 	//Email
@@ -130,24 +152,51 @@ class Loginx extends Component {
 		const fullName =
 			this.state.firstName.trim() +
 			' ' +
-			this.state.lastName.trim;
+			this.state.lastName.trim();
+		const auth = () => {
+			this.props.onAuth(
+				this.state.email,
+				this.state.password,
+				fullName,
+				this.state.phone,
+				this.state.isSignup,
+				this.props.history
+			);
+			this.setState({
+				isLoading: true,
+				email: '',
+				password: '',
+				firstName: '',
+				lastName: '',
+				phone: '',
+			});
+		};
 
-		this.props.onAuth(
-			this.state.email,
-			this.state.password,
-			fullName,
-			this.state.phone,
-			this.state.isSignup,
-			this.props.history
-		);
-		this.setState({
-			isLoading: true,
-			email: '',
-			password: '',
-			firstName: '',
-			lastName: '',
-			phone: '',
-		});
+		const errorMsg = () => {
+			alert('All fields are required.');
+		};
+		if (this.state.isSignup) {
+			if (
+				!this.state.isEmailValid ||
+				this.state.password.length < 6 ||
+				!this.state.firstName ||
+				!this.state.lastName ||
+				this.state.phone.length < 10
+			) {
+				errorMsg();
+			} else {
+				auth();
+			}
+		} else {
+			if (
+				!this.state.isEmailValid ||
+				this.state.password.length < 6
+			) {
+				errorMsg();
+			} else {
+				auth();
+			}
+		}
 	};
 
 	selectHandler = () => {
@@ -160,7 +209,7 @@ class Loginx extends Component {
 		return (
 			<>
 				<div className={classes.forgotLink}>
-					<Link to='/forgot-password'>
+					<Link to='/forgot-pass'>
 						Forgot Password?
 					</Link>
 				</div>
@@ -170,34 +219,43 @@ class Loginx extends Component {
 	};
 
 	render() {
+		let authRedirect = null;
+		if (this.props.authenticated) {
+			authRedirect = (
+				<Redirect
+					to={this.props.authRedirectPath}
+				/>
+			);
+		}
 		return (
 			<>
-				<Headerx className={classes.nav} />
-				<div className={classes.container}>
-					<div className='center'>
-						{this.props.msnErr &&
-						this.props.msnErr.length > 3 ? (
-							<Alert
-								variant='warning '
-								id='msn'
-								onClick={this.hideMsn}
-								style={{
-									marginBottom: '20px',
-								}}
-							>
-								<Alert.Heading>
-									{this.props.msnErr}
-									<p>
-										Click here and try
-										again!
-									</p>
-								</Alert.Heading>
-							</Alert>
-						) : null}
-					</div>
-					{this.state.isLoading ? (
-						<Spinner />
+				{this.props.authenticated ? (
+					<Redirect to='/' />
+				) : null}
+				<div className={classes.alert}>
+					{this.props.msnErr &&
+					this.props.msnErr.length > 3 ? (
+						<Alert
+							variant='warning '
+							id='msn'
+							onClick={this.hideMsn}
+							style={{
+								marginBottom: '20px',
+							}}
+						>
+							<Alert.Heading>
+								{this.props.msnErr}
+
+								<p>
+									click here and try
+									again!{' '}
+								</p>
+							</Alert.Heading>
+						</Alert>
 					) : null}
+				</div>
+				{this.state.isLoading ? <Spinner /> : null}
+				<div className={classes.container}>
 					<div className={classes.headers}>
 						<div
 							onClick={this.selectHandler}
@@ -227,7 +285,10 @@ class Loginx extends Component {
 								: classes.triangleLogin
 						}
 					>
-						<TriangleIcone width='30px' />
+						<TriangleIcone
+							height='30px'
+							width='30px'
+						/>
 					</div>
 
 					<div className={classes.loginForm}>

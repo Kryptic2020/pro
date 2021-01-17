@@ -3,7 +3,7 @@ import { updateObject } from '../../utils/utility2';
 
 const initialState = {
 	email: null,
-	fullName:null,
+	fullName: null,
 	givenName: null,
 	familyName: null,
 	photo: null,
@@ -15,7 +15,7 @@ const initialState = {
 	error: null,
 	expirationTime: null,
 	_id: null,
-	credits: null,
+	//credits: null,
 	googleId: null,
 	authenticated: false,
 	msnErr: null,
@@ -23,15 +23,14 @@ const initialState = {
 	users: [],
 	isAdmin: false,
 	theme: '',
-	daysCalendarView:'',
+	daysCalendarView: '',
 };
-
 
 const fetchUser = (state, action) => {
 	//console.log(action.payload);
 	return updateObject(state, {
 		email: action.payload.email,
-		credits: action.payload.credits,
+		//credits: action.payload.credits,
 		_id: action.payload._id,
 		fullName: action.payload.fullName,
 		provider: action.payload.provider,
@@ -40,64 +39,69 @@ const fetchUser = (state, action) => {
 		isAdmin: action.payload.isAdmin,
 		emailVerified: action.payload.emailVerified,
 		theme: action.payload.theme,
-		daysCalendarView:action.payload.daysCalendarView
+		daysCalendarView: action.payload.daysCalendarView,
 	});
 };
 
+const authCheck = (state, action) => {
+	return updateObject(state, {
+		authenticated: true,
+	});
+};
+/*
 const authStart = (state, action) => {
 	return updateObject(state, {
 		error: null,
-		loading: true
+		loading: true,
 	});
-};
+};*/
 
 const authSuccess = (state, action) => {
 	return updateObject(state, {
-		loading: false
+		loading: false,
 	});
 };
 
 const setAuthRedirectPath = (state, action) => {
 	return updateObject(state, {
-		authRedirectPath: action.path
+		authRedirectPath: action.path,
 	});
 };
 
 const authFail = (state, action) => {
 	return updateObject(state, {
 		msnErr: action.msnErr,
-		loading: false
-	});
-};
-
-const authCheck = (state, action) => {
-	return updateObject(state, {
-		authenticated: true
+		loading: false,
 	});
 };
 
 const users = (state, action) => {
 	return updateObject(state, {
-		users: action.users
+		users: action.users,
 	});
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	case actionTypes.FETCH_USER: return fetchUser(state, action);
-	case actionTypes.AUTH_CHECK: return authCheck(state, action);
-	case actionTypes.AUTH_START: return authStart(state, action);
-	case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
-	case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state, action);
-	case actionTypes.AUTH_FAIL: return authFail(state, action);
-	case actionTypes.USERS: return users(state, action);
-	default:
-		return state;
+		case actionTypes.FETCH_USER:
+			return fetchUser(state, action);
+		case actionTypes.AUTH_CHECK:
+			return authCheck(state, action);
+		/*case actionTypes.AUTH_START:
+			return authStart(state, action);*/
+		case actionTypes.AUTH_SUCCESS:
+			return authSuccess(state, action);
+		case actionTypes.SET_AUTH_REDIRECT_PATH:
+			return setAuthRedirectPath(state, action);
+		case actionTypes.AUTH_FAIL:
+			return authFail(state, action);
+		case actionTypes.USERS:
+			return users(state, action);
+		default:
+			return state;
 	}
 };
 
 export default reducer;
-
-
 
 /*
 import { FETCH_USER } from '../actions/actionTypes';
@@ -112,4 +116,3 @@ export default function (state = {}, action) {
   }
 } 
 */
-

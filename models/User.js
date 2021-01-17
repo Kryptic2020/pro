@@ -11,17 +11,17 @@ const userSchema = new Schema({
 	givenName: String,
 	familyName: String,
 	photo: String,
-	phone: { type: Number, default: 9999999999 },
+	phone: { type: Number },
 	password: String,
 	provider: String,
 	emailVerified: Boolean,
 	token: String,
-	isAdmin:Boolean,
+	isAdmin: Boolean,
 	credits: { type: Number, default: 0 },
 	isActive: { type: Boolean, default: true },
 	info: String,
 	theme: { type: String, default: '#23272B' },
-	daysCalendarView:{ type: Number, default: 10 }
+	daysCalendarView: { type: Number, default: 10 },
 });
 
 mongoose.model('users', userSchema);

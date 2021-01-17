@@ -16,9 +16,13 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { connect } from 'react-redux';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
+import Button_select from './../../components/UI/Button_select/Button_select';
+import Button_delete from './../../components/UI/Button_delete/Button_delete';
+import Button_book from './../../components/UI/Button_book/Button_book';
+import Button_edit from './../../components/UI/Button_edit/Button_edit';
 //import Background from '../../assets/LogoB.png';
 //import LogoDark from '../../assets/MagentaDarkLogo.jpg';
-require('typeface-roboto');
+//require('typeface-roboto');
 
 class Landing extends Component {
 	scrollToTop() {
@@ -728,7 +732,18 @@ class Landing extends Component {
 		};*/
 		//};
 		return (
-			<div style={{}}>
+			<div>
+				<div
+					style={{
+						marginLeft: '300px',
+						marginTop: '20px',
+					}}
+				>
+					<Button_select />
+					<Button_delete />
+					<Button_book />
+					<Button_edit />
+				</div>
 				<div
 					className='container'
 					style={{

@@ -1,0 +1,61 @@
+.card {
+	color: #ffffff;
+	border-radius: 5px;
+	width: 311px;
+	height: 270px;
+}
+
+.heading {
+	display: flex;
+	flex-flow: row;
+	position: relative;
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	padding-top: 5%;
+	margin-left: 10%;
+	text-align: left;
+	text-decoration: underline;
+	color: #ffffff;
+}
+.title {
+	width: 100%;
+}
+.content {
+	height: 60%;
+	margin: 10%;
+	overflow-y: scroll;
+	font-family: 'Roboto, sans-serif';
+	font-size: 16px;
+	text-align: left;
+}
+.icon {
+	padding-right: 10px;
+	width: 25px;
+}
+
+@media screen and (min-width: 480px) {
+	.card {
+		width: 1366px;
+		height: 219px;
+	}
+	.heading {
+		font-size: 16px;
+		padding-top: 2%;
+		margin-left: 10%;
+		text-align: left;
+		text-decoration: underline;
+		color: #ffffff;
+	}
+	.title {
+		font-size: 24px;
+	}
+	.content {
+		border: 1px solid grey;
+		margin: 2% 10% 2% 10%;
+		font-size: 20px;
+	}
+	.icon {
+		padding-right: 15px;
+		width: 35px;
+	}
+}

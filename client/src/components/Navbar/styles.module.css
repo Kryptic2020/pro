@@ -1,0 +1,115 @@
+.container {
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+	background-image: linear-gradient(
+		to right,
+		#38f495,
+		#15bfe7,
+		#11b9f0
+	);
+	margin-top: 0px;
+	display: flex;
+}
+
+.company {
+	display: flex;
+}
+.companyIcon {
+	margin: auto;
+}
+.company_name {
+	margin-left: 10px;
+
+	font-size: 24px;
+	text-shadow: 0px 1px 1px #0000002f;
+	font-family: 'Playfair Display', serif;
+	color: #ffffff;
+}
+.login {
+}
+.icons {
+	display: none;
+}
+
+@media screen and (min-width: 600px) {
+	.icons {
+		height: 50px;
+		display: flex;
+		width: 250px;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.icons {
+		height: 50px;
+		display: flex;
+		width: 300px;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+}
+
+/*
+.container {
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	align-items: center;
+	justify-content: space-evenly;
+	background-image: linear-gradient(
+		to right,
+		#38f495,
+		#15bfe7,
+		#11b9f0
+	);
+	margin-top: 0px;
+	display: grid;
+	grid-template-columns: [left-start]0[left-end] 1fr [arrow-start]max-content[arrow-end] 1fr[icon-start]max-content[icon-end] 0.4fr[company-start]max-content[company-end] 1fr[login-start]max-content[login-end] 1fr[icons-start]max-content[icons-end] 1fr [right-start]0[right-end];
+	grid-template-rows: [grid-start]50px[grid-end];
+}
+
+.arrow {
+	width: 100%;
+	grid-column: arrow;
+	grid-row: grid;
+}
+.companyIcon {
+	grid-column: icon;
+	grid-row: grid;
+}
+.company_name {
+	font-size: 24px;
+	text-shadow: 0px 1px 1px #0000002f;
+	font-family: 'Playfair Display', serif;
+	color: #ffffff;
+	grid-column: company;
+	grid-row: grid;
+}
+.login {
+	margin: auto;
+
+	grid-column: login;
+	grid-row: grid;
+}
+.icons {
+	display: none;
+}
+
+@media screen and (min-width: 550px) {
+	.icons {
+		grid-column: icons;
+		grid-row: grid;
+
+		height: 50px;
+		display: flex;
+		width: 300px;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+}
+*/

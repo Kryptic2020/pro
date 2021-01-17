@@ -4,9 +4,11 @@
 	background-color: black;
 	opacity: 0.5;
 	position: absolute;
+	z-index: 5;
 }
 .spinnerPosition {
 	width: 100%;
-	margin-top: 30%;
+	margin: 40% auto;
 	text-align: center;
+	z-index: 6;
 }

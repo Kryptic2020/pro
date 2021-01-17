@@ -1,11 +1,12 @@
-.headers {
+.heading {
 	font-family: 'Playfair Display', serif;
-	font-size: 16px;
+	font-size: 24px;
 	text-align: center;
-	width: 100%;
-	grid-column: content;
-	grid-row: headers;
+	color: #504f4b;
 }
 
 @media screen and (min-width: 480px) {
+	.heading {
+		font-size: 32px;
+	}
 }

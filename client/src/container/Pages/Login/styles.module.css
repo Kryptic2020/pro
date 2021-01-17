@@ -2,18 +2,20 @@
 	--main-radius: 5px;
 	--main-padding: 5px;
 }
+.alert {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	justify-content: center;
+	z-index: 7;
+	margin: 10% auto;
+}
 
 .container {
 	display: grid;
-
-	height: calc(-50px + 100vh);
+	min-height: calc(-50px + 100vh);
 	grid-template-columns: [grid-start]1fr[content-start]310px[content-end]1fr[grid-end];
-	grid-template-rows: [nav-start] max-content [nav-end] 1fr [loginOptions-start]63px[loginOption-end triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end]1fr [or-start]max-content[or-end]1fr[loginWith-start]max-content[loginWith-end]0px[personalInfo-start]max-content[personalInfo-end] 150px [continue-start]max-content [continue-end];
-}
-
-.nav {
-	grid-column: grid;
-	grid-row: nav;
+	grid-template-rows: 1fr[loginOptions-start]63px [loginOption-end ]0px[triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end]1fr [or-start]max-content[or-end]1fr[loginWith-start]max-content[loginWith-end]1fr[personalInfo-start]max-content[personalInfo-end]0px[continue-start]max-content [continue-end];
 }
 
 .headers {
@@ -36,24 +38,22 @@
 .selected {
 	font-size: 16px;
 	color: #ffffff;
-
 	width: 50%;
 	text-align: center;
 	padding: auto auto;
-
 	background-color: #11b9f0;
 	height: 63px;
 	line-height: 63px;
 }
 .triangleLogin {
 	margin-left: 60%;
-	margin-top: -1px;
+	margin-top: -4px;
 	grid-column: content;
 	grid-row: triangle;
 }
 .triangleSignup {
 	margin-left: 30%;
-	margin-top: -1px;
+	margin-top: -4px;
 	grid-column: content;
 	grid-row: triangle;
 }
@@ -82,7 +82,7 @@
 .personalInfo {
 	grid-column: grid;
 	grid-row: personalInfo;
-	margin-bottom: -150px;
+	margin-top: -150px;
 }
 .continueButton {
 	grid-column: grid;
@@ -92,12 +92,11 @@
 @media screen and (min-width: 480px) {
 	.container {
 		grid-template-columns: [grid-start]1fr[content-start]500px[content-end]1fr[grid-end];
-		grid-template-rows: [nav-start] 0px [nav-end] 1fr [loginOptions-start]63px[loginOption-end triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end] 1fr [or-start]max-content[or-end]1fr [loginWith-start]max-content[loginWith-end]0[personalInfo-start]max-content[personalInfo-end] 1fr [continue-start]max-content [continue-end];
+		grid-template-rows: 1fr [loginOptions-start]63px[loginOption-end triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end] 1fr [or-start]max-content[or-end]1fr [loginWith-start]max-content[loginWith-end]1fr[personalInfo-start]max-content[personalInfo-end] 0px[continue-start]max-content [continue-end];
 	}
 	.personalInfo {
 		grid-column: grid;
 		grid-row: personalInfo;
-		margin-bottom: -10px;
 	}
 	.continueButton {
 		width: 500px;

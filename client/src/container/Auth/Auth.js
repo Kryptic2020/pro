@@ -442,9 +442,6 @@ class Auth extends Component {
 								variant='warning '
 								id='msn'
 								onClick={this.hideMsn}
-								style={{
-									marginBottom: '20px',
-								}}
 							>
 								<Alert.Heading>
 									{this.props.msnErr}

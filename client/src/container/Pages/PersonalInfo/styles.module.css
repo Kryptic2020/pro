@@ -2,7 +2,7 @@
 	display: grid;
 	height: calc(-50px + 100vh);
 	grid-template-columns: [grid-start]1fr[content-start]310px[content-end]1fr[grid-end];
-	grid-template-rows: [nav-start] 0px [nav-end] 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 1fr [continue-start]max-content [continue-end];
+	grid-template-rows: 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 1fr [continue-start]max-content [continue-end];
 }
 
 .headers {
@@ -10,7 +10,6 @@
 	font-size: 16px;
 	text-align: center;
 	width: 100%;
-	display: flex;
 	grid-column: content;
 	grid-row: headers;
 }
@@ -24,11 +23,16 @@
 }
 
 @media screen and (min-width: 480px) {
+	.container {
+		grid-template-rows: 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 0fr [continue-start]max-content [continue-end];
+	}
+	.headers {
+		font-size: 32px;
+		grid-column: grid;
+		text-align: center;
+	}
 	.continueButton {
 		width: 500px;
 		margin: 0 auto;
-	}
-	.container {
-		grid-template-rows: [nav-start] 0px [nav-end] 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 0fr [continue-start]max-content [continue-end];
 	}
 }

@@ -9,12 +9,11 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
 import Landing from '../container/Pages/Landing';
-import Dashboard from './surveys/Dashboard';
-import SurveyNew from './surveys/SurveyNew';
+
 import Auth from '../container/Auth/Auth';
 import VerifyEmail from '../container/Pages/VerifyEmail';
-import ReqResetPass from '../container/Auth/ReqResetPass';
-import NewPass from '../container/Auth/NewPass';
+//import ReqResetPass from '../container/Auth/ReqResetPass';
+
 import CalendarBuilder from '../container/Pages/CalendarBuilder';
 import CreateTimeTables from '../container/Pages/TimeTables';
 import Booking from '../container/Pages/Booking';
@@ -27,13 +26,19 @@ import TimeTables from '../container/Pages/TimeTables';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import StaffAssignment from '../container/Pages/StaffAssignment';
 import Profile from '../container/Pages/Profile';
-//import Headerx from '../components/Headerx/Headerx';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 
 //import classes from './App.module.css';
 //import Background from '../assets/LogoP.jpg';
 import FacebookEmailAdd from '../container/Auth/FacebookEmailAdd';
 import Loginx from '../container/Pages/Login/Loginx';
-import PersonalInfo from '../container/Pages/PersonalInfo/PersonalInfo';
+import PersonalInfoPage from '../container/Pages/PersonalInfo/PersonalInfo';
+import ForgotPass from '../container/Pages/ForgotPass/ForgotPass';
+import ResetPass from '../container/Pages/ResetPass/ResetPass';
+import Settings from '../container/Pages/Settings/Settings';
+
+//BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
 
 class App extends Component {
 	componentDidMount() {
@@ -54,29 +59,49 @@ class App extends Component {
 		return (
 			<div>
 				<BrowserRouter>
+					<Navbar />
 					<div style={sectionStyle}>
 						{this.props.email &&
 						!this.props.emailVerified ? (
-							<Redirect to='/verifyEmail' />
+							<Redirect to='/verify-email' />
 						) : null}
 						{!this.props.email &&
 						this.props.authenticated ? (
 							<Redirect to='/auth/register/facebook/email' />
 						) : null}
+						{!this.props.phone &&
+						this.props.authenticated ? (
+							<Redirect to='/personal-info' />
+						) : null}
+
+						<Route
+							exact
+							path='/personal-info'
+							component={PersonalInfoPage}
+						/>
+
 						<Route
 							exact
 							path='/'
 							component={Landing}
 						/>
+						{!this.props.authenticated ? (
+							<Route
+								exact
+								path='/loginx'
+								component={Loginx}
+							/>
+						) : null}
+
 						<Route
 							exact
-							path='/loginx'
-							component={Loginx}
+							path='/forgot-pass'
+							component={ForgotPass}
 						/>
 						<Route
 							exact
-							path='/personalInfo'
-							component={PersonalInfo}
+							path='/reset-pass'
+							component={ResetPass}
 						/>
 
 						<Route
@@ -86,21 +111,10 @@ class App extends Component {
 						/>
 						<Route
 							exact
-							path='/verifyEmail'
+							path='/verify-email'
 							component={VerifyEmail}
 						/>
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/surveys'
-								component={Dashboard}
-							/>
-						) : null}
-						<Route
-							exact
-							path='/reqresetpass'
-							component={ReqResetPass}
-						/>
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -116,9 +130,10 @@ class App extends Component {
 							/>
 						) : null}
 						<Route
-							path='/newpass'
-							component={NewPass}
+							path='/settings'
+							component={Settings}
 						/>
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -168,13 +183,7 @@ class App extends Component {
 								component={MyBooking}
 							/>
 						) : null}
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/surveys/new'
-								component={SurveyNew}
-							/>
-						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -206,6 +215,7 @@ class App extends Component {
 							/>
 						) : null}
 					</div>
+					<Footer />
 				</BrowserRouter>
 			</div>
 		);
@@ -218,6 +228,7 @@ const mapStateToProps = (state) => {
 		emailVerified: state.auth.emailVerified,
 		authenticated: state.auth.authenticated,
 		theme: state.auth.theme,
+		phone: state.auth.phone,
 	};
 };
 

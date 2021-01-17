@@ -1,0 +1,48 @@
+.button {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	padding: auto;
+	width: 100%;
+	height: 56px;
+	background-color: #29a07b;
+	border: none;
+}
+.button:hover {
+	background-color: #38f495;
+}
+
+.button:disabled {
+	background-color: #dddddd;
+}
+
+.text {
+	text-align: center;
+	padding: auto;
+	font-size: 20px;
+	margin: auto 0px;
+	color: #ffffff;
+}
+.arrow_small {
+	text-align: center;
+	margin: auto 0px;
+	padding-left: 10px;
+}
+.arrow_large {
+	display: none;
+	text-align: center;
+	margin: auto 0px;
+	padding-left: 10px;
+}
+
+@media screen and (min-width: 480px) {
+	.text {
+		font-size: 22px;
+	}
+	.arrow_small {
+		display: none;
+	}
+	.arrow_large {
+		display: block;
+	}
+}

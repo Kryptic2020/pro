@@ -33,7 +33,7 @@ const PersonalInfo = (props) => {
 					/>
 				</div>
 				<label className={classes.msg}>
-					{props.msg}
+					{props.msg_phone}
 				</label>
 				<div className={classes.input}>
 					<PhoneInput
