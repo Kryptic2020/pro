@@ -25,7 +25,7 @@ const Assigned = (props) => (
 				data-name='Path 761'
 				d='M15.954,21.615,12,17.627l1.6-1.607,2.359,2.37L21.8,12.5l1.6,1.607Z'
 				transform='translate(31.492 1411.185)'
-				fill={props.fill}
+				fill='#fff'
 				fill-rule='evenodd'
 			/>
 		</g>

@@ -22,9 +22,9 @@ import MyBooking from '../container/Pages/MyBooking';
 import Contacts from '../container/Pages/Contacts';
 import Calendar from '../container/Pages/Calendar';
 import WaitingList from '../container/Pages/WaitingList';
-import TimeTables from '../container/Pages/TimeTables';
+//import TimeTables from '../container/Pages/TimeTables';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
-import StaffAssignment from '../container/Pages/StaffAssignment';
+import Assign_staff from '../container/Pages/Assign_staff/Assign_staff';
 import Profile from '../container/Pages/Profile';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
@@ -37,6 +37,10 @@ import PersonalInfoPage from '../container/Pages/PersonalInfo/PersonalInfo';
 import ForgotPass from '../container/Pages/ForgotPass/ForgotPass';
 import ResetPass from '../container/Pages/ResetPass/ResetPass';
 import Settings from '../container/Pages/Settings/Settings';
+import Specialty from '../container/Pages/Specialty/Specialty';
+import Services from '../container/Pages/Services/Services';
+import TimeTables from '../container/Pages/TimeTablesX/TimeTables';
+import CalendarManager from '../container/Pages/CalendarManager/CalendarManager';
 
 //BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
 
@@ -134,17 +138,22 @@ class App extends Component {
 							component={Settings}
 						/>
 
-						{this.props.authenticated ? (
+						<Route
+							path='/specialty'
+							component={Specialty}
+						/>
+
+						{!this.props.authenticated ? (
 							<Route
 								exact
-								path='/calendar/builder'
-								component={CalendarBuilder}
+								path='/calendar-manager'
+								component={CalendarManager}
 							/>
 						) : null}
-						{this.props.authenticated ? (
+						{!this.props.authenticated ? (
 							<Route
 								exact
-								path='/timetables'
+								path='/time-tables'
 								component={TimeTables}
 							/>
 						) : null}
@@ -200,11 +209,18 @@ class App extends Component {
 								}
 							/>
 						) : null}
-						{this.props.authenticated ? (
+						{!this.props.authenticated ? (
 							<Route
 								exact
-								path='/staffassignment'
-								component={StaffAssignment}
+								path='/assign-staff'
+								component={Assign_staff}
+							/>
+						) : null}
+						{!this.props.authenticated ? (
+							<Route
+								exact
+								path='/service-settings'
+								component={Services}
 							/>
 						) : null}
 						{this.props.authenticated ? (

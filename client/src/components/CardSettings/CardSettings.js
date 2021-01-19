@@ -18,7 +18,10 @@ const Card = (props) => {
 					}}
 					href={props.path}
 				>
-					<div className={classes.icon}>
+					<div
+						style={{ display: props.display }}
+						className={classes.icon}
+					>
 						{props.icon}
 					</div>
 					<div>{props.title}</div>

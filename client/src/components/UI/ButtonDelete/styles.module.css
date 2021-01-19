@@ -2,7 +2,7 @@
 	font-family: 'Roboto', sans-serif;
 	width: 70px;
 	height: 30px;
-	background-color: #4bd08c;
+	background-color: #fc0000;
 	font-size: 14px;
 	font-weight: bolder;
 	text-align: center;
@@ -12,12 +12,12 @@
 	box-shadow: 2px 2px 2px black;
 }
 .button:hover {
-	background-color: #5d8d74;
+	background-color: #8f2e2e;
 
 	box-shadow: 2px 2px 2px grey;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 600px) {
 	.button {
 		width: 100px;
 		height: 40px;

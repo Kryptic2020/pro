@@ -4,7 +4,10 @@ import classes from './styles.module.css';
 const Button_select = (props) => {
 	return (
 		<div>
-			<button className={classes.button}>
+			<button
+				style={{ width: props.width }}
+				className={classes.button}
+			>
 				DELETE
 			</button>
 		</div>

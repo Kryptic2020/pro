@@ -8,7 +8,6 @@ const ContinueButton = (props) => {
 			className={classes.button}
 			onClick={props.onClick}
 			disabled={props.disabled}
-			className={classes.button}
 		>
 			<div className={classes.text}>{props.text}</div>
 			<div className={classes.arrow_small}>

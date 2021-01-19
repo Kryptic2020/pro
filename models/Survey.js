@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const RecipientSchema= require('./Recipient');
 
@@ -14,4 +14,4 @@ const surveySchema = new Schema({
 	lastResponded: Date
 });
 
-mongoose.model('surveys', surveySchema);
+mongoose.model('surveys', surveySchema);*/

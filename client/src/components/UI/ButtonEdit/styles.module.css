@@ -1,0 +1,26 @@
+.button {
+	font-family: 'Roboto', sans-serif;
+	width: 70px;
+	height: 30px;
+	background-color: #4bd08c;
+	font-size: 14px;
+	font-weight: bolder;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px black;
+}
+.button:hover {
+	background-color: #5d8d74;
+
+	box-shadow: 2px 2px 2px grey;
+}
+
+@media screen and (min-width: 600px) {
+	.button {
+		width: 100px;
+		height: 40px;
+		font-size: 20px;
+	}
+}

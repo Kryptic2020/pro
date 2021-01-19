@@ -1,0 +1,147 @@
+.service_container {
+	background-color: #24cd98;
+	color: #ffffff;
+	border-radius: 5px;
+	height: 470px;
+	grid-column: grid;
+	grid-row: box;
+}
+.service_box {
+	width: 90%;
+	height: 470px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr[head1-start] max-content[head1-end]1fr[head2-start] max-content[head2-end]1fr[price-start] max-content[price-end]1fr[name-start] max-content[name-end]1fr[description-start] max-content[description-end]1fr;
+}
+.staff {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	text-align: center;
+	grid-column: 1/2;
+	grid-row: head2;
+}
+.action {
+	font-family: 'Playfair Display', serif;
+	font-size: 24px;
+	margin: auto;
+	display: flex;
+	text-align: center;
+	grid-column: 1/3;
+	grid-row: head1;
+}
+.action_icon {
+	margin-right: 15px;
+}
+.service {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	text-align: center;
+	grid-column: 2/3;
+	grid-row: head2;
+}
+.service_name {
+	width: 100%;
+	grid-column: 1/3;
+	grid-row: name;
+}
+.price {
+	width: 100%;
+	grid-column: 1/3;
+	grid-row: price;
+}
+.service_description {
+	width: 100%;
+	grid-column: 1/3;
+	grid-row: description;
+}
+
+@media screen and (min-width: 600px) {
+	.service_container {
+		height: 500px;
+	}
+	.service_box {
+		height: 500px;
+
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr[head1-start] max-content[head1-end]1fr[head2-start] max-content[head2-end]1fr[price-start] max-content[price-end]1fr[name-start] max-content[name-end]1fr[description-start] max-content[description-end]1fr;
+	}
+	.staff {
+		font-size: 24px;
+
+		grid-column: 1/2;
+		grid-row: head2;
+	}
+	.action {
+		font-size: 24px;
+
+		grid-column: 1/4;
+		grid-row: head1;
+	}
+	.action_icon {
+		margin-right: 15px;
+	}
+	.service {
+		font-size: 24px;
+
+		grid-column: 2/3;
+		grid-row: head2;
+	}
+	.service_name {
+		grid-column: 1/3;
+		grid-row: name;
+	}
+	.price {
+		grid-column: 1/3;
+		grid-row: price;
+	}
+	.service_description {
+		grid-column: 1/3;
+		grid-row: description;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.service_container {
+		height: 520px;
+	}
+	.service_box {
+		height: 520px;
+
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr[head1-start] max-content[head1-end]1fr[head2-start] max-content[head2-end]1fr[price-start] max-content[price-end]1fr[name-start] max-content[name-end]1fr[description-start] max-content[description-end]1fr;
+	}
+	.staff {
+		font-size: 24px;
+
+		grid-column: 1/2;
+		grid-row: head1;
+	}
+	.action {
+		font-size: 24px;
+
+		grid-column: 2/3;
+		grid-row: head1;
+	}
+	.action_icon {
+		margin-right: 15px;
+	}
+	.service {
+		font-size: 24px;
+
+		grid-column: 3/4;
+		grid-row: head1;
+	}
+	.service_name {
+		grid-column: 1/4;
+		grid-row: name;
+	}
+	.price {
+		grid-column: 1/4;
+		grid-row: price;
+	}
+	.service_description {
+		grid-column: 1/4;
+		grid-row: description;
+	}
+}

@@ -1,8 +1,8 @@
 .container {
 	display: grid;
-	height: calc(-50px + 100vh);
-	grid-template-columns: [grid-start]1fr[content-start]310px[content-end]1fr[grid-end];
-	grid-template-rows: 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 1fr [continue-start]max-content [continue-end];
+	min-height: 100vh;
+	grid-template-columns: [grid-start]1fr[content-start]10fr[content-end]1fr[grid-end];
+	grid-template-rows: 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 0 [continue-start]max-content [continue-end]1fr;
 }
 
 .headers {
@@ -18,21 +18,29 @@
 	grid-row: personalInfo;
 }
 .continueButton {
+	width: 100%;
 	grid-column: grid;
 	grid-row: continue;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 600px) {
 	.container {
-		grid-template-rows: 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 0fr [continue-start]max-content [continue-end];
+		height: 100vh;
+		grid-template-columns: [grid-start]3fr[content-start]12fr[content-end]3fr[grid-end];
+
+		grid-template-rows: 1fr [headers-start]max-content[headers-end] 1fr [personalInfo-start]max-content[personalInfo-end] 0 [continue-start]max-content [continue-end]1fr;
 	}
 	.headers {
 		font-size: 32px;
-		grid-column: grid;
+		grid-column: content;
 		text-align: center;
 	}
 	.continueButton {
-		width: 500px;
-		margin: 0 auto;
+		grid-column: content;
+		grid-row: continue;
+	}
+	.personalInfo {
+		grid-column: content;
+		grid-row: personalInfo;
 	}
 }

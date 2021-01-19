@@ -1,5 +1,5 @@
 .container {
-	width: 310px;
+	width: 80%;
 	height: 60vh;
 	display: flex;
 	margin: auto;
@@ -11,25 +11,20 @@
 	font-size: 16px;
 	text-align: center;
 	width: 100%;
-	grid-column: content;
-	grid-row: headers;
 }
 .continueButton {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+	margin: 0 auto;
+	width: 80%;
 }
 
 @media screen and (min-width: 480px) {
 	.container {
-		width: 500px;
+		width: 60%;
 	}
 	.headers {
 		font-size: 32px;
 	}
 	.continueButton {
-		width: 500px;
-		left: 50%;
-		margin-left: -250px;
+		width: 60%;
 	}
 }

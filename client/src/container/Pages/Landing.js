@@ -16,10 +16,10 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { connect } from 'react-redux';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
-import Button_select from './../../components/UI/Button_select/Button_select';
-import Button_delete from './../../components/UI/Button_delete/Button_delete';
-import Button_book from './../../components/UI/Button_book/Button_book';
-import Button_edit from './../../components/UI/Button_edit/Button_edit';
+import ButtonSelect from './../../components/UI/ButtonSelect/ButtonSelect';
+import ButtonDelete from './../../components/UI/ButtonDelete/ButtonDelete';
+import ButtonBook from './../../components/UI/ButtonBook/ButtonBook';
+import ButtonEdit from './../../components/UI/ButtonEdit/ButtonEdit';
 //import Background from '../../assets/LogoB.png';
 //import LogoDark from '../../assets/MagentaDarkLogo.jpg';
 //require('typeface-roboto');
@@ -739,10 +739,10 @@ class Landing extends Component {
 						marginTop: '20px',
 					}}
 				>
-					<Button_select />
-					<Button_delete />
-					<Button_book />
-					<Button_edit />
+					<ButtonSelect />
+					<ButtonDelete />
+					<ButtonBook />
+					<ButtonEdit />
 				</div>
 				<div
 					className='container'

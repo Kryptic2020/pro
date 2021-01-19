@@ -9,8 +9,8 @@ const keys = require('./config/keys');
 //const path = require('path');
 //const nodemailer = require('nodemailer');
 
-require('./models/User');//has to come before services/passport, position matter here.
-require('./models/Survey');
+require('./models/User'); //has to come before services/passport, position matter here.
+
 require('./models/Specialty');
 require('./models/ServicePrice');
 require('./models/StaffAssignments');
@@ -21,28 +21,25 @@ require('./models/WaitingList');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+	useCreateIndex: true,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
 });
 
 const app = express();
-
-
 
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-  })
+	cookieSession({
+		maxAge: 24 * 60 * 60 * 1000,
+		keys: [keys.cookieKey],
+	})
 );
 // Initialize Passport and restore authentication state, if any, from the
 // session.
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -60,23 +57,27 @@ require('./routes/authGoogleRoutes')(app);
 require('./routes/authFacebookRoutes')(app);
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
-require('./routes/surveyRoutes')(app);
+
 require('./routes/calendarRoutes')(app);
 require('./routes/contactsRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
-  //express will serve up production assets like our main.js file, or main.css file
-  app.use(express.static('client/build'));
-  //express will serve up the index.html file if it doesnt recognize the route
-  const path = require('path');
-  app.use('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-  
+	//express will serve up production assets like our main.js file, or main.css file
+	app.use(express.static('client/build'));
+	//express will serve up the index.html file if it doesnt recognize the route
+	const path = require('path');
+	app.use('*', (req, res) => {
+		res.sendFile(
+			path.resolve(
+				__dirname,
+				'client',
+				'build',
+				'index.html'
+			)
+		);
+	});
 }
 
-
 const PORT = process.env.PORT || 5000;
-
 
 app.listen(PORT);

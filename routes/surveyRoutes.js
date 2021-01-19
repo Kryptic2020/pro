@@ -1,4 +1,4 @@
-const _ = require('lodash');
+/*const _ = require('lodash');
 const { Path } = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
@@ -73,4 +73,4 @@ module.exports = app => {
 			res.status(422).send(err);
 		}
 	});
-};
+};*/

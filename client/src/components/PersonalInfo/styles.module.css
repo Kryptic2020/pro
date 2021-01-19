@@ -5,7 +5,7 @@
 	text-align: center;
 }
 .subcontainer {
-	width: 310px;
+	width: 80%;
 	height: 100%;
 	margin: 0 auto;
 	display: flex;
@@ -35,14 +35,11 @@ input {
 }
 @media screen and (min-width: 480px) {
 	.container {
-		width: 500px;
 		height: 290px;
 		margin: 0 auto;
 		row-gap: 5px;
 	}
 	.subcontainer {
-		width: 450px;
-
 		row-gap: 7px;
 	}
 	.header {

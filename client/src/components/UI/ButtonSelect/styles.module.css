@@ -2,22 +2,22 @@
 	font-family: 'Roboto', sans-serif;
 	width: 70px;
 	height: 30px;
-	background-color: #fc0000;
+	background-color: #38f495;
 	font-size: 14px;
 	font-weight: bolder;
 	text-align: center;
-	color: #ffffff;
+	color: #504f4b;
 	border: none;
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px black;
 }
 .button:hover {
-	background-color: #8f2e2e;
-
+	background-color: #24cd98;
+	color: #ffffff;
 	box-shadow: 2px 2px 2px grey;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 600px) {
 	.button {
 		width: 100px;
 		height: 40px;
