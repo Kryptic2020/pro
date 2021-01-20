@@ -1,6 +1,6 @@
 .container {
 	width: 90%;
-	height: 1100px;
+	height: 800px;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -12,7 +12,7 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	background-color: #ffffff;
-	height: 900px;
+	height: 90%;
 	border-radius: 10px;
 }
 .box {
@@ -22,10 +22,13 @@
 .box_icon {
 	width: 35px;
 	margin-right: 20px;
+	background-color: #38f495;
+	border: 6px solid #38f495;
+	border-radius: 50%;
 }
 .box_text {
 	font-family: 'Playfair Display', serif;
-	font-size: 16px;
+	font-size: 20px;
 	align-self: center;
 }
 
@@ -35,16 +38,15 @@
 
 @media screen and (min-width: 600px) {
 	.container {
-		height: 1400px;
+		height: 1000px;
 	}
-	.subcontainer {
-		height: 1200px;
-	}
+
 	.box_text {
 		font-size: 20px;
 	}
 	.box_icon {
 		width: 38px;
+		border: 7px solid #38f495;
 	}
 	.card {
 		height: 250px;
@@ -63,6 +65,7 @@
 	}
 	.box_icon {
 		width: 40px;
+		border: 8px solid #38f495;
 	}
 
 	.subcontainer {

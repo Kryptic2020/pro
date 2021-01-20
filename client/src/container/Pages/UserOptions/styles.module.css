@@ -1,6 +1,6 @@
 .container {
 	width: 90%;
-	height: 1100px;
+	height: 1000px;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -12,7 +12,7 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	background-color: #ffffff;
-	height: 900px;
+	height: 90%;
 	border-radius: 10px;
 }
 .box {
@@ -21,11 +21,14 @@
 }
 .box_icon {
 	width: 35px;
-	margin-right: 20px;
+	margin-right: 25px;
+	background-color: #38f495;
+	border: 8px solid #38f495;
+	border-radius: 50%;
 }
 .box_text {
 	font-family: 'Playfair Display', serif;
-	font-size: 16px;
+	font-size: 20px;
 	align-self: center;
 }
 
@@ -37,9 +40,7 @@
 	.container {
 		height: 1400px;
 	}
-	.subcontainer {
-		height: 1200px;
-	}
+
 	.box_text {
 		font-size: 20px;
 	}

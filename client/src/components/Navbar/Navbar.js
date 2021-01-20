@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import classes from './styles.module.css';
 import CompanyIcone from '../UI/Iconsx/CompanyIcone';
 import Home from '../UI/Iconsx/Home';
@@ -9,6 +9,7 @@ import Settings from '../UI/Iconsx/Settings';
 import User from '../UI/Iconsx/User';
 import Menu from '../UI/Iconsx/Menu';
 import Close from '../UI/Iconsx/Close';
+import Logout from '../UI/Iconsx/Logout';
 
 import KeyboardLeftIcone from '../UI/Iconsx/KeyboardLeft';
 import Button from 'react-bootstrap/Button';
@@ -27,10 +28,34 @@ class Navbar extends Component {
 		});
 	};
 	render() {
+		const icons = (
+			<div className={classes.icons}>
+				<a href='/'>
+					<Home width={24} />
+				</a>
+
+				<a href='/dashboard'>
+					<Dashboard width={24} />
+				</a>
+
+				<a href='/settings'>
+					<Settings width={22} />
+				</a>
+				<a href='/user-options'>
+					<User width={22} />
+				</a>
+				<a href='/api/logout'>
+					<Logout width={24} />
+				</a>
+			</div>
+		);
 		return (
 			<>
 				<div className={classes.container}>
-					<div className={classes.arrow}>
+					<div
+						onClick={this.props.history.goBack}
+						className={classes.arrow}
+					>
 						<KeyboardLeftIcone
 							width={18}
 							fill={'white'}
@@ -55,7 +80,7 @@ class Navbar extends Component {
 					</div>
 
 					<div className={classes.login_mobile}>
-						{!this.props.auth.authenticated ? (
+						{this.props.authenticated ? (
 							<span
 								onClick={
 									this.showSideBarHandler
@@ -77,42 +102,23 @@ class Navbar extends Component {
 							</div>
 						)}
 					</div>
-					<div className={classes.login_desktop}>
-						{this.props.auth.authenticated ? (
-							<Button
-								style={{ width: '80px' }}
-								variant='outline-light'
-								href='/api/logout'
-							>
-								Logout
-							</Button>
-						) : (
-							<div style={{ width: '65px' }}>
-								<Link to='/loginx'>
-									<Button variant='outline-light '>
-										Login
-									</Button>
-								</Link>
-							</div>
-						)}
-					</div>
 
-					<div className={classes.icons}>
-						<a href='/'>
-							<Home width={24} />
-						</a>
-
-						<a href='/dashboard'>
-							<Dashboard width={24} />
-						</a>
-
-						<a href='/settings'>
-							<Settings width={22} />
-						</a>
-						<a href='/user-options'>
-							<User width={22} />
-						</a>
-					</div>
+					{this.props.authenticated ? (
+						icons
+					) : (
+						<div
+							className={
+								classes.login_desktop
+							}
+							style={{ width: '65px' }}
+						>
+							<Link to='/loginx'>
+								<Button variant='outline-light '>
+									Login
+								</Button>
+							</Link>
+						</div>
+					)}
 				</div>
 				{this.state.show ? <Sidebar /> : null}
 			</>
@@ -123,6 +129,7 @@ const mapStateToProps = (state) => {
 	return {
 		auth: state.auth,
 		fullName: state.auth.fullName,
+		authenticated: state.auth.authenticated,
 	};
 };
 

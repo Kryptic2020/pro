@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './styles.module.css';
 import ButtonDelete from '../UI/ButtonDelete/ButtonDelete';
+import ButtonSelect from '../UI/ButtonSelect/ButtonSelect';
 import Clock from '../UI/Iconsx/Clock';
 
 const CardTimeTables = (props) => {
@@ -15,7 +16,11 @@ const CardTimeTables = (props) => {
 						<Clock className={classes.icon} />
 					</div>
 					<div className={classes.button}>
-						<ButtonDelete />
+						{props.button_select ? (
+							<ButtonSelect />
+						) : (
+							<ButtonDelete />
+						)}
 					</div>
 				</div>
 

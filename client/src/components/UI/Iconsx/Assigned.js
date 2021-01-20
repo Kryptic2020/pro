@@ -18,7 +18,6 @@ const Assigned = (props) => (
 				d='M9.836,18.812l3.418-3.35a10.643,10.643,0,0,0-1.139-.068C9.073,15.394,3,16.921,3,19.951V22.23H13.254Zm2.279-5.7A4.558,4.558,0,1,0,7.558,8.558a4.556,4.556,0,0,0,4.558,4.558'
 				transform='translate(30.238 1410)'
 				fill='#fff'
-				fill-rule='evenodd'
 			/>
 			<path
 				id='Path_761'
@@ -26,7 +25,6 @@ const Assigned = (props) => (
 				d='M15.954,21.615,12,17.627l1.6-1.607,2.359,2.37L21.8,12.5l1.6,1.607Z'
 				transform='translate(31.492 1411.185)'
 				fill='#fff'
-				fill-rule='evenodd'
 			/>
 		</g>
 	</svg>

@@ -36,6 +36,7 @@ const fetchUser = (state, action) => {
 		provider: action.payload.provider,
 		familyName: action.payload.familyName,
 		photo: action.payload.photo,
+		phone: action.payload.phone,
 		isAdmin: action.payload.isAdmin,
 		emailVerified: action.payload.emailVerified,
 		theme: action.payload.theme,

@@ -2,12 +2,12 @@
 	background-color: #ffffff;
 	width: 100%;
 	height: 140px;
-	border-radius: 5px;
+	border-radius: 0 0 10px 10px;
 }
 
 .loginWith {
 	font-size: 16px;
-	color: #000000;
+	color: #504f4b;
 	font-family: 'Playfair Display', serif;
 	padding-top: 15px;
 	padding-bottom: 10px;
@@ -32,8 +32,16 @@
 .textGoogle {
 	padding-top: 5px;
 	margin-left: -3px;
+	color: #504f4b;
+}
+.textGoogle:hover {
+	color: #29a07b;
 }
 .textFacebook {
 	padding-top: 5px;
 	margin-left: -8px;
+	color: #504f4b;
+}
+.textFacebook:hover {
+	color: #29a07b;
 }

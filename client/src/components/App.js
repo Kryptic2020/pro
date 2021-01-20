@@ -10,11 +10,11 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions';
 import Landing from '../container/Pages/Landing';
 
-import Auth from '../container/Auth/Auth';
+//import Auth from '../container/Auth/Auth';
 import VerifyEmail from '../container/Pages/VerifyEmail';
 //import ReqResetPass from '../container/Auth/ReqResetPass';
 
-import CalendarBuilder from '../container/Pages/CalendarBuilder';
+//import CalendarBuilder from '../container/Pages/CalendarBuilder';
 import CreateTimeTables from '../container/Pages/TimeTables';
 import Booking from '../container/Pages/Booking';
 import BookingAdm from '../container/Pages/BookingAdm';
@@ -41,6 +41,9 @@ import Specialty from '../container/Pages/Specialty/Specialty';
 import Services from '../container/Pages/Services/Services';
 import TimeTables from '../container/Pages/TimeTablesX/TimeTables';
 import CalendarManager from '../container/Pages/CalendarManager/CalendarManager';
+import UserOptions from '../container/Pages/UserOptions/UserOptions';
+import Dashboard from '../container/Pages/Dashboard/Dashboard';
+import CreateSlot from '../container/Pages/CreateSlot/CreateSlot';
 
 //BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
 
@@ -69,10 +72,20 @@ class App extends Component {
 						!this.props.emailVerified ? (
 							<Redirect to='/verify-email' />
 						) : null}
+
 						{!this.props.email &&
 						this.props.authenticated ? (
 							<Redirect to='/auth/register/facebook/email' />
 						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/auth/register/facebook/email'
+								component={FacebookEmailAdd}
+							/>
+						) : null}
+
 						{!this.props.phone &&
 						this.props.authenticated ? (
 							<Redirect to='/personal-info' />
@@ -89,13 +102,12 @@ class App extends Component {
 							path='/'
 							component={Landing}
 						/>
-						{!this.props.authenticated ? (
-							<Route
-								exact
-								path='/loginx'
-								component={Loginx}
-							/>
-						) : null}
+
+						<Route
+							exact
+							path='/loginx'
+							component={Loginx}
+						/>
 
 						<Route
 							exact
@@ -110,11 +122,6 @@ class App extends Component {
 
 						<Route
 							exact
-							path='/auth'
-							component={Auth}
-						/>
-						<Route
-							exact
 							path='/verify-email'
 							component={VerifyEmail}
 						/>
@@ -122,17 +129,11 @@ class App extends Component {
 						{this.props.authenticated ? (
 							<Route
 								exact
-								path='/auth/register/facebook/email'
-								component={FacebookEmailAdd}
-							/>
-						) : null}
-						{this.props.authenticated ? (
-							<Route
-								exact
 								path='/profile'
 								component={Profile}
 							/>
 						) : null}
+
 						<Route
 							path='/settings'
 							component={Settings}
@@ -143,20 +144,30 @@ class App extends Component {
 							component={Specialty}
 						/>
 
-						{!this.props.authenticated ? (
+						{this.props.authenticated ? (
 							<Route
 								exact
 								path='/calendar-manager'
 								component={CalendarManager}
 							/>
 						) : null}
-						{!this.props.authenticated ? (
+
+						{this.props.authenticated ? (
 							<Route
 								exact
 								path='/time-tables'
 								component={TimeTables}
 							/>
 						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/user-options'
+								component={UserOptions}
+							/>
+						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -164,6 +175,7 @@ class App extends Component {
 								component={Booking}
 							/>
 						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -171,6 +183,7 @@ class App extends Component {
 								component={BookingAdm}
 							/>
 						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -178,6 +191,7 @@ class App extends Component {
 								component={Calendar}
 							/>
 						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -185,6 +199,7 @@ class App extends Component {
 								component={WaitingList}
 							/>
 						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -200,6 +215,7 @@ class App extends Component {
 								component={Contacts}
 							/>
 						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
@@ -209,25 +225,44 @@ class App extends Component {
 								}
 							/>
 						) : null}
-						{!this.props.authenticated ? (
+
+						{this.props.authenticated ? (
 							<Route
 								exact
 								path='/assign-staff'
 								component={Assign_staff}
 							/>
 						) : null}
-						{!this.props.authenticated ? (
+
+						{this.props.authenticated ? (
 							<Route
 								exact
 								path='/service-settings'
 								component={Services}
 							/>
 						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/dashboard'
+								component={Dashboard}
+							/>
+						) : null}
+
 						{this.props.authenticated ? (
 							<Route
 								exact
 								path='/timetables/create'
 								component={CreateTimeTables}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/slots-create'
+								component={CreateSlot}
 							/>
 						) : null}
 					</div>

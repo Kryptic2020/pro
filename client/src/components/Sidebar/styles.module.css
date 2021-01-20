@@ -32,6 +32,9 @@
 	display: inline-flex;
 	color: #ffffff;
 }
+.home:hover {
+	color: #ffffff;
+}
 .home_icon {
 	margin-left: 10%;
 	margin-right: 18%;
@@ -40,6 +43,9 @@
 
 .user {
 	display: inline-flex;
+	color: #ffffff;
+}
+.user:hover {
 	color: #ffffff;
 }
 .user_icon {
@@ -51,6 +57,9 @@
 	display: inline-flex;
 	color: #ffffff;
 }
+.settings:hover {
+	color: #ffffff;
+}
 .settings_icon {
 	margin-left: 10%;
 	margin-right: 18%;
@@ -58,6 +67,9 @@
 }
 .dashboard {
 	display: inline-flex;
+	color: #ffffff;
+}
+.dashboard:hover {
 	color: #ffffff;
 }
 
@@ -68,6 +80,9 @@
 }
 .logout {
 	display: inline-flex;
+	color: #ffffff;
+}
+.logout:hover {
 	color: #ffffff;
 }
 .logout_icon {

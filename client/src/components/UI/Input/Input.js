@@ -23,7 +23,7 @@ const input = (props) => {
 					color: 'black',
 					backgroundColor: 'white',
 					border: '2px solid grey',
-					borderRadius: '3px',
+					borderRadius: '5px',
 				}}
 				type={props.type}
 				onClick={props.onClick}

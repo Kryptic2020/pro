@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 import classes from './styles.module.css';
 import axios from 'axios';
 //import Navbar from '../../../components/Navbar/Navbar';
@@ -17,31 +20,24 @@ class PersonalInfoPage extends Component {
 		this.setState({ [input]: event.target.value });
 	};
 
-	submitHandler = (event) => {
+	submitHandler = () => {
 		const fullName =
 			this.state.firstName.trim() +
 			' ' +
 			this.state.lastName.trim();
+
 		this.setState({ isLoading: true });
 
-		const data = { fullName, phone: this.state.phone };
-		axios
-			.post('/api/personal-info', data)
-			.then((res) => {
-				if (res.data) {
-					this.setState({
-						msn: res.data,
-						isLoading: false,
-					});
-					alert(res.data);
-				}
-			})
-			.catch((res) => {
-				this.setState({
-					msn: res.data,
-					isLoading: false,
-				});
-			});
+		const phone = this.state.phone;
+
+		const setPersonalInfo = () => {
+			this.props.onSetPersonalInfo(
+				fullName,
+				phone,
+				this.props.history
+			);
+		};
+		setPersonalInfo();
 	};
 	render() {
 		return (
@@ -93,5 +89,20 @@ class PersonalInfoPage extends Component {
 		);
 	}
 }
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onSetPersonalInfo: (fullName, phone, history) =>
+			dispatch(
+				actions.setPersonalInfo(
+					fullName,
+					phone,
+					history
+				)
+			),
+	};
+};
 
-export default PersonalInfoPage;
+export default connect(
+	null,
+	mapDispatchToProps
+)(withRouter(PersonalInfoPage));

@@ -29,7 +29,8 @@ module.exports = (app) => {
 				else {
 					req.login(user, (err) => {
 						if (err) throw err;
-						res.send('');
+						res.send('logged');
+						console.log('backend logged');
 					});
 				}
 			}
@@ -233,6 +234,7 @@ module.exports = (app) => {
 	//Register personal info
 	app.post('/api/personal-info', async (req, res) => {
 		const { fullName, phone } = req.body;
+		console.log(fullName, phone);
 		await User.updateOne(
 			{ _id: req.user._id },
 			{ fullName, phone }

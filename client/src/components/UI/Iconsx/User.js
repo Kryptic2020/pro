@@ -3,7 +3,6 @@ import React from 'react';
 const User = (props) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
-		fill={props.fill}
 		width={props.width}
 		height={props.height}
 		viewBox='0 0 27 27'

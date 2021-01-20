@@ -57,7 +57,6 @@ require('./routes/authGoogleRoutes')(app);
 require('./routes/authFacebookRoutes')(app);
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
-
 require('./routes/calendarRoutes')(app);
 require('./routes/contactsRoutes')(app);
 

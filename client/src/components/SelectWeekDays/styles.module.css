@@ -1,0 +1,89 @@
+.unselected_button {
+	font-family: 'Roboto', sans-serif;
+	width: 40px;
+	height: 40px;
+	background-color: #38f495;
+	font-size: 12px;
+	font-weight: bolder;
+	text-align: center;
+	color: #504f4b;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px black;
+}
+.selected_button {
+	font-family: 'Roboto', sans-serif;
+	width: 40px;
+	height: 40px;
+	background-color: #fc0000;
+	font-size: 12px;
+	font-weight: bolder;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px black;
+}
+.unselected_button:hover {
+	background-color: #24cd98;
+	color: #ffffff;
+	box-shadow: 2px 2px 2px grey;
+}
+.selected_button:hover {
+	background-color: #8f2e2e;
+
+	box-shadow: 2px 2px 2px grey;
+}
+
+.container {
+	background-color: #11b9f0;
+	width: 100%;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.headings {
+	font-size: 16px;
+	text-align: center;
+	color: #ffffff;
+}
+.box {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+@media screen and (min-width: 600px) {
+	.unselected_button {
+		width: 70px;
+		height: 40px;
+		font-size: 20px;
+	}
+	.selected_button {
+		width: 70px;
+		height: 40px;
+		font-size: 20px;
+	}
+	.headings {
+		font-size: 20px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.container {
+		height: 150px;
+	}
+	.unselected_button {
+		width: 100px;
+		height: 50px;
+		font-size: 20px;
+	}
+	.selected_button {
+		width: 100px;
+		height: 50px;
+		font-size: 20px;
+	}
+	.headings {
+		font-size: 24px;
+	}
+}

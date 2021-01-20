@@ -15,7 +15,7 @@
 	display: grid;
 	min-height: 800px;
 	grid-template-columns: [grid-start]1fr[content-start]10fr[content-end]1fr[grid-end];
-	grid-template-rows: 1fr[loginOptions-start]63px [loginOption-end ]0px[triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end]1fr [or-start]max-content[or-end]1fr[loginWith-start]max-content[loginWith-end]1fr[personalInfo-start]max-content[personalInfo-end]0px[continue-start]max-content [continue-end];
+	grid-template-rows: 1fr[loginOptions-start]63px [loginOption-end ]0px[triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end]1fr [or-start]max-content[or-end]0fr[loginWith-start]max-content[loginWith-end]1fr[personalInfo-start]max-content[personalInfo-end]0px[continue-start]max-content [continue-end];
 }
 
 .headers {
@@ -43,6 +43,7 @@
 	background-color: #11b9f0;
 	height: 63px;
 	line-height: 63px;
+	border-radius: 10px;
 }
 .triangleLogin {
 	margin-left: 60%;
@@ -61,6 +62,7 @@
 	grid-row: loginForm;
 }
 .forgotLink {
+	text-decoration: none;
 	display: flex;
 	color: #504f4b;
 	justify-content: space-between;
@@ -68,13 +70,28 @@
 	grid-row: forgotPass;
 	font-size: 14px;
 }
+.forgotLink_text {
+	color: #504f4b;
+}
+.forgotLink_text:hover {
+	color: #29a07b;
+}
 .or {
 	font-family: 'Playfair Display', serif;
-
+	color: #ffffff;
 	text-align: center;
-	font-size: 16px;
+	padding-top: 1%;
+	font-size: 20px;
+	height: 40px;
 	grid-column: content;
 	grid-row: or;
+	background-image: linear-gradient(
+		to left,
+		#38f495,
+		#15bfe7,
+		#11b9f0
+	);
+	border-radius: 10px 10px 0 0;
 }
 .loginWith {
 	color: #504f4b;
@@ -97,7 +114,7 @@
 @media screen and (min-width: 600px) {
 	.container {
 		grid-template-columns: [grid-start]3fr[content-start]10fr[content-end]3fr[grid-end];
-		grid-template-rows: 1fr [loginOptions-start]63px[loginOption-end triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end] 1fr [or-start]max-content[or-end]1fr [loginWith-start]max-content[loginWith-end]1fr[personalInfo-start]max-content[personalInfo-end] 0px[continue-start]max-content [continue-end];
+		grid-template-rows: 1fr [loginOptions-start]63px[loginOption-end triangle-start] max-content [triangle-end]1fr [loginForm-start]max-content [loginForm-end]1fr [forgotPass-start]max-content[forgotPass-end] 1fr [or-start]max-content[or-end] 0 [loginWith-start]max-content[loginWith-end]1fr[personalInfo-start]max-content[personalInfo-end] 0px[continue-start]max-content [continue-end];
 	}
 	.personalInfo {
 		grid-column: content;

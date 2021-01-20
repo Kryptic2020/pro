@@ -7,6 +7,7 @@
 	height: 56px;
 	background-color: #29a07b;
 	border: none;
+	border-radius: 5px;
 }
 .button:hover {
 	background-color: #38f495;
@@ -19,7 +20,7 @@
 .text {
 	text-align: center;
 	padding: auto;
-	font-size: 20px;
+	font-size: 18px;
 	margin: auto 0px;
 	color: #ffffff;
 }
@@ -35,7 +36,18 @@
 	padding-left: 10px;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 600px) {
+	.text {
+		font-size: 22px;
+	}
+	.arrow_small {
+		display: none;
+	}
+	.arrow_large {
+		display: block;
+	}
+}
+@media screen and (min-width: 1000px) {
 	.text {
 		font-size: 24px;
 	}

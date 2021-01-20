@@ -1,5 +1,6 @@
 export {
 	auth,
+	setPersonalInfo,
 	fetchAllUsers,
 	users,
 	//authStart,

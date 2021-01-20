@@ -3,18 +3,18 @@
 	min-height: 100%;
 	background-color: black;
 	color: #ffffff;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 .heading {
 	display: flex;
 	flex-flow: row;
 	position: relative;
 	font-family: 'Playfair Display', serif;
-	font-size: 14px;
+	font-size: 16px;
 	padding-top: 5%;
 	margin-left: 7%;
 	text-align: left;
-	text-decoration: underline;
+
 	color: #ffffff;
 }
 

@@ -1,16 +1,49 @@
 .container {
-	width: 80%;
+	display: flex;
+	width: 90%;
+	height: 1650px;
+	margin: auto;
+}
+.subcontainer {
+	padding-top: 5%;
+	height: 95%;
+	background-color: #ffffff;
+	margin: auto;
+	border-radius: 10px;
+}
+.grid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.icon_settings {
+	grid-column: 1 / 2;
+	width: 30px;
+	justify-self: right;
+	margin-right: 30px;
+
+	background-color: #38f495;
+	border: 5px solid #38f495;
+	border-radius: 50%;
+}
+.settings_text {
+	font-family: 'Playfair Display', serif;
+	font-size: 20px;
+	grid-column: 2 / 3;
+}
+
+.box {
+	position: relative;
+	width: 90%;
+	height: 1550px;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	row-gap: 20px;
-	padding-bottom: 10%;
-	padding-top: 10%;
 }
 
 @media screen and (min-width: 600px) {
 	.container {
-		row-gap: 30px;
+		height: 1700px;
 	}
 }

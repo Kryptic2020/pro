@@ -52,9 +52,7 @@ class Loginx extends Component {
 		}
 		this.scrollToTop();
 	}
-	componentDidUpdate() {
-		console.log(this.props.authenticated);
-	}
+
 	inputChangeHandler = (event, input) => {
 		this.setState({ [input]: event.target.value });
 	};
@@ -78,6 +76,7 @@ class Loginx extends Component {
 		return (
 			<div>
 				<Input
+					autocomplete='on'
 					label='Email Address'
 					msg={
 						this.state.isEmailValid
@@ -209,7 +208,10 @@ class Loginx extends Component {
 		return (
 			<>
 				<div className={classes.forgotLink}>
-					<Link to='/forgot-pass'>
+					<Link
+						className={classes.forgotLink_text}
+						to='/forgot-pass'
+					>
 						Forgot Password?
 					</Link>
 				</div>

@@ -4,6 +4,24 @@ import { FETCH_USER } from './actionTypes';
 
 //import { AUTH_FAIL } from './actionTypes';
 
+export const setPersonalInfo = (
+	fullName,
+	phone,
+	history
+) => async (dispatch) => {
+	const data = { fullName, phone };
+	console.log('data', data);
+	await axios
+		.post('/api/personal-info', data)
+		.then((res) => {
+			console.log('res', res.data);
+			if (res.data) {
+				history.push('/');
+			}
+		})
+		.catch((res) => {});
+};
+
 export const auth = (
 	email,
 	password,
@@ -11,7 +29,7 @@ export const auth = (
 	phone,
 	isSignup,
 	history
-) => (dispatch) => {
+) => async (dispatch) => {
 	const authData = {
 		googleId: null,
 		fullName,
@@ -28,18 +46,19 @@ export const auth = (
 		url = '/api/login';
 	}
 
-	axios
+	await axios
 		.post(url, authData)
 		.then((res) => {
+			console.log(res.data);
+			dispatch(fetchUser());
 			if (isSignup && res.data === 'registered') {
-				history.push('/verify-email');
+				history.push('/verifyEmail');
 			} else {
 				dispatch(authFail(res.data));
 			}
-			if (!isSignup && res.data === '') {
+			if (!isSignup && res.data === 'logged') {
 				history.push('/');
 			}
-			dispatch(fetchUser());
 		})
 		.catch((err) => {
 			if (err.response) {

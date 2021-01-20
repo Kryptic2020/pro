@@ -10,17 +10,13 @@ const CalendarManager = (props) => {
 		<>
 			<div className={classes.container}>
 				<div className={classes.heading}>
-					<Heading
-						text={
-							'Settings > Calendar Manager Options'
-						}
-					/>
+					<Heading text={'Settings >'} />
 				</div>
 
 				<div className={classes.subcontainer}>
 					<div className={classes.box}>
 						<div className={classes.box_icon}>
-							<Calendar />
+							<Calendar fill={'#38F495'} />
 						</div>
 						<div className={classes.box_text}>
 							Calendar Manager Options
@@ -30,9 +26,9 @@ const CalendarManager = (props) => {
 					<div className={classes.card}>
 						<CardCustom
 							background_color={'#11B9F0'}
-							path={'/specialty'}
+							path={'/slots-create'}
 							display={'none'}
-							title={'Create New Slotsx'}
+							title={'Create Slots'}
 							content={[
 								'Add new or delete existing Specialties.',
 								<div>
