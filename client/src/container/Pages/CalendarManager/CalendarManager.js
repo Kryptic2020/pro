@@ -47,7 +47,7 @@ const CalendarManager = (props) => {
 					<div className={classes.card}>
 						<CardCustom
 							background_color={'#504F4B'}
-							path={'/assign-staff'}
+							path={'/slots-override'}
 							display={'none'}
 							title={'Override Slots'}
 							content={[
@@ -72,7 +72,7 @@ const CalendarManager = (props) => {
 					<div className={classes.card}>
 						<CardCustom
 							background_color={'#FC0000'}
-							path={'/time-tables'}
+							path={'/slots-delete'}
 							display={'none'}
 							title={'Delete slots'}
 							content={[
@@ -100,9 +100,9 @@ const CalendarManager = (props) => {
 							background_color={'#EAE8E8'}
 							color={'#504F4B'}
 							title_color={'#504F4B'}
-							path={'/loginx'}
+							path={'/slot-history'}
 							display={'none'}
-							title={'Calendar History'}
+							title={'Slot History'}
 							content={[
 								'Add new, update or delete existing spots on your Calendar.',
 								<div>

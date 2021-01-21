@@ -1,0 +1,38 @@
+.container {
+	height: 100%;
+}
+.subcontainer {
+	width: 90%;
+	height: 1520px;
+	margin: auto;
+	display: grid;
+	grid-template-rows: 1fr[h1-start]max-content[h1-end]1fr [form-start]max-content[form-end]0px[days-start]max-content[days-end]1fr [h2-start]max-content[h2-end]1fr [card-start]max-content[card-end]1fr[continue-start]max-content[continue-end]1fr;
+}
+.heading1 {
+	grid-row: h1;
+}
+.form {
+	grid-row: form;
+}
+.days {
+	grid-row: days;
+}
+
+.heading2 {
+	grid-row: h2;
+}
+
+.cards {
+	min-height: 300px;
+	max-height: 600px;
+	overflow-y: auto;
+	grid-row: card;
+}
+.continue {
+	grid-row: continue;
+}
+
+@media screen and (min-width: 600px) {
+}
+@media screen and (min-width: 1000px) {
+}

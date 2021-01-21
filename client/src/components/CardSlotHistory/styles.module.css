@@ -1,0 +1,230 @@
+.headers {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	text-align: center;
+	width: 100%;
+	grid-column: content;
+	grid-row: headers;
+}
+.container {
+	width: 100%;
+	height: 100%;
+	background-color: #11b9f0;
+	border-radius: 10px;
+}
+
+.subcontainer {
+	color: #ffffff;
+	font-size: 14px;
+	height: 430px;
+	display: grid;
+	text-align: right;
+	margin-bottom: 20px;
+	grid-template-columns: [one-start]0.8fr[one-end]0.1fr[two-start]1.1fr[two-end];
+	grid-template-rows: 1fr[one-start]1fr[one-end]0.5fr[two-start]1fr[two-end]0.5fr[three-start]1fr[three-end]0.5fr[four-start]1fr[four-end]0.5fr[five-start]1fr[five-end]0.5fr[six-start]1fr[six-end]0.5fr[seven-start]1fr[seven-end]0.5fr[eight-start]1fr[eight-end]0.5fr[nine-start]1fr[nine-end]0.5fr[ten-start]1fr[ten-end]0.5fr[eleven-start]5fr[eleven-end]0.5fr[delete-start]1fr[delete-end];
+}
+.a {
+	grid-column: one;
+	grid-row: one;
+}
+.aa {
+	text-align: left;
+	grid-column: two;
+	grid-row: one;
+}
+.b {
+	grid-column: one;
+	grid-row: two;
+}
+.bb {
+	text-align: left;
+	grid-column: two;
+	grid-row: two;
+}
+.c {
+	grid-column: one;
+	grid-row: three;
+}
+.cc {
+	text-align: left;
+	grid-column: two;
+	grid-row: three;
+}
+.d {
+	grid-column: one;
+	grid-row: four;
+}
+.dd {
+	text-align: left;
+	grid-column: two;
+	grid-row: four;
+}
+.e {
+	grid-column: one;
+	grid-row: five;
+}
+.ee {
+	text-align: left;
+	grid-column: two;
+	grid-row: five;
+}
+.f {
+	grid-column: one;
+	grid-row: six;
+}
+.ff {
+	text-align: left;
+	grid-column: two;
+	grid-row: six;
+}
+.g {
+	grid-column: one;
+	grid-row: seven;
+}
+.gg {
+	text-align: left;
+	grid-column: two;
+	grid-row: seven;
+}
+.h {
+	grid-column: one;
+	grid-row: eight;
+}
+.hh {
+	text-align: left;
+	grid-column: two;
+	grid-row: eight;
+}
+.i {
+	grid-column: one;
+	grid-row: nine;
+}
+.ii {
+	text-align: left;
+	grid-column: two;
+	grid-row: nine;
+}
+.j {
+	text-align: center;
+	grid-column: one / two;
+	grid-row: ten;
+}
+.jj {
+	text-align: center;
+	grid-column: one / two;
+	grid-row: eleven;
+}
+.delete {
+	grid-column: one / two;
+	grid-row: delete;
+}
+
+@media screen and (min-width: 600px) {
+	.subcontainer {
+		font-size: 18px;
+		height: 450px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.subcontainer {
+		font-size: 22px;
+		height: 450px;
+		grid-template-columns: [one-start]0.8fr[one-end]0.1fr[two-start]1.1fr[two-end]0.2fr[three-start]0.8fr[three-end]0.1fr[four-start]1.1fr[four-end];
+		grid-template-rows: 1fr[one-start]1fr[one-end]0.5fr[two-start]1fr[two-end]0.5fr[three-start]1fr[three-end]0.5fr[four-start]1fr[four-end]0.5fr[five-start]1fr[five-end]0.5fr[six-start]1fr[six-end]0.5fr[seven-start]2fr[seven-end]0.5fr[delete-start]1fr[delete-end];
+	}
+	.a {
+		grid-column: one;
+		grid-row: one;
+	}
+	.aa {
+		text-align: left;
+		grid-column: two;
+		grid-row: one;
+	}
+	.b {
+		grid-column: three;
+		grid-row: one;
+	}
+	.bb {
+		text-align: left;
+		grid-column: four;
+		grid-row: one;
+	}
+	.c {
+		grid-column: one;
+		grid-row: two;
+	}
+	.cc {
+		text-align: left;
+		grid-column: two;
+		grid-row: two;
+	}
+	.d {
+		grid-column: three;
+		grid-row: two;
+	}
+	.dd {
+		text-align: left;
+		grid-column: four;
+		grid-row: two;
+	}
+	.e {
+		grid-column: one;
+		grid-row: three;
+	}
+	.ee {
+		text-align: left;
+		grid-column: two;
+		grid-row: three;
+	}
+	.f {
+		grid-column: three;
+		grid-row: three;
+	}
+	.ff {
+		text-align: left;
+		grid-column: four;
+		grid-row: three;
+	}
+	.g {
+		grid-column: one;
+		grid-row: four;
+	}
+	.gg {
+		text-align: left;
+		grid-column: two;
+		grid-row: four;
+	}
+	.h {
+		grid-column: three;
+		grid-row: four;
+	}
+	.hh {
+		text-align: left;
+		grid-column: four;
+		grid-row: four;
+	}
+	.i {
+		grid-column: one;
+		grid-row: five;
+	}
+	.ii {
+		text-align: left;
+		grid-column: two;
+		grid-row: five;
+	}
+	.j {
+		text-align: center;
+		grid-column: one-start / four-end;
+		grid-row: six;
+	}
+	.jj {
+		text-align: center;
+		grid-column: one-start / four-end;
+		grid-row: seven;
+	}
+	.delete {
+		grid-column: one-start / four-end;
+		grid-row: delete;
+	}
+}

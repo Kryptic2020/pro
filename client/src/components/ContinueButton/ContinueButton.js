@@ -5,6 +5,9 @@ import ArrowRight from './../UI/Iconsx/ArrowRight';
 const ContinueButton = (props) => {
 	return (
 		<button
+			style={{
+				backgroundColor: props.backgroundColor,
+			}}
 			className={classes.button}
 			onClick={props.onClick}
 			disabled={props.disabled}

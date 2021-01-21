@@ -44,6 +44,10 @@ import CalendarManager from '../container/Pages/CalendarManager/CalendarManager'
 import UserOptions from '../container/Pages/UserOptions/UserOptions';
 import Dashboard from '../container/Pages/Dashboard/Dashboard';
 import CreateSlot from '../container/Pages/CreateSlot/CreateSlot';
+import OverrideSlot from '../container/Pages/OverrideSlot/OverrideSlot';
+import DeleteSlot from '../container/Pages/DeleteSlot/DeleteSlot';
+import SlotHistory from '../container/Pages/SlotHistory/SlotHistory';
+import ProfileManager from '../container/Pages/ProfileManager/ProfileManager';
 
 //BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
 
@@ -263,6 +267,38 @@ class App extends Component {
 								exact
 								path='/slots-create'
 								component={CreateSlot}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/slots-override'
+								component={OverrideSlot}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/slots-delete'
+								component={DeleteSlot}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/slot-history'
+								component={SlotHistory}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/profile-manager'
+								component={ProfileManager}
 							/>
 						) : null}
 					</div>
