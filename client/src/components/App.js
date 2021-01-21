@@ -302,7 +302,10 @@ class App extends Component {
 							/>
 						) : null}
 					</div>
-					<Footer />
+					{window.location.pathname !==
+					'/loginx' ? (
+						<Footer />
+					) : null}
 				</BrowserRouter>
 			</div>
 		);

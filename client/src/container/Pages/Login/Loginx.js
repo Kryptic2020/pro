@@ -338,7 +338,13 @@ class Loginx extends Component {
 							/>
 						) : null}
 					</div>
-					<div className={classes.continueButton}>
+					<div
+						className={
+							this.state.isSignup
+								? classes.continueButton2
+								: classes.continueButton
+						}
+					>
 						<ContinueButton
 							text='Continue'
 							onClick={this.submitHandler}

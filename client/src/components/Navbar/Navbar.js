@@ -95,9 +95,13 @@ class Navbar extends Component {
 						) : (
 							<div style={{ width: '65px' }}>
 								<Link to='/loginx'>
-									<Button variant='outline-light '>
-										Login
-									</Button>
+									{window.location
+										.pathname !==
+									'/loginx' ? (
+										<Button variant='outline-light '>
+											Login
+										</Button>
+									) : null}
 								</Link>
 							</div>
 						)}
@@ -112,10 +116,14 @@ class Navbar extends Component {
 							}
 							style={{ width: '65px' }}
 						>
-							<Link to='/loginx'>
-								<Button variant='outline-light '>
-									Login
-								</Button>
+							<Link to='/login'>
+								{window.location
+									.pathname !==
+								'/loginx' ? (
+									<Button variant='outline-light '>
+										Login
+									</Button>
+								) : null}
 							</Link>
 						</div>
 					)}
