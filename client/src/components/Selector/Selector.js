@@ -4,23 +4,25 @@ import Form from 'react-bootstrap/Form';
 
 const Selector = (props) => {
 	return (
-		<div className={classes.container}>
+		<div
+			style={{
+				backgroundColor: props.backgroundColor,
+			}}
+			className={classes.container}
+		>
 			<div className={classes.headings}>
-				By default your Slots are visible to
-				clients. You can create your Slots on
-				invisible mode by shifting the selector
-				below
+				{props.text}
 			</div>
 			<div>
 				<div className=' center switch'>
 					<label className={classes.label}>
-						Visible Slots
+						{props.off}
 						<input
 							onChange={props.onChange}
 							type='checkbox'
 						></input>
 						<span className='lever'></span>
-						Invisible Slots
+						{props.on}
 					</label>
 				</div>
 			</div>

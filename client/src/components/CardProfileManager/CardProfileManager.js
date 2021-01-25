@@ -5,7 +5,7 @@ import ButtonBook from '../UI/ButtonBook/ButtonBook';
 import ButtonEdit from '../UI/ButtonEdit/ButtonEdit';
 import User from '../UI/Iconsx/User';
 
-const CardProfileManager = (props) => {
+const CardMyBookings = (props) => {
 	return (
 		<div>
 			<div className={classes.card}>
@@ -59,4 +59,4 @@ const CardProfileManager = (props) => {
 	);
 };
 
-export default CardProfileManager;
+export default CardMyBookings;

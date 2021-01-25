@@ -1,0 +1,121 @@
+.container {
+	height: 90px;
+	width: 100%;
+	display: grid;
+	background-color: #11b9f0;
+	grid-template-columns: 1fr 1fr 4fr 0.2fr 1fr 4fr 0.2fr;
+	grid-template-rows: 1fr 1fr;
+	color: #ffffff;
+	font-size: 12px;
+}
+.specialty {
+	text-align: left;
+	margin: auto 0;
+	grid-column: 3/4;
+	grid-row: 1/2;
+}
+.service {
+	text-align: left;
+	margin: auto 0;
+	grid-column: 3/4;
+	grid-row: 2/3;
+}
+.assigned {
+	text-align: left;
+	margin: auto 0;
+	grid-column: 6/7;
+	grid-row: 1/2;
+}
+.booking {
+	text-align: left;
+	margin: auto 0;
+	grid-column: 6/7;
+	grid-row: 2/3;
+}
+.specialty_icon {
+	justify-self: left;
+	margin: auto 0;
+	width: 25px;
+	grid-column: 2/3;
+	grid-row: 1/2;
+}
+.service_icon {
+	margin: auto 0;
+	width: 27px;
+	grid-column: 2/3;
+	grid-row: 2/3;
+}
+.assigned_icon {
+	margin: auto 0;
+	width: 25px;
+	grid-column: 5/6;
+	grid-row: 1/2;
+}
+.booking_icon {
+	margin: auto 0;
+	width: 30px;
+	grid-column: 5/6;
+	grid-row: 2/3;
+}
+
+@media screen and (min-width: 600px) {
+	.container {
+		height: 120px;
+
+		font-size: 20px;
+	}
+
+	.specialty_icon {
+		width: 30px;
+	}
+	.service_icon {
+		width: 30px;
+	}
+	.assigned_icon {
+		width: 30px;
+	}
+	.booking_icon {
+		width: 35px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.container {
+		height: 70px;
+		grid-template-columns: 1fr 1fr 4fr 0.2fr 1fr 4fr 0.2fr 1fr 4fr 0.2fr 1fr 4fr 0.2fr;
+		grid-template-rows: 1fr;
+		font-size: 24px;
+	}
+	.specialty_icon {
+		grid-column: 2/3;
+		grid-row: 1/2;
+	}
+	.specialty {
+		grid-column: 3/4;
+		grid-row: 1/2;
+	}
+	.service_icon {
+		grid-column: 5/6;
+		grid-row: 1/2;
+	}
+
+	.service {
+		grid-column: 6/7;
+		grid-row: 1/2;
+	}
+	.assigned_icon {
+		grid-column: 8/9;
+		grid-row: 1/2;
+	}
+	.assigned {
+		grid-column: 9/10;
+		grid-row: 1/2;
+	}
+	.booking_icon {
+		grid-column: 11/12;
+		grid-row: 1/2;
+	}
+	.booking {
+		grid-column: 12/13;
+		grid-row: 1/2;
+	}
+}

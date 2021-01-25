@@ -1,0 +1,32 @@
+.container {
+	width: 90%;
+	height: 900px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.box {
+	display: flex;
+	background-color: #ffffff;
+	height: 750px;
+	border-radius: 10px;
+}
+.cards {
+	width: 90%;
+	margin: auto;
+	height: 700px;
+	overflow-y: auto;
+}
+
+.headers {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	text-align: center;
+	width: 100%;
+	grid-column: content;
+	grid-row: headers;
+}
+
+@media screen and (min-width: 600px) {
+}

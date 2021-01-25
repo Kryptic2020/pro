@@ -14,7 +14,11 @@ const Input_custom = (props) => {
 				{props.label}
 			</label>
 			<div
-				style={{ width: props.width }}
+				style={{
+					width: props.width,
+					height: props.height,
+					lineHeight: props.lineHeight,
+				}}
 				className={classes.input}
 			>
 				<input

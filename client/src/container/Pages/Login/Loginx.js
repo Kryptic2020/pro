@@ -341,8 +341,8 @@ class Loginx extends Component {
 					<div
 						className={
 							this.state.isSignup
-								? classes.continueButton2
-								: classes.continueButton
+								? classes.continueButtonSignup
+								: classes.continueButtonLogin
 						}
 					>
 						<ContinueButton

@@ -1,0 +1,40 @@
+.container {
+	display: flex;
+	background-color: #11b9f0;
+	width: 100%;
+	height: 60px;
+}
+
+.box {
+	transform: scale(0.7, 0.7);
+
+	margin: auto;
+
+	text-align: center;
+}
+
+@media screen and (min-width: 350px) {
+	.container {
+		height: 100px;
+	}
+	.box {
+		transform: scale(1);
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.container {
+		height: 100px;
+	}
+	.box {
+		transform: scale(1.3);
+	}
+}
+@media screen and (min-width: 600px) {
+	.container {
+		height: 120px;
+	}
+	.box {
+		transform: scale(2);
+	}
+}

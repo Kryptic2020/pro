@@ -9,11 +9,9 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
 import Landing from '../container/Pages/Landing';
-
 //import Auth from '../container/Auth/Auth';
 import VerifyEmail from '../container/Pages/VerifyEmail';
 //import ReqResetPass from '../container/Auth/ReqResetPass';
-
 //import CalendarBuilder from '../container/Pages/CalendarBuilder';
 import CreateTimeTables from '../container/Pages/TimeTables';
 import Booking from '../container/Pages/Booking';
@@ -25,10 +23,9 @@ import WaitingList from '../container/Pages/WaitingList';
 //import TimeTables from '../container/Pages/TimeTables';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import Assign_staff from '../container/Pages/Assign_staff/Assign_staff';
-import Profile from '../container/Pages/Profile';
+//import Profile from '../container/Pages/Profile';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
-
 //import classes from './App.module.css';
 //import Background from '../assets/LogoP.jpg';
 import FacebookEmailAdd from '../container/Auth/FacebookEmailAdd';
@@ -48,6 +45,13 @@ import OverrideSlot from '../container/Pages/OverrideSlot/OverrideSlot';
 import DeleteSlot from '../container/Pages/DeleteSlot/DeleteSlot';
 import SlotHistory from '../container/Pages/SlotHistory/SlotHistory';
 import ProfileManager from '../container/Pages/ProfileManager/ProfileManager';
+import Profile from '../container/Pages/Profile/Profile';
+import MyBookings from '../container/Pages/MyBookings/MyBookings';
+import WaitingListReport from '../container/Pages/WaitingListReport/WaitingListReport';
+import Sales from '../container/Pages/Sales/Sales';
+import SalesReport from '../container/Pages/SalesReport/SalesReport';
+import MySlots from '../container/Pages/MySlots/MySlots';
+import BookNow from '../container/Pages/BookNow/BookNow';
 
 //BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
 
@@ -129,14 +133,6 @@ class App extends Component {
 							path='/verify-email'
 							component={VerifyEmail}
 						/>
-
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/profile'
-								component={Profile}
-							/>
-						) : null}
 
 						<Route
 							path='/settings'
@@ -301,11 +297,71 @@ class App extends Component {
 								component={ProfileManager}
 							/>
 						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/profile'
+								component={Profile}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/my-bookings'
+								component={MyBookings}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/waiting-list-report'
+								component={
+									WaitingListReport
+								}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/sales'
+								component={Sales}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/my-slots'
+								component={MySlots}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/sales-report'
+								component={SalesReport}
+							/>
+						) : null}
+
+						{this.props.authenticated ? (
+							<Route
+								exact
+								path='/book-now'
+								component={BookNow}
+							/>
+						) : null}
 					</div>
-					{window.location.pathname !==
-					'/loginx' ? (
-						<Footer />
-					) : null}
+					{
+						/*window.location.pathname !==
+					'/loginx' ? (*/
+						<Footer /> /*
+					) : null*/
+					}
 				</BrowserRouter>
 			</div>
 		);

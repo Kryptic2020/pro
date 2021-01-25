@@ -1,0 +1,112 @@
+.container {
+	height: 950px;
+	margin: auto;
+	background-color: #24cd98;
+	border-radius: 10px 10px 0 0;
+}
+.subcontainer {
+	margin: auto;
+	width: 90%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 0.2fr 1.2fr;
+	grid-template-rows: 1fr[box-start]max-content[box-end]1fr[name-start]max-content[name-end]1fr[email-start]max-content[email-end]1fr[verified_provider-start]max-content[verified_provider-end]1fr[phone-start]max-content[phone-end]1fr[message-start]max-content[message-end]1fr;
+}
+.photo {
+	margin: 0 auto;
+	height: 232px;
+	width: 232px;
+	background-color: #ffffff;
+	border-radius: 50%;
+}
+.upload {
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.box {
+	display: flex;
+	flex-direction: column;
+	grid-column: 1/4;
+	grid-row: box;
+}
+.name {
+	grid-column: 1/4;
+	grid-row: name;
+}
+.email {
+	grid-column: 1/4;
+	grid-row: email;
+}
+.verified {
+	grid-column: 1/2;
+	grid-row: verified_provider;
+}
+.provider {
+	grid-column: 3/4;
+	grid-row: verified_provider;
+}
+.phone {
+	grid-column: 1/4;
+	grid-row: phone;
+}
+.message {
+	grid-column: 1/4;
+	grid-row: message;
+}
+
+@media screen and (min-width: 600px) {
+	.container {
+		height: 1000px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.container {
+		height: 650px;
+	}
+	.subcontainer {
+		grid-template-columns: 1fr 0.2fr 1fr;
+		grid-template-rows: 1fr[one-start]max-content[one-end]1fr[two-start]max-content[two-end]1fr[three-start]max-content[three-end]1fr[four-start]max-content[four-end]1fr;
+	}
+	.photo {
+		margin: 0 auto;
+		height: 232px;
+		width: 232px;
+		background-color: #ffffff;
+		border-radius: 50%;
+	}
+	.upload {
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+	.box {
+		display: flex;
+		flex-direction: column;
+		grid-column: 3/4;
+		grid-row: three / four;
+	}
+	.name {
+		grid-column: 1/2;
+		grid-row: one;
+	}
+	.email {
+		grid-column: 3/4;
+		grid-row: one;
+	}
+	.verified {
+		grid-column: 3/4;
+		grid-row: two;
+	}
+	.provider {
+		grid-column: 1/2;
+		grid-row: three;
+	}
+	.phone {
+		grid-column: 1/2;
+		grid-row: two;
+	}
+	.message {
+		grid-column: 1/2;
+		grid-row: four;
+	}
+}

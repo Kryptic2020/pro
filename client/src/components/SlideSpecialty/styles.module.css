@@ -1,0 +1,38 @@
+.container {
+	height: 235px;
+	width: 100%;
+	background-color: #4bd08c;
+}
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 100%;
+	width: 280px;
+	margin: 0 auto;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+
+.header {
+	font-family: 'Playfair Display', serif;
+	font-size: 20px;
+	color: #11b9f0;
+	text-align: center;
+	width: 100%;
+	text-shadow: 0px 1px 1px black;
+}
+.text {
+	font-size: 16px;
+	text-align: left;
+	width: 90%;
+	color: #504f4b;
+	margin: 0 auto;
+}
+.button {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+@media screen and (min-width: 480px) {
+}

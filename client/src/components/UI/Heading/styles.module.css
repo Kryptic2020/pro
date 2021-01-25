@@ -1,18 +1,18 @@
 .heading {
 	font-family: 'Playfair Display', serif;
-	font-size: 18px;
+	font-size: 24px;
 	text-align: center;
 	color: #504f4b;
 }
 
 @media screen and (min-width: 600px) {
 	.heading {
-		font-size: 24px;
+		font-size: 28px;
 	}
 }
 
 @media screen and (min-width: 1000px) {
 	.heading {
-		font-size: 30px;
+		font-size: 32px;
 	}
 }

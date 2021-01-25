@@ -7,7 +7,7 @@
 	height: 56px;
 	background-color: #29a07b;
 	border: none;
-	border-radius: 5px;
+	border-radius: 0 0 10px 10px;
 }
 .button:hover {
 	background-color: #38f495;

@@ -1,0 +1,19 @@
+.container {
+	height: 800px;
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+@media screen and (min-width: 600px) {
+	.container {
+		height: 950px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.container {
+		height: 700px;
+	}
+}

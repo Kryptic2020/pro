@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classes from './styles.module.css';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
-class Model extends Component {
+class MyBookings extends Component {
 	state = {
 		isLoading: false,
 	};
@@ -17,4 +17,4 @@ class Model extends Component {
 	}
 }
 
-export default Model;
+export default MyBookings;

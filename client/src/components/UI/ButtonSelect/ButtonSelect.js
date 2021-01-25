@@ -4,7 +4,10 @@ import classes from './styles.module.css';
 const Button_select = (props) => {
 	return (
 		<div>
-			<button className={classes.button}>
+			<button
+				style={{ display: props.display }}
+				className={classes.button}
+			>
 				SELECT
 			</button>
 		</div>

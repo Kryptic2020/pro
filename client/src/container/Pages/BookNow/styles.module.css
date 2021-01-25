@@ -1,0 +1,10 @@
+.container {
+	height: 700px;
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-evenly;
+}
+
+@media screen and (min-width: 600px) {
+}

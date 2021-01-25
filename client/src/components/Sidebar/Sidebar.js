@@ -6,55 +6,63 @@ import Settings from '../UI/Iconsx/Settings';
 import Dashboard from '../UI/Iconsx/Dashboard';
 import Logout from '../UI/Iconsx/Logout';
 import Home from '../UI/Iconsx/Home';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
 	return (
 		<>
 			<div className={classes.container}></div>
 			<div className={classes.box}>
-				<a className={classes.home} href='/'>
+				<Link
+					onClick={props.onClick}
+					to='/'
+					className={classes.home}
+				>
 					<div className={classes.home_icon}>
 						<Home />
 					</div>
 					<div>HOME</div>
-				</a>
-				<a
+				</Link>
+				<Link
+					onClick={props.onClick}
+					to='user-options'
 					className={classes.user}
-					href='user-options'
 				>
 					<div className={classes.user_icon}>
 						<User />
 					</div>
 					<div>USER OPTIONS</div>
-				</a>
-				<a
+				</Link>
+				<Link
+					onClick={props.onClick}
+					to='settings'
 					className={classes.settings}
-					href='settings'
 				>
 					<div className={classes.settings_icon}>
 						<Settings />
 					</div>
 					<div>SETTINGS</div>
-				</a>
-				<a
+				</Link>
+				<Link
+					onClick={props.onClick}
+					to='dashboard'
 					className={classes.dashboard}
-					href='dashboard'
 				>
 					<div className={classes.dashboard_icon}>
 						<Dashboard />
 					</div>
 					<div>DASHBOARD</div>
-				</a>
-				<a
+				</Link>
+				<Link
+					onClick={props.onClick}
+					to='/api/logout'
 					className={classes.logout}
-					href='/api/logout'
 				>
 					<div className={classes.logout_icon}>
 						<Logout />
 					</div>
 					<div>LOGOUT</div>
-				</a>
+				</Link>
 			</div>
 		</>
 	);

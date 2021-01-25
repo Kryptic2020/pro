@@ -1,0 +1,11 @@
+.headers {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	text-align: center;
+	width: 100%;
+	grid-column: content;
+	grid-row: headers;
+}
+
+@media screen and (min-width: 480px) {
+}

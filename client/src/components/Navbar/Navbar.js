@@ -30,23 +30,23 @@ class Navbar extends Component {
 	render() {
 		const icons = (
 			<div className={classes.icons}>
-				<a href='/'>
+				<Link to='/'>
 					<Home width={24} />
-				</a>
+				</Link>
 
-				<a href='/dashboard'>
+				<Link to='/dashboard'>
 					<Dashboard width={24} />
-				</a>
+				</Link>
 
-				<a href='/settings'>
+				<Link to='/settings'>
 					<Settings width={22} />
-				</a>
-				<a href='/user-options'>
+				</Link>
+				<Link to='/user-options'>
 					<User width={22} />
-				</a>
-				<a href='/api/logout'>
+				</Link>
+				<Link to='/api/logout'>
 					<Logout width={24} />
-				</a>
+				</Link>
 			</div>
 		);
 		return (
@@ -128,7 +128,11 @@ class Navbar extends Component {
 						</div>
 					)}
 				</div>
-				{this.state.show ? <Sidebar /> : null}
+				{this.state.show ? (
+					<Sidebar
+						onClick={this.showSideBarHandler}
+					/>
+				) : null}
 			</>
 		);
 	}
