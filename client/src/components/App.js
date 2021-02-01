@@ -52,6 +52,7 @@ import Sales from '../container/Pages/Sales/Sales';
 import SalesReport from '../container/Pages/SalesReport/SalesReport';
 import MySlots from '../container/Pages/MySlots/MySlots';
 import BookNow from '../container/Pages/BookNow/BookNow';
+import Homepage from '../container/Pages/Home/Home';
 
 //BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
 
@@ -355,6 +356,12 @@ class App extends Component {
 								component={BookNow}
 							/>
 						) : null}
+
+						<Route
+							exact
+							path='/home'
+							component={Homepage}
+						/>
 					</div>
 					{
 						/*window.location.pathname !==

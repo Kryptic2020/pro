@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import classes from './styles.module.css';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import WavesSmall from '../../../components/UI/Iconsx/WavesSmall';
 import Heading from '../../../components/UI/Heading/Heading';
-import ProgressBar from '../../../components/ProgressBar/ProgressBar';
-import BookingBar from '../../../components/BookingBar/BookingBar';
+import ButtonBookNow from '../../../components/UI/ButtonBookNow/ButtonBookNow';
+import EasySteps from '../../../components/EasySteps/EasySteps';
 import CarouselSpecialty from '../../../components/CarouselSpecialty/CarouselSpecialty';
 import CarouselStaff from '../../../components/CarouselStaff/CarouselStaff';
 import CarouselService from '../../../components/CarouselService/CarouselService';
-import FormDateTime from '../../../components/FormDateTime/FormDateTime';
-import TermsConditions from '../../../components/TermsConditions/TermsConditions';
 
-class BookNow extends Component {
+class MyBookings extends Component {
 	state = {
 		isLoading: false,
-		stage: 5,
 		serviceArray: [
 			{
 				service: 'Fillig',
@@ -62,56 +60,55 @@ class BookNow extends Component {
 			<div>
 				{this.state.isLoading ? <Spinner /> : null}
 				<div className={classes.container}>
-					<Heading text={'User > Book Now'} />
 					<div className={classes.box}>
-						<div
-							className={classes.progressBar}
-						>
-							<ProgressBar
-								stage={this.state.stage}
+						<div className={classes.header}>
+							<Heading
+								color='#ffffff'
+								text='Hairdresser & Manicurist Appointments'
 							/>
 						</div>
-						{this.state.stage === 1 ? (
-							<CarouselSpecialty
-								//display_select='none'
-								specialtyArray={
-									this.state
-										.specialtyArray
-								}
+						<div className={classes.button}>
+							<ButtonBookNow
+								text='Book Now'
+								backgroundColor='#24CD98'
+								color='#ffffff'
 							/>
-						) : null}
+						</div>
+						<div
+							className={
+								classes.business_details
+							}
+						>
+							Lorem ipsum dolor sit amet,
+							consetetur sadipscing elitr, sed
+							diam nonumy eirmod tempor
+						</div>
 
-						{this.state.stage === 2 ? (
-							<CarouselStaff
-								photoArray={
-									this.state.photoArray
-								}
-							/>
-						) : null}
-
-						{this.state.stage === 3 ? (
-							<CarouselService
-								serviceArray={
-									this.state.serviceArray
-								}
-							/>
-						) : null}
-
-						{this.state.stage === 4 ? (
-							<FormDateTime />
-						) : null}
-						{this.state.stage === 5 ? (
-							<TermsConditions />
-						) : null}
-
-						<div className={classes.bookingBar}>
-							<BookingBar />
+						<div className={classes.wavesSmall}>
+							<WavesSmall />
 						</div>
 					</div>
+					<EasySteps />
+					<CarouselSpecialty
+						display_select='none'
+						specialtyArray={
+							this.state.specialtyArray
+						}
+					/>
+					<CarouselStaff
+						display_select='none'
+						photoArray={this.state.photoArray}
+					/>
+					<CarouselService
+						display_select='none'
+						serviceArray={
+							this.state.serviceArray
+						}
+					/>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default BookNow;
+export default MyBookings;

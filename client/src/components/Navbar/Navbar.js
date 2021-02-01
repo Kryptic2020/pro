@@ -44,9 +44,9 @@ class Navbar extends Component {
 				<Link to='/user-options'>
 					<User width={22} />
 				</Link>
-				<Link to='/api/logout'>
+				<a href='/api/logout'>
 					<Logout width={24} />
-				</Link>
+				</a>
 			</div>
 		);
 		return (
@@ -116,7 +116,7 @@ class Navbar extends Component {
 							}
 							style={{ width: '65px' }}
 						>
-							<Link to='/login'>
+							<Link to='/loginx'>
 								{window.location
 									.pathname !==
 								'/loginx' ? (
