@@ -15,7 +15,7 @@ const Sidebar = (props) => {
 			<div className={classes.box}>
 				<Link
 					onClick={props.onClick}
-					to='/'
+					to='/home'
 					className={classes.home}
 				>
 					<div className={classes.home_icon}>

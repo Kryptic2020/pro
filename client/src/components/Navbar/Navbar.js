@@ -30,7 +30,7 @@ class Navbar extends Component {
 	render() {
 		const icons = (
 			<div className={classes.icons}>
-				<Link to='/'>
+				<Link to='/home'>
 					<Home width={24} />
 				</Link>
 
