@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-//import { render } from 'react-dom';
 import {
 	BrowserRouter,
 	Route,
 	Redirect,
 } from 'react-router-dom';
-//import Header from '../container/Pages/Header';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
-import Landing from '../container/Pages/Landing';
-//import Auth from '../container/Auth/Auth';
 import VerifyEmail from '../container/Pages/VerifyEmail';
-//import ReqResetPass from '../container/Auth/ReqResetPass';
-//import CalendarBuilder from '../container/Pages/CalendarBuilder';
 import CreateTimeTables from '../container/Pages/TimeTables';
 import Booking from '../container/Pages/Booking';
 import BookingAdm from '../container/Pages/BookingAdm';
@@ -20,14 +14,10 @@ import MyBooking from '../container/Pages/MyBooking';
 import Contacts from '../container/Pages/Contacts';
 import Calendar from '../container/Pages/Calendar';
 import WaitingList from '../container/Pages/WaitingList';
-//import TimeTables from '../container/Pages/TimeTables';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import Assign_staff from '../container/Pages/Assign_staff/Assign_staff';
-//import Profile from '../container/Pages/Profile';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
-//import classes from './App.module.css';
-//import Background from '../assets/LogoP.jpg';
 import FacebookEmailAdd from '../container/Auth/FacebookEmailAdd';
 import Loginx from '../container/Pages/Login/Loginx';
 import PersonalInfoPage from '../container/Pages/PersonalInfo/PersonalInfo';
@@ -104,12 +94,6 @@ class App extends Component {
 							exact
 							path='/personal-info'
 							component={PersonalInfoPage}
-						/>
-
-						<Route
-							exact
-							path='/'
-							component={Landing}
 						/>
 
 						<Route
@@ -359,16 +343,14 @@ class App extends Component {
 
 						<Route
 							exact
-							path='/home'
+							path='/'
 							component={Homepage}
 						/>
 					</div>
-					{
-						/*window.location.pathname !==
-					'/loginx' ? (*/
-						<Footer /> /*
-					) : null*/
-					}
+					{window.location.pathname !==
+					'/loginx' ? (
+						<Footer />
+					) : null}
 				</BrowserRouter>
 			</div>
 		);

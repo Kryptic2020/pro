@@ -24,6 +24,7 @@ const Input_custom = (props) => {
 				<input
 					disableUnderline={true}
 					type={props.type}
+					value={props.value}
 					onClick={props.onClick}
 					onChange={props.onChange}
 				/>

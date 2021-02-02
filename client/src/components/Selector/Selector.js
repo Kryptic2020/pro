@@ -19,6 +19,8 @@ const Selector = (props) => {
 						{props.off}
 						<input
 							onChange={props.onChange}
+							value={props.value}
+							checked={props.checked}
 							type='checkbox'
 						></input>
 						<span className='lever'></span>

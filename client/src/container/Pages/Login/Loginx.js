@@ -47,7 +47,7 @@ class Loginx extends Component {
 	};
 
 	componentDidMount() {
-		if (this.props.authRedirectPath !== '/home') {
+		if (this.props.authRedirectPath !== '/') {
 			this.props.onSetAuthRedirectPath();
 		}
 		this.scrollToTop();
@@ -382,7 +382,7 @@ const mapDispatchToProps = (dispatch) => {
 				)
 			),
 		onSetAuthRedirectPath: () =>
-			dispatch(actions.setAuthRedirectPath('/home')),
+			dispatch(actions.setAuthRedirectPath('/')),
 	};
 };
 

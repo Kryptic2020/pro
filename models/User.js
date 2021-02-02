@@ -11,6 +11,7 @@ const userSchema = new Schema({
 	givenName: String,
 	familyName: String,
 	photo: String,
+	photoType: String,
 	phone: { type: Number },
 	password: String,
 	provider: String,

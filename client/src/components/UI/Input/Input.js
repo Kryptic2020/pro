@@ -16,6 +16,7 @@ const input = (props) => {
 				{props.msg}
 			</label>
 			<input
+				autocomplete='on'
 				style={{
 					fontSize: '18px',
 					height: '50px',

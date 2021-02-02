@@ -1,5 +1,5 @@
 .container {
-	height: 950px;
+	height: 980px;
 	margin: auto;
 	background-color: #24cd98;
 	border-radius: 10px 10px 0 0;
@@ -49,14 +49,20 @@
 	grid-column: 1/4;
 	grid-row: phone;
 }
-.message {
+.info {
 	grid-column: 1/4;
 	grid-row: message;
+}
+.label {
+	font-family: 'Roboto, sans-serif';
+	font-size: 16px;
+	text-align: left;
+	color: #ffffff;
 }
 
 @media screen and (min-width: 600px) {
 	.container {
-		height: 1000px;
+		height: 1080px;
 	}
 }
 
@@ -105,7 +111,7 @@
 		grid-column: 1/2;
 		grid-row: two;
 	}
-	.message {
+	.info {
 		grid-column: 1/2;
 		grid-row: four;
 	}

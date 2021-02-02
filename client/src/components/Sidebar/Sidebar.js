@@ -15,7 +15,7 @@ const Sidebar = (props) => {
 			<div className={classes.box}>
 				<Link
 					onClick={props.onClick}
-					to='/home'
+					to='/'
 					className={classes.home}
 				>
 					<div className={classes.home_icon}>
@@ -53,16 +53,16 @@ const Sidebar = (props) => {
 					</div>
 					<div>DASHBOARD</div>
 				</Link>
-				<Link
+				<a
 					onClick={props.onClick}
-					to='/api/logout'
+					href='/api/logout'
 					className={classes.logout}
 				>
 					<div className={classes.logout_icon}>
 						<Logout />
 					</div>
 					<div>LOGOUT</div>
-				</Link>
+				</a>
 			</div>
 		</>
 	);

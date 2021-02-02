@@ -29,7 +29,12 @@ mongoose.connect(keys.mongoURI, {
 const app = express();
 
 // Body Parser Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+	bodyParser.urlencoded({
+		limit: '10mb',
+		extended: false,
+	})
+);
 app.use(bodyParser.json());
 
 app.use(
@@ -59,6 +64,7 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/calendarRoutes')(app);
 require('./routes/contactsRoutes')(app);
+//require('./routes/imageRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
 	//express will serve up production assets like our main.js file, or main.css file

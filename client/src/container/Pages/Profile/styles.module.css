@@ -2,19 +2,19 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	height: 1450px;
+	height: 1550px;
 	width: 90%;
 	margin: 0 auto;
 }
 .switch_status {
-	height: 90px;
+	height: 110px;
 }
 .box {
 	display: flex;
 	padding: 5%;
 	justify-content: space-evenly;
 	flex-direction: column;
-	height: 150px;
+	height: 170px;
 	background-color: #38f495;
 }
 .text {
@@ -27,10 +27,13 @@
 	width: 50%;
 }
 .switch_admin {
-	height: 90px;
+	height: 110px;
 }
 
 @media screen and (min-width: 600px) {
+	.container {
+		height: 1700px;
+	}
 	.text {
 		font-size: 20px;
 	}
