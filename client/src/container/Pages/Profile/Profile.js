@@ -8,7 +8,11 @@ import CardProfile from '../../../components/CardProfile/CardProfile';
 import Heading from '../../../components/UI/Heading/Heading';
 import Switch from '../../../components/Selector/Selector';
 import InputCustom from '../../../components/UI/InputCustom/InputCustom';
+import Close from '../../../components/UI/Iconsx/Close';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+
 const Compress = require('compress.js');
 
 const initialState = {
@@ -29,6 +33,13 @@ const initialState = {
 	selectedFile: [],
 	convertedPhoto: '',
 	test: '',
+
+	src: null,
+	crop: {
+		unit: 'px',
+		width: 250,
+		aspect: 16 / 16,
+	},
 };
 
 class Profile extends Component {
@@ -41,7 +52,7 @@ class Profile extends Component {
 		});
 	}
 	componentDidMount() {
-		console.log(this.props.photo);
+		this.setState({ selectedFile: '' });
 		this.fetchProfile();
 		this.scrollToTop();
 	}
@@ -60,7 +71,6 @@ class Profile extends Component {
 		};
 		Axios.post('/api/profile/get', ID)
 			.then((res) => {
-				//console.log(res.data);
 				this.setState({
 					...this.state,
 					phone: res.data.phone,
@@ -79,11 +89,8 @@ class Profile extends Component {
 					daysCalendarView:
 						res.data.daysCalendarView,
 				});
-				//console.log(res.data.provider);
 			})
-			.catch((err) => {
-				//console.log(err);
-			});
+			.catch((err) => {});
 	};
 
 	inputChangeHandler = (event, input) => {
@@ -123,6 +130,77 @@ class Profile extends Component {
 		window.location.reload(false);
 	};
 	fileSelectHandler = (e) => {
+		console.log([...e.target.files]);
+		if (e.target.files && e.target.files.length > 0) {
+			const reader = new FileReader();
+			reader.addEventListener('load', () =>
+				this.setState({ src: reader.result })
+			);
+			reader.readAsDataURL(e.target.files[0]);
+		}
+	};
+	onImageLoaded = (image) => {
+		this.imageRef = image;
+	};
+
+	onCropComplete = (crop) => {
+		this.makeClientCrop(crop);
+	};
+
+	onCropChange = (crop, percentCrop) => {
+		// You could also use percentCrop:
+		// this.setState({ crop: percentCrop });
+		this.setState({ crop });
+	};
+
+	async makeClientCrop(crop) {
+		if (this.imageRef && crop.width && crop.height) {
+			const croppedImageUrl = await this.getCroppedImg(
+				this.imageRef,
+				crop,
+				'newFile.jpeg'
+			);
+			this.setState({ croppedImageUrl });
+			//console.log(croppedImageUrl);
+		}
+	}
+
+	getCroppedImg(image, crop, fileName) {
+		const canvas = document.createElement('canvas');
+		const scaleX = image.naturalWidth / image.width;
+		const scaleY = image.naturalHeight / image.height;
+		canvas.width = crop.width;
+		canvas.height = crop.height;
+		const ctx = canvas.getContext('2d');
+
+		ctx.drawImage(
+			image,
+			crop.x * scaleX,
+			crop.y * scaleY,
+			crop.width * scaleX,
+			crop.height * scaleY,
+			0,
+			0,
+			crop.width,
+			crop.height
+		);
+
+		const base64Image = canvas.toDataURL('image/jpeg');
+		this.setState({ selectedFile: base64Image });
+	}
+	CloseCropHandler = () => {
+		this.setState({
+			...this.state,
+			src: '',
+		});
+	};
+
+	fileUploadHandler = () => {
+		console.log(
+			this.state.selectedFile,
+			'click upload'
+		);
+		/*
 		const compress = new Compress();
 
 		const files = [...e.target.files];
@@ -139,24 +217,23 @@ class Profile extends Component {
 				this.setState({
 					selectedFile: data[0].data,
 				});
-			});
-	};
-	fileUploadHandler = () => {
+			});*/
 		//console.log(this.state.convertedPhoto);
 		const data = { photo: this.state.selectedFile };
-		Axios.post('/api/picture', data).then((res) => {
-			console.log(res);
-		});
-
+		Axios.post('/api/picture', data).then((res) => {});
+		this.setState({ selectedFile: '' });
+		window.location.reload(false);
 		/*axios url, data,onUploadProgress: progressEvent =>{console.log('Upload Progress:' + Math.round(progressEvent.loaded / progressEvent.total * 100)+'%')}*/
 	};
 
 	render() {
+		const { crop, selectedFile, src } = this.state;
 		const data = this.props.photo;
 		const Example = ({ data }) => (
 			<img
+				alt='Image Database'
 				style={{ borderRadius: '50%' }}
-				src={`data:image/jpeg;base64,${data}`}
+				src={`${data}`}
 				width={250}
 				height={250}
 			/>
@@ -168,8 +245,61 @@ class Profile extends Component {
 				<div className={classes.container}>
 					<Heading text={'User > Profile'} />
 					<div>
+						<div className={classes.crop}>
+							<div
+								onClick={
+									this.CloseCropHandler
+								}
+								className={
+									classes.crop_close
+								}
+							>
+								{this.state.src ? (
+									<Close />
+								) : null}
+							</div>
+							{src && (
+								<ReactCrop
+									src={src}
+									crop={crop}
+									ruleOfThirds
+									onImageLoaded={
+										this.onImageLoaded
+									}
+									onComplete={
+										this.onCropComplete
+									}
+									onChange={
+										this.onCropChange
+									}
+								/>
+							)}
+						</div>
 						<CardProfile
-							photo={<Example data={data} />}
+							photo={
+								this.state.selectedFile ? (
+									selectedFile && (
+										<img
+											alt='Crop Image'
+											style={{
+												marginLeft:
+													'-2%',
+												maxWidth:
+													'255px',
+												maxHeight:
+													'255px',
+												borderRadius:
+													'50%',
+											}}
+											src={
+												selectedFile
+											}
+										/>
+									)
+								) : (
+									<Example data={data} />
+								)
+							}
 							fullName={this.state.fullName}
 							email={this.state.email}
 							verified={
@@ -189,25 +319,7 @@ class Profile extends Component {
 									event,
 									'fullName'
 								)
-							} /*
-							onChange_email={(event) =>
-								this.inputChangeHandler(
-									event,
-									'email'
-								)
 							}
-							onChange_verified={(event) =>
-								this.inputChangeHandler(
-									event,
-									'emailVerified'
-								)
-							}
-							onChange_provider={(event) =>
-								this.inputChangeHandler(
-									event,
-									'provider'
-								)
-							}*/
 							onChange_phone={(event) =>
 								this.inputChangeHandler(
 									event,
@@ -220,7 +332,7 @@ class Profile extends Component {
 									'info'
 								)
 							}
-						/>
+						/>{' '}
 						<div
 							className={classes.subcontainer}
 						>

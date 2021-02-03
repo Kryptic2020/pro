@@ -7,6 +7,7 @@ const Button_select = (props) => {
 			<button
 				style={{ display: props.display }}
 				className={classes.button}
+				onClick={props.onClick}
 			>
 				SELECT
 			</button>

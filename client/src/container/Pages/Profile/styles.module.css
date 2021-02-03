@@ -6,6 +6,17 @@
 	width: 90%;
 	margin: 0 auto;
 }
+.crop {
+	position: absolute;
+	width: 90%;
+	margin: 0 auto;
+	z-index: 20;
+	margin-top: 340px;
+}
+.crop_close {
+	width: 30px;
+	margin-left: 90%;
+}
 .switch_status {
 	height: 110px;
 }
@@ -34,6 +45,7 @@
 	.container {
 		height: 1700px;
 	}
+
 	.text {
 		font-size: 20px;
 	}
@@ -43,8 +55,14 @@
 	.text {
 		font-size: 24px;
 	}
+	.crop {
+		position: absolute;
+		width: 50%;
+		z-index: 20;
+		margin-top: 300px;
+	}
 	.container {
-		height: 1100px;
+		height: 1200px;
 	}
 	.subcontainer {
 		display: grid;

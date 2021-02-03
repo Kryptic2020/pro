@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
-import VerifyEmail from '../container/Pages/VerifyEmail';
+import VerifyEmail from '../container/Pages/VerifyEmail/VerifyEmail';
 import CreateTimeTables from '../container/Pages/TimeTables';
 import Booking from '../container/Pages/Booking';
 import BookingAdm from '../container/Pages/BookingAdm';

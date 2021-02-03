@@ -1,0 +1,58 @@
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+}
+.subcontainer {
+	background-color: #38f495;
+	height: 70%;
+}
+
+.box {
+	position: relative;
+	display: flex;
+	margin: 0 auto;
+	flex-direction: column;
+	height: 100%;
+	width: 90%;
+	text-align: center;
+	justify-content: space-evenly;
+}
+
+.wavesSmall {
+	position: absolute;
+	width: 120%;
+	height: 100%;
+	top: 0px;
+}
+.heading {
+	position: relative;
+	z-index: 5;
+	width: 100%;
+}
+.greatings {
+	z-index: 10;
+	color: #ffffff;
+	font-size: 24px;
+}
+.info {
+	z-index: 10;
+}
+
+@media screen and (min-width: 600px) {
+	.wavesSmall {
+		position: absolute;
+		transform: scale(1, 0.7);
+		/*height: 100%;*/
+		top: -96px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.wavesSmall {
+		transform: scale(1, 0.5);
+		top: -175px;
+	}
+	.subcontainer {
+		height: 80%;
+	}
+}

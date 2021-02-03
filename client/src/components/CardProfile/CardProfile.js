@@ -3,6 +3,7 @@ import classes from './styles.module.css';
 import InputCustom from '../UI/InputCustom/InputCustom';
 import ButtonCustom from '../UI/ButtonCustom/ButtonCustom';
 import TextareaAutosize from 'react-textarea-autosize';
+import ButtonSelect from '../UI/ButtonSelect/ButtonSelect';
 
 const CardProfile = (props) => {
 	const fileInput = React.useRef(null);
@@ -19,25 +20,30 @@ const CardProfile = (props) => {
 							id='upload'
 							type='file'
 							name='photo'
-							class='filepond'
+							accept='image/*'
+							//class='filepond'
 							onChange={props.onChange_file}
 							ref={fileInput}
 						/>
 						{
-							<button
-								onClick={() =>
-									fileInput.current.click()
-								}
-							>
-								Pick File
-							</button>
+							<div>
+								<ButtonSelect
+									onClick={() =>
+										fileInput.current.click()
+									}
+								></ButtonSelect>
+							</div>
 						}
-						<ButtonCustom
-							onClick={props.onClick_upload}
-							backgroundColor={'#11B9F0'}
-							color={'#ffffff'}
-							text={'UPLOAD IMAGE'}
-						/>
+						<div>
+							<ButtonCustom
+								onClick={
+									props.onClick_upload
+								}
+								backgroundColor={'#11B9F0'}
+								color={'#ffffff'}
+								text={'UPLOAD IMAGE'}
+							/>
+						</div>
 					</div>
 				</div>
 				<div className={classes.name}>

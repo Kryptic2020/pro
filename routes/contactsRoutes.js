@@ -85,6 +85,7 @@ module.exports = (app) => {
 		requireLogin,
 		async (req, res) => {
 			const { photo } = req.body;
+			console.log(photo, 'bateu');
 			await User.updateOne(
 				{ _id: req.user._id },
 				{ photo }
