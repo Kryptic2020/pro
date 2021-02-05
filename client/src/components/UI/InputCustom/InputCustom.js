@@ -22,6 +22,7 @@ const Input_custom = (props) => {
 				className={classes.input}
 			>
 				<input
+					id={props.id}
 					disableUnderline={true}
 					type={props.type}
 					value={props.value}

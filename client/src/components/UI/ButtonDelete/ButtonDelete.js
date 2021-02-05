@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './styles.module.css';
 
-const Button_select = (props) => {
+const ButtonDelete = (props) => {
 	return (
 		<div>
 			<button
+				onClick={props.onClick}
 				style={{ width: props.width }}
 				className={classes.button}
 			>
@@ -14,4 +15,4 @@ const Button_select = (props) => {
 	);
 };
 
-export default Button_select;
+export default ButtonDelete;

@@ -59,9 +59,7 @@ module.exports = (app) => {
 					name: specialty,
 				});
 				await s.save();
-				res.send(
-					'Specialty Successfully Created!!!'
-				);
+				res.send('Saved!');
 			}
 		}
 	);

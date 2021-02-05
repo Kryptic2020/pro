@@ -10,10 +10,13 @@ const CardSpecialty = (props) => {
 					{props.text}
 				</div>
 				<div className={classes.button}>
-					<ButtonDelete />
+					<ButtonDelete onClick={props.onClick} />
 				</div>
 				<div className={classes.button_large}>
-					<ButtonDelete width={'200px'} />
+					<ButtonDelete
+						onClick={props.onClick}
+						width={'200px'}
+					/>
 				</div>
 			</div>
 		</div>

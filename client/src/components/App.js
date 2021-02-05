@@ -43,14 +43,19 @@ import SalesReport from '../container/Pages/SalesReport/SalesReport';
 import MySlots from '../container/Pages/MySlots/MySlots';
 import BookNow from '../container/Pages/BookNow/BookNow';
 import Homepage from '../container/Pages/Home/Home';
-
-//BUGS  registro novo usuario nao ta redirecionando / google register com email local ja registrado falta mandar mensagem para usuario e destravar/trazer de volta pa pagina / facebookLogin vai ser a ultima coisa a fazer. / melhorar mensagem usuario forgot pass.
+import Alert from 'react-bootstrap/Alert';
 
 class App extends Component {
+	state = {
+		msn: '',
+	};
 	componentDidMount() {
 		this.props.fetchUser();
 		this.props.fetchAllUsers();
 	}
+	hideMsn = () => {
+		this.setState({ ...this.state, msn: '' });
+	};
 
 	render() {
 		const sectionStyle = {
@@ -66,6 +71,23 @@ class App extends Component {
 			<div>
 				<BrowserRouter>
 					<Navbar />
+					<div className='center'>
+						{this.state.msn ? (
+							<Alert
+								variant='warning '
+								id='msn'
+								onClick={this.hideMsn}
+								style={{
+									marginBottom: '20px',
+									fontSize: '18px',
+								}}
+							>
+								<Alert.Heading>
+									{this.state.msn}
+								</Alert.Heading>
+							</Alert>
+						) : null}
+					</div>
 					<div style={sectionStyle}>
 						{this.props.email &&
 						!this.props.emailVerified ? (
