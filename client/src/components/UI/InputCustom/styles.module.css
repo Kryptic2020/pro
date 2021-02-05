@@ -10,6 +10,7 @@
 input[type='text'] {
 	font-size: 16px;
 	color: #504f4b;
+	vertical-align: middle;
 }
 
 .label {

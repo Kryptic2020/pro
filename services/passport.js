@@ -54,35 +54,44 @@ passport.use(
 			const existingUser = await User.findOne({
 				googleId: profile.id,
 			});
-			console.log(profile);
+			//	console.log(profile);
 			const existingEmail = await User.findOne({
 				email: profile.emails[0].value,
 			});
 			//const emailArray = profile.emails.map(k)=>{}
 
-			if (existingUser && !existingEmail) {
+			/*if (existingUser && !existingEmail) {
 				//already have a record with the given profile ID
 				return done(null, existingUser);
 			} else if (existingEmail) {
 				return done(null, false);
+			} else {*/
+
+			if (existingUser) {
+				//already have a record with the given profile ID
+				return done(null, existingUser);
 			} else {
-				//We don't have a record with this ID, make a new record
-				await new User({
-					googleId: profile.id,
-					fullName: profile.displayName,
-					email: profile.emails[0].value,
-					provider: profile.provider,
-					givenName: profile.name.givenName,
-					familyName: profile.name.familyName,
-					photo: profile.photos[0].value,
-					isAdmin: false,
-					emailVerified: true,
-				})
-					.save()
-					.then((user) => done(null, user));
-				const user = await User.findOne({
-					googleId: profile.id,
-				});
+				if (!existingEmail) {
+					//We don't have a record with this ID, make a new record
+					await new User({
+						googleId: profile.id,
+						fullName: profile.displayName,
+						email: profile.emails[0].value,
+						provider: profile.provider,
+						givenName: profile.name.givenName,
+						familyName: profile.name.familyName,
+						photo: profile.photos[0].value,
+						isAdmin: false,
+						emailVerified: true,
+					})
+						.save()
+						.then((user) => done(null, user));
+					const user = await User.findOne({
+						googleId: profile.id,
+					});
+				} else {
+					return done(null, false);
+				}
 				/*const NotifyAdmin = new AdmMailer(
 					{ subject: 'New user has been registered into our app'},
 					newRegisteredUser(user)

@@ -27,16 +27,20 @@
 }
 .heading {
 	position: relative;
-	z-index: 5;
+	/*z-index: 2;*/
 	width: 100%;
 }
 .greatings {
-	z-index: 10;
+	/*z-index: 4;*/
 	color: #ffffff;
 	font-size: 24px;
 }
 .info {
-	z-index: 10;
+	/*z-index: 10;*/
+}
+.continue {
+	width: 100%;
+	position: relative;
 }
 
 @media screen and (min-width: 600px) {

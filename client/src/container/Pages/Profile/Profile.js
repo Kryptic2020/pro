@@ -283,8 +283,12 @@ class Profile extends Component {
 											alt='Crop Image'
 											style={{
 												marginLeft:
-													'-2%',
+													'-3px',
+												minWidth:
+													'255px',
 												maxWidth:
+													'255px',
+												minHeight:
 													'255px',
 												maxHeight:
 													'255px',

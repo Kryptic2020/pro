@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './styles.module.css';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import Alert from 'react-bootstrap/Alert';
+//import Alert from 'react-bootstrap/Alert';
 import WavesSmall from '../../../components/UI/Iconsx/WavesSmall';
 import Heading from '../../../components/UI/Heading/Heading';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
@@ -25,6 +25,7 @@ class VerifyEmail extends Component {
 	}
 
 	submitHandler = () => {
+		console.log('submitted');
 		const email = {
 			email: this.props.auth.email,
 		};
@@ -109,15 +110,14 @@ class VerifyEmail extends Component {
 								</p>
 							)}
 						</div>
-					</div>{' '}
+					</div>
 				</div>
+
 				<div className={classes.continue}>
-					{this.props.auth.email ? (
-						<ContinueButton
-							text='RESEND EMAIL'
-							onClick={this.submitHandler}
-						></ContinueButton>
-					) : null}
+					<ContinueButton
+						text='RESEND EMAIL'
+						onClick={this.submitHandler}
+					/>
 				</div>
 			</div>
 		);

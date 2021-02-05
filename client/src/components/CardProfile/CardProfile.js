@@ -41,7 +41,7 @@ const CardProfile = (props) => {
 								}
 								backgroundColor={'#11B9F0'}
 								color={'#ffffff'}
-								text={'UPLOAD IMAGE'}
+								text={'UPLOAD'}
 							/>
 						</div>
 					</div>
