@@ -33,7 +33,7 @@
 .action_icon {
 	margin-right: 15px;
 }
-.service {
+.specialty {
 	font-family: 'Playfair Display', serif;
 	font-size: 16px;
 	text-align: center;
@@ -81,7 +81,7 @@
 	.action_icon {
 		margin-right: 15px;
 	}
-	.service {
+	.specialty {
 		font-size: 24px;
 
 		grid-column: 2/3;
@@ -126,7 +126,7 @@
 	.action_icon {
 		margin-right: 15px;
 	}
-	.service {
+	.specialty {
 		font-size: 24px;
 
 		grid-column: 3/4;

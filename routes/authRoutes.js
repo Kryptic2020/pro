@@ -43,7 +43,7 @@ module.exports = (app) => {
 
 	//Register Page
 	app.post('/api/register', async (req, res) => {
-		//console.log(req.body.email);
+		console.log('register');
 		const {
 			email,
 			fullName,
@@ -176,31 +176,32 @@ module.exports = (app) => {
 	// Reset password request
 	app.post('/api/forgot-pass', async (req, res) => {
 		const { email } = req.body;
-		console.log(req, res, 'bateu na api');
+
 		const user = await User.findOne({ email });
-		console.log(user);
-		if (user.provider == 'App') {
-			async function resetPass() {
-				let info = await transporter.sendMail({
-					from: keys.sender, // sender address
-					to: email, // list of receivers
-					subject: 'Reset Password ✔', // Subject line
-					text: 'Reset Password', // plain text body
-					html: resetPassLink(user), // html body
-				});
-				console.log(
-					'Message sent: %s',
-					info.messageId
+		if (user) {
+			if (user.provider == 'App') {
+				async function resetPass() {
+					let info = await transporter.sendMail({
+						from: keys.sender, // sender address
+						to: email, // list of receivers
+						subject: 'Reset Password ✔', // Subject line
+						text: 'Reset Password', // plain text body
+						html: resetPassLink(user), // html body
+					});
+					console.log(
+						'Message sent: %s',
+						info.messageId
+					);
+				}
+				resetPass().catch(console.error);
+				res.send(
+					'We have sent a Reset Password Link to your registered email address'
+				);
+			} else if (user.provider == 'google') {
+				res.send(
+					'Email registered with social midia account'
 				);
 			}
-			resetPass().catch(console.error);
-			res.send(
-				'We have sent a Reset Password Link to your registered email address'
-			);
-		} else if (user.provider == 'google') {
-			res.send(
-				'Email registered with social midia account'
-			);
 		} else {
 			res.send('Email does not exist');
 		}

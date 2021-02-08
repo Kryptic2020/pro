@@ -9,6 +9,10 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 }
+.switch {
+	text-align: center;
+	margin: 0 auto;
+}
 
 .label {
 	/*font-family: 'Playfair Display', serif;*/

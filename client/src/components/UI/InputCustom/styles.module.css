@@ -1,16 +1,31 @@
 .input {
 	height: 50px;
-	line-height: 60px;
+	line-height: 48px;
 	text-align: center;
 	color: #504f4b;
 	background-color: #ffffff;
 	border-radius: 5px;
-	margin-top: 2%;
 }
-input[type='text'] {
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'] {
 	font-size: 16px;
 	color: #504f4b;
-	vertical-align: middle;
+	border-radius: 5px;
+}
+
+input[type='text'],
+textarea {
+	background-color: none;
+	border: none;
+	outline: none;
+}
+input[type='number'],
+textarea {
+	background-color: none;
+	border: none;
+	outline: none;
 }
 
 .label {
@@ -27,18 +42,21 @@ input[type='text'] {
 @media screen and (min-width: 600px) {
 	.input {
 		height: 60px;
-		line-height: 77px;
+		line-height: 58px;
 		font-size: 24px;
 	}
-	input[type='text'] {
-		font-size: 24px;
-	}
-	.label {
+	input[type='text'],
+	input[type='number'],
+	input[type='password'],
+	input[type='email'] {
 		font-size: 24px;
 	}
 
+	.label {
+		font-size: 24px;
+	}
 	.icon {
-		margin-right: 30px;
-		width: 35px;
+		margin-right: 20px;
+		width: 30px;
 	}
 }

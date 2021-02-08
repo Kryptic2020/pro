@@ -3,7 +3,7 @@ export {
 	setPersonalInfo,
 	fetchAllUsers,
 	users,
-	//authStart,
+	authStart,
 	authSuccess,
 	authFail,
 	setAuthRedirectPath,
@@ -26,3 +26,4 @@ export {
 	fetchRawData,
 	fetchExistingDates,
 } from './booking';
+export { scrollToTop } from './generalFunctions';

@@ -76,7 +76,8 @@ class VerifyEmail extends Component {
 							/>
 						</div>
 						<div className={classes.greatings}>
-							Hello, {this.props.fullName}
+							Hello,{' '}
+							{this.props.auth.fullName}
 						</div>
 						<div className={classes.info}>
 							Thanks for joining us! To finish
@@ -86,12 +87,7 @@ class VerifyEmail extends Component {
 							<p>
 								We just sent you a
 								confirmation email to{' '}
-								<span
-									style={{
-										color: '#ffffff',
-										fontSize: '18px',
-									}}
-								>
+								<span>
 									{this.props.auth.email
 										? this.props.auth
 												.email
@@ -104,9 +100,10 @@ class VerifyEmail extends Component {
 								.email ? null : (
 								<p>
 									Alternativelly, please
-									Log In and click at
-									resend button to re-send
-									the confirmation email
+									<span> Login </span> and
+									click on resend button
+									to re-send the
+									confirmation email
 								</p>
 							)}
 						</div>
@@ -114,10 +111,12 @@ class VerifyEmail extends Component {
 				</div>
 
 				<div className={classes.continue}>
-					<ContinueButton
-						text='RESEND EMAIL'
-						onClick={this.submitHandler}
-					/>
+					{this.props.auth.authenticated ? (
+						<ContinueButton
+							text='RESEND EMAIL'
+							onClick={this.submitHandler}
+						/>
+					) : null}
 				</div>
 			</div>
 		);
@@ -127,7 +126,6 @@ class VerifyEmail extends Component {
 const mapStateToProps = (state) => {
 	return {
 		auth: state.auth,
-		fullName: state.auth.fullName,
 	};
 };
 

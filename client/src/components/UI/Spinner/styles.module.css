@@ -1,14 +1,13 @@
 .backdrop {
 	width: 100vw;
 	height: 100vh;
-	background-color: black;
-	opacity: 0.5;
+	background-color: rgba(0, 0, 0, 0.7);
 	position: absolute;
 	z-index: 5;
 }
 .spinnerPosition {
-	width: 100%;
-	margin: 40% auto;
+	margin: auto;
+	margin-top: 40%;
 	text-align: center;
 	z-index: 6;
 }

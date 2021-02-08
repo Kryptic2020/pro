@@ -134,12 +134,13 @@ class App extends Component {
 							path='/reset-pass'
 							component={ResetPass}
 						/>
-
-						<Route
-							exact
-							path='/verify-email'
-							component={VerifyEmail}
-						/>
+						{!this.props.emailVerified ? (
+							<Route
+								exact
+								path='/verify-email'
+								component={VerifyEmail}
+							/>
+						) : null}
 
 						<Route
 							path='/settings'
@@ -390,3 +391,49 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, actions)(App);
+
+/*{this.state.msn ? (
+					<div
+						className={classes.msn}
+					>
+						{this.state.msn}
+					</div>
+				) : null} */
+
+/*{
+				this.setState({ msn: res.data });
+				setTimeout(() => {
+					this.setState({
+						msn: '',
+					});
+				}, 3000);
+			}*/
+
+/*	<Modal.Dialog
+					className={classes.modal}
+					show={this.state.modalShow}
+					onHide={this.handleModalClose}
+				>*/
+
+/*.backdrop {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.modal {
+	width: 80%;
+	margin: auto;
+}
+
+.msn {
+	position: absolute;
+	margin: 2px;
+	padding: 1% 3%;
+	background-color: black;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 14px;
+	opacity: 0.3;
+}*/

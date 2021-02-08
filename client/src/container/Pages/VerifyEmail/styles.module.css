@@ -7,6 +7,10 @@
 	background-color: #38f495;
 	height: 70%;
 }
+span {
+	color: #ffffff;
+	font-size: 18px;
+}
 
 .box {
 	position: relative;

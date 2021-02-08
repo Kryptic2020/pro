@@ -7,7 +7,16 @@
 	grid-template-columns: [grid-start]1fr[grid-end];
 	grid-template-rows: 1fr[heading-start] max-content[heading-end]1fr[box-start] max-content[box-end]0[continue-start] max-content[continue-end]1fr[text-start] max-content[text-end]1fr[card-start] max-content[card-end]1fr;
 }
-
+.msn {
+	position: absolute;
+	margin: 2px;
+	padding: 1% 3%;
+	background-color: black;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 14px;
+	opacity: 0.3;
+}
 .heading {
 	grid-column: grid;
 	grid-row: heading;

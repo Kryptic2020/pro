@@ -14,10 +14,6 @@
 	padding-top: 10%;
 	margin-left: 7%;
 	text-align: left;
-
-	color: #ffffff;
-}
-.heading:hover {
 	color: #ffffff;
 }
 
@@ -43,7 +39,6 @@
 		padding-top: 2%;
 		margin-left: 5%;
 		text-align: left;
-		text-decoration: underline;
 		color: #ffffff;
 	}
 
@@ -67,7 +62,6 @@
 		padding-top: 2%;
 		margin-left: 5%;
 		text-align: left;
-		text-decoration: underline;
 		color: #ffffff;
 	}
 	.heading:hover {

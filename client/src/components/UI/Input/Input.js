@@ -1,35 +1,25 @@
 import React from 'react';
+import classes from './styles.module.css';
 
 const input = (props) => {
 	return (
-		<div style={{ marginTop: '10px', width: '100%' }}>
-			<label
-				style={{ color: 'grey' }}
-				className='left'
-			>
-				{props.label}
-			</label>
-			<label
-				style={{ color: 'green' }}
-				className='right'
-			>
-				{props.msg}
-			</label>
-			<input
-				autocomplete='on'
-				style={{
-					fontSize: '18px',
-					height: '50px',
-					textAlign: 'center',
-					color: 'black',
-					backgroundColor: 'white',
-					border: '2px solid grey',
-					borderRadius: '5px',
-				}}
-				type={props.type}
-				onClick={props.onClick}
-				onChange={props.onChange}
-			/>
+		<div className={classes.container}>
+			<div className={classes.box}>
+				<label className={classes.label}>
+					{props.label}
+				</label>
+				<label className={classes.msn}>
+					{props.msg}
+				</label>{' '}
+			</div>
+			<div className={classes.input}>
+				<input
+					autocomplete='on'
+					type={props.type}
+					onClick={props.onClick}
+					onChange={props.onChange}
+				/>
+			</div>
 		</div>
 	);
 };

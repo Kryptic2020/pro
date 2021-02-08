@@ -24,7 +24,12 @@ const Settings = (props) => {
 				</div>
 				<div className={classes.box}>
 					<div>
-						<Link to='/specialty'>
+						<Link
+							to='/specialty'
+							style={{
+								textDecoration: 'none',
+							}}
+						>
 							<CardSettings
 								background_color={'#24CD98'}
 								icon={<SpecialtyIcon />}
@@ -47,7 +52,12 @@ const Settings = (props) => {
 						</Link>
 					</div>
 					<div>
-						<Link to='/assign-staff'>
+						<Link
+							to='/assign-staff'
+							style={{
+								textDecoration: 'none',
+							}}
+						>
 							<CardSettings
 								background_color={'#11b9f0'}
 								icon={<Assigned />}
@@ -75,7 +85,12 @@ const Settings = (props) => {
 						</Link>
 					</div>
 					<div>
-						<Link to='/time-tables'>
+						<Link
+							to='/time-tables'
+							style={{
+								textDecoration: 'none',
+							}}
+						>
 							<CardSettings
 								background_color={'#504F4B'}
 								icon={<Clock />}
@@ -104,7 +119,12 @@ const Settings = (props) => {
 						</Link>
 					</div>
 					<div>
-						<Link to='/calendar-manager'>
+						<Link
+							to='/calendar-manager'
+							style={{
+								textDecoration: 'none',
+							}}
+						>
 							<CardSettings
 								background_color={'#24CD98'}
 								icon={
@@ -137,7 +157,12 @@ const Settings = (props) => {
 						</Link>
 					</div>
 					<div>
-						<Link to='/profile-manager'>
+						<Link
+							to='/profile-manager'
+							style={{
+								textDecoration: 'none',
+							}}
+						>
 							<CardSettings
 								background_color={'#11b9f0'}
 								icon={<Profile />}

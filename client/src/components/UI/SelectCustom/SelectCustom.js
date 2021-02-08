@@ -16,44 +16,45 @@ const Select_custom = (props) => {
 	);*/
 	return (
 		<div>
-			{/*<FormControl
+			<FormControl
 				style={{
 					width: '100%',
-					marginBottom: '40px',
 				}}
 				variant='outlined'
-			>*/}
-			<label
-				style={{ display: props.display_icon }}
-				className={classes.icon}
 			>
-				{props.icon}
-			</label>
-			<label className={classes.label}>
-				{props.label}
-			</label>
-
-			<div>
-				<Select
-					style={{
-						height: props.height,
-						lineHeight: props.lineHeight,
-					}}
-					disableUnderline={true}
-					className={classes.select}
-					native
-					//value={this.state.staff}
-					onChange={props.onChange}
-					inputProps={{
-						name: props.name,
-						id: props.id,
-					}}
+				<label
+					style={{ display: props.display_icon }}
+					className={classes.icon}
 				>
-					<option value='' />
-					{props.options}
-				</Select>
-			</div>
-			{/*</FormControl>*/}
+					{props.icon}
+				</label>
+				<label className={classes.label}>
+					{props.label}
+				</label>
+
+				<div>
+					<Select
+						style={{
+							border: 'none',
+							textAlign: 'center',
+							height: props.height,
+							lineHeight: props.lineHeight,
+						}}
+						className={classes.select}
+						native
+						value={props.value}
+						onChange={props.onChange}
+						MenuProps={props.MenuProps}
+						inputProps={{
+							name: props.name,
+							id: props.id,
+						}}
+					>
+						{/*<option value='' />*/}
+						{props.options}
+					</Select>
+				</div>
+			</FormControl>
 		</div>
 	);
 };

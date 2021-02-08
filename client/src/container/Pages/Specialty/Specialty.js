@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import classes from './styles.module.css';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 import CardSpecialty from '../../../components/CardSpecialty/CardSpecialty';
 import Heading from '../../../components/UI/Heading/Heading';
 import InputCustom from '../../../components/UI/InputCustom/InputCustom';
@@ -10,7 +11,6 @@ import ContinueButton from '../../../components/ContinueButton/ContinueButton';
 import Axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
 
 class Specialty extends Component {
 	state = {
@@ -22,16 +22,9 @@ class Specialty extends Component {
 		isLoading: false,
 	};
 
-	scrollToTop() {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
-	}
-
 	componentDidMount() {
 		this.props.onfetchSpecialties();
-		this.scrollToTop();
+		actions.scrollToTop();
 	}
 
 	hideMsn = () => {
@@ -55,10 +48,10 @@ class Specialty extends Component {
 	specialtyAddHandler = async () => {
 		this.reset();
 		this.setState({ isLoading: true });
-		const spArray = {
+		const sp = {
 			specialty: this.state.specialty,
 		};
-		await Axios.post('/api/specialty/post', spArray)
+		await Axios.post('/api/specialty/post', sp)
 			.then((res) => {
 				this.setState({ msn: res.data });
 				setTimeout(() => {
@@ -80,7 +73,10 @@ class Specialty extends Component {
 		const id = { _id: this.state.id };
 		await Axios.post('/api/specialty/delete', id)
 			.then((res) => {
-				this.setState({ msn: res.data });
+				this.setState({
+					msn: res.data,
+					isLoading: false,
+				});
 				setTimeout(() => {
 					this.setState({
 						msn: '',
@@ -90,9 +86,9 @@ class Specialty extends Component {
 			.catch((err) => {
 				//console.log(err);
 			});
+		actions.scrollToTop();
 		this.props.onfetchSpecialties();
 		this.handleModalClose();
-		this.setState({ isLoading: false });
 	};
 
 	// MODAL DELETE - COMPONENT
@@ -105,63 +101,55 @@ class Specialty extends Component {
 	};
 	modalDeleteRender() {
 		return (
-			<div>
-				<Modal
-					show={this.state.modalShow}
-					onHide={this.handleModalClose}
-				>
-					<Modal.Header closeButton>
-						<Modal.Title>
-							Delete Specialty
-						</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						You're trying to delete this
-						specialty, are you sure?!
-					</Modal.Body>
-					<Modal.Footer>
-						<span className='left'>
-							<Button
-								variant='secondary'
-								onClick={
-									this.handleModalClose
-								}
-							>
-								Close
-							</Button>
-						</span>
-						<span>
-							<Button
-								className='right'
-								variant='danger'
-								onClick={
-									this.specialtyDelHandler
-								}
-							>
-								delete
-							</Button>
-						</span>
-					</Modal.Footer>
-				</Modal>
-			</div>
+			<Modal
+				show={this.state.modalShow}
+				onHide={this.handleModalClose}
+			>
+				<Modal.Header closeButton>
+					<Modal.Title>
+						Delete Specialty
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					You're trying to delete this specialty,
+					are you sure?!
+				</Modal.Body>
+				<Modal.Footer>
+					<span className='left'>
+						<Button
+							variant='secondary'
+							onClick={this.handleModalClose}
+						>
+							Close
+						</Button>
+					</span>
+					<span>
+						<Button
+							className='right'
+							variant='danger'
+							onClick={
+								this.specialtyDelHandler
+							}
+						>
+							delete
+						</Button>
+					</span>
+				</Modal.Footer>
+			</Modal>
 		);
 	}
 	render() {
 		return (
-			<div>
-				<div>
-					{this.state.id
-						? this.modalDeleteRender()
-						: null}
-					{this.state.msn ? (
-						<div
-							className={classes.msn}
-							onClick={this.hideMsn}
-						>
-							{this.state.msn}
-						</div>
-					) : null}
-				</div>
+			<>
+				{this.state.isLoading ? <Spinner /> : null}
+				{this.state.id
+					? this.modalDeleteRender()
+					: null}
+				{this.state.msn ? (
+					<div className={classes.msn}>
+						{this.state.msn}
+					</div>
+				) : null}
 				<div className={classes.container}>
 					<div className={classes.heading}>
 						<Heading
@@ -171,6 +159,7 @@ class Specialty extends Component {
 					<div className={classes.specialty_box}>
 						<div className={classes.input_box}>
 							<InputCustom
+								type='text'
 								id='specialty'
 								onChange={
 									this
@@ -208,7 +197,7 @@ class Specialty extends Component {
 						))}
 					</div>
 				</div>
-			</div>
+			</>
 		);
 	}
 }

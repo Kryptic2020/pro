@@ -77,12 +77,7 @@ class ResetPass extends Component {
 				></Input>
 				<span
 					onClick={this.togglePassHandler}
-					style={{
-						position: 'relative',
-						marginTop: '-50px',
-						marginRight: '10px',
-					}}
-					className='right'
+					className={classes.icon}
 				>
 					{this.state.passwordVisible ? (
 						<VisibilityIcon
@@ -128,11 +123,6 @@ class ResetPass extends Component {
 				></Input>
 				<span
 					onClick={this.togglePassHandler}
-					style={{
-						position: 'relative',
-						marginTop: '-50px',
-						marginRight: '10px',
-					}}
 					className='right'
 				></span>
 			</div>
@@ -146,9 +136,15 @@ class ResetPass extends Component {
 			this.state.password !==
 				this.state.confirmPassword
 		) {
-			alert(
-				'Password has to match confirm Password with min length of 6 caracteres'
-			);
+			this.setState({
+				msn:
+					'Password has to match confirm Password with min length of 6 caracteres',
+			});
+			setTimeout(() => {
+				this.setState({
+					msn: '',
+				});
+			}, 2000);
 		} else {
 			this.setState({ isLoading: true });
 			const data = {
@@ -163,7 +159,18 @@ class ResetPass extends Component {
 							msn: res.data,
 							isLoading: false,
 						});
-						alert(res.data);
+						setTimeout(() => {
+							if (
+								res.data.includes('Updated')
+							) {
+								this.props.history.push(
+									'/loginx'
+								);
+							}
+							this.setState({
+								msn: '',
+							});
+						}, 2000);
 					}
 				})
 				.catch((res) => {
@@ -175,6 +182,11 @@ class ResetPass extends Component {
 	render() {
 		return (
 			<div>
+				{this.state.msn ? (
+					<div className={classes.msn}>
+						{this.state.msn}
+					</div>
+				) : null}
 				{this.state.isLoading ? <Spinner /> : null}
 				<div className={classes.container}>
 					<div className={classes.headers}>

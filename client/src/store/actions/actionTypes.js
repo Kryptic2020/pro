@@ -18,10 +18,12 @@ export const FETCH_STAFFASSIGNMENTS =
 	'FETCH_STAFFASSIGNMENTS';
 export const STAFFASSIGNMENTS = 'STAFFASSIGNMENTS';
 
-//export const AUTH_START = 'AUTH_START';
+export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const AUTH_CHECK = 'AUTH_CHECK';
 export const AUTH_REDIRECT_PATH = 'AUTH_REDIRECT_PATH';
 export const SET_AUTH_REDIRECT_PATH =
 	'SET_AUTH_REDIRECT_PATH';
+
+export const scrollToTop = 'scrollToTop';

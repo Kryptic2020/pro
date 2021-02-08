@@ -49,13 +49,13 @@ const authCheck = (state, action) => {
 		authenticated: true,
 	});
 };
-/*
+
 const authStart = (state, action) => {
 	return updateObject(state, {
 		error: null,
 		loading: true,
 	});
-};*/
+};
 
 const authSuccess = (state, action) => {
 	return updateObject(state, {
@@ -87,8 +87,8 @@ const reducer = (state = initialState, action) => {
 			return fetchUser(state, action);
 		case actionTypes.AUTH_CHECK:
 			return authCheck(state, action);
-		/*case actionTypes.AUTH_START:
-			return authStart(state, action);*/
+		case actionTypes.AUTH_START:
+			return authStart(state, action);
 		case actionTypes.AUTH_SUCCESS:
 			return authSuccess(state, action);
 		case actionTypes.SET_AUTH_REDIRECT_PATH:

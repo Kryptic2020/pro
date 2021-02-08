@@ -22,6 +22,27 @@ export const setPersonalInfo = (
 		.catch((res) => {});
 };
 
+export const authStart = () => {
+	return {
+		type: actionTypes.AUTH_START,
+	};
+};
+
+export const authSuccess = (authData) => {
+	return {
+		type: actionTypes.AUTH_SUCCESS,
+		authData: authData,
+	};
+};
+
+export const authFail = (data) => {
+	//console.log(data);
+	return {
+		type: actionTypes.AUTH_FAIL,
+		msnErr: data,
+	};
+};
+
 export const auth = (
 	email,
 	password,
@@ -30,31 +51,35 @@ export const auth = (
 	isSignup,
 	history
 ) => async (dispatch) => {
+	dispatch(authStart());
 	const authData = {
 		googleId: null,
 		fullName,
-		email: email,
+		email: email.toLowerCase(),
 		//photo: null,
 		phone,
 		provider: 'App',
 		password,
 		isSignup,
 	};
+	//console.log(history);
 
 	let url = '/api/register';
 	if (!isSignup) {
 		url = '/api/login';
 	}
-
 	await axios
 		.post(url, authData)
 		.then((res) => {
-			console.log(res.data);
 			dispatch(fetchUser());
 			if (isSignup && res.data === 'registered') {
-				history.push('/verifyEmail');
+				history.push('/verify-email');
 			} else {
 				dispatch(authFail(res.data));
+				setTimeout(() => {
+					window.location.reload(false);
+					//history.push('/loginx');
+				}, 2000);
 			}
 			if (!isSignup && res.data === 'logged') {
 				history.push('/');
@@ -64,10 +89,10 @@ export const auth = (
 			if (err.response) {
 				console.log(err.response, 'neg res');
 			} else if (err.request) {
-				console.log(err.request, 'neg req');
+				//console.log(err.request, 'neg req');
 			} else {
 				dispatch(authFail(err));
-				console.log('neither req or res error zic');
+				//console.log('neither req or res error zic');
 			}
 		});
 };
@@ -91,32 +116,10 @@ export const handleToken = (token) => async (dispatch) => {
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-/*
-export const authStart = () => {
-	return {
-		type: actionTypes.AUTH_START,
-	};
-};*/
-
-export const authSuccess = (authData) => {
-	return {
-		type: actionTypes.AUTH_SUCCESS,
-		authData: authData,
-	};
-};
-
 export const setAuthRedirectPath = (path) => {
 	return {
 		type: actionTypes.SET_AUTH_REDIRECT_PATH,
 		path: path,
-	};
-};
-
-export const authFail = (data) => {
-	//console.log(data);
-	return {
-		type: actionTypes.AUTH_FAIL,
-		msnErr: data,
 	};
 };
 

@@ -130,8 +130,14 @@ module.exports = (app) => {
 		requireLogin,
 		async (req, res) => {
 			const { _id } = req.body;
-			await ServicePrice.findByIdAndRemove({ _id });
-			res.send('Deleted!!');
+			const dl = await ServicePrice.findByIdAndRemove(
+				{ _id }
+			);
+			if (dl) {
+				res.send('Deleted!');
+			} else {
+				res.send('Something went wrong.');
+			}
 		}
 	);
 
@@ -225,7 +231,13 @@ module.exports = (app) => {
 			const table = await T.findByIdAndRemove(
 				req.params.id
 			);
-			res.send('Deleted!!');
+			if (table) {
+				res.send('Deleted!!');
+			} else {
+				res.send(
+					'Deleting table failed. Please try again later.'
+				);
+			}
 		}
 	);
 
@@ -235,13 +247,25 @@ module.exports = (app) => {
 		requireLogin,
 		async (req, res) => {
 			const { tableName, tableTimes } = req.body;
-			const t = new T({
-				_user: req.user.id,
+			const f = await T.findOne({
 				timeTableName: tableName,
-				times: tableTimes,
 			});
-			await t.save();
-			res.send('Successfully Created!!!');
+			if (f) {
+				res.send('This name already exist');
+			} else {
+				const t = new T({
+					_user: req.user.id,
+					timeTableName: tableName,
+					times: tableTimes,
+				});
+
+				await t.save();
+				if (t) {
+					res.send('Successfully Created!!!');
+				} else {
+					res.send('Something went wrong!');
+				}
+			}
 		}
 	);
 

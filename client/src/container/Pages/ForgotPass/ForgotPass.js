@@ -4,6 +4,7 @@ import axios from 'axios';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
+import * as actions from '../../../store/actions';
 
 class ForgotPass extends Component {
 	state = {
@@ -12,6 +13,9 @@ class ForgotPass extends Component {
 		isEmailValid: false,
 		msn: '',
 	};
+	componentDidMount() {
+		actions.scrollToTop();
+	}
 
 	//Email
 	emailChangeHandler = (event) => {
@@ -52,13 +56,16 @@ class ForgotPass extends Component {
 		axios
 			.post('/api/forgot-pass', dataEmail)
 			.then((res) => {
-				if (res.data) {
+				this.setState({
+					msn: res.data,
+					isLoading: false,
+				});
+				actions.scrollToTop();
+				setTimeout(() => {
 					this.setState({
-						msn: res.data,
-						isLoading: false,
+						msn: '',
 					});
-					alert(res.data);
-				}
+				}, 2000);
 			})
 			.catch((res) => {
 				this.setState({
@@ -72,6 +79,14 @@ class ForgotPass extends Component {
 		return (
 			<div>
 				{this.state.isLoading ? <Spinner /> : null}
+				{this.state.msn ? (
+					<div
+						className={classes.msn}
+						onClick={this.hideMsn}
+					>
+						{this.state.msn}
+					</div>
+				) : null}
 				<div className={classes.container}>
 					<div className={classes.headers}>
 						We will send you a Link to reset

@@ -11,10 +11,12 @@ const CardService = (props) => {
 						{props.service}
 					</div>
 					<div className={classes.price}>
-						{props.price}
+						$ {props.price}
 					</div>
 					<div className={classes.button}>
-						<ButtonDelete />
+						<ButtonDelete
+							onClick={props.onClick}
+						/>
 					</div>
 				</div>
 

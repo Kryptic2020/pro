@@ -7,8 +7,6 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import classes from './styles.module.css';
-//import useStyles from './styles';
-import Alert from 'react-bootstrap/Alert';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -18,18 +16,21 @@ import TriangleIcone from '../../../components/UI/Iconsx/Triangle';
 import LoginWith from '../../../components/LoginWith/LoginWith';
 import PersonalInfo from '../../../components/PersonalInfo/Personalinfo';
 
+const initialState = {
+	isSignup: false,
+	email: '',
+	password: '',
+	firstName: '',
+	lastName: '',
+	phone: '',
+	isEmailValid: false,
+	isLoading: false,
+	msn: '',
+};
+
 class Loginx extends Component {
-	state = {
-		isSignup: false,
-		email: '',
-		password: '',
-		firstName: '',
-		lastName: '',
-		phone: '',
-		isEmailValid: false,
-		isLoading: false,
-		msn: '',
-	};
+	state = initialState;
+
 	scrollToTop() {
 		window.scrollTo({
 			top: 0,
@@ -37,16 +38,8 @@ class Loginx extends Component {
 		});
 	}
 
-	hideMsn = () => {
-		this.setState({
-			...this.state,
-			msn: '',
-			isLoading: false,
-		});
-		window.location.reload(false);
-	};
-
 	componentDidMount() {
+		this.setState(initialState);
 		if (this.props.authRedirectPath !== '/') {
 			this.props.onSetAuthRedirectPath();
 		}
@@ -124,12 +117,7 @@ class Loginx extends Component {
 				></Input>
 				<span
 					onClick={this.togglePassHandler}
-					style={{
-						position: 'relative',
-						marginTop: '-50px',
-						marginRight: '10px',
-					}}
-					className='right'
+					className={classes.icon}
 				>
 					{this.state.passwordVisible ? (
 						<VisibilityIcon
@@ -162,7 +150,6 @@ class Loginx extends Component {
 				this.props.history
 			);
 			this.setState({
-				isLoading: true,
 				email: '',
 				password: '',
 				firstName: '',
@@ -172,7 +159,14 @@ class Loginx extends Component {
 		};
 
 		const errorMsg = () => {
-			alert('All fields are required.');
+			this.setState({
+				msn: 'All Fields are required',
+			});
+			setTimeout(() => {
+				this.setState({
+					msn: '',
+				});
+			}, 2000);
 		};
 		if (this.state.isSignup) {
 			if (
@@ -234,29 +228,13 @@ class Loginx extends Component {
 				{this.props.authenticated ? (
 					<Redirect to='/' />
 				) : null}
-				<div className={classes.alert}>
-					{this.props.msnErr &&
-					this.props.msnErr.length > 3 ? (
-						<Alert
-							variant='warning '
-							id='msn'
-							onClick={this.hideMsn}
-							style={{
-								marginBottom: '20px',
-							}}
-						>
-							<Alert.Heading>
-								{this.props.msnErr}
-
-								<p>
-									click here and try
-									again!{' '}
-								</p>
-							</Alert.Heading>
-						</Alert>
-					) : null}
-				</div>
-				{this.state.isLoading ? <Spinner /> : null}
+				{this.props.msnErr || this.state.msn ? (
+					<div className={classes.msn}>
+						{this.props.msnErr}
+						{this.state.msn}
+					</div>
+				) : null}
+				{this.props.loading ? <Spinner /> : null}
 				<div className={classes.container}>
 					<div className={classes.headers}>
 						<div
@@ -369,6 +347,7 @@ const mapDispatchToProps = (dispatch) => {
 			email,
 			password,
 			fullName,
+			phone,
 			isSignup,
 			history
 		) =>
@@ -377,6 +356,7 @@ const mapDispatchToProps = (dispatch) => {
 					email,
 					password,
 					fullName,
+					phone,
 					isSignup,
 					history
 				)

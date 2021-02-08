@@ -19,7 +19,9 @@ const CardTimeTables = (props) => {
 						{props.button_select ? (
 							<ButtonSelect />
 						) : (
-							<ButtonDelete />
+							<ButtonDelete
+								onClick={props.onClick}
+							/>
 						)}
 					</div>
 				</div>

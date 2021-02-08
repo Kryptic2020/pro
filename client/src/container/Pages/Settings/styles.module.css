@@ -40,6 +40,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	text-decoration: none;
+}
+.box:hover {
+	text-decoration: none;
 }
 
 @media screen and (min-width: 600px) {
