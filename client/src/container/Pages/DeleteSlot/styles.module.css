@@ -8,6 +8,16 @@
 	display: grid;
 	grid-template-rows: 1fr[h1-start]max-content[h1-end]1fr [form-start]max-content[form-end]0px[days-start]max-content[days-end]1fr [h2-start]max-content[h2-end]1fr [card-start]max-content[card-end]1fr[continue-start]max-content[continue-end]1fr;
 }
+.msn {
+	position: absolute;
+	margin: 2px;
+	padding: 1% 3%;
+	background-color: black;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 14px;
+	opacity: 0.3;
+}
 .heading1 {
 	grid-row: h1;
 }

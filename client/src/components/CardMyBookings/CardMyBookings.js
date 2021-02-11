@@ -8,25 +8,30 @@ const CardMyBookings = (props) => {
 			<div className={classes.card}>
 				<div className={classes.box}>
 					<div className={classes.date}>
-						{props.date}25/02/2021
+						{props.date}
 					</div>
 					<div className={classes.day}>
-						{props.day}Friday
+						{props.day}
 					</div>
 					<div className={classes.time}>
-						{props.time}17:00
+						{props.time}
 					</div>
 					<div className={classes.price}>
-						{props.price}$ 299
+						{props.price
+							? '$' + props.price
+							: null}
 					</div>
 					<div className={classes.staff}>
-						{props.staff}Robert Herber
+						{props.staff}
 					</div>
 					<div className={classes.service}>
-						{props.service}Filling
+						{props.service}
 					</div>
 					<div className={classes.button}>
 						<ButtonCustom
+							disabled={props.disabled}
+							visibility={props.visibility}
+							display={props.display}
 							text={props.text}
 							onClick={props.onClick}
 							backgroundColor={
@@ -34,7 +39,7 @@ const CardMyBookings = (props) => {
 							}
 							color={props.color}
 							height={'100%'}
-							width={'100%'}
+							width={props.width}
 						/>
 					</div>
 				</div>

@@ -9,6 +9,9 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 }
+.headings {
+	margin: 0 5%;
+}
 .switch {
 	text-align: center;
 	margin: 0 auto;

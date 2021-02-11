@@ -10,9 +10,12 @@ const Button_custom = (props) => {
 					color: props.color,
 					width: props.width,
 					height: props.height,
+					visibility: props.visibility,
+					display: props.display,
 				}}
 				className={classes.button}
 				onClick={props.onClick}
+				disabled={props.disabled}
 			>
 				{props.text}
 			</button>

@@ -6,6 +6,16 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 }
+.msn {
+	position: absolute;
+	margin: 2px;
+	padding: 1% 3%;
+	background-color: black;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 14px;
+	opacity: 0.3;
+}
 .headings {
 	margin: auto;
 }

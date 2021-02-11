@@ -7,7 +7,12 @@ import Clock from '../UI/Iconsx/Clock';
 const CardTimeTables = (props) => {
 	return (
 		<div>
-			<div className={classes.card}>
+			<div
+				className={classes.card}
+				style={{
+					backgroundColor: props.backgroundColor,
+				}}
+			>
 				<div className={classes.box}>
 					<div className={classes.table_name}>
 						{props.table_name}
@@ -17,7 +22,15 @@ const CardTimeTables = (props) => {
 					</div>
 					<div className={classes.button}>
 						{props.button_select ? (
-							<ButtonSelect />
+							<ButtonSelect
+								buttonName={
+									props.buttonName
+								}
+								onClick={props.onClick.bind(
+									this,
+									props
+								)}
+							/>
 						) : (
 							<ButtonDelete
 								onClick={props.onClick}
@@ -27,7 +40,7 @@ const CardTimeTables = (props) => {
 				</div>
 
 				<div className={classes.time_slots}>
-					{props.time_slots}
+					{props.times.join(', ')}
 				</div>
 			</div>
 		</div>

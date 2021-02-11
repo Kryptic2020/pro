@@ -1,6 +1,22 @@
+textarea {
+	height: 100px;
+	width: 100%;
+	line-height: 48px;
+	text-align: center;
+	color: #504f4b;
+	background-color: #ffffff;
+}
+.label {
+	font-family: 'Roboto, sans-serif';
+	font-size: 16px;
+	margin-left: 15px;
+	text-align: left;
+	color: #ffffff;
+}
+
 .container {
 	width: 80%;
-	min-height: 800px;
+	min-height: 850px;
 	margin: auto;
 	display: grid;
 	flex-direction: column;
@@ -27,15 +43,21 @@
 	grid-column: grid;
 	grid-row: box;
 	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 	background-color: #24cd98;
 	color: #ffffff;
-	border-radius: 5px;
-	height: 270px;
+	border-radius: 10px 10px 0 0;
+	height: 350px;
 }
-.input_box {
+.input1 {
 	width: 80%;
-	margin: auto;
-	padding-bottom: 15%;
+	margin: 0 auto;
+	border-radius: 10px;
+}
+.input2 {
+	width: 80%;
+	margin: 0 auto;
 }
 .text {
 	grid-column: grid;
@@ -70,5 +92,8 @@
 	}
 	.card {
 		height: 500px;
+	}
+	.label {
+		font-size: 24px;
 	}
 }

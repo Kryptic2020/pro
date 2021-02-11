@@ -21,7 +21,7 @@
 	text-align: right;
 	margin-bottom: 20px;
 	grid-template-columns: [one-start]0.8fr[one-end]0.1fr[two-start]1.1fr[two-end];
-	grid-template-rows: 1fr[one-start]1fr[one-end]0.5fr[two-start]1fr[two-end]0.5fr[three-start]1fr[three-end]0.5fr[four-start]1fr[four-end]0.5fr[five-start]1fr[five-end]0.5fr[six-start]1fr[six-end]0.5fr[seven-start]1fr[seven-end]0.5fr[eight-start]1fr[eight-end]0.5fr[nine-start]1fr[nine-end]0.5fr[ten-start]1fr[ten-end]0.5fr[eleven-start]5fr[eleven-end]0.5fr[delete-start]1fr[delete-end];
+	grid-template-rows: 1fr[one-start]1fr[one-end]0.5fr[two-start]1fr[two-end]0.5fr[three-start]1fr[three-end]0.5fr[four-start]1fr[four-end]0.5fr[five-start]1fr[five-end]0.5fr[six-start]1fr[six-end]0.5fr[seven-start]1fr[seven-end]0.5fr[eight-start]1fr[eight-end]0.5fr[nine-start]1fr[nine-end]0.5fr[ten-start]1fr[ten-end]0.5fr[eleven-start]1fr[eleven-end]0.5fr[twelve-start]5fr[twelve-end]0.5fr[delete-start]1fr[delete-end];
 }
 .a {
 	grid-column: one;
@@ -105,17 +105,27 @@
 	grid-row: nine;
 }
 .j {
-	text-align: center;
-	grid-column: one / two;
+	grid-column: one;
 	grid-row: ten;
 }
 .jj {
+	text-align: left;
+	grid-column: two;
+	grid-row: ten;
+}
+.l {
 	text-align: center;
 	grid-column: one / two;
 	grid-row: eleven;
 }
-.delete {
+.ll {
+	text-align: center;
 	grid-column: one / two;
+	grid-row: twelve;
+}
+
+.delete {
+	grid-column: one-start / two-end;
 	grid-row: delete;
 }
 
@@ -214,15 +224,25 @@
 		grid-row: five;
 	}
 	.j {
+		grid-column: three;
+		grid-row: five;
+	}
+	.jj {
+		text-align: left;
+		grid-column: four;
+		grid-row: five;
+	}
+	.l {
 		text-align: center;
 		grid-column: one-start / four-end;
 		grid-row: six;
 	}
-	.jj {
+	.ll {
 		text-align: center;
 		grid-column: one-start / four-end;
 		grid-row: seven;
 	}
+
 	.delete {
 		grid-column: one-start / four-end;
 		grid-row: delete;

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './styles.module.css';
+import * as actions from '../../../store/actions';
 import CardSettings from '../../../components/CardSettings/CardSettings';
 import CardCustom from '../../../components/CardCustom/CardCustom';
 import Heading from '../../../components/UI/Heading/Heading';
 import Calendar from '../../../components/UI/Iconsx/Calendar';
 
 const CalendarManager = (props) => {
+	useEffect(() => {
+		actions.scrollToTop();
+	});
 	return (
 		<>
 			<div className={classes.container}>
@@ -30,15 +34,14 @@ const CalendarManager = (props) => {
 							display={'none'}
 							title={'Create Slots'}
 							content={[
-								'Add new or delete existing Specialties.',
+								'Create Slots, visible or invisible to your clients.',
 								<div>
-									**Existing Specialty
-									already assigned to a
-									staff cannot be deleted,
-									you need to first remove
-									it from the assigned
-									staff before deleting
-									the Specialty.
+									Lorem ipsum dolor sit
+									amet, consetetur
+									sadipscing elitr, sed
+									diam nonumy eirmod
+									tempor invidunt ut
+									labore .
 								</div>,
 								'',
 							]}
@@ -51,19 +54,15 @@ const CalendarManager = (props) => {
 							display={'none'}
 							title={'Override Slots'}
 							content={[
-								'Add new or delete existing assignments.',
+								'Override existing slots to make then visible or invisible to your clients.',
 								<div>
 									<div>
-										Add new or delete
-										services to the
-										existing
-										assignments.
-									</div>
-									<div>
-										Add new or delete
-										service description
-										and price to the
-										existing services.
+										Lorem ipsum dolor
+										sit amet, consetetur
+										sadipscing elitr,
+										sed diam nonumy
+										eirmod tempor
+										invidunt ut labore .
 									</div>
 								</div>,
 							]}
@@ -76,20 +75,15 @@ const CalendarManager = (props) => {
 							display={'none'}
 							title={'Delete slots'}
 							content={[
-								'Add new or Delete existing TimeTables.',
+								'Delete existing Slots.',
 								<div>
 									<div>
-										** Each staff can
-										have more than one
-										time table.{' '}
-									</div>
-									<div>
-										** Each staff has
-										their own time
-										tables with means
-										you won’t be able to
-										see time tables from
-										other staffs.{' '}
+										Lorem ipsum dolor
+										sit amet, consetetur
+										sadipscing elitr,
+										sed diam nonumy
+										eirmod tempor
+										invidunt ut labore .
 									</div>
 								</div>,
 							]}
@@ -104,20 +98,18 @@ const CalendarManager = (props) => {
 							display={'none'}
 							title={'Slot History'}
 							content={[
-								'Add new, update or delete existing spots on your Calendar.',
+								'Shows the history of each Slot update made by users with details.',
 								<div>
 									<div>
-										** You can override
-										unbooked spots by
-										making them visible
-										or invisible.
-									</div>
-									<div>
-										** You won’t be able
-										to override or
-										delete spots that
-										has been already
-										booked.
+										Lorem ipsum dolor
+										sit amet, consetetur
+										sadipscing elitr,
+										sed diam nonumy
+										eirmod tempor
+										invidunt ut labore
+										et dolore magna
+										aliquyam erat, sed
+										diam voluptua
 									</div>
 								</div>,
 							]}

@@ -6,16 +6,33 @@ import Heading from '../UI/Heading/Heading';
 import classes from './styles.module.css';
 
 const CarouselSpecialty = (props) => {
-	const Service = props.serviceArray.map((w) => (
-		<SlideService
-			display={props.display_select}
-			onClick={props.onClick_select}
-			key={w._id}
-			service={w.service}
-			price={w.price}
-			description={w.description}
-		/>
-	));
+	let Service = [];
+
+	if (props.servicesPrices && props.home) {
+		Service = props.servicesPrices.map((w, index) => (
+			<SlideService
+				display={'none'}
+				key={w._id + index}
+				service={w.name}
+				price={w.price}
+				description={w.serviceDetails}
+			/>
+		));
+	}
+	if (props.serviceArray && !props.home) {
+		Service = props.serviceArray.map((w, index) =>
+			w.assignmentID === props.assignmentID ? (
+				<SlideService
+					display={props.display_select}
+					onClick={props.onClick_select}
+					key={w._id + index}
+					service={w.name}
+					price={w.price}
+					description={w.serviceDetails}
+				/>
+			) : null
+		);
+	}
 
 	const responsive = {
 		desktop: {
@@ -48,7 +65,7 @@ const CarouselSpecialty = (props) => {
 						className={classes.carousel}
 						swipeable={true}
 						draggable={true}
-						showDots={false}
+						showDots={true}
 						responsive={responsive}
 						ssr={true} // means to render carousel on server-side.
 						infinite={true}

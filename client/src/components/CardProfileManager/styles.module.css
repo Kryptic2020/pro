@@ -21,6 +21,9 @@
 	grid-row: 1/2;
 	text-align: center;
 }
+.active {
+	margin-left: -5px;
+}
 .icon {
 	width: 40px;
 }

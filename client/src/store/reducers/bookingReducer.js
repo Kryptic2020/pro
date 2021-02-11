@@ -10,16 +10,26 @@ const initialState = {
 	specialties: [],
 	servicesPrices: [],
 	staffAssignments: [],
-	assignedSpecialties:[],
+	assignedSpecialties: [],
+	admins: [],
 };
 
 const staffAssignments = (state, action) => {
 	let specialties = [];
-	action.data.map((m) => { if (!specialties.includes(m.assignedSpecialty)) specialties.push(m.assignedSpecialty); });
+	action.data.map((m) => {
+		if (!specialties.includes(m.assignedSpecialty))
+			specialties.push(m.assignedSpecialty);
+	});
 	return updateObject(state, {
 		staffAssignments: action.data,
-		assignedSpecialties:specialties
-	})
+		assignedSpecialties: specialties,
+	});
+};
+
+const admins = (state, action) => {
+	return updateObject(state, {
+		admins: action.data,
+	});
 };
 
 const services = (state, action) => {
@@ -66,16 +76,26 @@ const fetchExistingDates = (state, action) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	case actionTypes.SERVICES: return services(state, action);
-	case actionTypes.SERVICESPRICES: return servicesPrices(state, action);
-	case actionTypes.FETCH_RAW_DATA: return fetchRawData(state, action);
-	case actionTypes.FETCH_EXISTING_DATES: return fetchExistingDates(state, action);
-	case actionTypes.OPEN_SERVICES: return openServices(state, action);
-	case actionTypes.ALL_SERVICES: return allServices(state, action);
-	case actionTypes.SPECIALTIES: return specialties(state, action);
-	case actionTypes.STAFFASSIGNMENTS: return staffAssignments(state, action);
-	default:
-		return state;
+		case actionTypes.SERVICES:
+			return services(state, action);
+		case actionTypes.SERVICESPRICES:
+			return servicesPrices(state, action);
+		case actionTypes.FETCH_RAW_DATA:
+			return fetchRawData(state, action);
+		case actionTypes.FETCH_EXISTING_DATES:
+			return fetchExistingDates(state, action);
+		case actionTypes.OPEN_SERVICES:
+			return openServices(state, action);
+		case actionTypes.ALL_SERVICES:
+			return allServices(state, action);
+		case actionTypes.SPECIALTIES:
+			return specialties(state, action);
+		case actionTypes.STAFFASSIGNMENTS:
+			return staffAssignments(state, action);
+		case actionTypes.ADMINS:
+			return admins(state, action);
+		default:
+			return state;
 	}
 };
 

@@ -227,7 +227,7 @@ class AssignStaff extends Component {
 							<SelectCustom
 								id='assignstaff'
 								options={optionStaff}
-								users={this.state.users}
+								//value={this.state.staff}
 								label={'Select Staff'}
 								icon={<StaffIcon />}
 								onChange={
@@ -239,7 +239,7 @@ class AssignStaff extends Component {
 							<SelectCustom
 								id='assignspecialty'
 								options={optionService}
-								users={this.state.users}
+								//value={this.state.specialty}
 								label={'Select Specialty'}
 								icon={<SpecialtyIcon />}
 								onChange={

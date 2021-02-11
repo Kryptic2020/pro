@@ -22,16 +22,16 @@ const BookingBar = (props) => {
 					<Booking fill='#ffffff' />
 				</div>
 				<div className={classes.specialty}>
-					{props.specialty}Dentist
+					{props.specialty}
 				</div>
 				<div className={classes.assigned}>
-					{props.assigned}Amanda Powell
+					{props.staff}
 				</div>
 				<div className={classes.service}>
-					{props.service}Filling
+					{props.service}
 				</div>
 				<div className={classes.booking}>
-					{props.booking}25/02/2021 17:00
+					{props.booking}
 				</div>
 			</div>
 		</>

@@ -16,7 +16,8 @@ const SlideSpecialty = (props) => {
 			</div>
 			<div className={classes.button}>
 				<ButtonSelect
-					onClick={props.onClick}
+					buttonName={'SELECT'}
+					onClick={() => props.onClick(props)}
 					display={props.display}
 				/>
 			</div>

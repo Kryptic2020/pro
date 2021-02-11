@@ -83,6 +83,7 @@ const Selector = (props) => {
 		<div
 			style={{
 				backgroundColor: props.backgroundColor,
+				borderRadius: props.borderRadius,
 			}}
 			className={classes.container}
 		>

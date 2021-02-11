@@ -6,15 +6,22 @@ import Heading from '../UI/Heading/Heading';
 import classes from './styles.module.css';
 
 const CarouselSpecialty = (props) => {
-	const Card = props.specialtyArray.map((w) => (
-		<SlideSpecialty
-			display={props.display_select}
-			onClick={props.onClick_select}
-			key={w._id}
-			specialty={w.specialty}
-			description={w.description}
-		/>
-	));
+	let Card = [];
+	if (props.staffAssignments) {
+		Card = props.staffAssignments.map((w, index) => (
+			<SlideSpecialty
+				buttonName={props.buttonName}
+				display={props.display_select}
+				onClick={props.onClick_select}
+				key={w._id + index}
+				specialty={w.assignedSpecialty}
+				description={props.specialties.map((x) => {
+					if (x.name === w.assignedSpecialty)
+						return x.description;
+				})}
+			/>
+		));
+	}
 
 	const responsive = {
 		desktop: {
@@ -45,7 +52,7 @@ const CarouselSpecialty = (props) => {
 			<Carousel
 				swipeable={true}
 				draggable={true}
-				showDots={false}
+				showDots={true}
 				responsive={responsive}
 				ssr={true} // means to render carousel on server-side.
 				infinite={true}
@@ -55,7 +62,7 @@ const CarouselSpecialty = (props) => {
 					//	? true
 					//: false
 				}
-				autoPlaySpeed={1000}
+				autoPlaySpeed={5000}
 				keyBoardControl={true}
 				customTransition='all .5'
 				transitionDuration={100}

@@ -244,7 +244,7 @@ module.exports = (app) => {
 	});
 
 	app.post(
-		'/api/auth/daysCalendarView',
+		'/api/auth/daysCalendarView/get',
 		async (req, res) => {
 			const { _id } = req.body;
 			const daysCalendarView = await User.findOne({

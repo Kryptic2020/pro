@@ -6,17 +6,24 @@ const CardSpecialty = (props) => {
 	return (
 		<div>
 			<div className={classes.card}>
-				<div className={classes.text}>
-					{props.text}
+				<div className={classes.box}>
+					<div className={classes.text}>
+						{props.text}
+					</div>
+					<div className={classes.button}>
+						<ButtonDelete
+							onClick={props.onClick}
+						/>
+					</div>
+					<div className={classes.button_large}>
+						<ButtonDelete
+							onClick={props.onClick}
+							width={'200px'}
+						/>
+					</div>
 				</div>
-				<div className={classes.button}>
-					<ButtonDelete onClick={props.onClick} />
-				</div>
-				<div className={classes.button_large}>
-					<ButtonDelete
-						onClick={props.onClick}
-						width={'200px'}
-					/>
+				<div className={classes.description}>
+					{props.description}
 				</div>
 			</div>
 		</div>

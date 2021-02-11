@@ -17,6 +17,7 @@ require('./models/StaffAssignments');
 require('./models/TimeTable');
 require('./models/NewCalendar');
 require('./models/BookingHistory');
+require('./models/CalendarHistory');
 require('./models/WaitingList');
 require('./services/passport');
 

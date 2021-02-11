@@ -6,6 +6,7 @@ const requireActiveUser = require('../middlewares/requireActiveUser');
 const T = mongoose.model('timeTable');
 const NewCalendar = mongoose.model('newCalendar');
 const BookingHistory = mongoose.model('bookingHistory');
+const CalendarHistory = mongoose.model('calendarHistory');
 const User = mongoose.model('users');
 const Specialties = mongoose.model('specialty');
 const ServicePrice = mongoose.model('servicePrice');
@@ -48,7 +49,7 @@ module.exports = (app) => {
 		'/api/specialty/post',
 		requireLogin,
 		async (req, res) => {
-			const { specialty } = req.body;
+			const { specialty, description } = req.body;
 			const sc = await Specialties.find({
 				name: specialty,
 			});
@@ -57,6 +58,7 @@ module.exports = (app) => {
 			} else {
 				const s = new Specialties({
 					name: specialty,
+					description,
 				});
 				await s.save();
 				res.send('Saved!');
@@ -65,14 +67,10 @@ module.exports = (app) => {
 	);
 
 	//FETCHING SPECIALTIES
-	app.get(
-		'/api/specialties/get',
-		requireLogin,
-		async (req, res) => {
-			const sp = await Specialties.find({});
-			res.send(sp);
-		}
-	);
+	app.get('/api/specialties/get', async (req, res) => {
+		const sp = await Specialties.find({});
+		res.send(sp);
+	});
 
 	//DELETE SPECIALTY
 	app.post(
@@ -115,14 +113,10 @@ module.exports = (app) => {
 	);
 
 	//FETCHING SERVICEPRICE
-	app.get(
-		'/api/serviceprice/get',
-		requireLogin,
-		async (req, res) => {
-			const sc = await ServicePrice.find({});
-			res.send(sc);
-		}
-	);
+	app.get('/api/serviceprice/get', async (req, res) => {
+		const sc = await ServicePrice.find({});
+		res.send(sc);
+	});
 
 	//DELETE SERVICEPRICE
 	app.post(
@@ -193,7 +187,6 @@ module.exports = (app) => {
 	//FETCHING STAFF ASSIGNMENTS
 	app.get(
 		'/api/staffassignments/get',
-		requireLogin,
 		async (req, res) => {
 			const sp = await StaffAssignments.find({});
 			res.send(sp);
@@ -206,8 +199,11 @@ module.exports = (app) => {
 		requireLogin,
 		async (req, res) => {
 			const { _id } = req.body;
-			await StaffAssignments.findByIdAndRemove({
+			await StaffAssignments.deleteOne({
 				_id,
+			});
+			await ServicePrice.deleteMany({
+				assignmentID: _id,
 			});
 			res.send('Deleted!!');
 		}
@@ -281,7 +277,26 @@ module.exports = (app) => {
 				openView,
 				staff,
 				staffID,
+				startDate,
+				endDate,
+				processedDate,
+				tableName,
+				excludedDays,
 			} = req.body;
+			const s = new CalendarHistory({
+				processedBy: req.user.fullName,
+				processedDate,
+				specialty,
+				staff,
+				startDate,
+				endDate,
+				excludedDays,
+				isVisible: openView,
+				tableName,
+				slots: times.times,
+				type: 'Create',
+			});
+			await s.save();
 			times.times.forEach(async (T) => {
 				toLocaleArray.forEach(async (D) => {
 					await NewCalendar.updateOne(
@@ -320,6 +335,55 @@ module.exports = (app) => {
 		}
 	);
 
+	//OVERRIDING CALENDAR SPECIALTY&DATE&TIME
+	app.post(
+		'/api/calendar/override',
+		requireLogin,
+		async (req, res) => {
+			const {
+				times,
+				toLocaleArray,
+				specialty,
+				openView,
+				staff,
+				staffID,
+				startDate,
+				endDate,
+				processedDate,
+				tableName,
+				excludedDays,
+			} = req.body;
+			const s = new CalendarHistory({
+				processedBy: req.user.fullName,
+				processedDate,
+				specialty,
+				staff,
+				startDate,
+				endDate,
+				excludedDays,
+				isVisible: openView,
+				tableName,
+				slots: times.times,
+				type: 'Override',
+			});
+			await s.save();
+			times.times.forEach(async (T) => {
+				toLocaleArray.forEach(async (D) => {
+					await NewCalendar.updateOne(
+						{
+							date: D,
+							time: T,
+							specialty,
+							staffID,
+						},
+						{ $set: { openView } }
+					).exec();
+				});
+			});
+			res.send('Overrided');
+		}
+	);
+
 	//DELETE CALENDAR SPECIALTY&DATE&TIME
 	app.post(
 		'/api/calendar/delete',
@@ -329,8 +393,27 @@ module.exports = (app) => {
 				times,
 				toLocaleArray,
 				specialty,
+				staff,
 				staffID,
+				startDate,
+				endDate,
+				processedDate,
+				tableName,
+				excludedDays,
 			} = req.body;
+			const s = new CalendarHistory({
+				processedBy: req.user.fullName,
+				processedDate,
+				specialty,
+				staff,
+				startDate,
+				endDate,
+				excludedDays,
+				tableName,
+				slots: times.times,
+				type: 'Delete',
+			});
+			await s.save();
 			times.times.forEach(async (T) => {
 				toLocaleArray.forEach(async (D) => {
 					const calendar = await NewCalendar.findOne(
@@ -658,7 +741,7 @@ module.exports = (app) => {
 
 	//FETCHING MY BOOKING
 	app.get(
-		'/api/booking/mybooking',
+		'/api/my-booking/history/get',
 		requireLogin,
 		async (req, res) => {
 			let data = [];
@@ -766,7 +849,7 @@ module.exports = (app) => {
 				.catch((err) => {
 					console.log(err, 'err');
 				});
-			res.send('Successfully Created!!!');
+			res.send('Cancelled!');
 			const email = user.email;
 			const booking = {
 				date: details.date,
@@ -800,6 +883,7 @@ module.exports = (app) => {
 				});
 				//console.log("Message sent: %s", info.messageId);
 			}
+
 			bookingCancellation().catch(console.error);
 			async function bookingCancellation2() {
 				let info2 = await transporter.sendMail({
@@ -930,7 +1014,6 @@ module.exports = (app) => {
 	//FETCHING WAITING LIST
 	app.get(
 		'/api/booking/waitinglist/get',
-		requireLogin,
 		async (req, res) => {
 			//let data = [];
 			const myWaitingList = await WaitingList.find(
@@ -995,6 +1078,61 @@ module.exports = (app) => {
 				}
 			).exec();
 			res.send('Deleted!');
+		}
+	);
+
+	//CREATE CALENDAR HISTORY
+	app.post(
+		'/api/calendar-history/post',
+		requireLogin,
+		async (req, res) => {
+			const {
+				processedBy,
+				processedDate,
+				specialty,
+				staff,
+				startDate,
+				endDate,
+				excludedDays,
+				isVisible,
+				slots,
+			} = req.body;
+			const s = new CalendarHistory({
+				processedBy,
+				processedDate,
+				specialty,
+				staff,
+				startDate,
+				endDate,
+				excludedDays,
+				isVisible,
+				slots,
+			});
+			await s.save();
+			res.send('Saved!');
+		}
+	);
+
+	//FETCHING CALENDAR HISTORY
+	app.get(
+		'/api/calendar-history/get',
+		async (req, res) => {
+			const sp = await CalendarHistory.find({});
+			res.send(sp);
+		}
+	);
+
+	//DELETE CALENDAR HISTORY
+	app.post(
+		'/api/calendar-history/delete',
+		requireLogin,
+		async (req, res) => {
+			console.log('bateu');
+			const { _id } = req.body;
+			await CalendarHistory.findByIdAndRemove({
+				_id,
+			});
+			res.send('Deleted!!');
 		}
 	);
 };

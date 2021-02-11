@@ -6,7 +6,10 @@ const SlideSpecialty = (props) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.box}>
-				<div className={classes.header}>
+				<div
+					id='specialty'
+					className={classes.header}
+				>
 					{props.specialty}
 				</div>
 				<div className={classes.text}>
@@ -14,7 +17,8 @@ const SlideSpecialty = (props) => {
 				</div>
 				<div className={classes.button}>
 					<ButtonSelect
-						onClick={props.onClick}
+						buttonName={props.buttonName}
+						onClick={() => props.onClick(props)}
 						display={props.display}
 					/>
 				</div>

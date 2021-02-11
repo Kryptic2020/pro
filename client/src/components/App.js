@@ -432,8 +432,9 @@ export default connect(mapStateToProps, actions)(App);
 	margin: 2px;
 	padding: 1% 3%;
 	background-color: black;
-	border-radius: 5px;
+	border-radius: 10px;
+	height: 40px;
 	color: #ffffff;
-	font-size: 14px;
-	opacity: 0.3;
+	font-size: 16px;
+	opacity: 0.9;
 }*/

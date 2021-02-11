@@ -4,18 +4,60 @@ import 'react-multi-carousel/lib/styles.css';
 import SlidePhoto from '../SlidePhoto/SlidePhoto';
 import Heading from '../UI/Heading/Heading';
 import classes from './styles.module.css';
-import background from '../../assets/Adam.png';
 
-const CarouselSpecialty = (props) => {
-	const Photo = props.photoArray.map((w) => (
-		<SlidePhoto
-			display={props.display_select}
-			onClick={props.onClick_select}
-			key={w._id}
-			photo={w.photo}
-			fullName={w.fullName}
+const CarouselStaff = (props) => {
+	let Photo = [];
+	let a = [];
+
+	props.staffAssignments.map((x) => {
+		if (!a.includes(x.staffID)) {
+			a.push(x.staffID);
+		}
+	});
+
+	if (props.home) {
+		Photo = a.map((u, index) => (
+			<SlidePhoto
+				display={'none'}
+				key={u + index}
+				photo={props.admins.map((z) => {
+					if (z._id === u) return z.photo;
+				})}
+				staff={props.admins.map((y) => {
+					if (y._id === u) return y.fullName;
+				})}
+			/>
+		));
+	} else if (props.staffAssignments && !props.home) {
+		Photo = props.staffAssignments.map((w, index) =>
+			w.assignedSpecialty === props.specialty ? (
+				<SlidePhoto
+					display={props.display_select}
+					onClick={props.onClick_select}
+					key={w._id + index}
+					photo={props.admins.map((x) => {
+						if (x._id === w.staffID)
+							return x.photo;
+					})}
+					staff={w.staff}
+					staffID={w.staffID}
+					assignmentID={w._id}
+				/>
+			) : null
+		);
+	}
+
+	/*
+	const data = this.props.photo;
+	const Example = ({ data }) => (
+		<img
+			alt='Image Database'
+			style={{ borderRadius: '50%' }}
+			src={`${data}`}
+			width={250}
+			height={250}
 		/>
-	));
+	);*/
 
 	const responsive = {
 		desktop: {
@@ -36,12 +78,7 @@ const CarouselSpecialty = (props) => {
 	};
 	return (
 		<>
-			<div
-				className={classes.landing_wrapper}
-				style={{
-					backgroundImage: `url(${background})`,
-				}}
-			>
+			<div className={classes.landing_wrapper}>
 				<div className={classes.mask}>
 					<div className={classes.heading}>
 						<Heading
@@ -53,7 +90,7 @@ const CarouselSpecialty = (props) => {
 						className={classes.carousel}
 						swipeable={true}
 						draggable={true}
-						showDots={false}
+						showDots={true}
 						responsive={responsive}
 						ssr={true} // means to render carousel on server-side.
 						infinite={true}
@@ -85,4 +122,4 @@ const CarouselSpecialty = (props) => {
 	);
 };
 
-export default CarouselSpecialty;
+export default CarouselStaff;

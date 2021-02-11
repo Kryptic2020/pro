@@ -1,10 +1,11 @@
 .container {
 	width: 90%;
-	margin: 0 auto;
+	margin: 10px auto;
 	color: #ffffff;
 }
 .subcontainer {
 	height: 390px;
+	border-radius: 10px 10px 0 0;
 
 	background-color: #504f4b;
 }

@@ -25,5 +25,7 @@ export {
 	fetchServices,
 	fetchRawData,
 	fetchExistingDates,
+	fetchAdmins,
+	admins,
 } from './booking';
 export { scrollToTop } from './generalFunctions';

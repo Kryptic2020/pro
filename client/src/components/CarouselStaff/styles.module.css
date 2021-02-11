@@ -15,9 +15,8 @@
 .landing_wrapper {
 	width: 100%;
 	height: 365px;
-
 	position: relative;
-	background-image: url('../../assets/Adam.png');
+	background-image: url('../../assets/adamXS.jpg');
 	background-size: 200%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -33,6 +32,7 @@
 @media screen and (min-width: 700px) {
 	.landing_wrapper {
 		background-size: 100%;
+		background-image: url('../../assets/adamM.jpg');
 	}
 }
 
@@ -40,5 +40,6 @@
 @media screen and (min-width: 1024px) {
 	.landing_wrapper {
 		background-size: 100%;
+		background-image: url('../../assets/adamL.jpg');
 	}
 }

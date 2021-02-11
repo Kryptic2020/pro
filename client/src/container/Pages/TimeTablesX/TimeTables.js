@@ -273,9 +273,7 @@ class TimeTables extends Component {
 									table_name={
 										p.timeTableName
 									}
-									time_slots={p.times.join(
-										', '
-									)}
+									times={p.times}
 								/>
 							))}
 					</div>

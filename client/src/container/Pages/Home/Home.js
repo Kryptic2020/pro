@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions';
 import classes from './styles.module.css';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import WavesSmall from '../../../components/UI/Iconsx/WavesSmall';
@@ -37,24 +40,15 @@ class MyBookings extends Component {
 			{ photo: '', fullName: 'Danielle Powell' },
 			{ photo: '', fullName: 'Ruthy Powell' },
 		],
-		specialtyArray: [
-			{
-				specialty: 'Dentist',
-				description:
-					'Lorem ipsum dolor sit	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et',
-			},
-			{
-				specialty: 'Pharmacist',
-				description:
-					'Lorem ipsum dolor sit	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et',
-			},
-			{
-				specialty: 'Mechanic',
-				description:
-					'Lorem ipsum dolor sit	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et',
-			},
-		],
 	};
+
+	componentDidMount() {
+		this.props.onfetchSpecialties();
+		this.props.onfetchStaffAssignments();
+		this.props.onfetchAdmins();
+		this.props.onfetchServicesPrices();
+		actions.scrollToTop();
+	}
 	render() {
 		return (
 			<div>
@@ -68,11 +62,14 @@ class MyBookings extends Component {
 							/>
 						</div>
 						<div className={classes.button}>
-							<ButtonBookNow
-								text='Book Now'
-								backgroundColor='#24CD98'
-								color='#ffffff'
-							/>
+							<Link to='/book-now'>
+								{' '}
+								<ButtonBookNow
+									text='Book Now'
+									backgroundColor='#24CD98'
+									color='#ffffff'
+								/>
+							</Link>
 						</div>
 						<div
 							className={
@@ -91,18 +88,23 @@ class MyBookings extends Component {
 					<EasySteps />
 					<CarouselSpecialty
 						display_select='none'
-						specialtyArray={
-							this.state.specialtyArray
+						specialties={this.props.specialties}
+						staffAssignments={
+							this.props.staffAssignments
 						}
 					/>
 					<CarouselStaff
+						home={true}
+						admins={this.props.admins}
 						display_select='none'
-						photoArray={this.state.photoArray}
+						staffAssignments={
+							this.props.staffAssignments
+						}
 					/>
 					<CarouselService
-						display_select='none'
-						serviceArray={
-							this.state.serviceArray
+						home={true}
+						servicesPrices={
+							this.props.servicesPrices
 						}
 					/>
 				</div>
@@ -110,5 +112,31 @@ class MyBookings extends Component {
 		);
 	}
 }
+const mapStateToProps = (state) => {
+	return {
+		admins: state.booking.admins,
+		staffAssignments: state.booking.staffAssignments,
+		users: state.auth.users,
+		specialties: state.booking.specialties,
+		servicesPrices: state.booking.servicesPrices,
+	};
+};
 
-export default MyBookings;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onfetchSpecialties: () =>
+			dispatch(actions.fetchSpecialties()),
+
+		onfetchServicesPrices: () =>
+			dispatch(actions.fetchServicesPrices()),
+		onfetchAdmins: () =>
+			dispatch(actions.fetchAdmins()),
+		onfetchStaffAssignments: () =>
+			dispatch(actions.fetchStaffAssignments()),
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(MyBookings);

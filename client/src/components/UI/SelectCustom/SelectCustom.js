@@ -36,12 +36,16 @@ const Select_custom = (props) => {
 					<Select
 						style={{
 							border: 'none',
+							color: '#504f4b',
 							textAlign: 'center',
 							height: props.height,
 							lineHeight: props.lineHeight,
 						}}
 						className={classes.select}
 						native
+						open={props.open}
+						onClose={props.onClose}
+						onOpen={props.onOpen}
 						value={props.value}
 						onChange={props.onChange}
 						MenuProps={props.MenuProps}
@@ -50,8 +54,7 @@ const Select_custom = (props) => {
 							id: props.id,
 						}}
 					>
-						{/*<option value='' />*/}
-						{props.options}
+						<option value='' /> {props.options}
 					</Select>
 				</div>
 			</FormControl>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './styles.module.css';
 import ButtonDelete from '../UI/ButtonDelete/ButtonDelete';
 import ButtonBook from '../UI/ButtonBook/ButtonBook';
@@ -15,42 +16,53 @@ const CardMyBookings = (props) => {
 							<User />
 						</div>
 						<div className={classes.active}>
-							{props.active}Active
+							{props.active}
 						</div>
 					</div>
 					<div className={classes.user}>
 						<div className={classes.name}>
-							{props.name}email
+							{props.name}
 						</div>
 						<div className={classes.email}>
-							{props.email}email
+							{props.email}
 						</div>
 						<div className={classes.phone}>
-							{props.phone}email
+							{props.phone}
 						</div>
 					</div>
 
 					<div className={classes.info}>
 						<div className={classes.provider}>
-							{props.provider}provider
+							{props.provider}
 						</div>
 						<div className={classes.verified}>
-							{props.verified}provider
+							{props.verified}
 						</div>
 						<div className={classes.admin}>
-							{props.admin}provider
+							{props.admin}
 						</div>
 					</div>
 
 					<div className={classes.buttons}>
-						<ButtonEdit
-							onClick={props.onClick_edit}
-						/>
-						<ButtonBook
-							onClick={props.onClick_book}
-						/>
+						<Link
+							to={{
+								pathname: '/profile',
+								state: { _id: props._id },
+							}}
+						>
+							<ButtonEdit text={'EDIT'} />
+						</Link>
+						<Link
+							to={{
+								pathname: '/booking-adm',
+								_id: props.id,
+								fullName: props.fullName,
+							}}
+						>
+							<ButtonBook />
+						</Link>
 						<ButtonDelete
-							onClick={props.onClick_delete}
+							onClick={props.onClick}
 						/>
 					</div>
 				</div>

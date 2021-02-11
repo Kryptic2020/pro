@@ -101,7 +101,7 @@ const SelectWeekDays = (props) => {
 			<div className={classes.box}>
 				<button
 					className={
-						props.mon === false
+						props.mon === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
@@ -111,7 +111,7 @@ const SelectWeekDays = (props) => {
 				</button>
 				<button
 					className={
-						props.tue === false
+						props.tue === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
@@ -121,7 +121,7 @@ const SelectWeekDays = (props) => {
 				</button>
 				<button
 					className={
-						props.wed === false
+						props.wed === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
@@ -131,7 +131,7 @@ const SelectWeekDays = (props) => {
 				</button>
 				<button
 					className={
-						props.thu === false
+						props.thu === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
@@ -141,7 +141,7 @@ const SelectWeekDays = (props) => {
 				</button>
 				<button
 					className={
-						props.fri === false
+						props.fri === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
@@ -151,7 +151,7 @@ const SelectWeekDays = (props) => {
 				</button>
 				<button
 					className={
-						props.sat === false
+						props.sat === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
@@ -161,7 +161,7 @@ const SelectWeekDays = (props) => {
 				</button>
 				<button
 					className={
-						props.sun === false
+						props.sun === 'Empty'
 							? classes.unselected_button
 							: classes.selected_button
 					}
