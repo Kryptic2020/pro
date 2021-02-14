@@ -8,26 +8,26 @@ import classes from './styles.module.css';
 const CarouselStaff = (props) => {
 	let Photo = [];
 	let a = [];
-
+	/*
 	props.staffAssignments.map((x) => {
 		if (!a.includes(x.staffID)) {
 			a.push(x.staffID);
 		}
 	});
-
 	if (props.home) {
-		Photo = a.map((u, index) => (
-			<SlidePhoto
-				display={'none'}
-				key={u + index}
-				photo={props.admins.map((z) => {
-					if (z._id === u) return z.photo;
-				})}
-				staff={props.admins.map((y) => {
-					if (y._id === u) return y.fullName;
-				})}
-			/>
-		));
+		Photo = a.map((u, index) => {
+			props.admins.map((z) => {
+				if (u === z._id)
+					return (
+						<SlidePhoto
+							display={'none'}
+							key={u + index}
+							photo={z.photo}
+							staff={z.fullName}
+						/>
+					);
+			});
+		});
 	} else if (props.staffAssignments && !props.home) {
 		Photo = props.staffAssignments.map((w, index) =>
 			w.assignedSpecialty === props.specialty ? (
@@ -45,7 +45,7 @@ const CarouselStaff = (props) => {
 				/>
 			) : null
 		);
-	}
+	}*/
 
 	/*
 	const data = this.props.photo;
@@ -89,7 +89,7 @@ const CarouselStaff = (props) => {
 					<Carousel
 						className={classes.carousel}
 						swipeable={true}
-						draggable={true}
+						draggable={false}
 						showDots={true}
 						responsive={responsive}
 						ssr={true} // means to render carousel on server-side.
@@ -105,7 +105,7 @@ const CarouselStaff = (props) => {
 						customTransition='all .5'
 						transitionDuration={100}
 						containerClass='carousel-container'
-						removeArrowOnDeviceType={''}
+						removeArrowOnDeviceType={'mobile'}
 						deviceType={[
 							'mobile',
 							'tablet',
@@ -114,7 +114,7 @@ const CarouselStaff = (props) => {
 						dotListClass='custom-dot-list-style'
 						itemClass='carousel-item-padding-40-px'
 					>
-						{[Photo]}
+						{[props.staffArray]}
 					</Carousel>
 				</div>
 			</div>

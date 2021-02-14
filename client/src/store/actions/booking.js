@@ -21,8 +21,8 @@ export const admins = (data) => {
 		data: data,
 	};
 };
-export const fetchAdmins = () => (dispatch) => {
-	axios.get('/api/admins/get').then((res) => {
+export const fetchAdmins = () => async (dispatch) => {
+	await axios.get('/api/admins/get').then((res) => {
 		const data = res.data;
 		dispatch(admins(data));
 	});

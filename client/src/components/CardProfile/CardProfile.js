@@ -20,7 +20,7 @@ const CardProfile = (props) => {
 							id='upload'
 							type='file'
 							name='photo'
-							accept='image/*'
+							accept='image/jpeg'
 							//class='filepond'
 							onChange={props.onChange_file}
 							ref={fileInput}
@@ -28,6 +28,7 @@ const CardProfile = (props) => {
 						{
 							<div>
 								<ButtonSelect
+									buttonName={'SELECT'}
 									onClick={() =>
 										fileInput.current.click()
 									}
@@ -36,6 +37,8 @@ const CardProfile = (props) => {
 						}
 						<div>
 							<ButtonCustom
+								maxHeight={'40px'}
+								maxWidth={'120px'}
 								onClick={
 									props.onClick_upload
 								}

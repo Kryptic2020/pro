@@ -166,6 +166,7 @@ class ProfileManager extends Component {
 												d._id
 											)
 										}
+										photo={d.photo}
 										fullName={
 											d.fullName
 										}

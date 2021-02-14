@@ -10,6 +10,8 @@ const Button_custom = (props) => {
 					color: props.color,
 					width: props.width,
 					height: props.height,
+					maxHeight: props.maxHeight,
+					maxWidth: props.maxWidth,
 					visibility: props.visibility,
 					display: props.display,
 				}}

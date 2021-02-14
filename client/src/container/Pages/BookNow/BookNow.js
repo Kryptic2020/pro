@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import SlidePhoto from '../../../components/SlidePhoto/SlidePhoto';
 import * as actions from '../../../store/actions';
 import moment from 'moment';
 import { parseISO, addDays, subDays } from 'date-fns';
@@ -44,7 +45,6 @@ class BookNow extends Component {
 		actions.scrollToTop();
 	}
 	clear = () => {
-		console.log(new Date().getHours());
 		this.setState(initialState);
 	};
 	check = () => {
@@ -76,19 +76,24 @@ class BookNow extends Component {
 		axios
 			.post('/api/booking/remainingspots', e)
 			.then((res) => {
-				console.log(res.data);
 				this.setState({
 					...this.state,
 					timeOfremainingSpots: res.data,
 				});
 
 				if (res.data.length < 1) {
+					actions.scrollToTop();
 					this.setState({
-						...this.state,
+						isLoading: false,
 						msn:
 							'This staff is not available, but you can still do a Waiting List Request',
-						isLoading: false,
 					});
+					setTimeout(() => {
+						this.setState({
+							msn: '',
+							stage: 1,
+						});
+					}, 3000);
 				}
 
 				let n = [];
@@ -180,8 +185,9 @@ class BookNow extends Component {
 								) >
 								new Date().getHours() + 2
 							)
-								console.log(profile.time);
-							timeArray.push(profile.time);
+								timeArray.push(
+									profile.time
+								);
 						}
 					}
 				});
@@ -271,7 +277,6 @@ class BookNow extends Component {
 			staff: this.state.staff,
 			price: this.state.price,
 		};
-		//console.log(dataPost);
 		await axios
 			.post('/api/booking/new', dataPost)
 			.then((res) => {
@@ -293,8 +298,56 @@ class BookNow extends Component {
 	};
 
 	render() {
+		const unique = [
+			...new Map(
+				this.props.staffAssignments.map((item) => [
+					item.staffID,
+					item,
+				])
+			).values(),
+		];
+		let staffArray = [];
+		let assignments = [];
+
+		this.props.staffAssignments.map((w, index) => {
+			this.props.admins.map((e) => {
+				if (w.staffID === e._id) {
+					assignments.push({
+						_id: w._id,
+						staff: w.staff,
+						staffID: w.staffID,
+						assignedSpecialty:
+							w.assignedSpecialty,
+						photo: e.photo,
+					});
+				}
+			});
+		});
+		assignments.map((t, index) => {
+			if (
+				t.assignedSpecialty === this.state.specialty
+			) {
+				staffArray.push(
+					<SlidePhoto
+						//display={'flex'}
+						onClick={this.staffHandler}
+						key={t._id + index}
+						photo={t.photo}
+						staff={t.staff}
+						staffID={t.staffID}
+						assignmentID={t._id}
+					/>
+				);
+			}
+		});
+
 		return (
 			<div>
+				{this.state.msn ? (
+					<div className={classes.msn}>
+						{this.state.msn}
+					</div>
+				) : null}
 				<button
 					style={{
 						height: '30px',
@@ -308,11 +361,7 @@ class BookNow extends Component {
 				>
 					Back
 				</button>
-				{this.state.msn ? (
-					<div className={classes.msn}>
-						{this.state.msn}
-					</div>
-				) : null}
+
 				{this.state.isLoading ? <Spinner /> : null}
 				<div className={classes.container}>
 					<Heading text={'User > Book Now'} />
@@ -331,7 +380,6 @@ class BookNow extends Component {
 								onClick_select={
 									this.specialtyHandler
 								}
-								//display_select='none'
 								specialties={
 									this.props.specialties
 								}
@@ -344,17 +392,7 @@ class BookNow extends Component {
 
 						{this.state.stage === 2 ? (
 							<CarouselStaff
-								onClick_select={
-									this.staffHandler
-								}
-								specialty={
-									this.state.specialty
-								}
-								admins={this.props.admins}
-								staffAssignments={
-									this.props
-										.staffAssignments
-								}
+								staffArray={staffArray}
 							/>
 						) : null}
 

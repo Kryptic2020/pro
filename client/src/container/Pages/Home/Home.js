@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import SlidePhoto from '../../../components/SlidePhoto/SlidePhoto';
 import * as actions from '../../../store/actions';
 import classes from './styles.module.css';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import WavesSmall from '../../../components/UI/Iconsx/WavesSmall';
+import Wave from '../../../components/UI/Iconsx/WavesSmall';
 import Heading from '../../../components/UI/Heading/Heading';
 import ButtonBookNow from '../../../components/UI/ButtonBookNow/ButtonBookNow';
 import EasySteps from '../../../components/EasySteps/EasySteps';
@@ -42,14 +43,35 @@ class MyBookings extends Component {
 		],
 	};
 
-	componentDidMount() {
-		this.props.onfetchSpecialties();
-		this.props.onfetchStaffAssignments();
-		this.props.onfetchAdmins();
-		this.props.onfetchServicesPrices();
-		actions.scrollToTop();
-	}
+	componentDidMount = async () => {
+		await this.props.onfetchSpecialties();
+		await this.props.onfetchStaffAssignments();
+		await this.props.onfetchAdmins();
+		await this.props.onfetchServicesPrices();
+		await actions.scrollToTop();
+	};
 	render() {
+		let a = [];
+		this.props.staffAssignments.map((x) => {
+			if (!a.includes(x.staffID)) {
+				a.push(x.staffID);
+			}
+		});
+		let staffArray = [];
+		a.map((u, index) => {
+			this.props.admins.map((z) => {
+				if (u === z._id) {
+					staffArray.push(
+						<SlidePhoto
+							display={'none'}
+							key={u + index}
+							photo={z.photo}
+							staff={z.fullName}
+						/>
+					);
+				}
+			});
+		});
 		return (
 			<div>
 				{this.state.isLoading ? <Spinner /> : null}
@@ -81,8 +103,8 @@ class MyBookings extends Component {
 							diam nonumy eirmod tempor
 						</div>
 
-						<div className={classes.wavesSmall}>
-							<WavesSmall />
+						<div className={classes.wave}>
+							<Wave />
 						</div>
 					</div>
 					<EasySteps />
@@ -94,12 +116,7 @@ class MyBookings extends Component {
 						}
 					/>
 					<CarouselStaff
-						home={true}
-						admins={this.props.admins}
-						display_select='none'
-						staffAssignments={
-							this.props.staffAssignments
-						}
+						staffArray={staffArray}
 					/>
 					<CarouselService
 						home={true}

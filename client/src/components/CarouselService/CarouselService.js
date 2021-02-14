@@ -64,7 +64,7 @@ const CarouselSpecialty = (props) => {
 					<Carousel
 						className={classes.carousel}
 						swipeable={true}
-						draggable={true}
+						draggable={false}
 						showDots={true}
 						responsive={responsive}
 						ssr={true} // means to render carousel on server-side.
@@ -80,7 +80,7 @@ const CarouselSpecialty = (props) => {
 						customTransition='all .5'
 						transitionDuration={1000}
 						containerClass='carousel-container'
-						removeArrowOnDeviceType={''}
+						removeArrowOnDeviceType={'mobile'}
 						deviceType={[
 							'mobile',
 							'tablet',

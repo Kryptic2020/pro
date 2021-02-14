@@ -2,16 +2,16 @@ import React from 'react';
 import ButtonSelect from '../UI/ButtonSelect/ButtonSelect';
 import classes from './styles.module.css';
 
-const SlideSpecialty = (props) => {
+const SlidePhoto = (props) => {
 	return (
 		<div className={classes.container}>
 			<img
 				className={classes.photo}
 				alt='Database'
-				style={{ borderRadius: '50%' }}
+				style={{
+					borderRadius: '50%',
+				}}
 				src={props.photo}
-				//width={250}
-				//height={250}
 			/>
 
 			<div className={classes.text}>
@@ -40,4 +40,4 @@ const SlideSpecialty = (props) => {
 			/>
 		);*/
 
-export default SlideSpecialty;
+export default SlidePhoto;

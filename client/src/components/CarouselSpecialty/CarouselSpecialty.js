@@ -7,20 +7,31 @@ import classes from './styles.module.css';
 
 const CarouselSpecialty = (props) => {
 	let Card = [];
+	const unique = [
+		...new Map(
+			props.staffAssignments.map((item) => [
+				item.assignedSpecialty,
+				item,
+			])
+		).values(),
+	];
 	if (props.staffAssignments) {
-		Card = props.staffAssignments.map((w, index) => (
-			<SlideSpecialty
-				buttonName={props.buttonName}
-				display={props.display_select}
-				onClick={props.onClick_select}
-				key={w._id + index}
-				specialty={w.assignedSpecialty}
-				description={props.specialties.map((x) => {
-					if (x.name === w.assignedSpecialty)
-						return x.description;
-				})}
-			/>
-		));
+		unique.map((w, index) => {
+			props.specialties.map((z) => {
+				if (w.assignedSpecialty === z.name) {
+					Card.push(
+						<SlideSpecialty
+							buttonName={props.buttonName}
+							display={props.display_select}
+							onClick={props.onClick_select}
+							key={w._id + index}
+							specialty={z.name}
+							description={z.description}
+						/>
+					);
+				}
+			});
+		});
 	}
 
 	const responsive = {
@@ -54,20 +65,20 @@ const CarouselSpecialty = (props) => {
 				draggable={true}
 				showDots={true}
 				responsive={responsive}
-				ssr={true} // means to render carousel on server-side.
+				ssr={false} // means to render carousel on server-side.
 				infinite={true}
 				autoPlay={
-					false
+					true
 					//this.props.deviceType !== 'mobile'
 					//	? true
 					//: false
 				}
-				autoPlaySpeed={5000}
+				autoPlaySpeed={3000}
 				keyBoardControl={true}
 				customTransition='all .5'
 				transitionDuration={100}
 				containerClass='carousel-container'
-				removeArrowOnDeviceType={''}
+				removeArrowOnDeviceType={'mobile'}
 				deviceType={['mobile', 'tablet', 'desktop']} //this.props.deviceType}
 				dotListClass='custom-dot-list-style'
 				itemClass='carousel-item-padding-40-px'

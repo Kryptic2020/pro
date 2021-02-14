@@ -4,7 +4,7 @@ import classes from './styles.module.css';
 import ButtonDelete from '../UI/ButtonDelete/ButtonDelete';
 import ButtonBook from '../UI/ButtonBook/ButtonBook';
 import ButtonEdit from '../UI/ButtonEdit/ButtonEdit';
-import User from '../UI/Iconsx/User';
+//import User from '../UI/Iconsx/User';
 
 const CardMyBookings = (props) => {
 	return (
@@ -12,9 +12,11 @@ const CardMyBookings = (props) => {
 			<div className={classes.card}>
 				<div className={classes.box}>
 					<div className={classes.icon_box}>
-						<div className={classes.icon}>
-							<User />
-						</div>
+						<img
+							className={classes.icon}
+							src={props.photo}
+						/>
+
 						<div className={classes.active}>
 							{props.active}
 						</div>

@@ -6,7 +6,7 @@ const Waves = (props) => (
 		xlink='http://www.w3.org/1999/xlink'
 		//width='439.021'
 		//height='298.954'
-		viewBox='0 0 439.021 398.954'
+		viewBox='0 0 378 298'
 		//viewBox='0 0 1200 120'
 		preserveAspectRatio='none'
 	>

@@ -230,13 +230,16 @@ class Profile extends Component {
 		const { crop, selectedFile, src } = this.state;
 		const data = this.props.photo;
 		const Example = ({ data }) => (
-			<img
-				alt='Image Database'
-				style={{ borderRadius: '50%' }}
-				src={`${data}`}
-				width={250}
-				height={250}
-			/>
+			console.log(data),
+			(
+				<img
+					alt='Image Database'
+					style={{ borderRadius: '50%' }}
+					src={`${data}`}
+					width={250}
+					height={250}
+				/>
+			)
 		);
 
 		return (
