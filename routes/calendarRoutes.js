@@ -1137,4 +1137,35 @@ module.exports = (app) => {
 			res.send('Deleted!!');
 		}
 	);
+
+	//FETCHING CALENDAR BY DATE&SERVICE
+	app.post(
+		'/api/sales/get',
+		requireLogin,
+		async (req, res) => {
+			const {
+				specialty,
+				staffID,
+				service,
+				startDate,
+				endDate,
+			} = req.body;
+			let query = {};
+
+			if (specialty) {
+				query.specialty = specialty;
+			}
+			if (staffID) {
+				query.staffID = staffID;
+			}
+			if (service) {
+				query.service = service;
+			}
+			query.isBooked = true;
+			query.date = { $gte: startDate, $lte: endDate };
+
+			const sales = await NewCalendar.find(query);
+			res.send(sales);
+		}
+	);
 };

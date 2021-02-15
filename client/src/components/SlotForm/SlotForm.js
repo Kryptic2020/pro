@@ -6,27 +6,35 @@ import SelectDate from '../UI/SelectDate/SelectDate';
 
 const SlotForm = (props) => {
 	let specialties = [];
-	props.staffAssignments.map((x) => {
-		if (!specialties.includes(x.assignedSpecialty)) {
-			specialties.push(x.assignedSpecialty);
-		}
-	});
+	if (props.staffAssignments) {
+		props.staffAssignments.map((x) => {
+			if (
+				!specialties.includes(x.assignedSpecialty)
+			) {
+				specialties.push(x.assignedSpecialty);
+			}
+		});
+	}
+
 	const optionsSpecialty = specialties.map((s, index) => (
 		<option value={s} key={s + index}>
 			{s}
 		</option>
 	));
-	const optionsStaff = props.staffAssignments.map(
-		(r, index) =>
-			r.assignedSpecialty === props.specialty ? (
-				<option
-					value={r.staffID}
-					key={r.staffID + index}
-				>
-					{r.staff}
-				</option>
-			) : null
-	);
+	let optionsStaff = [];
+	if (props.staffAssignments) {
+		optionsStaff = props.staffAssignments.map(
+			(r, index) =>
+				r.assignedSpecialty === props.specialty ? (
+					<option
+						value={r.staffID}
+						key={r.staffID + index}
+					>
+						{r.staff}
+					</option>
+				) : null
+		);
+	}
 
 	return (
 		<div className={classes.container}>

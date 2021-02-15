@@ -2,7 +2,7 @@
 	background-color: #11b9f0;
 	color: #ffffff;
 	border-radius: 10px 10px 0 0;
-	height: 590px;
+	height: 630px;
 	grid-column: grid;
 	grid-row: box;
 }
@@ -38,7 +38,7 @@
 	grid-row: five;
 }
 .switch {
-	height: 90px;
+	height: 120px;
 	grid-column: 1/2;
 	grid-row: six;
 }

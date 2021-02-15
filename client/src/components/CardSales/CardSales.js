@@ -12,32 +12,33 @@ const CardSales = (props) => {
 		<div className={classes.container}>
 			<div className={classes.box1}>
 				<div className={classes.headers}>
-					Sales Income - {props.state}
+					Sales Income
 				</div>
 				<div className={classes.specialty_icon}>
 					<Specialty />
 				</div>
 				<div className={classes.specialty}>
-					{props.specialty}Dentist
+					{props.specialty}
 				</div>
 				<div className={classes.assigned_icon}>
 					<Assigned />
 				</div>
 				<div className={classes.assigned}>
-					{props.staff}Amanda Powell
+					{props.staff}
 				</div>
 				<div className={classes.service_icon}>
 					<Service fill='#ffffff' />
 				</div>
 				<div className={classes.service}>
-					{props.service}Fillings
+					{props.service}
 				</div>
 				<div className={classes.calendar_icon}>
 					<Calendar fill='#ffffff' />
 				</div>
 				<div className={classes.calendar}>
-					{props.startDate} {props.endDate}
-					20/12/2021 - 19/01/2022
+					{props.startDate}
+					{' - '}
+					{props.endDate}
 				</div>
 			</div>
 			<div className={classes.box2}>
@@ -45,13 +46,13 @@ const CardSales = (props) => {
 					<Register />
 				</div>
 				<div className={classes.register}>
-					{props.registers} X 23
+					{props.registers}
 				</div>
 				<div className={classes.price_icon}>
 					<Price />
 				</div>
 				<div className={classes.price}>
-					{props.price}1.000.00
+					{props.total}
 				</div>
 			</div>
 		</div>

@@ -40,6 +40,7 @@ const Select_custom = (props) => {
 							textAlign: 'center',
 							height: props.height,
 							lineHeight: props.lineHeight,
+							borderRadius: '5px',
 						}}
 						className={classes.select}
 						native

@@ -16,31 +16,6 @@ import CarouselService from '../../../components/CarouselService/CarouselService
 class MyBookings extends Component {
 	state = {
 		isLoading: false,
-		serviceArray: [
-			{
-				service: 'Fillig',
-				price: 299,
-				description:
-					'Lorem ipsum dolor sit	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
-			},
-			{
-				service: 'HairCut',
-				price: 699,
-				description:
-					'Lorem ipsum dolor sit	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
-			},
-			{
-				service: 'Tax Return',
-				price: 199,
-				description:
-					'Lorem ipsum dolor sit	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
-			},
-		],
-		photoArray: [
-			{ photo: '', fullName: 'Amanda Powell' },
-			{ photo: '', fullName: 'Danielle Powell' },
-			{ photo: '', fullName: 'Ruthy Powell' },
-		],
 	};
 
 	componentDidMount = async () => {
@@ -48,7 +23,7 @@ class MyBookings extends Component {
 		await this.props.onfetchStaffAssignments();
 		await this.props.onfetchAdmins();
 		await this.props.onfetchServicesPrices();
-		await actions.scrollToTop();
+		actions.scrollToTop();
 	};
 	render() {
 		let a = [];

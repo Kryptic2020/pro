@@ -1,19 +1,29 @@
 .container {
-	height: 800px;
+	height: 1350px;
 	width: 90%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 }
+.msn {
+	position: absolute;
+	margin: 2px;
+	padding: 5% 10%;
+	background-color: black;
+	border-radius: 10px;
+	color: #ffffff;
+	font-size: 16px;
+	opacity: 0.9;
+}
 
 @media screen and (min-width: 600px) {
 	.container {
-		height: 950px;
+		height: 1950px;
 	}
 }
 @media screen and (min-width: 1000px) {
 	.container {
-		height: 700px;
+		height: 1700px;
 	}
 }

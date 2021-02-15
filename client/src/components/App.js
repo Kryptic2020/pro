@@ -430,11 +430,19 @@ export default connect(mapStateToProps, actions)(App);
 .msn {
 	position: absolute;
 	margin: 2px;
-	padding: 1% 3%;
+	padding: 5% 10%;
 	background-color: black;
 	border-radius: 10px;
-	height: 40px;
 	color: #ffffff;
 	font-size: 16px;
 	opacity: 0.9;
 }*/
+
+/*	const unique = [
+			...new Map(
+				this.props.staffAssignments.map((item) => [
+					item.staffID,
+					item,
+				])
+			).values(),
+		];*/

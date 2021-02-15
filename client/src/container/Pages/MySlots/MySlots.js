@@ -23,25 +23,14 @@ class MySlots extends Component {
 		endDate:
 			new Date().getTime() + 1000 * 60 * 60 * 24 * 7,
 		date: null,
-		Tdate: '',
-		timeTables: [],
-		selected: [],
 		isLoading: false,
-		todayDate: null, //
-		TstartDate: '',
 		msn: '',
-		show: true, //
+		Modal2Show: false,
 		modalShow: false, //
-		show2: true, //
-		modal2Show: false, //
-		show3: true, //
-		modal3Show: false, //
 		comments: '', //
 		cardID: '', //
 		showConfirmDelButton: false,
 		cancelBooking: '',
-		waitingListId: '',
-		testeName: '',
 	};
 	componentDidMount = async () => {
 		await this.props.onfetchStaffAssignments();
@@ -142,7 +131,6 @@ class MySlots extends Component {
 			...this.state,
 			modal2Show: true,
 			cancelBooking,
-			testeName: bookedByName,
 		});
 	};
 	handleModal2Close = () => {
@@ -254,18 +242,18 @@ class MySlots extends Component {
 			</div>
 		);
 	}
-	handleModal3Show = (_id, comments) => {
+	handleModalShow = (_id, comments) => {
 		console.log(_id, comments);
 		this.setState({
-			modal3Show: true,
+			modalShow: true,
 			cardID: _id,
 			comments,
 		});
 	};
 
-	handleModal3Close = () => {
+	handleModalClose = () => {
 		this.setState({
-			modal3Show: false,
+			modalShow: false,
 			showConfirmDelButton: false,
 			cardID: '',
 		});
@@ -310,7 +298,7 @@ class MySlots extends Component {
 		return (
 			<div>
 				<Modal
-					show={this.state.modal3Show}
+					show={this.state.modalShow}
 					onHide={this.handleModal3Close}
 				>
 					<Modal.Header>
@@ -446,10 +434,6 @@ class MySlots extends Component {
 								this.setState({
 									endDate: date,
 								});
-								console.log(
-									date,
-									new Date()
-								);
 							}}
 							minDate_end={
 								this.state.startDate
@@ -491,7 +475,7 @@ class MySlots extends Component {
 								this.handleModal2Show
 							}
 							onClick_pencil={
-								this.handleModal3Show
+								this.handleModalShow
 							}
 						/>
 					</div>
