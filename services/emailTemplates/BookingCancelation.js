@@ -1,6 +1,6 @@
 const keys = require('../../config/keys');
 
-module.exports = (user, booking,dateAUS) => {
+module.exports = (user, booking, dateAUS) => {
 	return `
     <html>
       <body>
@@ -11,6 +11,7 @@ module.exports = (user, booking,dateAUS) => {
           <p>Date: ${dateAUS.date} </p>
           <p>Time: ${booking.time} </p>
           <p>Service: ${booking.service} </p>
+          <p>Price: ${booking.price} </p>
           
           <div>
             <a href="${keys.redirectDomain}/booking/mybooking">

@@ -4,7 +4,9 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	z-index: 9;
+	z-index: 100;
+	filter: blur(0px) !important;
+	-webkit-filter: 'none' !important;
 }
 .photo {
 	position: relative;
@@ -13,7 +15,9 @@
 	margin: 0 auto;
 	background-color: #ffffff;
 	border-radius: 50%;
-	z-index: 9;
+	z-index: 100;
+	filter: none !important;
+	-webkit-filter: 'none' !important;
 }
 
 .text {
@@ -25,12 +29,12 @@
 
 	color: #ffffff;
 	margin: 0 auto;
-	z-index: 9;
+	z-index: 100;
 }
 .button {
 	text-align: center;
 	margin-bottom: 15px;
-	z-index: 9;
+	z-index: 100;
 }
 
 @media screen and (min-width: 700px) {

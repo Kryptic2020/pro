@@ -9,7 +9,7 @@ const ButtonDelete = (props) => {
 				style={{ width: props.width }}
 				className={classes.button}
 			>
-				DELETE
+				{props.text ? props.text : 'DELETE'}
 			</button>
 		</div>
 	);

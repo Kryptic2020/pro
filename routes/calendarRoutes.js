@@ -795,6 +795,7 @@ module.exports = (app) => {
 				date,
 				time,
 				service,
+				price,
 				bookedByName,
 			} = req.body;
 			console.log(bookedByName);
@@ -855,6 +856,7 @@ module.exports = (app) => {
 				date: details.date,
 				time,
 				service,
+				price,
 			};
 			console.log(booking);
 			const dateAUS = {

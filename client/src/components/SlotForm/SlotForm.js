@@ -1,10 +1,33 @@
 import React from 'react';
 import classes from './styles.module.css';
-
 import SelectCustom from '../UI/SelectCustom/SelectCustom';
 import SelectDate from '../UI/SelectDate/SelectDate';
+//import { parseWithOptions } from 'date-fns/fp';
 
 const SlotForm = (props) => {
+	let specialties = [];
+	props.staffAssignments.map((x) => {
+		if (!specialties.includes(x.assignedSpecialty)) {
+			specialties.push(x.assignedSpecialty);
+		}
+	});
+	const optionsSpecialty = specialties.map((s, index) => (
+		<option value={s} key={s + index}>
+			{s}
+		</option>
+	));
+	const optionsStaff = props.staffAssignments.map(
+		(r, index) =>
+			r.assignedSpecialty === props.specialty ? (
+				<option
+					value={r.staffID}
+					key={r.staffID + index}
+				>
+					{r.staff}
+				</option>
+			) : null
+	);
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.box}>
@@ -12,7 +35,7 @@ const SlotForm = (props) => {
 					<SelectCustom
 						id='specialty'
 						onChange={props.onChange_specialty}
-						options={props.optionsSpecialty}
+						options={optionsSpecialty}
 						display_icon={'none'}
 						label={'Select Specialty'}
 					/>
@@ -21,14 +44,14 @@ const SlotForm = (props) => {
 					<SelectCustom
 						id='staff'
 						onChange={props.onChange_staff}
-						options={props.optionsStaff}
+						options={optionsStaff}
 						display_icon={'none'}
 						label={'Select Staff'}
 					/>
 				</div>
 				<div className={classes.start}>
 					<SelectDate
-						minDate={props.minDate_start}
+						//minDate={props.minDate_start}
 						label={'Select Start Date'}
 						selected={props.selected_start}
 						onChange={props.onChange_start}
@@ -39,7 +62,7 @@ const SlotForm = (props) => {
 					<SelectDate
 						label={'Select End Date'}
 						minDate={props.minDate_end}
-						selected={props.selected_end_date}
+						selected={props.selected_end}
 						onChange={props.onChange_end}
 						display_icon={'none'}
 					/>
