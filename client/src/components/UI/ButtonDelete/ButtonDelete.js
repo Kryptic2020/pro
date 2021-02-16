@@ -6,7 +6,17 @@ const ButtonDelete = (props) => {
 		<div>
 			<button
 				onClick={props.onClick}
-				style={{ width: props.width }}
+				style={{
+					backgroundColor: props.backgroundColor,
+					color: props.color,
+					width: props.width,
+					height: props.height,
+					maxHeight: props.maxHeight,
+					maxWidth: props.maxWidth,
+					minWidth: props.minWidth,
+					visibility: props.visibility,
+					display: props.display,
+				}}
 				className={classes.button}
 			>
 				{props.text ? props.text : 'DELETE'}

@@ -39,10 +39,10 @@ class ProfileManager extends Component {
 			});
 	};
 
-	deleteHandler = async () => {
+	deleteHandler = () => {
 		this.setState({ isLoading: true });
 		const id = { _id: this.state.id };
-		await axios
+		axios
 			.post('/api/contacts/delete', id)
 			.then((res) => {
 				this.setState({

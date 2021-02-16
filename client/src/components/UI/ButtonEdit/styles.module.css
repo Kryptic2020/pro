@@ -1,7 +1,6 @@
 .button {
 	font-family: 'Roboto', sans-serif;
-	width: 70px;
-	height: 30px;
+	padding: 2px 5px;
 	background-color: #4bd08c;
 	font-size: 14px;
 	font-weight: bolder;
@@ -19,8 +18,14 @@
 
 @media screen and (min-width: 600px) {
 	.button {
-		width: 100px;
-		height: 40px;
-		font-size: 20px;
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.button {
+		font-size: 22px;
+		padding: 5px 15px;
 	}
 }

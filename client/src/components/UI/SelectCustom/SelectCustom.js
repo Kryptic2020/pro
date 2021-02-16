@@ -23,7 +23,9 @@ const Select_custom = (props) => {
 				variant='outlined'
 			>
 				<label
-					style={{ display: props.display_icon }}
+					style={{
+						display: props.display_icon,
+					}}
 					className={classes.icon}
 				>
 					{props.icon}
@@ -39,6 +41,7 @@ const Select_custom = (props) => {
 							color: '#504f4b',
 							textAlign: 'center',
 							height: props.height,
+							width: props.width,
 							lineHeight: props.lineHeight,
 							borderRadius: '5px',
 						}}

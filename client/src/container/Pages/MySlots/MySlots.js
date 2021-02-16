@@ -32,8 +32,8 @@ class MySlots extends Component {
 		showConfirmDelButton: false,
 		cancelBooking: '',
 	};
-	componentDidMount = async () => {
-		await this.props.onfetchStaffAssignments();
+	componentDidMount = () => {
+		this.props.onfetchStaffAssignments();
 		actions.scrollToTop();
 	};
 
@@ -44,7 +44,7 @@ class MySlots extends Component {
 	staffHandler = (e) => {
 		this.setState({ staffID: e.target.value });
 	};
-	continueHandler = async () => {
+	continueHandler = () => {
 		this.setState({ ...this.state, isLoading: true });
 		const dataPost = {
 			startDate: moment(
@@ -56,7 +56,7 @@ class MySlots extends Component {
 			specialty: this.state.specialty,
 			staffID: this.state.staffID,
 		};
-		await axios
+		axios
 			.post('/api/calendar/bydates', dataPost)
 			.then((res) => {
 				actions.scrollToTop();
@@ -140,9 +140,9 @@ class MySlots extends Component {
 			cancelBooking: '',
 		});
 	};
-	cancelBookingHandler = async () => {
+	cancelBookingHandler = () => {
 		const data = this.state.cancelBooking;
-		await axios
+		axios
 			.post('/api/booking/cancel', data)
 			.then((res) => {
 				//console.log(res.data);
@@ -268,28 +268,22 @@ class MySlots extends Component {
 	showConfirmDelButtonHandler = () => {
 		this.setState({ showConfirmDelButton: true });
 	};
-	commentsSaveHandler = async () => {
+	commentsSaveHandler = () => {
 		const id = {
 			_id: this.state.cardID,
 			comments: this.state.comments,
 		};
 		this.setState({ isLoading: true });
-		await axios.post(
-			'api/calendar/comments/update',
-			id
-		);
+		axios.post('api/calendar/comments/update', id);
 		this.handleModal3Close();
 		this.continueHandler();
 		this.setState({ isLoading: false });
 	};
-	commentsDelHandler = async () => {
+	commentsDelHandler = () => {
 		this.setState({ isLoading: true });
 		const id = { _id: this.state.cardID };
 		this.handleModal3Close();
-		await axios.post(
-			'api/calendar/comments/delete',
-			id
-		);
+		axios.post('api/calendar/comments/delete', id);
 		this.handleModal3Close();
 		this.continueHandler();
 		this.setState({ isLoading: false });

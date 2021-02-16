@@ -34,6 +34,7 @@ const initialState = {
 
 class CreateSlot extends Component {
 	state = initialState;
+
 	componentDidMount() {
 		actions.scrollToTop();
 		this.fetchTimeTable(); //
@@ -64,14 +65,15 @@ class CreateSlot extends Component {
 			});
 	};
 
-	specialtyChangeHandler = async (event) => {
-		//console.log(moment(new Date()).format('DD-MM-YYYY[T00:00:00.000Z]'));
+	//GET CALENDAR DATA BY SELECTED SPECIALTY
+
+	specialtyChangeHandler = (event) => {
 		this.setState({
 			...this.state,
 			specialty: event.target.value,
 		});
 		const data = { specialty: event.target.value };
-		await axios
+		axios
 			.post('/api/calendar/byspecialty', data)
 			.then((res) => {
 				let dates = [];
@@ -291,23 +293,6 @@ class CreateSlot extends Component {
 		).defaultValue;
 	};
 	render() {
-		const optionsSpecialty = this.props.assignedSpecialties.map(
-			(x, index) => (
-				<option key={index} value={x}>
-					{x}
-				</option>
-			)
-		);
-		const optionsStaff = this.props.staffAssignments.map(
-			(m) =>
-				m.assignedSpecialty.includes(
-					this.state.specialty
-				) ? (
-					<option key={m._id} value={m.staffID}>
-						{m.staff}
-					</option>
-				) : null
-		);
 		return (
 			<div className={classes.container}>
 				{this.state.msn ? (
@@ -326,20 +311,28 @@ class CreateSlot extends Component {
 					</div>
 					<div className={classes.form}>
 						<SlotForm
-							optionsSpecialty={
-								optionsSpecialty
+							staffAssignments={
+								this.props.staffAssignments
 							}
+							specialty={this.state.specialty}
 							onChange_specialty={
 								this.specialtyChangeHandler
-							}
-							optionsStaff={optionsStaff}
-							selected_start={
-								this.state.startDate
 							}
 							onChange_staff={
 								this.staffHandleChange
 							}
-							selected_end_date={
+							highlightDates_start={
+								this.state
+									.calendarBySpecialty
+							}
+							selected_start={
+								this.state.startDate
+							}
+							highlightDates_end={
+								this.state
+									.calendarBySpecialty
+							}
+							selected_end={
 								this.state.endDate
 							}
 							minDate_start={new Date()}

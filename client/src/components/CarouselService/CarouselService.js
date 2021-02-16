@@ -57,44 +57,43 @@ const CarouselSpecialty = (props) => {
 	return (
 		<>
 			<div className={classes.container}>
-				<div className={classes.mask}>
-					<div className={classes.heading}>
-						<Heading
-							color='#ffffff'
-							text={'Our Services'}
-						/>
-					</div>
-					<Carousel
-						className={classes.carousel}
-						swipeable={true}
-						draggable={true}
-						showDots={true}
-						responsive={responsive}
-						ssr={true} // means to render carousel on server-side.
-						infinite={false}
-						autoPlay={
-							false
-							//this.props.deviceType !== 'mobile'
-							//	? true
-							//: false
-						}
-						autoPlaySpeed={1000}
-						keyBoardControl={true}
-						customTransition='all .2'
-						transitionDuration={1000}
-						containerClass='carousel-container'
-						//removeArrowOnDeviceType={''}
-						deviceType={[
-							'mobile',
-							'tablet',
-							'desktop',
-						]} //this.props.deviceType}
-						dotListClass='custom-dot-list-style'
-						itemClass='carousel-item-padding-40-px'
-					>
-						{[Service]}
-					</Carousel>
+				<div className={classes.mask}> </div>
+				<div className={classes.heading}>
+					<Heading
+						color='#ffffff'
+						text={'Our Services'}
+					/>
 				</div>
+				<Carousel
+					className={classes.carousel}
+					swipeable={true}
+					draggable={false}
+					showDots={true}
+					responsive={responsive}
+					ssr={true} // means to render carousel on server-side.
+					infinite={false}
+					autoPlay={
+						false
+						//this.props.deviceType !== 'mobile'
+						//	? true
+						//: false
+					}
+					autoPlaySpeed={1000}
+					keyBoardControl={true}
+					customTransition='all .2'
+					transitionDuration={1000}
+					containerClass='carousel-container'
+					//removeArrowOnDeviceType={''}
+					deviceType={[
+						'mobile',
+						'tablet',
+						'desktop',
+					]} //this.props.deviceType}
+					dotListClass='custom-dot-list-style'
+					itemClass='carousel-item-padding-40-px'
+				>
+					{[Service]}
+				</Carousel>
 			</div>
 		</>
 	);

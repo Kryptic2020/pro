@@ -18,11 +18,11 @@ class MyBookings extends Component {
 		isLoading: false,
 	};
 
-	componentDidMount = async () => {
-		await this.props.onfetchSpecialties();
-		await this.props.onfetchStaffAssignments();
-		await this.props.onfetchAdmins();
-		await this.props.onfetchServicesPrices();
+	componentDidMount = () => {
+		this.props.onfetchSpecialties();
+		this.props.onfetchStaffAssignments();
+		this.props.onfetchAdmins();
+		this.props.onfetchServicesPrices();
 		actions.scrollToTop();
 	};
 	render() {

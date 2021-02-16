@@ -58,14 +58,14 @@ class Specialty extends Component {
 			description: event.target.value,
 		});
 	};
-	specialtyAddHandler = async () => {
+	specialtyAddHandler = () => {
 		this.reset();
 		this.setState({ isLoading: true });
 		const sp = {
 			specialty: this.state.specialty,
 			description: this.state.description,
 		};
-		await Axios.post('/api/specialty/post', sp)
+		Axios.post('/api/specialty/post', sp)
 			.then((res) => {
 				this.setState({ msn: res.data });
 				setTimeout(() => {
@@ -82,10 +82,10 @@ class Specialty extends Component {
 			isLoading: false,
 		});
 	};
-	specialtyDelHandler = async () => {
+	specialtyDelHandler = () => {
 		this.setState({ isLoading: true });
 		const id = { _id: this.state.id };
-		await Axios.post('/api/specialty/delete', id)
+		Axios.post('/api/specialty/delete', id)
 			.then((res) => {
 				this.setState({
 					msn: res.data,

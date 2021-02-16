@@ -52,18 +52,22 @@ const CardMyBookings = (props) => {
 								state: { _id: props._id },
 							}}
 						>
-							<ButtonEdit text={'EDIT'} />
+							<ButtonEdit
+								text={'EDIT'}
+								minWidth={'70px'}
+							/>
 						</Link>
 						<Link
 							to={{
 								pathname: '/booking-adm',
-								_id: props.id,
+								_id: props._id,
 								fullName: props.fullName,
 							}}
 						>
-							<ButtonBook />
+							<ButtonBook minWidth={'70px'} />
 						</Link>
 						<ButtonDelete
+							minWidth={'70px'}
 							onClick={props.onClick}
 						/>
 					</div>

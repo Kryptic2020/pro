@@ -1,7 +1,6 @@
 .container {
 	height: 235px;
 	width: 100%;
-	background-color: #4bd08c;
 }
 .box {
 	display: flex;
@@ -12,6 +11,7 @@
 	margin: 0 auto;
 	background-color: #ffffff;
 	border-radius: 10px;
+	z-index: 2;
 }
 
 .header {
@@ -21,17 +21,20 @@
 	text-align: center;
 	width: 100%;
 	text-shadow: 0px 1px 1px black;
+	z-index: 2;
 }
 .text {
 	font-size: 16px;
-	text-align: left;
+	text-align: center;
 	width: 90%;
 	color: #504f4b;
 	margin: 0 auto;
+	z-index: 2;
 }
 .button {
 	text-align: center;
 	margin-bottom: 5px;
+	z-index: 12;
 }
 
 @media screen and (min-width: 480px) {

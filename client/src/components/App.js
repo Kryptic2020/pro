@@ -7,12 +7,7 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
 import VerifyEmail from '../container/Pages/VerifyEmail/VerifyEmail';
-import CreateTimeTables from '../container/Pages/TimeTables';
-import Booking from '../container/Pages/Booking';
-import BookingAdm from '../container/Pages/BookingAdm';
-import MyBooking from '../container/Pages/MyBooking';
-import Contacts from '../container/Pages/Contacts';
-import Calendar from '../container/Pages/Calendar';
+import BookingAdm from '../container/Pages/BookingAdm/BookingAdm';
 import WaitingList from '../container/Pages/WaitingList';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import Assign_staff from '../container/Pages/Assign_staff/Assign_staff';
@@ -179,15 +174,7 @@ class App extends Component {
 						{this.props.authenticated ? (
 							<Route
 								exact
-								path='/booking'
-								component={Booking}
-							/>
-						) : null}
-
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/bookingAdm'
+								path='/booking-adm'
 								component={BookingAdm}
 							/>
 						) : null}
@@ -195,32 +182,8 @@ class App extends Component {
 						{this.props.authenticated ? (
 							<Route
 								exact
-								path='/calendar'
-								component={Calendar}
-							/>
-						) : null}
-
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/waitinglist'
+								path='/waiting-list'
 								component={WaitingList}
-							/>
-						) : null}
-
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/booking/mybooking'
-								component={MyBooking}
-							/>
-						) : null}
-
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/contacts'
-								component={Contacts}
 							/>
 						) : null}
 
@@ -255,14 +218,6 @@ class App extends Component {
 								exact
 								path='/dashboard'
 								component={Dashboard}
-							/>
-						) : null}
-
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/timetables/create'
-								component={CreateTimeTables}
 							/>
 						) : null}
 

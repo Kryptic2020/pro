@@ -1,20 +1,18 @@
 .container {
 	position: relative;
 	width: 100%;
-	height: 400px;
+	height: 450px;
 	/*background-color: #504f4b;*/
-	background-color: rgb(80, 79, 75, 0.9);
-}
-.heading {
-	text-shadow: 1px 2px 2px #071114;
-}
-
-.mask {
-	position: relative;
-	height: 400px;
-	background-image: url('../../assets/c6.png');
-	background-size: auto;
+	background-color: rgb(80, 79, 75, 1);
 	display: flex;
 	flex-flow: column;
 	justify-content: space-evenly;
+}
+.mask {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image: url('../../assets/c6.png');
+	background-repeat: repeat;
+	z-index: 1;
 }

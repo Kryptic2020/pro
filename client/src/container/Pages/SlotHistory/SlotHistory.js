@@ -36,11 +36,11 @@ class CalendarHistory extends Component {
 		});
 	};
 
-	deleteHandler = async () => {
+	deleteHandler = () => {
 		actions.scrollToTop();
 		this.setState({ isLoading: true });
 		const data = { _id: this.state.id };
-		await axios
+		axios
 			.post('/api/calendar-history/delete', data)
 			.then((res) => {
 				this.setState({

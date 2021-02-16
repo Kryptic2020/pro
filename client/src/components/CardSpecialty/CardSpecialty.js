@@ -18,7 +18,6 @@ const CardSpecialty = (props) => {
 					<div className={classes.button_large}>
 						<ButtonDelete
 							onClick={props.onClick}
-							width={'200px'}
 						/>
 					</div>
 				</div>

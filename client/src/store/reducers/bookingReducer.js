@@ -11,6 +11,7 @@ const initialState = {
 	servicesPrices: [],
 	staffAssignments: [],
 	assignedSpecialties: [],
+	staffID: [],
 	admins: [],
 };
 
@@ -20,9 +21,15 @@ const staffAssignments = (state, action) => {
 		if (!specialties.includes(m.assignedSpecialty))
 			specialties.push(m.assignedSpecialty);
 	});
+	let staffID = [];
+	action.data.map((m) => {
+		if (!staffID.includes(m.staffID))
+			staffID.push(m.staffID);
+	});
 	return updateObject(state, {
 		staffAssignments: action.data,
 		assignedSpecialties: specialties,
+		staffID,
 	});
 };
 

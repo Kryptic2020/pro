@@ -1,40 +1,49 @@
-.mask {
+.container {
 	position: relative;
 	width: 100%;
-	height: 365px;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: 9;
+	height: 490px;
 	display: flex;
 	flex-flow: column;
 	justify-content: space-evenly;
 }
+
+.mask {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 1;
+}
 .heading {
-	text-shadow: 0px 1px 1px black;
+	z-index: 2;
+}
+
+.carousel {
+	z-index: 2;
 }
 
 .landing_wrapper {
-	z-index: 1;
+	z-index: 0;
 	width: 100%;
-	height: 365px;
-	position: relative;
+	height: 100%;
+	position: absolute;
 	background-image: url('../../assets/adamXS.jpg');
-	background-size: 200%;
+	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: center center; /*
+	background-position: center center;
 	filter: blur(3px);
-	-webkit-filter: blur(3px);*/
+	-webkit-filter: blur(3px);
 }
 
 @media screen and (min-width: 480px) {
-	.landing_wrapper {
-		background-size: 150%;
+	.container {
+		height: 365px;
 	}
 }
 
 /* Small devices (portrait tablets and large phones, 640px and up) */
 @media screen and (min-width: 700px) {
 	.landing_wrapper {
-		background-size: 100%;
 		background-image: url('../../assets/adamM.jpg');
 	}
 }
@@ -42,7 +51,6 @@
 /* Large devices (laptops/desktops, 1024px and up) */
 @media screen and (min-width: 1024px) {
 	.landing_wrapper {
-		background-size: 100%;
 		background-image: url('../../assets/adamL.jpg');
 	}
 }

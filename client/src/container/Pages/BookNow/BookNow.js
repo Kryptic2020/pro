@@ -56,7 +56,7 @@ class BookNow extends Component {
 			stage: 2,
 		});
 	};
-	staffHandler = async (props) => {
+	staffHandler = (props) => {
 		this.setState({
 			isLoading: true,
 			staff: props.staff,
@@ -277,7 +277,7 @@ class BookNow extends Component {
 			staff: this.state.staff,
 			price: this.state.price,
 		};
-		await axios
+		axios
 			.post('/api/booking/new', dataPost)
 			.then((res) => {
 				this.setState({ msn: res.data });

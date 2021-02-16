@@ -61,14 +61,14 @@ class DeleteSlot extends Component {
 			});
 	};
 
-	specialtyChangeHandler = async (event) => {
+	specialtyChangeHandler = (event) => {
 		//console.log(moment(new Date()).format('DD-MM-YYYY[T00:00:00.000Z]'));
 		this.setState({
 			...this.state,
 			specialty: event.target.value,
 		});
 		const data = { specialty: event.target.value };
-		await axios
+		axios
 			.post('/api/calendar/byspecialty', data)
 			.then((res) => {
 				let dates = [];

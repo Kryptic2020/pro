@@ -22,21 +22,7 @@ const CardSlot = (props) => {
 			return 1;
 		}
 		return 0;
-	} /*bookedByID: ""
-bookedByName: ""
-cancelledBy: ""
-comments: ""
-contactNumber: null
-date: "2021-02-15T00:00:00.000Z"
-isBooked: false
-isCancelled: false
-openView: true
-specialty: "Accountant"
-staff: "Pedro Barros"
-staffID: "60235c5a9f38551641316698"
-time: "00:00"
-__v: 0
-_id: "6024ed5295f0e312ff60cd49"*/
+	}
 	const u = props.data.sort(compareTime);
 	const s = u.sort(compareDate);
 	const T = s.map((d, index) => (
@@ -122,7 +108,9 @@ _id: "6024ed5295f0e312ff60cd49"*/
 				>
 					<Pencil
 						fill={
-							!d.openView ? '#ffffff' : null
+							!d.openView || d.isBooked
+								? '#ffffff'
+								: null
 						}
 					/>
 				</div>

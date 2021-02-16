@@ -112,14 +112,14 @@ class AssignStaff extends Component {
 
 	//SUBMIT
 	//ok
-	submitHandler = async () => {
+	submitHandler = () => {
 		this.setState({ ...this.state, isLoading: true });
 		const data = {
 			staff: this.state.staff,
 			staffID: this.state.staffID,
 			assignedSpecialty: this.state.specialty,
 		};
-		await Axios.post('/api/staffassignments/post', data)
+		Axios.post('/api/staffassignments/post', data)
 			.then((res) => {
 				this.setState({ msn: res.data });
 				setTimeout(() => {

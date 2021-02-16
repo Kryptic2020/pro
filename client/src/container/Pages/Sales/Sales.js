@@ -26,10 +26,10 @@ class Sales extends Component {
 		registers: '',
 	};
 
-	componentDidMount = async () => {
-		await this.props.onfetchSpecialties();
-		await this.props.onfetchStaffAssignments();
-		await this.props.onfetchServicesPrices();
+	componentDidMount = () => {
+		this.props.onfetchSpecialties();
+		this.props.onfetchStaffAssignments();
+		this.props.onfetchServicesPrices();
 		actions.scrollToTop();
 	};
 	executeScroll = () => this.myRef.scrollIntoView();
@@ -38,7 +38,7 @@ class Sales extends Component {
 		const r = e.target.value.split(',');
 		this.setState({ staff: r[1], staffID: r[0] });
 	};
-	continueHandler = async () => {
+	continueHandler = () => {
 		this.setState({
 			...this.state,
 			isLoading: false,
@@ -56,45 +56,41 @@ class Sales extends Component {
 			).format('YYYY-MM-DD[T00:00:00.000Z]'),
 			forecast: this.state.forecast,
 		};
-		await axios
-			.post('/api/sales/get', data)
-			.then((res) => {
-				actions.scrollToTop();
-				const result = res.data.reduce(
-					(total, currentValue) =>
-						(total =
-							total + currentValue.price),
-					0
-				);
+		axios.post('/api/sales/get', data).then((res) => {
+			actions.scrollToTop();
+			const result = res.data.reduce(
+				(total, currentValue) =>
+					(total = total + currentValue.price),
+				0
+			);
 
+			this.setState({
+				...this.state,
+				total: result,
+				registers: res.data.length,
+				msn: 'Updated',
+				isLoading: false,
+			});
+			setTimeout(() => {
+				this.executeScroll();
 				this.setState({
-					...this.state,
-					total: result,
-					registers: res.data.length,
-					msn: 'Updated',
+					msn: '',
+				});
+			}, 2000);
+
+			if (res.data.length < 1) {
+				this.setState({
+					msn: 'There is sale to be displayed.',
 					isLoading: false,
 				});
+				actions.scrollToTop();
 				setTimeout(() => {
-					this.executeScroll();
 					this.setState({
 						msn: '',
 					});
-				}, 2000);
-
-				if (res.data.length < 1) {
-					this.setState({
-						msn:
-							'There is sale to be displayed.',
-						isLoading: false,
-					});
-					actions.scrollToTop();
-					setTimeout(() => {
-						this.setState({
-							msn: '',
-						});
-					}, 3000);
-				}
-			});
+				}, 3000);
+			}
+		});
 	};
 	render() {
 		return (

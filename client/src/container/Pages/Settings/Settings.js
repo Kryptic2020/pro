@@ -36,7 +36,7 @@ const Settings = (props) => {
 								title={'Setup Specialties'}
 								content={[
 									'Add new or delete existing Specialties.',
-									<div>
+									<div key={4}>
 										**Existing Specialty
 										already assigned to
 										a staff cannot be
@@ -46,7 +46,6 @@ const Settings = (props) => {
 										before deleting the
 										Specialty.
 									</div>,
-									'',
 								]}
 							/>
 						</Link>
@@ -64,7 +63,7 @@ const Settings = (props) => {
 								title={'Assign Staffs'}
 								content={[
 									'Add new or delete existing assignments.',
-									<div>
+									<div key={2}>
 										<div>
 											Add new or
 											delete services
@@ -97,7 +96,7 @@ const Settings = (props) => {
 								title={'Setup Time Tables'}
 								content={[
 									'Add new or Delete existing TimeTables.',
-									<div>
+									<div key={3}>
 										<div>
 											** Each staff
 											can have more
@@ -135,7 +134,7 @@ const Settings = (props) => {
 								title={'Calendar Manager'}
 								content={[
 									'Add new, update or delete existing spots on your Calendar.',
-									<div>
+									<div key={6}>
 										<div>
 											** You can
 											override
@@ -171,7 +170,7 @@ const Settings = (props) => {
 								}
 								content={[
 									'Update or delete existing Contacts.',
-									<div>
+									<div key={7}>
 										<div>
 											** You can grant
 											or remove admin

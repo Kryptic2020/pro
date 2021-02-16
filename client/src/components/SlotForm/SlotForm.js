@@ -15,7 +15,6 @@ const SlotForm = (props) => {
 			}
 		});
 	}
-
 	const optionsSpecialty = specialties.map((s, index) => (
 		<option value={s} key={s + index}>
 			{s}
@@ -64,6 +63,9 @@ const SlotForm = (props) => {
 						selected={props.selected_start}
 						onChange={props.onChange_start}
 						display_icon={'none'}
+						highlightDates={
+							props.highlightDates_start
+						}
 					/>
 				</div>
 				<div className={classes.end}>
@@ -73,6 +75,9 @@ const SlotForm = (props) => {
 						selected={props.selected_end}
 						onChange={props.onChange_end}
 						display_icon={'none'}
+						highlightDates={
+							props.highlightDates_end
+						}
 					/>
 				</div>
 			</div>

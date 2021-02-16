@@ -37,8 +37,6 @@ const CardProfile = (props) => {
 						}
 						<div>
 							<ButtonCustom
-								maxHeight={'40px'}
-								maxWidth={'120px'}
 								onClick={
 									props.onClick_upload
 								}

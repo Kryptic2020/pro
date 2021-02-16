@@ -65,7 +65,7 @@ class Services extends Component {
 
 	//SUBMIT BUTTON
 
-	submitHandler = async () => {
+	submitHandler = () => {
 		this.setState({ isLoading: true });
 		const sc = {
 			name: this.state.service,
@@ -73,7 +73,7 @@ class Services extends Component {
 			assignmentID: this.state.assignmentID,
 			serviceDetails: this.state.serviceDetails,
 		};
-		await Axios.post('/api/serviceprice/post', sc)
+		Axios.post('/api/serviceprice/post', sc)
 			.then((res) => {
 				actions.scrollToTop();
 				this.setState({ msn: res.data });

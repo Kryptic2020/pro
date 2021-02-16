@@ -22,9 +22,9 @@ class MyBookings extends Component {
 		actions.scrollToTop();
 	}
 
-	fetchMyBookings = async () => {
+	fetchMyBookings = () => {
 		this.setState({ isLoading: true });
-		await axios
+		axios
 			.get('/api/my-booking/history/get')
 			.then((res) => {
 				this.setState({
@@ -77,11 +77,11 @@ class MyBookings extends Component {
 		});
 	};
 
-	cancelBookingHandler = async () => {
+	cancelBookingHandler = () => {
 		this.setState({ isLoading: true });
 		const data = this.state.cancelBooking;
 		console.log(data);
-		await axios
+		axios
 			.post('/api/booking/cancel', data)
 			.then((res) => {
 				this.setState({
@@ -240,9 +240,6 @@ class MyBookings extends Component {
 													w.isCancelled
 														? 'CANCELLED'
 														: 'CANCEL'
-												}
-												width={
-													'130px'
 												}
 												color={
 													w.isCancelled

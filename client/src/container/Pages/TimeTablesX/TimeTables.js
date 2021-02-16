@@ -180,7 +180,7 @@ class TimeTables extends Component {
 	};
 
 	// SUBMIT - COMPONENT
-	submitHandle = async () => {
+	submitHandle = () => {
 		this.setState({ ...this.state, isLoading: true });
 		const tableData = {
 			tableName: this.state.name,
@@ -189,7 +189,7 @@ class TimeTables extends Component {
 				.split(','),
 		};
 		console.log(tableData);
-		await Axios.post('/api/createTimeTable', tableData)
+		Axios.post('/api/createTimeTable', tableData)
 			.then((res) => {
 				actions.scrollToTop();
 				this.setState({ msn: res.data });

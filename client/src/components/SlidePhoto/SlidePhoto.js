@@ -6,6 +6,7 @@ const SlidePhoto = (props) => {
 	return (
 		<div className={classes.container}>
 			<img
+				draggable={false}
 				className={classes.photo}
 				alt='Database'
 				style={{

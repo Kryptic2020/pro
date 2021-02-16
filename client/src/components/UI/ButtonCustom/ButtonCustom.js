@@ -11,7 +11,9 @@ const Button_custom = (props) => {
 					width: props.width,
 					height: props.height,
 					maxHeight: props.maxHeight,
+					minHeight: props.minHeight,
 					maxWidth: props.maxWidth,
+					minWidth: props.minWidth,
 					visibility: props.visibility,
 					display: props.display,
 				}}

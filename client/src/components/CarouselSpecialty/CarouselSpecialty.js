@@ -56,6 +56,7 @@ const CarouselSpecialty = (props) => {
 	};
 	return (
 		<div className={classes.container}>
+			<div className={classes.mask}> </div>
 			<div className={classes.heading}>
 				<Heading
 					color='#ffffff'
@@ -63,34 +64,40 @@ const CarouselSpecialty = (props) => {
 					text={'Our Specialties'}
 				/>
 			</div>
-			<Carousel
-				swipeable={false}
-				draggable={true}
-				showDots={true}
-				responsive={responsive}
-				focusOnSelect={true}
-				//centerMode={true}
-				//partialVisible={true}
-				ssr={true} // means to render carousel on server-side.
-				infinite={false}
-				autoPlay={
-					false
-					//this.props.deviceType !== 'mobile'
-					//	? true
-					//: false
-				}
-				autoPlaySpeed={3000}
-				keyBoardControl={true}
-				customTransition='all .2'
-				transitionDuration={100}
-				containerClass='carousel-container'
-				//	removeArrowOnDeviceType={''}
-				deviceType={['mobile', 'tablet', 'desktop']} //this.props.deviceType}
-				dotListClass='custom-dot-list-style'
-				itemClass='carousel-item-padding-40-px'
-			>
-				{[Card]}
-			</Carousel>
+			<div className={classes.carousel}>
+				<Carousel
+					swipeable={false}
+					draggable={true}
+					showDots={true}
+					responsive={responsive}
+					focusOnSelect={true}
+					//centerMode={true}
+					//partialVisible={true}
+					ssr={true} // means to render carousel on server-side.
+					infinite={false}
+					autoPlay={
+						false
+						//this.props.deviceType !== 'mobile'
+						//	? true
+						//: false
+					}
+					autoPlaySpeed={3000}
+					keyBoardControl={true}
+					customTransition='all .2'
+					transitionDuration={100}
+					containerClass='carousel-container'
+					//	removeArrowOnDeviceType={''}
+					deviceType={[
+						'mobile',
+						'tablet',
+						'desktop',
+					]} //this.props.deviceType}
+					dotListClass='custom-dot-list-style'
+					itemClass='carousel-item-padding-40-px'
+				>
+					{[Card]}
+				</Carousel>
+			</div>
 		</div>
 	);
 };
