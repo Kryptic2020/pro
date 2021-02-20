@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
-
 const newCalendarSchema = new Schema({
 	date: Date,
 	time: String,
 	specialty: String,
 	service: String,
-	price:Number,
+	price: Number,
+	paymentMethod: String,
 	openView: Boolean,
 	contactNumber: { type: Number, default: '' },
 	bookedByName: { type: String, default: '' },
@@ -18,7 +17,7 @@ const newCalendarSchema = new Schema({
 	cancelledBy: { type: String, default: '' },
 	staffID: { type: String, default: '' },
 	staff: { type: String, default: '' },
-	comments: {type: String, default: '' }
+	comments: { type: String, default: '' },
 });
 
 mongoose.model('newCalendar', newCalendarSchema);

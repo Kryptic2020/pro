@@ -6,6 +6,19 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 }
+.msn {
+	position: absolute;
+	padding: 30% 5%;
+	text-align: center;
+	background-color: black;
+	border-radius: 10px;
+	height: 100%;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+	opacity: 0.9;
+	z-index: 300;
+}
 .box {
 	display: flex;
 	background-color: #ffffff;

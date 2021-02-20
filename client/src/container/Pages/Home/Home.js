@@ -68,6 +68,7 @@ class MyBookings extends Component {
 								/>
 							</Link>
 						</div>
+
 						<div
 							className={
 								classes.business_details

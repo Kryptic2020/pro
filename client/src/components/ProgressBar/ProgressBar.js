@@ -16,7 +16,9 @@ const ProgressBar = (props) => {
 				{props.stage == 2 ? <TimeLine2 /> : null}
 				{props.stage == 3 ? <TimeLine3 /> : null}
 				{props.stage == 4 ? <TimeLine4 /> : null}
-				{props.stage == 5 ? <TimeLine5 /> : null}
+				{props.stage == 5 || props.stage == 6 ? (
+					<TimeLine5 />
+				) : null}
 			</div>
 		</div>
 	);

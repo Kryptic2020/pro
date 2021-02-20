@@ -15,6 +15,7 @@ import CarouselStaff from '../../../components/CarouselStaff/CarouselStaff';
 import CarouselService from '../../../components/CarouselService/CarouselService';
 import FormDateTime from '../../../components/FormDateTime/FormDateTime';
 import TermsConditions from '../../../components/TermsConditions/TermsConditions';
+import PaymentMethod from '../../../components/PaymentMethod/PaymentMethod';
 
 const initialState = {
 	isLoading: false,
@@ -33,6 +34,9 @@ const initialState = {
 	appointment: '',
 	daysCalendarView: '',
 	open: false,
+	paymentMethod: '',
+	card: false,
+	token: '',
 };
 class BookNow extends Component {
 	state = initialState;
@@ -46,10 +50,10 @@ class BookNow extends Component {
 	}
 	clear = () => {
 		this.setState(initialState);
-	};
+	}; /*
 	check = () => {
 		console.log(this.state.selection);
-	};
+	};*/
 	specialtyHandler = (props) => {
 		this.setState({
 			specialty: props.specialty,
@@ -192,7 +196,7 @@ class BookNow extends Component {
 					}
 				});
 			if (timeArray.length < 1) {
-				this.scrollToTop();
+				actions.scrollToTop();
 				this.setState({
 					msn:
 						'Ops, I am sorry, Its fully booked for today',
@@ -276,25 +280,53 @@ class BookNow extends Component {
 			staffID: this.state.staffID,
 			staff: this.state.staff,
 			price: this.state.price,
+			paymentMethod: this.state.paymentMethod,
+		};
+		const dataStripe = {
+			amount: this.state.price * 100,
+			description: this.state.service,
+			token: this.state.token,
 		};
 		axios
 			.post('/api/booking/new', dataPost)
 			.then((res) => {
 				this.setState({ msn: res.data });
+				//Send Charge to Stripe API
+				if (this.state.card) {
+					axios
+						.post('/api/stripe', dataStripe)
+						.then((res) => {
+							this.setState({
+								msn: res.data,
+							});
+							setTimeout(() => {
+								this.setState({
+									msn: '',
+								});
+							}, 3000);
+						});
+					console.log('card method');
+				} else {
+					console.log('nao e card method');
+				}
+
 				setTimeout(() => {
 					this.setState({
 						msn: '',
 					});
 					this.props.history.push('/my-bookings');
 				}, 3000);
-			}); /*
+			});
+		//	this.setState(initialState);
+	};
 
-		document.getElementById(
-			'specialty'
-		).value = document.getElementById(
-			'specialty'
-		).defaultValue;*/
-		this.setState(initialState);
+	token = (token) => {
+		this.setState({
+			stage: 6,
+			paymentMethod: 'Card',
+			card: true,
+			token,
+		});
 	};
 
 	render() {
@@ -348,28 +380,13 @@ class BookNow extends Component {
 						{this.state.msn}
 					</div>
 				) : null}
-				<button
-					style={{
-						height: '30px',
-						width: '70px',
-						position: 'absolute',
-						marginLeft: '80%',
-						marginTop: '20px',
-						borderRadius: '10px',
-					}}
-					onClick={this.clear}
-				>
-					Back
-				</button>
 
 				{this.state.isLoading ? <Spinner /> : null}
 				<div className={classes.container}>
 					<Heading text={'User > Book Now'} />
 
 					<div className={classes.box}>
-						<div
-							className={classes.progressBar}
-						>
+						<div>
 							<ProgressBar
 								stage={this.state.stage}
 							/>
@@ -449,6 +466,25 @@ class BookNow extends Component {
 							/>
 						) : null}
 						{this.state.stage === 5 ? (
+							<PaymentMethod
+								name={this.state.specialty}
+								description={
+									this.state.service
+								}
+								amount={
+									this.state.price * 100
+								}
+								token={this.token}
+								onClick_cash={() =>
+									this.setState({
+										paymentMethod:
+											'Cash',
+										stage: 6,
+									})
+								}
+							/>
+						) : null}
+						{this.state.stage === 6 ? (
 							<TermsConditions
 								onClick_continue={
 									this.bookingHandler
@@ -472,6 +508,12 @@ class BookNow extends Component {
 								}
 								booking={this.state.booking}
 							/>
+							<div
+								className={classes.restart}
+								onClick={this.clear}
+							>
+								Restart
+							</div>
 						</div>
 					</div>
 				</div>

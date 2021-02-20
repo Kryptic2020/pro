@@ -80,7 +80,7 @@ const CardSlot = (props) => {
 					{!d.isBooked && !d.openView
 						? 'Unavailable'
 						: null}
-					{d.isBooked ? 'Booked' : null}
+					{d.isBooked ? d.paymentMethod : null}
 				</div>
 			</div>
 			<div className={classes.box2}>

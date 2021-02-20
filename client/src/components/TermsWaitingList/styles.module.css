@@ -1,15 +1,10 @@
 .container {
 	width: 90%;
-	margin: 30px auto;
+	margin: 10px auto;
 	color: #ffffff;
 }
-.payment {
-	background-color: #38f495;
-	height: 50px;
-	width: 100%;
-}
 .subcontainer {
-	height: 330px;
+	height: 390px;
 	border-radius: 10px 10px 0 0;
 
 	background-color: #504f4b;
@@ -28,7 +23,7 @@
 }
 
 .text {
-	height: 250px;
+	height: 300px;
 	width: 90%;
 	margin: 5% auto;
 	overflow-y: auto;
@@ -36,9 +31,6 @@
 }
 
 @media screen and (min-width: 600px) {
-	.container {
-	}
-
 	.box {
 		padding-top: 4%;
 	}

@@ -8,6 +8,9 @@
 	flex-flow: column;
 	justify-content: space-evenly;
 }
+.carousel {
+	z-index: 2;
+}
 .mask {
 	position: absolute;
 	height: 100%;

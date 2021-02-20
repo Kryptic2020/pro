@@ -1,0 +1,19 @@
+.icon {
+	margin-top: 5px;
+	transform: scale(2.4);
+	color: #504f4b;
+}
+
+@media screen and (min-width: 600px) {
+	.icon {
+		margin-top: 10px;
+		transform: scale(2.8);
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.icon {
+		margin-top: 15px;
+		transform: scale(3.2);
+	}
+}

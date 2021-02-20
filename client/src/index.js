@@ -13,7 +13,6 @@ import App from './components/App';
 import reducers from './store/reducers';
 //dev only, axios helpers!
 import axios from 'axios'; //dev test
-//import './fonts/DancingScript-Regular.ttf';
 window.axios = axios; //dev test
 
 const composeEnhancers =
@@ -32,5 +31,8 @@ ReactDom.render(
 	</Provider>,
 	document.querySelector('#root')
 );
-//console.log('STRIPE KEYS IS', process.env.REACT_APP_STRIPE_KEY);
-//console.log('Environment is', process.env.NODE_ENV);
+/*console.log(
+	'STRIPE KEYS IS',
+	process.env.REACT_APP_STRIPE_KEY
+);
+console.log('Environment is', process.env.NODE_ENV);*/

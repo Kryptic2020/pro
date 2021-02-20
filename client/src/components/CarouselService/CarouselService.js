@@ -57,7 +57,7 @@ const CarouselSpecialty = (props) => {
 	return (
 		<>
 			<div className={classes.container}>
-				<div className={classes.mask}> </div>
+				<div className={classes.mask}></div>
 				<div className={classes.heading}>
 					<Heading
 						color='#ffffff'

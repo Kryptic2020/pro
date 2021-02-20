@@ -1,5 +1,5 @@
 .container {
-	height: 750px;
+	height: 700px;
 	width: 100%;
 	display: flex;
 	flex-flow: column;
@@ -7,7 +7,7 @@
 }
 .msn {
 	position: absolute;
-	padding-top: 30%;
+	padding: 30% 5%;
 	text-align: center;
 	background-color: black;
 	border-radius: 10px;
@@ -18,16 +18,16 @@
 	opacity: 0.9;
 	z-index: 300;
 }
-
 .restart {
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 1px;
-	background-color: #38f495;
-	color: #504f4b; /*#11b9f0;*/
+	background-color: #11b9f0;
+	color: #ffffff;
 	text-align: center;
 	border-radius: 5px;
 }
+
 @media screen and (min-width: 600px) {
 	.container {
 		height: 750px;

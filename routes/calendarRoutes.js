@@ -507,6 +507,7 @@ module.exports = (app) => {
 				staff,
 				service,
 				price,
+				paymentMethod,
 			} = req.body;
 			const id = await NewCalendar.find({
 				date,
@@ -546,6 +547,7 @@ module.exports = (app) => {
 						staffID,
 						contactNumber: req.user.phone,
 						price,
+						paymentMethod,
 					},
 				}
 			)
@@ -941,7 +943,7 @@ module.exports = (app) => {
 
 	//CREATE WAITING LIST
 	app.post(
-		'/api/booking/waitinglist',
+		'/api/booking/waiting-list',
 		requireLogin,
 		async (req, res) => {
 			const {
@@ -950,7 +952,7 @@ module.exports = (app) => {
 				specialty,
 				staff,
 				service,
-				message,
+				//	message,
 				requestedAt,
 			} = req.body;
 			const waiting = new WaitingList({
@@ -963,7 +965,7 @@ module.exports = (app) => {
 				fullName: req.user.fullName,
 				userID: req.user._id,
 				requestedAt,
-				message,
+				//message,
 			});
 			await waiting.save();
 			res.send(
@@ -996,9 +998,6 @@ module.exports = (app) => {
 						'</p>' +
 						'<p> Name: ' +
 						req.user.fullName +
-						'</p>' +
-						'<p> Message: ' +
-						message +
 						'</p>' +
 						'<p> Phone: ' +
 						req.user.phone +

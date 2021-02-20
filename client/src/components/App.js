@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions';
 import VerifyEmail from '../container/Pages/VerifyEmail/VerifyEmail';
 import BookingAdm from '../container/Pages/BookingAdm/BookingAdm';
-import WaitingList from '../container/Pages/WaitingList';
+import WaitingList from '../container/Pages/WaitingList/WaitingList';
 import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import Assign_staff from '../container/Pages/Assign_staff/Assign_staff';
 import Navbar from '../components/Navbar/Navbar';
@@ -384,13 +384,16 @@ export default connect(mapStateToProps, actions)(App);
 
 .msn {
 	position: absolute;
-	margin: 2px;
-	padding: 5% 10%;
+	padding: 30% 5%;
+	text-align: center;
 	background-color: black;
 	border-radius: 10px;
+	height: 100%;
+	width: 100%;
 	color: #ffffff;
 	font-size: 16px;
 	opacity: 0.9;
+	z-index: 300;
 }*/
 
 /*	const unique = [
