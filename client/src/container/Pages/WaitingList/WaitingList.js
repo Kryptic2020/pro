@@ -75,14 +75,6 @@ class WaitingList extends Component {
 
 	datepickerHandler = (date, props) => {
 		this.setState({ date });
-		const e = new Date(date).toLocaleDateString(
-			'es-ES',
-			{
-				year: 'numeric',
-				month: 'numeric',
-				day: 'numeric',
-			}
-		);
 	};
 
 	timepickerHandler = (event) => {
@@ -140,6 +132,7 @@ class WaitingList extends Component {
 	};
 
 	render() {
+		/*
 		const unique = [
 			...new Map(
 				this.props.staffAssignments.map((item) => [
@@ -147,21 +140,14 @@ class WaitingList extends Component {
 					item,
 				])
 			).values(),
-		];
-		let staffArray = [
-			/*{
-				_id: '123',
-				staff: 'Any available staff would suit me!',
-				staffID: '123123',
-				assignedSpecialty: '',
-				photo: 'e.photo',
-			},*/
-		];
+		];*/
+		let staffArray = [];
 		let assignments = [];
 
-		this.props.staffAssignments.map((w, index) => {
-			this.props.admins.map((e) => {
-				if (w.staffID === e._id) {
+		this.props.staffAssignments.forEach((w, index) => {
+			this.props.admins
+				.filter((el) => el._id === w.staffID)
+				.forEach((e) => {
 					assignments.push({
 						_id: w._id,
 						staff: w.staff,
@@ -170,10 +156,9 @@ class WaitingList extends Component {
 							w.assignedSpecialty,
 						photo: e.photo,
 					});
-				}
-			});
+				});
 		});
-		assignments.map((t, index) => {
+		assignments.forEach((t, index) => {
 			if (
 				t.assignedSpecialty === this.state.specialty
 			) {

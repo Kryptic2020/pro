@@ -103,7 +103,7 @@ export const fetchDates = () => (dispatch) => {
 		const rawData = res.data;
 		dispatch(fetchRawData(rawData));
 		let s = [];
-		rawData.map((j) => {
+		rawData.forEach((j) => {
 			if (!j.isBooked) {
 				if (s.includes(j.service) === false)
 					s.push(j.service);
@@ -111,13 +111,13 @@ export const fetchDates = () => (dispatch) => {
 		});
 		dispatch(openServices(s));
 		let x = [];
-		rawData.map((k) => {
+		rawData.forEach((k) => {
 			if (x.includes(k.service) === false)
 				x.push(k.service);
 		});
 		dispatch(allServices(x));
 		let n = [];
-		rawData.map((profile) => {
+		rawData.forEach((profile) => {
 			//n.push(new Date(profile.date));
 			n.push(
 				new Date(

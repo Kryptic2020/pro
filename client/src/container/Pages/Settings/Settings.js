@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './styles.module.css';
 import CardSettings from '../../../components/CardSettings/CardSettings';
-import Heading from '../../../components/UI/Heading/Heading';
 import SpecialtyIcon from '../../../components/UI/Iconsx/Specialty';
 import Assigned from '../../../components/UI/Iconsx/Assigned';
 import Clock from '../../../components/UI/Iconsx/Clock';

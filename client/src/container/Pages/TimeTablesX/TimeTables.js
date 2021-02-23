@@ -12,15 +12,12 @@ import Button from 'react-bootstrap/Button';
 
 const initialState = {
 	isLoading: false,
-	cicle: '',
 	age: '0',
-	name: 'hai',
 	timeT: '',
 	cicle: '',
 	name: '',
 	selection: '',
 	msn: '',
-	isLoading: false,
 	timeTables: [], //
 	selected: '', //
 	selectedTimes: [],
@@ -180,7 +177,7 @@ class TimeTables extends Component {
 	};
 
 	// SUBMIT - COMPONENT
-	submitHandle = () => {
+	submitHandle = async () => {
 		this.setState({ ...this.state, isLoading: true });
 		const tableData = {
 			tableName: this.state.name,
@@ -189,7 +186,7 @@ class TimeTables extends Component {
 				.split(','),
 		};
 		console.log(tableData);
-		Axios.post('/api/createTimeTable', tableData)
+		await Axios.post('/api/createTimeTable', tableData)
 			.then((res) => {
 				actions.scrollToTop();
 				this.setState({ msn: res.data });
@@ -209,7 +206,7 @@ class TimeTables extends Component {
 			selection: '',
 			isLoading: false,
 		});
-		this.fetchTimeTable();
+		await this.fetchTimeTable();
 	};
 
 	render() {

@@ -18,8 +18,8 @@ const Menu = (props) => (
 				x2='26.116'
 				fill='none'
 				stroke='#fff'
-				stroke-linecap='round'
-				stroke-width='3'
+				strokeLinecap='round'
+				strokeWidth='3'
 			/>
 			<line
 				id='Line_3'
@@ -28,8 +28,8 @@ const Menu = (props) => (
 				transform='translate(0 10)'
 				fill='none'
 				stroke='#fff'
-				stroke-linecap='round'
-				stroke-width='3'
+				strokeLinecap='round'
+				strokeWidth='3'
 			/>
 			<line
 				id='Line_4'
@@ -38,8 +38,8 @@ const Menu = (props) => (
 				transform='translate(0 20)'
 				fill='none'
 				stroke='#fff'
-				stroke-linecap='round'
-				stroke-width='3'
+				strokeLinecap='round'
+				strokeWidth='3'
 			/>
 		</g>
 	</svg>

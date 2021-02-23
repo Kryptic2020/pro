@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './styles.module.css';
 import SelectCustom from '../UI/SelectCustom/SelectCustom';
 import SelectDate from '../UI/SelectDate/SelectDate';
-import MenuItem from '@material-ui/core/MenuItem';
 
 const FormDateTime = (props) => {
 	return (

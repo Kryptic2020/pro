@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import classes from './styles.module.css';
 import * as actions from '../../../store/actions';
-import CardSettings from '../../../components/CardSettings/CardSettings';
 import CardCustom from '../../../components/CardCustom/CardCustom';
 import Heading from '../../../components/UI/Heading/Heading';
 import Calendar from '../../../components/UI/Iconsx/Calendar';

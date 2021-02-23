@@ -8,6 +8,7 @@ const newCalendarSchema = new Schema({
 	service: String,
 	price: Number,
 	paymentMethod: String,
+	isPaid: { type: Boolean, default: 'false' },
 	openView: Boolean,
 	contactNumber: { type: Number, default: '' },
 	bookedByName: { type: String, default: '' },

@@ -7,7 +7,7 @@ import SelectDate from '../UI/SelectDate/SelectDate';
 const SlotForm = (props) => {
 	let specialties = [];
 	if (props.staffAssignments) {
-		props.staffAssignments.map((x) => {
+		props.staffAssignments.forEach((x) => {
 			if (
 				!specialties.includes(x.assignedSpecialty)
 			) {

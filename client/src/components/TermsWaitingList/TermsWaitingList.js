@@ -15,8 +15,11 @@ const TermsConditions = (props) => {
 					<div className={classes.button}>
 						<ButtonCustom
 							onClick={props.onClick_swap}
-							text={props.button_text}
-							text='Portugues'
+							text={
+								props.button_text
+									? props.button_text
+									: 'Portugues'
+							}
 						/>
 					</div>
 				</div>

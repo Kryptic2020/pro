@@ -215,6 +215,7 @@ class Loginx extends Component {
 	};
 
 	render() {
+		/*
 		let authRedirect = null;
 		if (this.props.authenticated) {
 			authRedirect = (
@@ -222,7 +223,7 @@ class Loginx extends Component {
 					to={this.props.authRedirectPath}
 				/>
 			);
-		}
+		}*/
 		return (
 			<>
 				{this.props.authenticated ? (

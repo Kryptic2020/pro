@@ -1,64 +1,10 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import SlidePhoto from '../SlidePhoto/SlidePhoto';
 import Heading from '../UI/Heading/Heading';
 import classes from './styles.module.css';
 
 const CarouselStaff = (props) => {
-	let Photo = [];
-	let a = [];
-	/*
-	props.staffAssignments.map((x) => {
-		if (!a.includes(x.staffID)) {
-			a.push(x.staffID);
-		}
-	});
-	if (props.home) {
-		Photo = a.map((u, index) => {
-			props.admins.map((z) => {
-				if (u === z._id)
-					return (
-						<SlidePhoto
-							display={'none'}
-							key={u + index}
-							photo={z.photo}
-							staff={z.fullName}
-						/>
-					);
-			});
-		});
-	} else if (props.staffAssignments && !props.home) {
-		Photo = props.staffAssignments.map((w, index) =>
-			w.assignedSpecialty === props.specialty ? (
-				<SlidePhoto
-					display={props.display_select}
-					onClick={props.onClick_select}
-					key={w._id + index}
-					photo={props.admins.map((x) => {
-						if (x._id === w.staffID)
-							return x.photo;
-					})}
-					staff={w.staff}
-					staffID={w.staffID}
-					assignmentID={w._id}
-				/>
-			) : null
-		);
-	}*/
-
-	/*
-	const data = this.props.photo;
-	const Example = ({ data }) => (
-		<img
-			alt='Image Database'
-			style={{ borderRadius: '50%' }}
-			src={`${data}`}
-			width={250}
-			height={250}
-		/>
-	);*/
-
 	const responsive = {
 		desktop: {
 			breakpoint: { max: 3000, min: 1024 },

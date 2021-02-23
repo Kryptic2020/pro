@@ -18,9 +18,9 @@ const Waves = (props) => (
 				x2='0.5'
 				gradientUnits='objectBoundingBox'
 			>
-				<stop offset='0' stop-color='#11b9f0' />
-				<stop offset='0.165' stop-color='#15bfe7' />
-				<stop offset='1' stop-color='#38f495' />
+				<stop offset='0' stopColor='#11b9f0' />
+				<stop offset='0.165' stopColor='#15bfe7' />
+				<stop offset='1' stopColor='#38f495' />
 			</linearGradient>
 			<filter
 				id='Path_36'
@@ -35,7 +35,7 @@ const Waves = (props) => (
 					stdDeviation='10'
 					result='blur'
 				/>
-				<feFlood flood-opacity='0.161' />
+				<feFlood floodOpacity='0.161' />
 				<feComposite operator='in' in2='blur' />
 				<feComposite in='SourceGraphic' />
 			</filter>

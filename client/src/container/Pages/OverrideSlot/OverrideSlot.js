@@ -75,7 +75,7 @@ class OverrideSlot extends Component {
 			.post('/api/calendar/byspecialty', data)
 			.then((res) => {
 				let dates = [];
-				res.data.map((e) => {
+				res.data.forEach((e) => {
 					dates.push(
 						new Date(
 							e.date
@@ -97,7 +97,7 @@ class OverrideSlot extends Component {
 			staffID: event.target.value,
 			msn: '',
 		});
-		this.props.staffAssignments.map((m) => {
+		this.props.staffAssignments.forEach((m) => {
 			if (m.staffID.includes(event.target.value))
 				return this.setState({ staff: m.staff });
 		});

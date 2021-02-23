@@ -14,6 +14,7 @@ import Logout from '../UI/Iconsx/Logout';
 import KeyboardLeftIcone from '../UI/Iconsx/KeyboardLeft';
 import Button from 'react-bootstrap/Button';
 import Sidebar from '../Sidebar/Sidebar';
+import ButtonBookNow from '../UI/ButtonBookNow/ButtonBookNow';
 
 class Navbar extends Component {
 	state = {
@@ -30,6 +31,18 @@ class Navbar extends Component {
 	render() {
 		const icons = (
 			<div className={classes.icons}>
+				<div className={classes.button}>
+					<Link to='/book-now'>
+						<ButtonBookNow
+							width='70px'
+							height='25px'
+							fontSize='12px'
+							text='Book Now'
+							backgroundColor='#24CD98'
+							color='#ffffff'
+						/>
+					</Link>
+				</div>
 				<Link to='/'>
 					<Home width={24} />
 				</Link>

@@ -26,7 +26,7 @@ const Dashboard = (props) => {
 								title={'My Slots'}
 								content={[
 									'',
-									<div>
+									<div key='1'>
 										Lorem ipsum dolor
 										sit amet, consetetur
 										sadipscing elitr,
@@ -52,7 +52,7 @@ const Dashboard = (props) => {
 								}
 								content={[
 									'',
-									<div>
+									<div key='2'>
 										Lorem ipsum dolor
 										sit amet, consetetur
 										sadipscing elitr,
@@ -79,7 +79,7 @@ const Dashboard = (props) => {
 								title={'Sales'}
 								content={[
 									'',
-									<div>
+									<div key='3'>
 										Lorem ipsum dolor
 										sit amet, consetetur
 										sadipscing elitr,

@@ -7,12 +7,25 @@ import Dashboard from '../UI/Iconsx/Dashboard';
 import Logout from '../UI/Iconsx/Logout';
 import Home from '../UI/Iconsx/Home';
 import { Link } from 'react-router-dom';
+import ButtonBookNow from '../UI/ButtonBookNow/ButtonBookNow';
 
 const Sidebar = (props) => {
 	return (
-		<>
+		<div>
 			<div className={classes.container}></div>
+
 			<div className={classes.box}>
+				<div className={classes.button}>
+					<Link to='/book-now'>
+						{' '}
+						<ButtonBookNow
+							onClick={props.onClick}
+							text='Book Now'
+							backgroundColor='#24CD98'
+							color='#ffffff'
+						/>
+					</Link>
+				</div>
 				<Link
 					onClick={props.onClick}
 					to='/'
@@ -64,7 +77,7 @@ const Sidebar = (props) => {
 					<div>LOGOUT</div>
 				</a>
 			</div>
-		</>
+		</div>
 	);
 };
 

@@ -1,10 +1,19 @@
 import React from 'react';
 import classes from './styles.module.css';
-import StripeCheckout from 'react-stripe-checkout';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 
-const Stripe = (props) => {
+//import StripeCheckout from 'react-stripe-checkout';
+
+const Checkout = (props) => {
 	return (
+		<div>
+			<CreditCardIcon
+				onClick={props.onClick}
+				className={classes.icon}
+			/>
+		</div>
+	);
+	/*	return (
 		<StripeCheckout
 			name={props.name}
 			description={props.description}
@@ -16,9 +25,9 @@ const Stripe = (props) => {
 		>
 			<CreditCardIcon className={classes.icon} />
 		</StripeCheckout>
-	);
+	);*/
 };
 
-export default Stripe;
+export default Checkout;
 
 //export default connect(null, actions)(Stripe);

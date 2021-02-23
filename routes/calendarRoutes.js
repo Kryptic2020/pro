@@ -13,13 +13,16 @@ const ServicePrice = mongoose.model('servicePrice');
 const StaffAssignments = mongoose.model('staffAssignments');
 const WaitingList = mongoose.model('waitingList');
 const transporter = require('../services/transporterNodeMailer');
-const bookingNotification = require('../services/emailTemplates/BookingNotification');
+
 const bookingCancelation = require('../services/emailTemplates/BookingCancelation');
 const keys = require('../config/keys');
+const Mailer = require('../services/Mailer');
+const bookingNotification = require('../services/emailTemplates/BookingNotification');
 //const sgMail = require('@sendgrid/mail');
 const { CCadmin } = require('../config/keys');
 //sgMail.setApiKey(keys.sendGridKey);
 const { parseISO } = require('date-fns');
+const BookingNotification = require('../services/emailTemplates/BookingNotification');
 //const { writeFileSync } = require('fs');
 //const ics = require('ics');
 
@@ -507,7 +510,6 @@ module.exports = (app) => {
 				staff,
 				service,
 				price,
-				paymentMethod,
 			} = req.body;
 			const id = await NewCalendar.find({
 				date,
@@ -547,20 +549,55 @@ module.exports = (app) => {
 						staffID,
 						contactNumber: req.user.phone,
 						price,
-						paymentMethod,
 					},
 				}
 			)
 				.exec()
 				.then((res) => {
+					//CANCEL UNPAID BOOKING AFTER 3 MIN
+					setTimeout(async () => {
+						const bookingInfo = await NewCalendar.find(
+							{
+								date,
+								time,
+								specialty,
+								staffID,
+							}
+						);
+
+						const {
+							_id,
+							service,
+							price,
+							bookedByName,
+						} = bookingInfo[0];
+
+						const userID = req.user._id;
+						if (
+							!bookingInfo[0].paymentMethod ||
+							(bookingInfo[0]
+								.paymentMethod === 'Card' &&
+								!bookingInfo[0].isPaid)
+						) {
+							cancelBooking(
+								_id,
+								specialty,
+								date,
+								time,
+								service,
+								price,
+								bookedByName,
+								userID
+							);
+						}
+					}, 180000);
+
 					//console.log(res, 'res');
 				})
 				.catch((err) => {
 					//console.log(err, 'err');
 				});
-			res.send(
-				'Well Done! You can see your Booking at MyBookings'
-			);
+			res.send('Well Done!');
 			let zica = '';
 			id.map((x) => {
 				zica = x._id;
@@ -607,7 +644,7 @@ module.exports = (app) => {
 					), // html body
 				});
 			}
-			bookingConfirmation().catch(console.error);
+			//bookingConfirmation().catch(console.error);
 			async function bookingConfirmation2() {
 				let info2 = await transporter.sendMail({
 					from: keys.sender, // sender address
@@ -621,7 +658,24 @@ module.exports = (app) => {
 					), // html body
 				});
 			}
-			bookingConfirmation2().catch(console.error);
+			//bookingConfirmation2().catch(console.error);
+			//const { title, subject, body, recipients } = req.body;
+
+			const data = {
+				subject: 'Booking Confirmation - ADM ✔',
+
+				recipients: [CCadmin],
+			};
+			//Great place to send an Email!
+			const mailer = new Mailer(
+				data,
+				BookingNotification(user, booking, dateAUS)
+			);
+			try {
+				await mailer.send();
+			} catch (err) {
+				//res.status(422).send(err);
+			}
 		}
 	);
 
@@ -786,6 +840,122 @@ module.exports = (app) => {
 		}
 	);
 
+	cancelBooking = async (
+		_id,
+		specialty,
+		date,
+		time,
+		service,
+		price,
+		bookedByName,
+		userID
+	) => {
+		const details = await NewCalendar.findOne({
+			_id,
+			bookedByName,
+		});
+		//console.log(details.bookedByID);
+		const user = await User.findOne({
+			_id: details.bookedByID,
+		});
+		await NewCalendar.updateOne(
+			{
+				_id,
+			},
+			{
+				$set: {
+					bookedByID: '',
+					bookedByName: '',
+					isBooked: false,
+					cancelledBy: userID,
+					contactNumber: '',
+					isCancelled: true,
+					service: '',
+					price: '',
+					paymentMethod: '',
+					isPaid: false,
+				},
+			}
+		)
+			.exec()
+			.then((res) => {
+				const found = BookingHistory.updateOne(
+					{
+						bookingID: details._id,
+						isCancelled: false,
+					},
+					{
+						$set: {
+							isBooked: false,
+							cancelledBy: userID,
+							isCancelled: true,
+						},
+					}
+				)
+					.exec()
+					.then((res) => {
+						//	console.log(res, 'res');
+					})
+					.catch((err) => {
+						console.log(err, 'err');
+					});
+			})
+			.catch((err) => {
+				console.log(err, 'err');
+			});
+		const email = user.email;
+		const booking = {
+			date: details.date,
+			time,
+			service,
+			price,
+		};
+		const dateAUS = {
+			date: new Date(booking.date).toLocaleDateString(
+				'es-ES',
+				{
+					year: 'numeric',
+					month: 'numeric',
+					day: 'numeric',
+				}
+			),
+		};
+		console.log(dateAUS);
+		async function bookingCancellation() {
+			let info = await transporter.sendMail({
+				from: keys.sender, // sender address
+				to: email, // list of receivers
+				subject:
+					'Your Booking has been cancelled  - ( DO NOT REPLY )', // Subject line
+				text:
+					'Your Booking has been cancelled  - ( DO NOT REPLY )', // plain text body
+				html: bookingCancelation(
+					user,
+					booking,
+					dateAUS
+				), // html body
+			});
+			//console.log("Message sent: %s", info.messageId);
+		}
+
+		bookingCancellation().catch(console.error);
+		async function bookingCancellation2() {
+			let info2 = await transporter.sendMail({
+				from: keys.sender, // sender address
+				to: CCadmin, // list of receivers
+				subject: 'Your Booking has been cancelled', // Subject line
+				text: 'Your Booking has been cancelled', // plain text body
+				html: bookingCancelation(
+					user,
+					booking,
+					dateAUS
+				), // html body
+			});
+			//console.log("Message sent: %s", info2.messageId);
+		}
+		bookingCancellation2().catch(console.error);
+	};
+
 	//CANCEL BOOKING
 	app.post(
 		'/api/booking/cancel',
@@ -800,111 +970,17 @@ module.exports = (app) => {
 				price,
 				bookedByName,
 			} = req.body;
-			console.log(bookedByName);
-			const details = await NewCalendar.findOne({
+			const userID = req.user._id;
+			cancelBooking(
 				_id,
-				bookedByName,
-			});
-			//console.log(details.bookedByID);
-			const user = await User.findOne({
-				_id: details.bookedByID,
-			});
-			await NewCalendar.updateOne(
-				{
-					_id,
-				},
-				{
-					$set: {
-						bookedByID: '',
-						bookedByName: '',
-						isBooked: false,
-						cancelledBy: req.user._id,
-						contactNumber: '',
-						isCancelled: true,
-						service: '',
-						price: '',
-					},
-				}
-			)
-				.exec()
-				.then((res) => {
-					const found = BookingHistory.updateOne(
-						{
-							bookingID: details._id,
-							isCancelled: false,
-						},
-						{
-							$set: {
-								isBooked: false,
-								cancelledBy: req.user._id,
-								isCancelled: true,
-							},
-						}
-					)
-						.exec()
-						.then((res) => {
-							//	console.log(res, 'res');
-						})
-						.catch((err) => {
-							console.log(err, 'err');
-						});
-				})
-				.catch((err) => {
-					console.log(err, 'err');
-				});
-			res.send('Cancelled!');
-			const email = user.email;
-			const booking = {
-				date: details.date,
+				specialty,
+				date,
 				time,
 				service,
 				price,
-			};
-			console.log(booking);
-			const dateAUS = {
-				date: new Date(
-					booking.date
-				).toLocaleDateString('es-ES', {
-					year: 'numeric',
-					month: 'numeric',
-					day: 'numeric',
-				}),
-			};
-			console.log(dateAUS);
-			async function bookingCancellation() {
-				let info = await transporter.sendMail({
-					from: keys.sender, // sender address
-					to: email, // list of receivers
-					subject:
-						'Your Booking has been cancelled  - ( DO NOT REPLY )', // Subject line
-					text:
-						'Your Booking has been cancelled  - ( DO NOT REPLY )', // plain text body
-					html: bookingCancelation(
-						user,
-						booking,
-						dateAUS
-					), // html body
-				});
-				//console.log("Message sent: %s", info.messageId);
-			}
-
-			bookingCancellation().catch(console.error);
-			async function bookingCancellation2() {
-				let info2 = await transporter.sendMail({
-					from: keys.sender, // sender address
-					to: CCadmin, // list of receivers
-					subject:
-						'Your Booking has been cancelled', // Subject line
-					text: 'Your Booking has been cancelled', // plain text body
-					html: bookingCancelation(
-						user,
-						booking,
-						dateAUS
-					), // html body
-				});
-				//console.log("Message sent: %s", info2.messageId);
-			}
-			bookingCancellation2().catch(console.error);
+				bookedByName,
+				userID
+			);
 		}
 	);
 
@@ -1165,6 +1241,32 @@ module.exports = (app) => {
 
 			const sales = await NewCalendar.find(query);
 			res.send(sales);
+		}
+	);
+
+	//UPDATE BOOKING PAYMENT METHOD
+	app.post(
+		'/api/booking/payment-method',
+		requireLogin,
+		async (req, res) => {
+			const { bookingID, paymentMethod } = req.body;
+			await NewCalendar.updateOne(
+				{
+					_id: bookingID,
+				},
+				{
+					$set: {
+						paymentMethod,
+					},
+				}
+			)
+				.exec()
+				.then((res) => {
+					//console.log(res, 'res');
+				})
+				.catch((err) => {
+					//console.log(err, 'err');
+				});
 		}
 	);
 };

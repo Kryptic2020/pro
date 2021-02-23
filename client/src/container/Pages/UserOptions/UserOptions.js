@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-
-//import CardSettings from '../../../components/CardSettings/CardSettings';
 import CardCustom from '../../../components/CardCustom/CardCustom';
-import Heading from '../../../components/UI/Heading/Heading';
 import User from '../../../components/UI/Iconsx/User';
 import classes from './styles.module.css';
 
@@ -39,7 +36,7 @@ class UserOptions extends Component {
 									title={'Booking Now'}
 									content={[
 										'',
-										<div>
+										<div key='1'>
 											Lorem ipsum
 											dolor sit amet,
 											consetetur
@@ -68,7 +65,7 @@ class UserOptions extends Component {
 									title={'My Bookings'}
 									content={[
 										'',
-										<div>
+										<div key='2'>
 											Lorem ipsum
 											dolor sit amet,
 											consetetur
@@ -97,7 +94,7 @@ class UserOptions extends Component {
 									title={'Waiting List'}
 									content={[
 										'',
-										<div>
+										<div key='3'>
 											Lorem ipsum
 											dolor sit amet,
 											consetetur
@@ -136,7 +133,7 @@ class UserOptions extends Component {
 									title={'Profile'}
 									content={[
 										'',
-										<div>
+										<div key='4'>
 											Lorem ipsum
 											dolor sit amet,
 											consetetur

@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './styles.module.css';
 import ButtonCustom from '../UI/ButtonCustom/ButtonCustom';
 import ContinueButton from '../ContinueButton/ContinueButton';
-import Stripe from '../Stripe/Stripe';
 
 const TermsConditions = (props) => {
 	return (
@@ -16,8 +15,11 @@ const TermsConditions = (props) => {
 					<div className={classes.button}>
 						<ButtonCustom
 							onClick={props.onClick_swap}
-							text={props.button_text}
-							text='Portugues'
+							text={
+								props.button_text
+									? props.button_text
+									: 'Portugues'
+							}
 						/>
 					</div>
 				</div>
@@ -47,7 +49,7 @@ const TermsConditions = (props) => {
 
 			<ContinueButton
 				onClick={props.onClick_continue}
-				text='ACCEPT & BOOK'
+				text='ACCEPT & PAY'
 			/>
 		</div>
 	);

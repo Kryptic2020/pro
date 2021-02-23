@@ -10,12 +10,11 @@ const Card = (props) => {
 				color: props.color,
 			}}
 		>
-			<a
+			<div
 				className={classes.heading}
 				style={{
 					color: props.title_color,
 				}}
-				href={props.path}
 			>
 				<div
 					style={{ display: props.display }}
@@ -24,7 +23,7 @@ const Card = (props) => {
 					{props.icon}
 				</div>
 				<div>{props.title}</div>
-			</a>
+			</div>
 
 			<div className={classes.content}>
 				{props.content}

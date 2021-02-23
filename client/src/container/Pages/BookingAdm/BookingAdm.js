@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 import classes from './styles.module.css';
 import * as actions from '../../../store/actions';
 import 'react-datepicker/dist/react-datepicker.css';
-import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import moment from 'moment';
 import Heading from '../../../components/UI/Heading/Heading';
-import Select_custom from '../../../components/UI/SelectCustom/SelectCustom';
+import SelectCustom from '../../../components/UI/SelectCustom/SelectCustom';
 import SelectDate from '../../../components/UI/SelectDate/SelectDate';
 import ContinueButton from '../../../components/ContinueButton/ContinueButton';
-import Button_custom from '../../../components/UI/ButtonCustom/ButtonCustom';
+import ButtonCustom from '../../../components/UI/ButtonCustom/ButtonCustom';
 
 const initialState = {
 	date: '', //
@@ -31,7 +30,6 @@ const initialState = {
 	appointmentHour: '',
 	appointmentMinute: '',
 	price: '', //
-	service: '', //
 	serviceName: '', //
 	assignmentID: '',
 	hour: [
@@ -109,7 +107,7 @@ class Calendar extends Component {
 	// Staff - Component 2
 	staffHandleChange = async (event) => {
 		let assignmentID = '';
-		this.props.staffAssignments.map((m) => {
+		this.props.staffAssignments.forEach((m) => {
 			if (
 				m.staffID === event.target.value &&
 				m.assignedSpecialty === this.state.specialty
@@ -131,7 +129,7 @@ class Calendar extends Component {
 			service: event.target.value,
 			isLoading: true,
 		});
-		await this.props.servicesPrices.map((x) => {
+		await this.props.servicesPrices.forEach((x) => {
 			if (x.name === event.target.value) {
 				this.setState({
 					price: x.price,
@@ -142,7 +140,7 @@ class Calendar extends Component {
 		this.setState({
 			isLoading: false,
 		});
-		this.props.staffAssignments.map((m) => {
+		this.props.staffAssignments.forEach((m) => {
 			if (m.staffID.includes(this.state.staffID)) {
 				this.setState({
 					...this.state,
@@ -216,7 +214,7 @@ class Calendar extends Component {
 			)
 		);
 		let spec = [];
-		this.props.staffAssignments.map((m) => {
+		this.props.staffAssignments.forEach((m) => {
 			if (
 				m.assignedSpecialty.includes(
 					this.state.specialty
@@ -230,7 +228,7 @@ class Calendar extends Component {
 			</option>
 		));
 		let service = [];
-		this.props.servicesPrices.map((m) => {
+		this.props.servicesPrices.forEach((m) => {
 			if (
 				m.assignmentID === this.state.assignmentID
 			) {
@@ -271,7 +269,7 @@ class Calendar extends Component {
 						<div className={classes.box}>
 							{this.state.id ? (
 								<div>
-									<Select_custom
+									<SelectCustom
 										display_icon={
 											'none'
 										}
@@ -291,7 +289,7 @@ class Calendar extends Component {
 
 							{this.state.specialty ? (
 								<div>
-									<Select_custom
+									<SelectCustom
 										display_icon={
 											'none'
 										}
@@ -316,7 +314,7 @@ class Calendar extends Component {
 										classes.service
 									}
 								>
-									<Select_custom
+									<SelectCustom
 										display_icon={
 											'none'
 										}
@@ -372,7 +370,7 @@ class Calendar extends Component {
 											classes.price
 										}
 									>
-										<Button_custom
+										<ButtonCustom
 											minWidth={
 												'70px'
 											}
@@ -391,7 +389,7 @@ class Calendar extends Component {
 
 							{this.state.date ? (
 								<div>
-									<Select_custom
+									<SelectCustom
 										options={
 											optionsHour
 										}
@@ -407,7 +405,7 @@ class Calendar extends Component {
 												.appointmentHour
 										}
 									/>
-									<Select_custom
+									<SelectCustom
 										options={
 											optionsMinutes
 										}

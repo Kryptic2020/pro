@@ -25,6 +25,7 @@ mongoose.connect(keys.mongoURI, {
 	useCreateIndex: true,
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+	useFindAndModify: false,
 });
 
 const app = express();

@@ -11,12 +11,12 @@ const ProgressBar = (props) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.box}>
-				{props.stage == 0 ? <TimeLine /> : null}
-				{props.stage == 1 ? <TimeLine1 /> : null}
-				{props.stage == 2 ? <TimeLine2 /> : null}
-				{props.stage == 3 ? <TimeLine3 /> : null}
-				{props.stage == 4 ? <TimeLine4 /> : null}
-				{props.stage == 5 || props.stage == 6 ? (
+				{props.stage === 0 ? <TimeLine /> : null}
+				{props.stage === 1 ? <TimeLine1 /> : null}
+				{props.stage === 2 ? <TimeLine2 /> : null}
+				{props.stage === 3 ? <TimeLine3 /> : null}
+				{props.stage === 4 ? <TimeLine4 /> : null}
+				{props.stage === 5 || props.stage === 6 ? (
 					<TimeLine5 />
 				) : null}
 			</div>

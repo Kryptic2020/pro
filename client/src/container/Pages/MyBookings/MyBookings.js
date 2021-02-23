@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { parseISO } from 'date-fns';
 import * as actions from '../../../store/actions';
 import classes from './styles.module.css';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -175,13 +174,13 @@ class MyBookings extends Component {
 					</div>
 					<div className={classes.box}>
 						<div className={classes.cards}>
-							{' '}
 							{this.state.myBookings
 								? this.state.myBookings.map(
 										(w, index) => (
 											<CardMyBookings
 												key={
 													w._id +
+													w.date +
 													index
 												}
 												date={new Date(

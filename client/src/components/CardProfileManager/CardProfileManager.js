@@ -15,6 +15,7 @@ const CardMyBookings = (props) => {
 						<img
 							className={classes.icon}
 							src={props.photo}
+							alt='User'
 						/>
 
 						<div className={classes.active}>

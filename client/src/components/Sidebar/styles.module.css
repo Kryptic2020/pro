@@ -6,6 +6,12 @@
 	opacity: 0.8;
 	z-index: 60;
 }
+.button {
+	text-align: center;
+	width: 100%;
+	z-index: 60;
+	margin: 0 auto;
+}
 
 .box {
 	position: absolute;

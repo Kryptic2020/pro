@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import classes from './styles.module.css';
-import axios from 'axios';
 //import Navbar from '../../../components/Navbar/Navbar';
 import PersonalInfo from '../../../components/PersonalInfo/Personalinfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';

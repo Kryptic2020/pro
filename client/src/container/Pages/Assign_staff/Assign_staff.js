@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
@@ -273,13 +272,11 @@ class AssignStaff extends Component {
 									}
 									_id={p._id}
 									staff={p.staff}
-									specialty={p.specialty}
 									onClick_delete={() =>
 										this.handleModalShow(
 											p._id
 										)
 									}
-									_id={p._id}
 									specialty={
 										p.assignedSpecialty
 									}

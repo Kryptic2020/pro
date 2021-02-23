@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './styles.module.css';
 import Pencil from '../UI/Iconsx/Pencil';
-import Button_custom from '../UI/ButtonCustom/ButtonCustom';
+import ButtonCustom from '../UI/ButtonCustom/ButtonCustom';
 import ButtonDelete from '../UI/ButtonDelete/ButtonDelete';
 
 const CardSlot = (props) => {
@@ -80,7 +80,10 @@ const CardSlot = (props) => {
 					{!d.isBooked && !d.openView
 						? 'Unavailable'
 						: null}
-					{d.isBooked ? d.paymentMethod : null}
+					{d.isBooked
+						? d.paymentMethod +
+						  (d.isPaid ? '-Paid' : '')
+						: null}
 				</div>
 			</div>
 			<div className={classes.box2}>
@@ -134,7 +137,7 @@ const CardSlot = (props) => {
 						}
 					/>
 				) : (
-					<Button_custom
+					<ButtonCustom
 						//	width={'60px'}
 						text={'SWAP'}
 						onClick={() =>
@@ -150,171 +153,11 @@ const CardSlot = (props) => {
 						className={classes.button}
 					>
 						SWAP
-					</Button_custom>
+					</ButtonCustom>
 				)}
 			</div>
 		</div>
 	));
-	{
-		/*	<div key={d._id}>
-			<div
-				style={{ marginBottom: '0px' }}
-				className={
-					d.isBooked
-						? 'card green white-text container'
-						: null ||
-						  (d.openView && !d.isBooked)
-						? 'card white black-text container'
-						: 'card #757575 grey darken-1 white-text container'
-					//!d.isBooked && d.openView ? 'card #757575 grey darken-1 white-text container' : null
-				}
-			>
-				<div style={{ fontSize: '12px' }}>
-					<div>
-						{new Date(
-							d.date
-						).toLocaleDateString('en-GB', {
-							year: 'numeric',
-							month: 'numeric',
-							day: 'numeric',
-						})}{' '}
-						- {d.time}{' '}
-						{!d.isBooked && d.openView
-							? '- Available'
-							: null}
-						{!d.isBooked &&
-						this.state.specialty ? (
-							<button
-								style={{
-									width: '70px',
-									marginTop: '2px',
-									height: '20px',
-									paddingBottom: '6px',
-									fontSize: '10px',
-									textAlign: 'center',
-								}}
-								className={
-									' #0288d1 light-blue darken-2 white-text small right btn-flat'
-								}
-								onClick={() =>
-									this.openCloseViewHandler(
-										d._id,
-										d.openView
-									)
-								}
-							>
-								<span
-									style={{
-										position:
-											'absolute',
-										marginLeft: '-30px',
-										marginTop: '-15px',
-									}}
-								>
-									Open/Close
-								</span>
-							</button>
-						) : null}
-						{d.isBooked &&
-						this.state.specialty ? (
-							<div>
-								<button
-									style={{
-										width: '70px',
-										marginTop: '-15px',
-										height: '20px',
-										paddingBottom:
-											'6px',
-										fontSize: '10px',
-										textAlign: 'center',
-									}}
-									className={
-										' #0288d1 light-blue darken-2 white-text small right btn-flat'
-									}
-									onClick={() =>
-										this.handleModal2Show(
-											d._id,
-											d.specialty,
-											d.date,
-											d.time,
-											d.service,
-											d.bookedByName
-										)
-									}
-								>
-									<span
-										style={{
-											position:
-												'absolute',
-											marginLeft:
-												'-20px',
-											marginTop:
-												'-15px',
-										}}
-									>
-										Cancel
-									</span>
-								</button>
-							</div>
-						) : null}
-					</div>
-					<div style={{ fontSize: '12px' }}>
-						{d.specialty} - {d.staff}{' '}
-						{!d.openView ? (
-							<span
-								style={{
-									paddingLeft: '10px',
-									color: 'white',
-									textAlign: 'center',
-									fontStyle: 'italic',
-								}}
-							>
-								{' '}
-								" Not Visible to Clients "
-							</span>
-						) : null}{' '}
-						{d.service}
-					</div>
-					<div style={{ fontSize: '11px' }}>
-						<span
-							style={{
-								color: 'yellow',
-								fontSize: '12px',
-							}}
-						>
-							{d.isBooked
-								? d.bookedByName +
-								  ' - ' +
-								  '0' +
-								  d.contactNumber
-								: null}
-						</span>
-					</div>
-					<div>
-						{this.state.specialty ? (
-							<div
-								onClick={() =>
-									this.handleModal3Show(
-										d._id,
-										d.comments
-									)
-								}
-							/>
-						) : null}
-						<span
-							style={{
-								paddingLeft: '10px',
-								fontStyle: 'italic',
-							}}
-						>
-							{d.comments}
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		*/
-	}
 
 	return (
 		<div>

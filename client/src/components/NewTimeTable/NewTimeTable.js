@@ -4,13 +4,8 @@ import InputCustom from '../UI/InputCustom/InputCustom';
 import SelectCustom from '../UI/SelectCustom/SelectCustom';
 import Select from '@material-ui/core/Select';
 import Clock from '../UI/Iconsx/Clock';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import Chip from '@material-ui/core/Chip';
-import {
-	makeStyles,
-	useTheme,
-} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 
@@ -45,46 +40,8 @@ const MenuProps = {
 	},
 };
 
-const names = [
-	'Oliver Hansen',
-	'Van Henry',
-	'April Tucker',
-	'Ralph Hubbard',
-	'Omar Alexander',
-	'Carlos Abbott',
-	'Miriam Wagner',
-	'Bradley Wilkerson',
-	'Virginia Andrews',
-	'Kelly Snyder',
-];
-function getStyles(name, personName, theme) {
-	return {
-		fontWeight:
-			personName.indexOf(name) === -1
-				? theme.typography.fontWeightRegular
-				: theme.typography.fontWeightMedium,
-	};
-}
-
 const NewTimeTable = (props) => {
 	const classes = useStyles();
-	const theme = useTheme();
-	const [personName, setPersonName] = React.useState([]);
-
-	const handleChange = (event) => {
-		setPersonName(event.target.value);
-	};
-
-	const handleChangeMultiple = (event) => {
-		const { options } = event.target;
-		const value = [];
-		for (let i = 0, l = options.length; i < l; i += 1) {
-			if (options[i].selected) {
-				value.push(options[i].value);
-			}
-		}
-		setPersonName(value);
-	};
 
 	const options = (
 		<>
@@ -247,7 +204,7 @@ const NewTimeTable = (props) => {
 						onChange={props.onChange}
 						type='text'
 						value={props.value_name}
-						label={'Service Name'}
+						label={'Table Name'}
 						display_icon={'none'}
 						//icon={<Specialty_icon />}
 					/>

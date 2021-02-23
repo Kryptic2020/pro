@@ -16,8 +16,8 @@ const CarouselSpecialty = (props) => {
 		).values(),
 	];
 	if (props.staffAssignments) {
-		unique.map((w, index) => {
-			props.specialties.map((z) => {
+		unique.forEach((w, index) => {
+			props.specialties.forEach((z) => {
 				if (w.assignedSpecialty === z.name) {
 					Card.push(
 						<SlideSpecialty

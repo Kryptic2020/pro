@@ -22,7 +22,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='3'
 					result='blur'
 				/>
-				<feFlood flood-opacity='0.161' />
+				<feFlood floodOpacity='0.161' />
 				<feComposite operator='in' in2='blur' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -39,7 +39,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='3'
 					result='blur-2'
 				/>
-				<feFlood flood-opacity='0.161' />
+				<feFlood floodOpacity='0.161' />
 				<feComposite operator='in' in2='blur-2' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -56,7 +56,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='0.5'
 					result='blur-3'
 				/>
-				<feFlood flood-opacity='0.173' />
+				<feFlood floodOpacity='0.173' />
 				<feComposite operator='in' in2='blur-3' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -73,7 +73,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='3'
 					result='blur-4'
 				/>
-				<feFlood flood-opacity='0.161' />
+				<feFlood floodOpacity='0.161' />
 				<feComposite operator='in' in2='blur-4' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -90,7 +90,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='0.5'
 					result='blur-5'
 				/>
-				<feFlood flood-opacity='0.173' />
+				<feFlood floodOpacity='0.173' />
 				<feComposite operator='in' in2='blur-5' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -107,7 +107,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='3'
 					result='blur-6'
 				/>
-				<feFlood flood-opacity='0.161' />
+				<feFlood floodOpacity='0.161' />
 				<feComposite operator='in' in2='blur-6' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -124,7 +124,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='0.5'
 					result='blur-7'
 				/>
-				<feFlood flood-opacity='0.173' />
+				<feFlood floodOpacity='0.173' />
 				<feComposite operator='in' in2='blur-7' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -141,7 +141,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='3'
 					result='blur-8'
 				/>
-				<feFlood flood-opacity='0.161' />
+				<feFlood floodOpacity='0.161' />
 				<feComposite operator='in' in2='blur-8' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -158,7 +158,7 @@ const TimeLineSmall3 = () => (
 					stdDeviation='0.5'
 					result='blur-9'
 				/>
-				<feFlood flood-opacity='0.173' />
+				<feFlood floodOpacity='0.173' />
 				<feComposite operator='in' in2='blur-9' />
 				<feComposite in='SourceGraphic' />
 			</filter>
@@ -175,8 +175,8 @@ const TimeLineSmall3 = () => (
 				transform='translate(33 192.53)'
 				fill='none'
 				stroke='#fff'
-				stroke-linecap='round'
-				stroke-width='3'
+				strokeLinecap='round'
+				strokeWidth='3'
 			/>
 			<g
 				transform='matrix(1, 0, 0, 1, 31.5, 174)'
@@ -197,8 +197,8 @@ const TimeLineSmall3 = () => (
 				data-name='1'
 				transform='translate(101 197.03)'
 				fill='#11b9f0'
-				font-size='20'
-				font-family='PlayfairDisplay-Regular, Playfair Display'
+				fontSize='20'
+				fontFamily='PlayfairDisplay-Regular, Playfair Display'
 				opacity='0.999'
 			>
 				<tspan x='-7.4' y='0'>
@@ -228,8 +228,8 @@ const TimeLineSmall3 = () => (
 					data-name='2'
 					transform='translate(115.5 23.03)'
 					fill='#11b9f0'
-					font-size='20'
-					font-family='PlayfairDisplay-Regular, Playfair Display'
+					fontSize='20'
+					fontFamily='PlayfairDisplay-Regular, Playfair Display'
 					opacity='0.997'
 				>
 					<tspan x='-9.58' y='0'>
@@ -260,8 +260,8 @@ const TimeLineSmall3 = () => (
 					data-name='3'
 					transform='translate(160.5 23)'
 					fill='#11b9f0'
-					font-size='20'
-					font-family='PlayfairDisplay-Regular, Playfair Display'
+					fontSize='20'
+					fontFamily='PlayfairDisplay-Regular, Playfair Display'
 				>
 					<tspan x='-9.02' y='0'>
 						3
@@ -291,8 +291,8 @@ const TimeLineSmall3 = () => (
 					data-name='4'
 					transform='translate(205.5 23.03)'
 					fill='#11b9f0'
-					font-size='20'
-					font-family='PlayfairDisplay-Regular, Playfair Display'
+					fontSize='20'
+					fontFamily='PlayfairDisplay-Regular, Playfair Display'
 				>
 					<tspan x='-9.88' y='0'>
 						4
@@ -322,8 +322,8 @@ const TimeLineSmall3 = () => (
 					data-name='5'
 					transform='translate(249.5 23.03)'
 					fill='#11b9f0'
-					font-size='20'
-					font-family='PlayfairDisplay-Regular, Playfair Display'
+					fontSize='20'
+					fontFamily='PlayfairDisplay-Regular, Playfair Display'
 				>
 					<tspan x='-8.3' y='0'>
 						5

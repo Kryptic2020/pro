@@ -27,14 +27,14 @@ class MyBookings extends Component {
 	};
 	render() {
 		let a = [];
-		this.props.staffAssignments.map((x) => {
+		this.props.staffAssignments.forEach((x) => {
 			if (!a.includes(x.staffID)) {
 				a.push(x.staffID);
 			}
 		});
 		let staffArray = [];
-		a.map((u, index) => {
-			this.props.admins.map((z) => {
+		a.forEach((u, index) => {
+			this.props.admins.forEach((z) => {
 				if (u === z._id) {
 					staffArray.push(
 						<SlidePhoto

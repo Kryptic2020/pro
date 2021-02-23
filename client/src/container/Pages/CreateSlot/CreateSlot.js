@@ -77,7 +77,7 @@ class CreateSlot extends Component {
 			.post('/api/calendar/byspecialty', data)
 			.then((res) => {
 				let dates = [];
-				res.data.map((e) => {
+				res.data.forEach((e) => {
 					dates.push(
 						new Date(
 							e.date
@@ -99,10 +99,13 @@ class CreateSlot extends Component {
 			staffID: event.target.value,
 			msn: '',
 		});
-		this.props.staffAssignments.map((m) => {
-			if (m.staffID.includes(event.target.value))
+		this.props.staffAssignments
+			.filter(
+				(el) => el.staffID === event.target.value
+			)
+			.map((m) => {
 				return this.setState({ staff: m.staff });
-		});
+			});
 	};
 
 	//WEEKDAYS & OPEN/CLOSE VIEW - COMPONENT 5

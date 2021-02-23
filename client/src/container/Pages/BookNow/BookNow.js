@@ -16,6 +16,10 @@ import CarouselService from '../../../components/CarouselService/CarouselService
 import FormDateTime from '../../../components/FormDateTime/FormDateTime';
 import TermsConditions from '../../../components/TermsConditions/TermsConditions';
 import PaymentMethod from '../../../components/PaymentMethod/PaymentMethod';
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe(
+	process.env.REACT_APP_STRIPE_KEY
+);
 
 const initialState = {
 	isLoading: false,
@@ -37,6 +41,7 @@ const initialState = {
 	paymentMethod: '',
 	card: false,
 	token: '',
+	bookingID: '',
 };
 class BookNow extends Component {
 	state = initialState;
@@ -102,7 +107,7 @@ class BookNow extends Component {
 
 				let n = [];
 				let z = [];
-				res.data.map((profile) => {
+				res.data.forEach((profile) => {
 					n.push(parseISO(profile.date));
 				});
 				const _id = { _id: props.staffID };
@@ -114,7 +119,7 @@ class BookNow extends Component {
 					)
 					.then((res) => {
 						const days = res.data.days;
-						n.map((D) => {
+						n.forEach((D) => {
 							if (
 								D <
 									addDays(
@@ -165,7 +170,7 @@ class BookNow extends Component {
 			//take timearray for today if
 			this.state.timeOfremainingSpots
 				.sort()
-				.map((profile) => {
+				.forEach((profile) => {
 					if (
 						parseISO(
 							profile.date
@@ -218,7 +223,7 @@ class BookNow extends Component {
 		} else {
 			this.state.timeOfremainingSpots
 				.sort()
-				.map((profile) => {
+				.forEach((profile) => {
 					if (
 						parseISO(
 							profile.date
@@ -258,6 +263,28 @@ class BookNow extends Component {
 				event.target.value,
 			stage: 5,
 		});
+		this.state.timeOfremainingSpots.forEach((e) => {
+			if (
+				new Date(e.date).toLocaleDateString(
+					'es-ES',
+					{
+						year: 'numeric',
+						month: 'numeric',
+						day: 'numeric',
+					}
+				) ===
+					new Date(
+						this.state.date
+					).toLocaleDateString('es-ES', {
+						year: 'numeric',
+						month: 'numeric',
+						day: 'numeric',
+					}) &&
+				e.time === event.target.value
+			) {
+				this.setState({ bookingID: e._id });
+			}
+		});
 	};
 
 	timepickerHandleClose = () => {
@@ -282,67 +309,84 @@ class BookNow extends Component {
 			price: this.state.price,
 			paymentMethod: this.state.paymentMethod,
 		};
-		const dataStripe = {
-			amount: this.state.price * 100,
-			description: this.state.service,
-			token: this.state.token,
-		};
+
 		axios
 			.post('/api/booking/new', dataPost)
 			.then((res) => {
-				this.setState({ msn: res.data });
-				//Send Charge to Stripe API
-				if (this.state.card) {
-					axios
-						.post('/api/stripe', dataStripe)
-						.then((res) => {
-							this.setState({
-								msn: res.data,
-							});
-							setTimeout(() => {
-								this.setState({
-									msn: '',
-								});
-							}, 3000);
-						});
-					console.log('card method');
-				} else {
-					console.log('nao e card method');
-				}
-
+				this.setState({
+					stage: 6,
+					msn:
+						'Booking reserved by 2 minutes while processing payment method',
+					isLoading: false,
+				});
 				setTimeout(() => {
-					this.setState({
-						msn: '',
-					});
-					this.props.history.push('/my-bookings');
+					this.setState({ msn: '' });
+					//
 				}, 3000);
+				setTimeout(() => {
+					this.props.history.push('/my-bookings');
+					this.setState(initialState);
+
+					//
+				}, 120000);
 			});
-		//	this.setState(initialState);
 	};
 
+	paymentMethodUpdate = (method) => {
+		console.log(method);
+		const data = {
+			paymentMethod: method,
+			bookingID: this.state.bookingID,
+		};
+		axios.post('/api/booking/payment-method', data);
+		if (method === 'Cash') {
+			this.props.history.push('/my-bookings');
+		}
+	};
 	token = (token) => {
 		this.setState({
-			stage: 6,
-			paymentMethod: 'Card',
 			card: true,
 			token,
 		});
 	};
+	handleCheckout = async (event) => {
+		this.paymentMethodUpdate('Card');
+		// Get Stripe.js instance
+		const stripe = await stripePromise;
+
+		// Call your backend to create the Checkout Session
+		let response = '';
+		const data = {
+			bookingID: this.state.bookingID,
+			price: parseInt(this.state.price),
+			service: this.state.service,
+			specialty: this.state.specialty,
+		};
+		await axios
+			.post('/api/create-checkout-session', data)
+			.then((res) => {
+				response = res.data;
+				console.log(res.data);
+			});
+
+		// When the customer clicks on the button, redirect them to Checkout.
+		const result = await stripe.redirectToCheckout({
+			sessionId: response,
+		});
+
+		if (result.error) {
+			// If `redirectToCheckout` fails due to a browser or network
+			// error, display the localized error message to your customer
+			// using `result.error.message`.
+		}
+	};
 
 	render() {
-		const unique = [
-			...new Map(
-				this.props.staffAssignments.map((item) => [
-					item.staffID,
-					item,
-				])
-			).values(),
-		];
 		let staffArray = [];
 		let assignments = [];
 
-		this.props.staffAssignments.map((w, index) => {
-			this.props.admins.map((e) => {
+		this.props.staffAssignments.forEach((w, index) => {
+			this.props.admins.forEach((e) => {
 				if (w.staffID === e._id) {
 					assignments.push({
 						_id: w._id,
@@ -355,7 +399,7 @@ class BookNow extends Component {
 				}
 			});
 		});
-		assignments.map((t, index) => {
+		assignments.forEach((t, index) => {
 			if (
 				t.assignedSpecialty === this.state.specialty
 			) {
@@ -466,6 +510,13 @@ class BookNow extends Component {
 							/>
 						) : null}
 						{this.state.stage === 5 ? (
+							<TermsConditions
+								onClick_continue={
+									this.bookingHandler
+								}
+							/>
+						) : null}
+						{this.state.stage === 6 ? (
 							<PaymentMethod
 								name={this.state.specialty}
 								description={
@@ -475,19 +526,13 @@ class BookNow extends Component {
 									this.state.price * 100
 								}
 								token={this.token}
-								onClick_cash={() =>
-									this.setState({
-										paymentMethod:
-											'Cash',
-										stage: 6,
-									})
+								onClick_card={
+									this.handleCheckout
 								}
-							/>
-						) : null}
-						{this.state.stage === 6 ? (
-							<TermsConditions
-								onClick_continue={
-									this.bookingHandler
+								onClick_cash={() =>
+									this.paymentMethodUpdate(
+										'Cash'
+									)
 								}
 							/>
 						) : null}

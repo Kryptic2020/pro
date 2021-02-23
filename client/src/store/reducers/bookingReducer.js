@@ -17,12 +17,12 @@ const initialState = {
 
 const staffAssignments = (state, action) => {
 	let specialties = [];
-	action.data.map((m) => {
+	action.data.forEach((m) => {
 		if (!specialties.includes(m.assignedSpecialty))
 			specialties.push(m.assignedSpecialty);
 	});
 	let staffID = [];
-	action.data.map((m) => {
+	action.data.forEach((m) => {
 		if (!staffID.includes(m.staffID))
 			staffID.push(m.staffID);
 	});

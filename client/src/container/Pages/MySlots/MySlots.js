@@ -23,7 +23,6 @@ class MySlots extends Component {
 		endDate:
 			new Date().getTime() + 1000 * 60 * 60 * 24 * 7,
 		date: null,
-		isLoading: false,
 		msn: '',
 		Modal2Show: false,
 		modalShow: false, //

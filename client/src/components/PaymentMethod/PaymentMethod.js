@@ -15,6 +15,7 @@ const PaymentMethod = (props) => {
 					<div className={classes.card}>
 						<label>Card</label>
 						<Stripe
+							onClick={props.onClick_card}
 							name={props.name}
 							description={props.description}
 							amount={props.amount}

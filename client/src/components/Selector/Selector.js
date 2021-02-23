@@ -1,10 +1,6 @@
 import React from 'react';
-//import 'materialize-css/dist/css/materialize.min.css';
 import classes from './styles.module.css';
-//import Form from 'react-bootstrap/Form';
-
 import { withStyles } from '@material-ui/core/styles';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
@@ -66,19 +62,6 @@ const IOSSwitch = withStyles((theme) => ({
 });
 
 const Selector = (props) => {
-	const [state, setState] = React.useState({
-		checkedA: true,
-		checkedB: true,
-		checkedC: true,
-	});
-
-	const handleChange = (event) => {
-		setState({
-			...state,
-			[event.target.name]: event.target.checked,
-		});
-	};
-
 	return (
 		<div
 			style={{

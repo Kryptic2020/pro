@@ -13,8 +13,6 @@ import ContinueButton from '../../../components/ContinueButton/ContinueButton';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 
-const Compress = require('compress.js');
-
 const initialState = {
 	phone: '',
 	credits: '',
@@ -230,18 +228,14 @@ class Profile extends Component {
 		const { crop, selectedFile, src } = this.state;
 		const data = this.props.photo;
 		const Example = ({ data }) => (
-			console.log(data),
-			(
-				<img
-					alt='Image Database'
-					style={{ borderRadius: '50%' }}
-					src={`${data}`}
-					width={250}
-					height={250}
-				/>
-			)
+			<img
+				alt='Database'
+				style={{ borderRadius: '50%' }}
+				src={`${data}`}
+				width={250}
+				height={250}
+			/>
 		);
-
 		return (
 			<div>
 				{this.state.isLoading ? <Spinner /> : null}
@@ -283,7 +277,7 @@ class Profile extends Component {
 								this.state.selectedFile ? (
 									selectedFile && (
 										<img
-											alt='Crop Image'
+											alt='Crop'
 											style={{
 												marginLeft:
 													'-3px',
