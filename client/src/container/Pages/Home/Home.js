@@ -75,7 +75,13 @@ class Home extends Component {
 							/>
 						</div>
 						<div className={classes.button}>
-							<Link to='/book-now'>
+							<Link
+								to={
+									this.props.authenticated
+										? '/book-now'
+										: '/loginx'
+								}
+							>
 								{' '}
 								<ButtonBookNow
 									text='Book Now'
@@ -137,7 +143,7 @@ const mapStateToProps = (state) => {
 	return {
 		admins: state.booking.admins,
 		staffAssignments: state.booking.staffAssignments,
-		//users: state.auth.users,
+		authenticated: state.auth.authenticated,
 		specialties: state.booking.specialties,
 		servicesPrices: state.booking.servicesPrices,
 	};

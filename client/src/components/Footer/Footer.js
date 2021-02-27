@@ -18,7 +18,7 @@ const Footer = (props) => {
 				</div>
 
 				<div className={classes.company_name}>
-					&copy; PriThi
+					&copy; CompanyName
 				</div>
 			</div>
 

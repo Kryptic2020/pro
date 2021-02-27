@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import classes from './styles.module.css';
 import * as actions from '../../../store/actions';
 import CardCustom from '../../../components/CardCustom/CardCustom';
@@ -27,34 +28,13 @@ const CalendarManager = (props) => {
 					</div>
 
 					<div className={classes.card}>
-						<CardCustom
-							background_color={'#11B9F0'}
-							path={'/slots-create'}
-							display={'none'}
-							title={'Create Slots'}
-							content={[
-								'Create Slots, visible or invisible to your clients.',
-								<div>
-									Lorem ipsum dolor sit
-									amet, consetetur
-									sadipscing elitr, sed
-									diam nonumy eirmod
-									tempor invidunt ut
-									labore .
-								</div>,
-								'',
-							]}
-						/>
-					</div>
-					<div className={classes.card}>
-						<CardCustom
-							background_color={'#504F4B'}
-							path={'/slots-override'}
-							display={'none'}
-							title={'Override Slots'}
-							content={[
-								'Override existing slots to make then visible or invisible to your clients.',
-								<div>
+						<Link to={'/slots-create'}>
+							<CardCustom
+								background_color={'#11B9F0'}
+								display={'none'}
+								title={'Create Slots'}
+								content={[
+									'Create Slots, visible or invisible to your clients.',
 									<div>
 										Lorem ipsum dolor
 										sit amet, consetetur
@@ -62,57 +42,89 @@ const CalendarManager = (props) => {
 										sed diam nonumy
 										eirmod tempor
 										invidunt ut labore .
-									</div>
-								</div>,
-							]}
-						/>
+									</div>,
+									'',
+								]}
+							/>
+						</Link>
 					</div>
 					<div className={classes.card}>
-						<CardCustom
-							background_color={'#FC0000'}
-							path={'/slots-delete'}
-							display={'none'}
-							title={'Delete slots'}
-							content={[
-								'Delete existing Slots.',
-								<div>
+						<Link to={'/slots-override'}>
+							<CardCustom
+								background_color={'#504F4B'}
+								display={'none'}
+								title={'Override Slots'}
+								content={[
+									'Override existing slots to make then visible or invisible to your clients.',
 									<div>
-										Lorem ipsum dolor
-										sit amet, consetetur
-										sadipscing elitr,
-										sed diam nonumy
-										eirmod tempor
-										invidunt ut labore .
-									</div>
-								</div>,
-							]}
-						/>
+										<div>
+											Lorem ipsum
+											dolor sit amet,
+											consetetur
+											sadipscing
+											elitr, sed diam
+											nonumy eirmod
+											tempor invidunt
+											ut labore .
+										</div>
+									</div>,
+								]}
+							/>
+						</Link>
 					</div>
 					<div className={classes.card}>
-						<CardCustom
-							background_color={'#EAE8E8'}
-							color={'#504F4B'}
-							title_color={'#504F4B'}
-							path={'/slot-history'}
-							display={'none'}
-							title={'Slot History'}
-							content={[
-								'Shows the history of each Slot update made by users with details.',
-								<div>
+						<Link to='/slots-delete'>
+							<CardCustom
+								background_color={'#FC0000'}
+								display={'none'}
+								title={'Delete slots'}
+								content={[
+									'Delete existing Slots.',
 									<div>
-										Lorem ipsum dolor
-										sit amet, consetetur
-										sadipscing elitr,
-										sed diam nonumy
-										eirmod tempor
-										invidunt ut labore
-										et dolore magna
-										aliquyam erat, sed
-										diam voluptua
-									</div>
-								</div>,
-							]}
-						/>
+										<div>
+											Lorem ipsum
+											dolor sit amet,
+											consetetur
+											sadipscing
+											elitr, sed diam
+											nonumy eirmod
+											tempor invidunt
+											ut labore .
+										</div>
+									</div>,
+								]}
+							/>
+						</Link>
+					</div>
+					<div className={classes.card}>
+						<Link to={'/slot-history'}>
+							<CardCustom
+								background_color={'#EAE8E8'}
+								color={'#504F4B'}
+								title_color={'#504F4B'}
+								display={'none'}
+								title={'Slot History'}
+								content={[
+									'Shows the history of each Slot update made by users with details.',
+									<div>
+										<div>
+											Lorem ipsum
+											dolor sit amet,
+											consetetur
+											sadipscing
+											elitr, sed diam
+											nonumy eirmod
+											tempor invidunt
+											ut labore et
+											dolore magna
+											aliquyam erat,
+											sed diam
+											voluptua
+										</div>
+									</div>,
+								]}
+							/>
+						</Link>
 					</div>
 				</div>
 			</div>
