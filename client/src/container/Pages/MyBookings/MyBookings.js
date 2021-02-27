@@ -16,10 +16,10 @@ class MyBookings extends Component {
 		cancelBooking: '',
 	};
 
-	componentDidMount() {
+	componentDidMount = () => {
 		this.fetchMyBookings();
 		actions.scrollToTop();
-	}
+	};
 
 	fetchMyBookings = () => {
 		this.setState({ isLoading: true });
@@ -27,7 +27,6 @@ class MyBookings extends Component {
 			.get('/api/my-booking/history/get')
 			.then((res) => {
 				this.setState({
-					...this.state,
 					myBookings: res.data.sort().reverse(),
 					isLoading: false,
 				});
@@ -46,6 +45,7 @@ class MyBookings extends Component {
 				}
 			});
 	};
+
 	handleModalShow = (
 		_id,
 		specialty,
@@ -79,7 +79,6 @@ class MyBookings extends Component {
 	cancelBookingHandler = () => {
 		this.setState({ isLoading: true });
 		const data = this.state.cancelBooking;
-		console.log(data);
 		axios
 			.post('/api/booking/cancel', data)
 			.then((res) => {
@@ -92,12 +91,13 @@ class MyBookings extends Component {
 						msn: '',
 					});
 				}, 3000);
+				this.fetchMyBookings();
 			})
 			.catch((err) => {
 				//console.log(err);
 			});
+
 		this.setState({ isLoading: false });
-		this.fetchMyBookings();
 		this.handleModalClose();
 	};
 

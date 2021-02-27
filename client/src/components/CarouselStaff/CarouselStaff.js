@@ -42,14 +42,14 @@ const CarouselStaff = (props) => {
 				<Carousel
 					className={classes.carousel}
 					swipeable={true}
-					draggable={false}
+					draggable={true}
 					showDots={true}
 					responsive={responsive}
 					ssr={false} // means to render carousel on server-side.
-					infinite={false}
+					infinite={true}
 					autoPlay={
 						props.deviceType !== 'mobile'
-							? true
+							? false
 							: false
 					}
 					autoPlaySpeed={2000}

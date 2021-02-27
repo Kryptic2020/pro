@@ -44,10 +44,10 @@ class App extends Component {
 	state = {
 		msn: '',
 	};
-	componentDidMount() {
+	componentDidMount = () => {
 		this.props.fetchUser();
 		this.props.fetchAllUsers();
-	}
+	};
 	hideMsn = () => {
 		this.setState({ ...this.state, msn: '' });
 	};

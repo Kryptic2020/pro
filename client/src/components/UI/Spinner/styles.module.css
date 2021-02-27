@@ -3,11 +3,11 @@
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.7);
 	position: absolute;
-	z-index: 5;
+	z-index: 500;
 }
 .spinnerPosition {
 	margin: auto;
 	margin-top: 40%;
 	text-align: center;
-	z-index: 6;
+	z-index: 506;
 }

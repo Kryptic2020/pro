@@ -42,11 +42,10 @@ module.exports = (app) => {
 					],
 					mode: 'payment',
 					success_url:
-						process.env.REDIRECT_DOMAIN +
+						keys.redirectDomain +
 						'/my-bookings',
 					cancel_url:
-						process.env.REDIRECT_DOMAIN +
-						'/book-now',
+						keys.redirectDomain + '/book-now',
 				}
 			);
 			res.send(session.id);

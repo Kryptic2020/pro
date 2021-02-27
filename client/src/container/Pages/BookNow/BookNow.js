@@ -435,7 +435,10 @@ class BookNow extends Component {
 								stage={this.state.stage}
 							/>
 						</div>
-						{this.state.stage === 1 ? (
+						{this.state.stage === 1 &&
+						this.props.specialties.length &&
+						this.props.staffAssignments
+							.length ? (
 							<CarouselSpecialty
 								buttonName={'SELECT'}
 								onClick_select={
@@ -451,13 +454,15 @@ class BookNow extends Component {
 							/>
 						) : null}
 
-						{this.state.stage === 2 ? (
+						{this.state.stage === 2 &&
+						staffArray.length ? (
 							<CarouselStaff
 								staffArray={staffArray}
 							/>
 						) : null}
 
-						{this.state.stage === 3 ? (
+						{this.state.stage === 3 &&
+						this.state.assignmentID.length ? (
 							<CarouselService
 								onClick_select={
 									this.serviceHandler

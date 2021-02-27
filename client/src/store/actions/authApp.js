@@ -8,7 +8,7 @@ export const setPersonalInfo = (
 	fullName,
 	phone,
 	history
-) => async (dispatch) => {
+) => async () => {
 	const data = { fullName, phone };
 	console.log('data', data);
 	await axios
@@ -51,7 +51,7 @@ export const auth = (
 	isSignup,
 	history
 ) => async (dispatch) => {
-	dispatch(authStart());
+	await dispatch(authStart());
 	const authData = {
 		googleId: null,
 		fullName,
@@ -99,7 +99,7 @@ export const auth = (
 
 export const fetchUser = () => async (dispatch) => {
 	const res = await axios.get('/api/current_user');
-	dispatch({ type: FETCH_USER, payload: res.data });
+	await dispatch({ type: FETCH_USER, payload: res.data });
 	if (res.data) {
 		dispatch(authCheck());
 	}
@@ -113,7 +113,7 @@ export const authCheck = () => {
 
 export const handleToken = (token) => async (dispatch) => {
 	const res = await axios.post('/api/stripe', token);
-	dispatch({ type: FETCH_USER, payload: res.data });
+	await dispatch({ type: FETCH_USER, payload: res.data });
 };
 
 export const setAuthRedirectPath = (path) => {
@@ -130,8 +130,8 @@ export const users = (users) => {
 	};
 };
 
-export const fetchAllUsers = () => (dispatch) => {
-	axios
+export const fetchAllUsers = () => async (dispatch) => {
+	await axios
 		.get('/api/contacts')
 		.then((res) => {
 			dispatch(users(res.data));

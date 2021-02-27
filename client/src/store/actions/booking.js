@@ -8,11 +8,15 @@ export const staffAssignments = (data) => {
 	};
 };
 
-export const fetchStaffAssignments = () => (dispatch) => {
-	axios.get('/api/staffassignments/get').then((res) => {
-		const data = res.data;
-		dispatch(staffAssignments(data));
-	});
+export const fetchStaffAssignments = () => async (
+	dispatch
+) => {
+	await axios
+		.get('/api/staffassignments/get')
+		.then((res) => {
+			const data = res.data;
+			dispatch(staffAssignments(data));
+		});
 };
 
 export const admins = (data) => {
@@ -35,8 +39,8 @@ export const services = (data) => {
 	};
 };
 
-export const fetchServices = () => (dispatch) => {
-	axios.get('/api/service').then((res) => {
+export const fetchServices = () => async (dispatch) => {
+	await axios.get('/api/service').then((res) => {
 		const data = res.data;
 		dispatch(services(data));
 	});
@@ -49,8 +53,10 @@ export const servicesPrices = (data) => {
 	};
 };
 
-export const fetchServicesPrices = () => (dispatch) => {
-	axios.get('/api/serviceprice/get').then((res) => {
+export const fetchServicesPrices = () => async (
+	dispatch
+) => {
+	await axios.get('/api/serviceprice/get').then((res) => {
 		const data = res.data;
 		dispatch(servicesPrices(data));
 	});
@@ -63,8 +69,8 @@ export const specialties = (data) => {
 	};
 };
 
-export const fetchSpecialties = () => (dispatch) => {
-	axios.get('/api/specialties/get').then((res) => {
+export const fetchSpecialties = () => async (dispatch) => {
+	await axios.get('/api/specialties/get').then((res) => {
 		const data = res.data;
 		dispatch(specialties(data));
 	});
@@ -98,8 +104,8 @@ export const fetchExistingDates = (existingDates) => {
 	};
 };
 
-export const fetchDates = () => (dispatch) => {
-	axios.get('/api/calendar/get').then((res) => {
+export const fetchDates = () => async (dispatch) => {
+	await axios.get('/api/calendar/get').then((res) => {
 		const rawData = res.data;
 		dispatch(fetchRawData(rawData));
 		let s = [];

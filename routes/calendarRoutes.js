@@ -16,11 +16,13 @@ const transporter = require('../services/transporterNodeMailer');
 
 const bookingCancelation = require('../services/emailTemplates/BookingCancelation');
 const keys = require('../config/keys');
+//const sgMail = require('@sendgrid/mail');
+//sgMail.setApiKey(keys.sendGridKey);
 const Mailer = require('../services/Mailer');
 const bookingNotification = require('../services/emailTemplates/BookingNotification');
-//const sgMail = require('@sendgrid/mail');
+
 const { CCadmin } = require('../config/keys');
-//sgMail.setApiKey(keys.sendGridKey);
+
 const { parseISO } = require('date-fns');
 const BookingNotification = require('../services/emailTemplates/BookingNotification');
 //const { writeFileSync } = require('fs');
@@ -616,6 +618,7 @@ module.exports = (app) => {
 				bookingID: zica,
 			});
 			await booking.save();
+			//Great place to send an Email!
 			const email = req.user.email;
 			const user = {
 				fullName: req.user.fullName,
@@ -629,44 +632,11 @@ module.exports = (app) => {
 					day: 'numeric',
 				}),
 			};
-			async function bookingConfirmation() {
-				let info = await transporter.sendMail({
-					from: keys.sender, // sender address
-					to: email, // list of receivers
-					subject:
-						'Booking Confirmation  - ( DO NOT REPLY ) ✔', // Subject line
-					text:
-						'Booking Confirmation  - ( DO NOT REPLY )', // plain text body
-					html: bookingNotification(
-						user,
-						booking,
-						dateAUS
-					), // html body
-				});
-			}
-			//bookingConfirmation().catch(console.error);
-			async function bookingConfirmation2() {
-				let info2 = await transporter.sendMail({
-					from: keys.sender, // sender address
-					to: CCadmin, // list of receivers
-					subject: 'Booking Confirmation - ADM ✔', // Subject line
-					text: 'Booking Confirmation - ADM', // plain text body
-					html: bookingNotification(
-						user,
-						booking,
-						dateAUS
-					), // html body
-				});
-			}
-			//bookingConfirmation2().catch(console.error);
-			//const { title, subject, body, recipients } = req.body;
-
 			const data = {
-				subject: 'Booking Confirmation - ADM ✔',
-
-				recipients: [CCadmin],
+				subject: 'Booking Confirmation Pro ✔',
+				to: email,
 			};
-			//Great place to send an Email!
+
 			const mailer = new Mailer(
 				data,
 				BookingNotification(user, booking, dateAUS)
@@ -674,7 +644,7 @@ module.exports = (app) => {
 			try {
 				await mailer.send();
 			} catch (err) {
-				//res.status(422).send(err);
+				res.status(422).send(err);
 			}
 		}
 	);
@@ -762,7 +732,7 @@ module.exports = (app) => {
 				};
 				async function bookingConfirmation() {
 					let info = await transporter.sendMail({
-						from: keys.sender, // sender address
+						from: keys.senderNode, // sender address
 						to: email, // list of receivers
 						subject:
 							'Booking Confirmation  - ( DO NOT REPLY ) ✔', // Subject line
@@ -778,7 +748,7 @@ module.exports = (app) => {
 				bookingConfirmation().catch(console.error);
 				async function bookingConfirmation2() {
 					let info2 = await transporter.sendMail({
-						from: keys.sender, // sender address
+						from: keys.senderNode, // sender address
 						to: CCadmin, // list of receivers
 						subject:
 							'Booking Confirmation - ADM ✔', // Subject line
@@ -854,7 +824,7 @@ module.exports = (app) => {
 			_id,
 			bookedByName,
 		});
-		//console.log(details.bookedByID);
+		console.log(details.bookedByID);
 		const user = await User.findOne({
 			_id: details.bookedByID,
 		});
@@ -923,7 +893,7 @@ module.exports = (app) => {
 		console.log(dateAUS);
 		async function bookingCancellation() {
 			let info = await transporter.sendMail({
-				from: keys.sender, // sender address
+				from: keys.senderNode, // sender address
 				to: email, // list of receivers
 				subject:
 					'Your Booking has been cancelled  - ( DO NOT REPLY )', // Subject line
@@ -941,7 +911,7 @@ module.exports = (app) => {
 		bookingCancellation().catch(console.error);
 		async function bookingCancellation2() {
 			let info2 = await transporter.sendMail({
-				from: keys.sender, // sender address
+				from: keys.senderNode, // sender address
 				to: CCadmin, // list of receivers
 				subject: 'Your Booking has been cancelled', // Subject line
 				text: 'Your Booking has been cancelled', // plain text body
@@ -1047,44 +1017,7 @@ module.exports = (app) => {
 			res.send(
 				'Your request was sent, we will contact you in case of cancelations'
 			);
-			async function waitingList() {
-				let info = await transporter.sendMail({
-					from: keys.sender, // sender address
-					to: keys.CCadmin, // list of receivers
-					subject: 'Waiting list', // Subject line
-					text: 'Waiting list', // plain text body
-					html:
-						'<p> Date: ' +
-						parseISO(date).toLocaleDateString(
-							'es-ES',
-							{
-								year: 'numeric',
-								month: 'numeric',
-								day: 'numeric',
-							}
-						) +
-						'</p>' +
-						'<p>  Time: ' +
-						time +
-						'</p>' +
-						' Staff: ' +
-						staff +
-						'<p> Specialty: ' +
-						specialty +
-						'</p>' +
-						'<p> Name: ' +
-						req.user.fullName +
-						'</p>' +
-						'<p> Phone: ' +
-						req.user.phone +
-						'</p>' +
-						'<p> Requested at: ' +
-						parseISO(requestedAt) +
-						'</p>', // html body
-				});
-				//console.log("Message sent: %s", info.messageId);
-			}
-			waitingList().catch(console.error);
+			//console.log("Message sent: %s", info.messageId);
 		}
 	);
 
@@ -1267,6 +1200,46 @@ module.exports = (app) => {
 				.catch((err) => {
 					//console.log(err, 'err');
 				});
+		}
+	);
+
+	app.get(
+		'/api/email',
+		requireLogin,
+		async (req, res) => {
+			const dateAUS = {
+				date: new Date().toLocaleDateString(
+					'es-ES',
+					{
+						year: 'numeric',
+						month: 'numeric',
+						day: 'numeric',
+					}
+				),
+			};
+
+			const booking = {
+				service: 'haricut',
+				time: '11:00',
+			};
+			const user = {
+				fullName: req.user.fullName,
+			};
+			const data = {
+				subject: 'Booking Confirmation - ADM ✔',
+
+				to: 'aquenzitech@gmail.com',
+			};
+			//Great place to send an Email!
+			const mailer = new Mailer(
+				data,
+				BookingNotification(user, booking, dateAUS)
+			);
+			try {
+				await mailer.send();
+			} catch (err) {
+				console.log(err);
+			}
 		}
 	);
 };

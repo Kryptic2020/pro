@@ -7,14 +7,24 @@ import classes from './styles.module.css';
 
 const CarouselSpecialty = (props) => {
 	let Card = [];
-	const unique = [
+	let unique = [];
+	//	console.log(props.staffAssignments);
+	if (props.staffAssignments) {
+		props.staffAssignments.forEach((x) => {
+			if (!unique.includes(x.assignedSpecialty)) {
+				unique.push(x);
+			}
+		});
+	}
+	/*const unique = [
 		...new Map(
 			props.staffAssignments.map((item) => [
 				item.assignedSpecialty,
 				item,
 			])
 		).values(),
-	];
+	];*/
+	//console.log(unique);
 	if (props.staffAssignments) {
 		unique.forEach((w, index) => {
 			props.specialties.forEach((z) => {
@@ -66,7 +76,7 @@ const CarouselSpecialty = (props) => {
 			</div>
 			<div className={classes.carousel}>
 				<Carousel
-					swipeable={false}
+					swipeable={true}
 					draggable={true}
 					showDots={true}
 					responsive={responsive}
@@ -74,7 +84,7 @@ const CarouselSpecialty = (props) => {
 					//centerMode={true}
 					//partialVisible={true}
 					ssr={true} // means to render carousel on server-side.
-					infinite={false}
+					infinite={true}
 					autoPlay={
 						false
 						//this.props.deviceType !== 'mobile'
@@ -95,7 +105,7 @@ const CarouselSpecialty = (props) => {
 					dotListClass='custom-dot-list-style'
 					itemClass='carousel-item-padding-40-px'
 				>
-					{[Card]}
+					{Card ? [Card] : null}
 				</Carousel>
 			</div>
 		</div>

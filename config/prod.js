@@ -15,6 +15,7 @@ module.exports = {
 	facebookClientSecret:
 		process.env.FACEBOOK_CLIENT_SECRET,
 	sender: process.env.SENDER,
+	senderNode: process.env.SENDER_NODE,
 	CCadmin: process.env.CC_ADMIN,
 	host: process.env.HOST,
 	user: process.env.USER,

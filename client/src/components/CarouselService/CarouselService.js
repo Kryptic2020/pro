@@ -54,6 +54,7 @@ const CarouselSpecialty = (props) => {
 			//partialVisibilityGutter: '30px', // this is needed to tell the amount of px that should be visible.
 		},
 	};
+	//console.log(Service);
 	return (
 		<>
 			<div className={classes.container}>
@@ -67,11 +68,11 @@ const CarouselSpecialty = (props) => {
 				<Carousel
 					className={classes.carousel}
 					swipeable={true}
-					draggable={false}
+					draggable={true}
 					showDots={true}
 					responsive={responsive}
 					ssr={true} // means to render carousel on server-side.
-					infinite={false}
+					infinite={true}
 					autoPlay={
 						false
 						//this.props.deviceType !== 'mobile'
