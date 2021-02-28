@@ -33,10 +33,6 @@ class Home extends Component {
 		});
 	};
 
-	test = () => {
-		console.log('hello');
-		axios.get('/api/email');
-	};
 	render() {
 		console.log(this.props.staffAssignments);
 		let a = [];
@@ -65,10 +61,7 @@ class Home extends Component {
 				{this.state.isLoading ? <Spinner /> : null}
 				<div className={classes.container}>
 					<div className={classes.box}>
-						<div
-							onClick={this.test}
-							className={classes.header}
-						>
+						<div className={classes.header}>
 							<Heading
 								color='#ffffff'
 								text='Hairdresser & Manicurist Appointments'

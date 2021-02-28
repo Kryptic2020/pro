@@ -21,4 +21,6 @@ module.exports = {
 	user: process.env.USER,
 	pass: process.env.PASS,
 	tls: process.env.TLS,
+	stripeWebhookSecretKey:
+		process.env.STRIPE_WEBHOOK_SECRET_KEY,
 };

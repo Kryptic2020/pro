@@ -46,26 +46,38 @@ const Sidebar = (props) => {
 					</div>
 					<div>USER OPTIONS</div>
 				</Link>
-				<Link
-					onClick={props.onClick}
-					to='settings'
-					className={classes.settings}
-				>
-					<div className={classes.settings_icon}>
-						<Settings />
-					</div>
-					<div>SETTINGS</div>
-				</Link>
-				<Link
-					onClick={props.onClick}
-					to='dashboard'
-					className={classes.dashboard}
-				>
-					<div className={classes.dashboard_icon}>
-						<Dashboard />
-					</div>
-					<div>DASHBOARD</div>
-				</Link>
+				{props.isAdmin ? (
+					<Link
+						onClick={props.onClick}
+						to='settings'
+						className={classes.settings}
+					>
+						<div
+							className={
+								classes.settings_icon
+							}
+						>
+							<Settings />
+						</div>
+						<div>SETTINGS</div>
+					</Link>
+				) : null}
+				{props.isAdmin ? (
+					<Link
+						onClick={props.onClick}
+						to='dashboard'
+						className={classes.dashboard}
+					>
+						<div
+							className={
+								classes.dashboard_icon
+							}
+						>
+							<Dashboard />
+						</div>
+						<div>DASHBOARD</div>
+					</Link>
+				) : null}
 				<a
 					onClick={props.onClick}
 					href='/api/logout'

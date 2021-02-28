@@ -18,7 +18,7 @@ const Footer = (props) => {
 				</div>
 
 				<div className={classes.company_name}>
-					&copy; CompanyName
+					&copy; Company
 				</div>
 			</div>
 

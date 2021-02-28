@@ -55,7 +55,6 @@ class App extends Component {
 	render() {
 		const sectionStyle = {
 			minHeight: '100vh',
-
 			fontFamily: 'Roboto, sans-serif',
 			backgroundColor: this.props.authenticated
 				? '#EAE8E8'
@@ -137,17 +136,24 @@ class App extends Component {
 							/>
 						) : null}
 
-						<Route
-							path='/settings'
-							component={Settings}
-						/>
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
+							<Route
+								path='/settings'
+								component={Settings}
+							/>
+						) : null}
 
-						<Route
-							path='/specialty'
-							component={Specialty}
-						/>
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
+							<Route
+								path='/specialty'
+								component={Specialty}
+							/>
+						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/calendar-manager'
@@ -155,7 +161,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/time-tables'
@@ -171,7 +178,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/booking-adm'
@@ -187,17 +195,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
-							<Route
-								exact
-								path='/specialtyandservices'
-								component={
-									SpecialtyAndServices
-								}
-							/>
-						) : null}
-
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/assign-staff'
@@ -205,7 +204,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/service-settings'
@@ -213,7 +213,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/dashboard'
@@ -221,7 +222,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/slots-create'
@@ -229,7 +231,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/slots-override'
@@ -237,7 +240,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/slots-delete'
@@ -245,7 +249,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/slot-history'
@@ -253,7 +258,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/profile-manager'
@@ -277,7 +283,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/waiting-list-report'
@@ -287,7 +294,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/sales'
@@ -295,7 +303,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/my-slots'
@@ -303,7 +312,8 @@ class App extends Component {
 							/>
 						) : null}
 
-						{this.props.authenticated ? (
+						{this.props.authenticated &&
+						this.props.isAdmin ? (
 							<Route
 								exact
 								path='/sales-report'
@@ -342,6 +352,7 @@ const mapStateToProps = (state) => {
 		authenticated: state.auth.authenticated,
 		theme: state.auth.theme,
 		phone: state.auth.phone,
+		isAdmin: state.auth.isAdmin,
 	};
 };
 

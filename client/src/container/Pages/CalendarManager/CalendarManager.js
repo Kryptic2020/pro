@@ -6,7 +6,7 @@ import CardCustom from '../../../components/CardCustom/CardCustom';
 import Heading from '../../../components/UI/Heading/Heading';
 import Calendar from '../../../components/UI/Iconsx/Calendar';
 
-const CalendarManager = (props) => {
+const CalendarManager = () => {
 	useEffect(() => {
 		actions.scrollToTop();
 	});
@@ -35,7 +35,7 @@ const CalendarManager = (props) => {
 								title={'Create Slots'}
 								content={[
 									'Create Slots, visible or invisible to your clients.',
-									<div>
+									<div key={'1'}>
 										Lorem ipsum dolor
 										sit amet, consetetur
 										sadipscing elitr,
@@ -56,17 +56,13 @@ const CalendarManager = (props) => {
 								title={'Override Slots'}
 								content={[
 									'Override existing slots to make then visible or invisible to your clients.',
-									<div>
-										<div>
-											Lorem ipsum
-											dolor sit amet,
-											consetetur
-											sadipscing
-											elitr, sed diam
-											nonumy eirmod
-											tempor invidunt
-											ut labore .
-										</div>
+									<div key={'2'}>
+										Lorem ipsum dolor
+										sit amet, consetetur
+										sadipscing elitr,
+										sed diam nonumy
+										eirmod tempor
+										invidunt ut labore .
 									</div>,
 								]}
 							/>
@@ -80,17 +76,13 @@ const CalendarManager = (props) => {
 								title={'Delete slots'}
 								content={[
 									'Delete existing Slots.',
-									<div>
-										<div>
-											Lorem ipsum
-											dolor sit amet,
-											consetetur
-											sadipscing
-											elitr, sed diam
-											nonumy eirmod
-											tempor invidunt
-											ut labore .
-										</div>
+									<div key={'3'}>
+										Lorem ipsum dolor
+										sit amet, consetetur
+										sadipscing elitr,
+										sed diam nonumy
+										eirmod tempor
+										invidunt ut labore .
 									</div>,
 								]}
 							/>
@@ -106,21 +98,16 @@ const CalendarManager = (props) => {
 								title={'Slot History'}
 								content={[
 									'Shows the history of each Slot update made by users with details.',
-									<div>
-										<div>
-											Lorem ipsum
-											dolor sit amet,
-											consetetur
-											sadipscing
-											elitr, sed diam
-											nonumy eirmod
-											tempor invidunt
-											ut labore et
-											dolore magna
-											aliquyam erat,
-											sed diam
-											voluptua
-										</div>
+									<div key={'4'}>
+										Lorem ipsum dolor
+										sit amet, consetetur
+										sadipscing elitr,
+										sed diam nonumy
+										eirmod tempor
+										invidunt ut labore
+										et dolore magna
+										aliquyam erat, sed
+										diam voluptua
 									</div>,
 								]}
 							/>

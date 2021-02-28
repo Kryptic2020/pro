@@ -12,7 +12,7 @@ class MyBookings extends Component {
 	state = {
 		isLoading: false,
 		msn: '',
-		myBooking: [],
+		myBookings: '',
 		cancelBooking: '',
 	};
 
@@ -22,12 +22,14 @@ class MyBookings extends Component {
 	};
 
 	fetchMyBookings = () => {
-		this.setState({ isLoading: true });
+		this.setState({ isLoading: true, myBookings: [] });
 		axios
 			.get('/api/my-booking/history/get')
 			.then((res) => {
+				const order = res.data.sort().reverse();
 				this.setState({
-					myBookings: res.data.sort().reverse(),
+					...this.state,
+					myBookings: order,
 					isLoading: false,
 				});
 
@@ -82,21 +84,8 @@ class MyBookings extends Component {
 		axios
 			.post('/api/booking/cancel', data)
 			.then((res) => {
-				this.setState({
-					msn: res.data,
-					isLoading: false,
-				});
-				setTimeout(() => {
-					this.setState({
-						msn: '',
-					});
-				}, 3000);
 				this.fetchMyBookings();
-			})
-			.catch((err) => {
-				//console.log(err);
 			});
-
 		this.setState({ isLoading: false });
 		this.handleModalClose();
 	};
@@ -174,15 +163,12 @@ class MyBookings extends Component {
 					</div>
 					<div className={classes.box}>
 						<div className={classes.cards}>
-							{this.state.myBookings
+							{this.state.myBookings &&
+							this.state.myBookings.length
 								? this.state.myBookings.map(
 										(w, index) => (
 											<CardMyBookings
-												key={
-													w._id +
-													w.date +
-													index
-												}
+												key={index}
 												date={new Date(
 													w.date
 												).toLocaleDateString(
@@ -253,28 +239,8 @@ class MyBookings extends Component {
 												display={
 													new Date(
 														w.date
-													).toLocaleDateString(
-														'es-ES',
-														{
-															year:
-																'numeric',
-															month:
-																'numeric',
-															day:
-																'numeric',
-														}
 													) <
-														new Date().toLocaleDateString(
-															'es-ES',
-															{
-																year:
-																	'numeric',
-																month:
-																	'numeric',
-																day:
-																	'numeric',
-															}
-														) &&
+														new Date() &&
 													!w.isCancelled
 														? 'none'
 														: null

@@ -824,7 +824,6 @@ module.exports = (app) => {
 			_id,
 			bookedByName,
 		});
-		console.log(details.bookedByID);
 		const user = await User.findOne({
 			_id: details.bookedByID,
 		});
@@ -890,7 +889,6 @@ module.exports = (app) => {
 				}
 			),
 		};
-		console.log(dateAUS);
 		async function bookingCancellation() {
 			let info = await transporter.sendMail({
 				from: keys.senderNode, // sender address
@@ -941,7 +939,7 @@ module.exports = (app) => {
 				bookedByName,
 			} = req.body;
 			const userID = req.user._id;
-			cancelBooking(
+			await cancelBooking(
 				_id,
 				specialty,
 				date,
@@ -951,6 +949,7 @@ module.exports = (app) => {
 				bookedByName,
 				userID
 			);
+			res.send('cancelled');
 		}
 	);
 
@@ -1200,46 +1199,6 @@ module.exports = (app) => {
 				.catch((err) => {
 					//console.log(err, 'err');
 				});
-		}
-	);
-
-	app.get(
-		'/api/email',
-		requireLogin,
-		async (req, res) => {
-			const dateAUS = {
-				date: new Date().toLocaleDateString(
-					'es-ES',
-					{
-						year: 'numeric',
-						month: 'numeric',
-						day: 'numeric',
-					}
-				),
-			};
-
-			const booking = {
-				service: 'haricut',
-				time: '11:00',
-			};
-			const user = {
-				fullName: req.user.fullName,
-			};
-			const data = {
-				subject: 'Booking Confirmation - ADM ✔',
-
-				to: 'aquenzitech@gmail.com',
-			};
-			//Great place to send an Email!
-			const mailer = new Mailer(
-				data,
-				BookingNotification(user, booking, dateAUS)
-			);
-			try {
-				await mailer.send();
-			} catch (err) {
-				console.log(err);
-			}
 		}
 	);
 };

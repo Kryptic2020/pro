@@ -1,6 +1,6 @@
 {
-  "short_name": "PriThi",
-  "name": "PriThi Hair and Nail Services",
+  "short_name": "Pro",
+  "name": "Online Appointments Pro",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "LogoPrithi.jpg",
+      "src": "LogoPro.jpg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "LogoPrithi.jpg",
+      "src": "LogoPro.jpg",
       "type": "image/jpg",
       "sizes": "512x512"
     }

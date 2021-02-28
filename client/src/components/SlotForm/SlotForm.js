@@ -58,7 +58,7 @@ const SlotForm = (props) => {
 				</div>
 				<div className={classes.start}>
 					<SelectDate
-						//minDate={props.minDate_start}
+						minDate={new Date()}
 						label={'Select Start Date'}
 						selected={props.selected_start}
 						onChange={props.onChange_start}

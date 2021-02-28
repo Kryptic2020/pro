@@ -47,13 +47,18 @@ class Navbar extends Component {
 					<Home width={24} />
 				</Link>
 
-				<Link to='/dashboard'>
-					<Dashboard width={24} />
-				</Link>
+				{this.props.isAdmin ? (
+					<Link to='/dashboard'>
+						<Dashboard width={24} />
+					</Link>
+				) : null}
 
-				<Link to='/settings'>
-					<Settings width={22} />
-				</Link>
+				{this.props.isAdmin ? (
+					<Link to='/settings'>
+						<Settings width={22} />
+					</Link>
+				) : null}
+
 				<Link to='/user-options'>
 					<User width={22} />
 				</Link>
@@ -144,6 +149,7 @@ class Navbar extends Component {
 				{this.state.show ? (
 					<Sidebar
 						onClick={this.showSideBarHandler}
+						isAdmin={this.props.isAdmin}
 					/>
 				) : null}
 			</>
@@ -155,6 +161,7 @@ const mapStateToProps = (state) => {
 		auth: state.auth,
 		fullName: state.auth.fullName,
 		authenticated: state.auth.authenticated,
+		isAdmin: state.auth.isAdmin,
 	};
 };
 
