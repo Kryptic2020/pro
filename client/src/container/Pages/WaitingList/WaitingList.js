@@ -183,107 +183,117 @@ class WaitingList extends Component {
 						{this.state.msn}
 					</div>
 				) : null}
-
 				{this.state.isLoading ? <Spinner /> : null}
 				<div className={classes.container}>
-					<Heading text={'User > Waiting List'} />{' '}
-				</div>
-				<div className={classes.box}>
-					<div className={classes.progressBar}>
-						<ProgressBar
-							stage={this.state.stage}
-						/>
-					</div>
-					{this.state.stage === 1 ? (
-						<CarouselSpecialty
-							buttonName={'SELECT'}
-							onClick_select={
-								this.specialtyHandler
-							}
-							specialties={
-								this.props.specialties
-							}
-							staffAssignments={
-								this.props.staffAssignments
-							}
-						/>
-					) : null}
-
-					{this.state.stage === 2 ? (
-						<CarouselStaff
-							staffArray={staffArray}
-						/>
-					) : null}
-
-					{this.state.stage === 3 ? (
-						<CarouselService
-							onClick_select={
-								this.serviceHandler
-							}
-							assignmentID={
-								this.state.assignmentID
-							}
-							serviceArray={
-								this.props.servicesPrices
-							}
-						/>
-					) : null}
-
-					{this.state.stage === 4 ? (
-						<FormDateTime
-							selected_date={this.state.date}
-							onChange_date={
-								this.datepickerHandler
-							}
-							minDate={new Date()}
-							open={this.state.open}
-							onClose={
-								this.timepickerHandleClose
-							}
-							onOpen={
-								this.timepickerHandleOpen
-							}
-							selection={[
-								'Morning',
-								'Afternoon',
-								'Evening',
-								'Anytime',
-							]}
-							onChange_time={
-								this.timepickerHandler
-							}
-						/>
-					) : null}
-					{this.state.stage === 5 ? (
-						<TermsWaitingList
-							onClick_continue={
-								this
-									.waitingListRequestHandler
-							}
-						/>
-					) : null}
-
-					<div className={classes.bookingBar}>
-						<BookingBar
-							specialty={this.state.specialty}
-							staff={this.state.staff}
-							service={
-								this.state.price
-									? this.state.service +
-									  ' $' +
-									  this.state.price
-									: null
-							}
-							booking={this.state.booking}
-						/>
+					<Heading text={'User > Waiting List'} />
+					<div className={classes.box}>
 						<div
-							className={classes.restart}
-							onClick={this.clear}
+							className={classes.progressBar}
 						>
-							Restart
+							<ProgressBar
+								stage={this.state.stage}
+							/>
+						</div>
+						{this.state.stage === 1 ? (
+							<CarouselSpecialty
+								buttonName={'SELECT'}
+								onClick_select={
+									this.specialtyHandler
+								}
+								specialties={
+									this.props.specialties
+								}
+								staffAssignments={
+									this.props
+										.staffAssignments
+								}
+							/>
+						) : null}
+
+						{this.state.stage === 2 ? (
+							<CarouselStaff
+								staffArray={staffArray}
+							/>
+						) : null}
+
+						{this.state.stage === 3 ? (
+							<CarouselService
+								onClick_select={
+									this.serviceHandler
+								}
+								assignmentID={
+									this.state.assignmentID
+								}
+								serviceArray={
+									this.props
+										.servicesPrices
+								}
+							/>
+						) : null}
+
+						{this.state.stage === 4 ? (
+							<FormDateTime
+								selected_date={
+									this.state.date
+								}
+								onChange_date={
+									this.datepickerHandler
+								}
+								minDate={new Date()}
+								open={this.state.open}
+								onClose={
+									this
+										.timepickerHandleClose
+								}
+								onOpen={
+									this
+										.timepickerHandleOpen
+								}
+								selection={[
+									'Morning',
+									'Afternoon',
+									'Evening',
+									'Anytime',
+								]}
+								onChange_time={
+									this.timepickerHandler
+								}
+							/>
+						) : null}
+						{this.state.stage === 5 ? (
+							<TermsWaitingList
+								onClick_continue={
+									this
+										.waitingListRequestHandler
+								}
+							/>
+						) : null}
+
+						<div className={classes.bookingBar}>
+							<BookingBar
+								specialty={
+									this.state.specialty
+								}
+								staff={this.state.staff}
+								service={
+									this.state.price
+										? this.state
+												.service +
+										  ' $' +
+										  this.state.price
+										: null
+								}
+								booking={this.state.booking}
+							/>
+							<div
+								className={classes.restart}
+								onClick={this.clear}
+							>
+								Restart
+							</div>
 						</div>
 					</div>
-				</div>
+				</div>{' '}
 			</div>
 		);
 	}

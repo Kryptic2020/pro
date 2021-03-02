@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "LogoPro.jpg",
+      "src": "LogoBlack.jpg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "LogoPro.jpg",
+      "src": "LogoBlack.jpg",
       "type": "image/jpg",
       "sizes": "512x512"
     }

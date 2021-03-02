@@ -8,7 +8,14 @@ import ButtonSelect from '../UI/ButtonSelect/ButtonSelect';
 const CardProfile = (props) => {
 	const fileInput = React.useRef(null);
 	return (
-		<div className={classes.container}>
+		<div
+			className={[
+				classes.container,
+				!props.isAdmin
+					? classes.containerUser
+					: null,
+			].join(' ')}
+		>
 			<div className={classes.subcontainer}>
 				<div className={classes.box}>
 					<div className={classes.photo}>
@@ -95,25 +102,32 @@ const CardProfile = (props) => {
 						onChange={props.onChange_phone}
 					/>
 				</div>
-				<div className={classes.info}>
-					<label className={classes.label}>
-						Message
-					</label>
-					<TextareaAutosize
-						minRows={4}
-						maxRows={4}
-						style={{
-							fontSize: '16px',
-							textAlign: 'center',
-							color: '#504f4b',
-							backgroundColor: 'white',
-							borderRadius: '5px',
-							border: 'none',
-						}}
-						value={props.info}
-						onChange={props.onChange_info}
-					/>
-				</div>
+				{props.isAdmin ? (
+					<div className={classes.info}>
+						<label className={classes.label}>
+							Message
+						</label>
+						<TextareaAutosize
+							minRows={4}
+							maxRows={4}
+							/*	className={
+								classes.textareaAutosize
+							}*/
+							style={{
+								fontSize: '16px',
+								textAlign: 'center',
+								color: '#504f4b',
+								backgroundColor: 'white',
+								borderRadius: '5px',
+								border: 'none',
+							}}
+							value={props.info}
+							onChange={props.onChange_info}
+						/>
+					</div>
+				) : (
+					<div className={classes.infoUser}></div>
+				)}
 			</div>
 		</div>
 	);

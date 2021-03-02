@@ -5,8 +5,12 @@ const Heading = (props) => {
 	return (
 		<div>
 			<div
-				className={classes.heading}
-				style={{ color: props.color }}
+				className={[
+					classes.heading,
+					props.white
+						? classes.headingWhite
+						: null,
+				].join(' ')}
 			>
 				{props.text}
 			</div>

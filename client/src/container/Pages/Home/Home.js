@@ -63,7 +63,7 @@ class Home extends Component {
 					<div className={classes.box}>
 						<div className={classes.header}>
 							<Heading
-								color='#ffffff'
+								white='true'
 								text='Hairdresser & Manicurist Appointments'
 							/>
 						</div>

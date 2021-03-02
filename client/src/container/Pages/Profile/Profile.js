@@ -198,30 +198,11 @@ class Profile extends Component {
 			this.state.selectedFile,
 			'click upload'
 		);
-		/*
-		const compress = new Compress();
 
-		const files = [...e.target.files];
-		compress
-			.compress(files, {
-				size: 1, // the max size in MB, defaults to 2MB
-				quality: 1, // the quality of the image, max is 1,
-				maxWidth: 250, // the max width of the output image, defaults to 1920px
-				maxHeight: 250, // the max height of the output image, defaults to 1920px
-				resize: true, // defaults to true, set false if you do not want to resize the image width and height
-			})
-			.then((data) => {
-				// returns an array of compressed images
-				this.setState({
-					selectedFile: data[0].data,
-				});
-			});*/
-		//console.log(this.state.convertedPhoto);
 		const data = { photo: this.state.selectedFile };
 		Axios.post('/api/picture', data).then((res) => {});
 		this.setState({ selectedFile: '' });
 		window.location.reload(false);
-		/*axios url, data,onUploadProgress: progressEvent =>{console.log('Upload Progress:' + Math.round(progressEvent.loaded / progressEvent.total * 100)+'%')}*/
 	};
 
 	render() {
@@ -239,7 +220,14 @@ class Profile extends Component {
 		return (
 			<div>
 				{this.state.isLoading ? <Spinner /> : null}
-				<div className={classes.container}>
+				<div
+					className={[
+						classes.container,
+						!this.props.isAdmin
+							? classes.containerUser
+							: null,
+					].join(' ')}
+				>
 					<Heading text={'User > Profile'} />
 					<div>
 						<div className={classes.crop}>
@@ -273,6 +261,7 @@ class Profile extends Component {
 							)}
 						</div>
 						<CardProfile
+							isAdmin={this.props.isAdmin}
 							photo={
 								this.state.selectedFile ? (
 									selectedFile && (
@@ -334,85 +323,100 @@ class Profile extends Component {
 								)
 							}
 						/>{' '}
-						<div
-							className={classes.subcontainer}
-						>
+						{this.props.isAdmin ? (
 							<div
 								className={
-									classes.switch_status
+									classes.subcontainer
 								}
 							>
-								<Switch
-									value={
-										this.state.isActive
-									}
-									onChange={
-										this
-											.activeNoYesHandler
-									}
-									checked={
-										this.state.isActive
-									}
-									backgroundColor={
-										'#11B9F0'
-									}
-									off='Deactivated'
-									on='Active'
-									text='User Status'
-								/>
-							</div>
-							<div className={classes.box}>
 								<div
-									className={classes.text}
+									className={
+										classes.switch_status
+									}
 								>
-									How many days ahead do
-									you want your clients to
-									see on your calendar ?
+									<Switch
+										value={
+											this.state
+												.isActive
+										}
+										onChange={
+											this
+												.activeNoYesHandler
+										}
+										checked={
+											this.state
+												.isActive
+										}
+										backgroundColor={
+											'#11B9F0'
+										}
+										off='Deactivated'
+										on='Active'
+										text='User Status'
+									/>
+								</div>
+								<div
+									className={classes.box}
+								>
+									<div
+										className={
+											classes.text
+										}
+									>
+										How many days ahead
+										do you want your
+										clients to see on
+										your calendar ?
+									</div>
+									<div
+										className={
+											classes.input
+										}
+									>
+										<InputCustom
+											onChange={(
+												event
+											) =>
+												this.inputChangeHandler(
+													event,
+													'daysCalendarView'
+												)
+											}
+											value={
+												this.state
+													.daysCalendarView
+											}
+										/>
+									</div>
 								</div>
 								<div
 									className={
-										classes.input
+										classes.switch_admin
 									}
 								>
-									<InputCustom
-										onChange={(event) =>
-											this.inputChangeHandler(
-												event,
-												'daysCalendarView'
-											)
-										}
+									<Switch
 										value={
 											this.state
-												.daysCalendarView
+												.isAdmin
 										}
+										onChange={
+											this
+												.adminNoYesHandler
+										}
+										checked={
+											this.state
+												.isAdmin
+										}
+										backgroundColor={
+											'#504F4B'
+										}
+										off='No'
+										on='Yes'
+										text='Admin Privileges'
 									/>
 								</div>
 							</div>
-							<div
-								className={
-									classes.switch_admin
-								}
-							>
-								<Switch
-									value={
-										this.state.isAdmin
-									}
-									onChange={
-										this
-											.adminNoYesHandler
-									}
-									checked={
-										this.state.isAdmin
-									}
-									backgroundColor={
-										'#504F4B'
-									}
-									off='No'
-									on='Yes'
-									text='Admin Privileges'
-								/>
-							</div>
-						</div>
+						) : null}
 						<ContinueButton
 							onClick={this.saveHandler}
 							text={'SAVE'}

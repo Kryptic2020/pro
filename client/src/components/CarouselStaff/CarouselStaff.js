@@ -34,7 +34,7 @@ const CarouselStaff = (props) => {
 				<div className={classes.mask}></div>
 				<div className={classes.heading}>
 					<Heading
-						color='#ffffff'
+						white={true}
 						text={'Our Staffs'}
 					/>
 				</div>

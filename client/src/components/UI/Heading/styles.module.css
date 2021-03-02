@@ -5,6 +5,9 @@
 	color: #504f4b;
 	text-shadow: 1px 2px 2px #adadad;
 }
+.headingWhite {
+	color: #ffffff;
+}
 
 @media screen and (min-width: 600px) {
 	.heading {

@@ -61,7 +61,7 @@ const CarouselSpecialty = (props) => {
 				<div className={classes.mask}></div>
 				<div className={classes.heading}>
 					<Heading
-						color='#ffffff'
+						white={true}
 						text={'Our Services'}
 					/>
 				</div>
