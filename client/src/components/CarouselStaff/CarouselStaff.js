@@ -57,7 +57,7 @@ const CarouselStaff = (props) => {
 					customTransition='all .2'
 					transitionDuration={200}
 					containerClass='carousel-container'
-					//removeArrowOnDeviceType={''}
+					removeArrowOnDeviceType={'mobile'}
 					deviceType={[
 						'mobile',
 						'tablet',

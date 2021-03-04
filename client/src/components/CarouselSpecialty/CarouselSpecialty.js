@@ -96,7 +96,7 @@ const CarouselSpecialty = (props) => {
 					customTransition='all .2'
 					transitionDuration={100}
 					containerClass='carousel-container'
-					//	removeArrowOnDeviceType={''}
+					removeArrowOnDeviceType={'mobile'}
 					deviceType={[
 						'mobile',
 						'tablet',
