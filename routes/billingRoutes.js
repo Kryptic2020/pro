@@ -110,6 +110,6 @@ module.exports = (app) => {
 				.send(`Webhook Error: ${err.message}`);
 		}
 
-		response.status(200);
+		res.status(200);
 	});
 };
