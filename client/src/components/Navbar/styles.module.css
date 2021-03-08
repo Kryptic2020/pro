@@ -5,10 +5,13 @@
 	align-items: center;
 	justify-content: space-around;
 	background-image: linear-gradient(
-		to right,
+		to left,
+		#000000,
+		#2e2e2e,
+		#616161 /*
 		#38f495,
 		#15bfe7,
-		#11b9f0
+		#11b9f0*/
 	);
 	margin-top: 0px;
 	display: flex;
