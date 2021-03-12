@@ -1,0 +1,126 @@
+.container {
+	position: relative;
+	margin: 0 auto;
+	width: 373px;
+	height: 365px;
+	background: transparent
+		linear-gradient(160deg, #53a360 0%, #77ad80 100%) 0%
+		0% no-repeat padding-box;
+	border-radius: 15px;
+	opacity: 1;
+}
+.subcontainer {
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 332px;
+	height: 365px;
+}
+.box {
+	width: 332px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+.logo_company {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	border: 1px solid #f9f9f9;
+}
+.company_name {
+	margin-right: auto;
+	padding-left: 10px;
+	height: 22px;
+	font: normal normal bold 14px/17px Inter;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.logo_app {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	border: 1px solid #f9f9f9;
+}
+.image {
+	margin: 0 auto;
+	width: 332px;
+	height: 128px;
+	border-radius: 10px;
+	background-color: blanchedalmond;
+}
+
+.title {
+	margin: 0 auto;
+	width: 332px;
+	height: 28px;
+	text-align: left;
+	font: normal normal bold 22px/26px Inter;
+	letter-spacing: 0px;
+	color: #ffffff;
+	opacity: 1;
+}
+.date {
+	padding-left: 10px;
+	margin: 0 auto;
+	height: 21px;
+	width: 332px;
+	text-align: left;
+	font: normal normal bold 16px/26px Inter;
+	letter-spacing: 0px;
+	color: #ffffff;
+	opacity: 1;
+}
+.price {
+	padding-left: 10px;
+	margin: 0 auto;
+	height: 25px;
+	width: 332px;
+	text-align: left;
+	font: normal normal normal 15px/26px Inter;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.location {
+	padding-left: 10px;
+	margin: 0 auto;
+	height: 25px;
+	width: 332px;
+	text-align: left;
+	font: normal normal normal 15px/26px Inter;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.div {
+	display: flex;
+}
+.icon {
+	background-color: #ffffff;
+	height: 25px;
+	width: 22px;
+	border-radius: 5px;
+}
+
+.button {
+	margin: 0 auto;
+	margin-top: -24px;
+	width: 373px;
+	height: 84px;
+	background: transparent
+		linear-gradient(180deg, #f0f0f0 0%, #f9f9f9 100%) 0%
+		0% no-repeat padding-box;
+	border: 1px solid #f0f0f0;
+	border-radius: 15px;
+	opacity: 1;
+}
+.button_text {
+	height: 20px;
+	margin-top: 40px;
+	text-align: center;
+	font: normal normal bold 16px/20px Inter;
+	letter-spacing: 0px;
+	color: #57a464;
+	opacity: 1;
+}

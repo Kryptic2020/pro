@@ -9,7 +9,7 @@ import * as actions from '../store/actions';
 import VerifyEmail from '../container/Pages/VerifyEmail/VerifyEmail';
 import BookingAdm from '../container/Pages/BookingAdm/BookingAdm';
 import WaitingList from '../container/Pages/WaitingList/WaitingList';
-import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
+//import SpecialtyAndServices from '../container/Pages/SpecialtyAndServices';
 import Assign_staff from '../container/Pages/Assign_staff/Assign_staff';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
@@ -39,6 +39,7 @@ import MySlots from '../container/Pages/MySlots/MySlots';
 import BookNow from '../container/Pages/BookNow/BookNow';
 import Homepage from '../container/Pages/Home/Home';
 import Alert from 'react-bootstrap/Alert';
+import TestPage from '../container/Pages/TestPage';
 
 class App extends Component {
 	state = {
@@ -110,6 +111,11 @@ class App extends Component {
 							exact
 							path='/personal-info'
 							component={PersonalInfoPage}
+						/>
+						<Route
+							path='/test-page'
+							exact
+							component={TestPage}
 						/>
 
 						<Route
