@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './styles.module.css';
+import { ArrowRight } from 'react-bootstrap-icons';
 
 const CardEvent = () => {
 	return (
@@ -23,30 +24,38 @@ const CardEvent = () => {
 					<p className={classes.title}>
 						Thursday Kickabout (pelada)
 					</p>
-					<div className={classes.div}>
-						<span className={classes.icon} />
-						<span className={classes.date}>
-							Sep 10, 07:00 PM
-						</span>
-					</div>
-					<div className={classes.div}>
-						<span className={classes.icon} />
-						<span className={classes.price}>
-							$11 per player
-						</span>
-					</div>
-					<div className={classes.div}>
-						<span className={classes.icon} />
-						<span className={classes.location}>
-							150 Fursden Road, Carina
-						</span>
-					</div>
+
+					<p className={classes.date}>
+						<ArrowRight
+							className='mr-1'
+							color='white'
+							size={24}
+						/>
+						Sep 10, 07:00 PM
+					</p>
+
+					<p className={classes.price}>
+						<ArrowRight
+							className='mr-1'
+							color='white'
+							size={24}
+						/>
+						$11 per player
+					</p>
+
+					<p className={classes.location}>
+						<ArrowRight
+							className='mr-1'
+							color='white'
+							size={24}
+						/>
+						150 Fursden Road, Carina
+					</p>
 				</div>
-			</div>
-			<div className={classes.button}>
-				<p className={classes.button_text}>
+
+				<button className={classes.button}>
 					JOIN EVENT
-				</p>
+				</button>
 			</div>
 		</>
 	);
